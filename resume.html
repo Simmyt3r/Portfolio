@@ -1,6 +1,6 @@
- <!-- Resume HTML (resume.html) -->
+
+    <!-- Resume HTML (resume.html) -->
     <!-- This part should be in a separate file named resume.html -->
-    <!-- I'm including it here for completeness. -->
     <div id="resume-content" style="display:none;">
         <!DOCTYPE html>
         <html lang="en">
@@ -16,19 +16,9 @@
                     -webkit-print-color-adjust: exact;
                 }
                 @media print {
-                    body {
-                        margin: 0;
-                        padding: 0;
-                    }
-                    .no-print {
-                        display: none;
-                    }
-                    .printable-resume {
-                        box-shadow: none;
-                        margin: 0;
-                        max-width: 100%;
-                        border-radius: 0;
-                    }
+                    body { margin: 0; padding: 0; }
+                    .no-print { display: none; }
+                    .printable-resume { box-shadow: none; margin: 0; max-width: 100%; border-radius: 0; }
                 }
             </style>
         </head>
@@ -43,15 +33,11 @@
                         <span>New York, NY</span>
                     </div>
                 </header>
-
                 <main>
-                    <!-- Summary -->
                     <section class="mb-8">
                         <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4 text-indigo-800">Summary</h2>
                         <p class="text-gray-700">Highly motivated and detail-oriented Front-End Developer with 5+ years of experience in building and maintaining responsive and user-friendly web applications. Proficient in modern web technologies including HTML5, CSS3, JavaScript, and frameworks like React and Vue.js. Passionate about creating elegant solutions to complex problems.</p>
                     </section>
-
-                    <!-- Experience -->
                     <section class="mb-8">
                         <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4 text-indigo-800">Experience</h2>
                         <div class="mb-6">
@@ -73,8 +59,6 @@
                             </ul>
                         </div>
                     </section>
-
-                    <!-- Education -->
                     <section class="mb-8">
                         <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4 text-indigo-800">Education</h2>
                         <div>
@@ -82,50 +66,37 @@
                             <p class="text-md text-gray-600">State University | 2014 - 2018</p>
                         </div>
                     </section>
-
-                    <!-- Skills -->
                     <section>
                         <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4 text-indigo-800">Skills</h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-gray-700">
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>HTML5 & CSS3</li>
-                                <li>JavaScript (ES6+)</li>
-                                <li>React & Redux</li>
-                            </ul>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>Vue.js & Vuex</li>
-                                <li>Tailwind CSS</li>
-                                <li>Sass/SCSS</li>
-                            </ul>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>Git & GitHub</li>
-                                <li>Responsive Design</li>
-                                <li>Agile Methodologies</li>
-                            </ul>
+                            <ul class="list-disc list-inside space-y-1"><li>HTML5 & CSS3</li><li>JavaScript (ES6+)</li><li>React & Redux</li></ul>
+                            <ul class="list-disc list-inside space-y-1"><li>Vue.js & Vuex</li><li>Tailwind CSS</li><li>Sass/SCSS</li></ul>
+                            <ul class="list-disc list-inside space-y-1"><li>Git & GitHub</li><li>Responsive Design</li><li>Agile Methodologies</li></ul>
                         </div>
                     </section>
                 </main>
-
                 <div class="text-center mt-10 no-print">
-                    <button onclick="window.print()" class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition duration-300">
-                        Print Resume
-                    </button>
+                    <button onclick="window.print()" class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition duration-300">Print Resume</button>
                 </div>
             </div>
         </body>
         </html>
     </div>
-
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-
-        // Close mobile menu when a link is clicked
         const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
         for(let link of mobileMenuLinks) {
             link.addEventListener('click', () => {
@@ -133,11 +104,51 @@
             });
         }
 
-        // Create the resume.html file content
-        // In a real project, this would be a separate file.
-        // For this demo, we can create it dynamically if needed.
-        // However, the best approach is to have a separate resume.html file.
-        // The content is in the 'resume-content' div.
+        // Dark Mode Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+        const darkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+        const lightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+
+        function toggleIcons() {
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+            darkIconMobile.classList.toggle('hidden');
+            lightIconMobile.classList.toggle('hidden');
+        }
+        
+        // Set initial icon state
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            lightIcon.classList.remove('hidden');
+            lightIconMobile.classList.remove('hidden');
+        } else {
+            darkIcon.classList.remove('hidden');
+            darkIconMobile.classList.remove('hidden');
+        }
+
+        const toggleTheme = () => {
+            const isDarkMode = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color-theme', isDarkMode ? 'dark' : 'light');
+            toggleIcons();
+        };
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleMobileBtn.addEventListener('click', toggleTheme);
+        
+        // Back to Top Button
+        const toTopButton = document.getElementById('to-top-button');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                toTopButton.classList.remove('hidden');
+            } else {
+                toTopButton.classList.add('hidden');
+            }
+        };
+        toTopButton.onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
     </script>
 </body>
 </html>
