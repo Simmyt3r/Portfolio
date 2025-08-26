@@ -1,0 +1,143 @@
+ <!-- Resume HTML (resume.html) -->
+    <!-- This part should be in a separate file named resume.html -->
+    <!-- I'm including it here for completeness. -->
+    <div id="resume-content" style="display:none;">
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Resume - John Doe</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+            <style>
+                body {
+                    font-family: 'Inter', sans-serif;
+                    -webkit-print-color-adjust: exact;
+                }
+                @media print {
+                    body {
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .no-print {
+                        display: none;
+                    }
+                    .printable-resume {
+                        box-shadow: none;
+                        margin: 0;
+                        max-width: 100%;
+                        border-radius: 0;
+                    }
+                }
+            </style>
+        </head>
+        <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+            <div class="printable-resume bg-white p-8 md:p-12 shadow-lg rounded-lg max-w-4xl w-full my-8">
+                <header class="text-center mb-10">
+                    <h1 class="text-5xl font-bold text-gray-800">John Doe</h1>
+                    <p class="text-xl text-indigo-600 font-medium">Front-End Developer</p>
+                    <div class="flex justify-center space-x-6 mt-4 text-gray-600">
+                        <span>(123) 456-7890</span>
+                        <span>your.email@example.com</span>
+                        <span>New York, NY</span>
+                    </div>
+                </header>
+
+                <main>
+                    <!-- Summary -->
+                    <section class="mb-8">
+                        <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4 text-indigo-800">Summary</h2>
+                        <p class="text-gray-700">Highly motivated and detail-oriented Front-End Developer with 5+ years of experience in building and maintaining responsive and user-friendly web applications. Proficient in modern web technologies including HTML5, CSS3, JavaScript, and frameworks like React and Vue.js. Passionate about creating elegant solutions to complex problems.</p>
+                    </section>
+
+                    <!-- Experience -->
+                    <section class="mb-8">
+                        <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4 text-indigo-800">Experience</h2>
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold text-gray-800">Senior Front-End Developer</h3>
+                            <p class="text-md text-gray-600">Tech Solutions Inc. | New York, NY | 2020 - Present</p>
+                            <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                                <li>Led the development of a new client-facing dashboard using React, resulting in a 20% increase in user engagement.</li>
+                                <li>Mentored junior developers and conducted code reviews to ensure code quality and best practices.</li>
+                                <li>Collaborated with UI/UX designers to translate wireframes into high-quality, responsive code.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Front-End Developer</h3>
+                            <p class="text-md text-gray-600">Web Crafters LLC | Brooklyn, NY | 2018 - 2020</p>
+                            <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
+                                <li>Developed and maintained websites for various clients using HTML, CSS, and JavaScript.</li>
+                                <li>Implemented responsive designs to ensure optimal viewing on all devices.</li>
+                                <li>Improved website performance by optimizing images and code, reducing load times by 30%.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Education -->
+                    <section class="mb-8">
+                        <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4 text-indigo-800">Education</h2>
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Bachelor of Science in Computer Science</h3>
+                            <p class="text-md text-gray-600">State University | 2014 - 2018</p>
+                        </div>
+                    </section>
+
+                    <!-- Skills -->
+                    <section>
+                        <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4 text-indigo-800">Skills</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-gray-700">
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>HTML5 & CSS3</li>
+                                <li>JavaScript (ES6+)</li>
+                                <li>React & Redux</li>
+                            </ul>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Vue.js & Vuex</li>
+                                <li>Tailwind CSS</li>
+                                <li>Sass/SCSS</li>
+                            </ul>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Git & GitHub</li>
+                                <li>Responsive Design</li>
+                                <li>Agile Methodologies</li>
+                            </ul>
+                        </div>
+                    </section>
+                </main>
+
+                <div class="text-center mt-10 no-print">
+                    <button onclick="window.print()" class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition duration-300">
+                        Print Resume
+                    </button>
+                </div>
+            </div>
+        </body>
+        </html>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for(let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+
+        // Create the resume.html file content
+        // In a real project, this would be a separate file.
+        // For this demo, we can create it dynamically if needed.
+        // However, the best approach is to have a separate resume.html file.
+        // The content is in the 'resume-content' div.
+    </script>
+</body>
+</html>
