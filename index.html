@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>John Doe - Front-End Developer Portfolio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS (Animate on Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Devicon for skill icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -37,66 +42,104 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+        
+        /* Dark mode transition */
+        .dark body {
+            background-color: #111827;
+            color: #d1d5db;
+        }
+        .dark header, .dark #mobile-menu, .dark #about, .dark #skills, .dark footer, .dark .project-card {
+            background-color: #1f2937;
+            border-color: #374151;
+        }
+        .dark h1, .dark h2, .dark h3, .dark a:not(.btn) {
+             color: #f9fafb;
+        }
+        .dark p, .dark .text-gray-600 {
+            color: #d1d5db;
+        }
+        .dark .project-card {
+             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.2);
+        }
+        .dark .skill-icon-card {
+            background-color: #374151;
+        }
     </style>
+    <script>
+        // Set dark mode class based on localStorage
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 transition-colors duration-300">
 
     <!-- Header -->
-    <header class="bg-white shadow-md fixed w-full z-10 no-print">
+    <header class="bg-white shadow-md fixed w-full z-20 no-print transition-colors duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-800">John Doe</a>
-            <div class="hidden md:flex space-x-6">
+            <a href="#" class="text-2xl font-bold">John Doe</a>
+            <div class="hidden md:flex items-center space-x-6">
                 <a href="#about" class="text-gray-600 hover:text-indigo-600 transition duration-300">About</a>
                 <a href="#projects" class="text-gray-600 hover:text-indigo-600 transition duration-300">Projects</a>
                 <a href="#skills" class="text-gray-600 hover:text-indigo-600 transition duration-300">Skills</a>
                 <a href="#contact" class="text-gray-600 hover:text-indigo-600 transition duration-300">Contact</a>
                 <a href="resume.html" target="_blank" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300">View Resume</a>
+                <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
             </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+            <div class="md:hidden flex items-center">
+                 <button id="theme-toggle-mobile" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-2">
+                    <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+                <button id="mobile-menu-button" class="focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
-            <a href="#about" class="block text-gray-600 hover:text-indigo-600 transition duration-300">About</a>
-            <a href="#projects" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Projects</a>
-            <a href="#skills" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Skills</a>
-            <a href="#contact" class="block text-gray-600 hover:text-indigo-600 transition duration-300">Contact</a>
-            <a href="resume.html" target="_blank" class="block bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300 mt-2">View Resume</a>
+            <a href="#about" class="block hover:text-indigo-600 transition duration-300">About</a>
+            <a href="#projects" class="block hover:text-indigo-600 transition duration-300">Projects</a>
+            <a href="#skills" class="block hover:text-indigo-600 transition duration-300">Skills</a>
+            <a href="#contact" class="block hover:text-indigo-600 transition duration-300">Contact</a>
+            <a href="resume.html" target="_blank" class="block bg-indigo-600 text-white text-center px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300 mt-2">View Resume</a>
         </div>
     </header>
 
     <main class="pt-20">
         <!-- Hero Section -->
         <section id="hero" class="container mx-auto px-6 py-24 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
-                <h1 class="text-5xl font-bold text-gray-900 leading-tight mb-4">Creative & Passionate<br>Front-End Developer</h1>
+            <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0" data-aos="fade-right">
+                <h1 class="text-5xl font-bold leading-tight mb-4">Creative & Passionate<br>Front-End Developer</h1>
                 <p class="text-lg text-gray-600 mb-8">I build modern, responsive, and user-friendly web applications.</p>
                 <a href="#contact" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition duration-300 text-lg">Get In Touch</a>
             </div>
-            <div class="md:w-1/2">
+            <div class="md:w-1/2" data-aos="fade-left" data-aos-delay="200">
                 <img src="https://placehold.co/600x400/E2E8F0/333333?text=Your+Image" alt="Profile Picture" class="rounded-lg shadow-2xl mx-auto">
             </div>
         </section>
 
         <!-- About Me -->
-        <section id="about" class="bg-white py-20">
+        <section id="about" class="bg-white py-20" data-aos="fade-up">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">About Me</h2>
+                <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/3 mb-8 md:mb-0">
                         <img src="https://placehold.co/400x400/E2E8F0/333333?text=Your+Photo" class="rounded-full shadow-lg mx-auto" alt="John Doe">
                     </div>
                     <div class="md:w-2/3 md:pl-12">
-                        <p class="text-gray-600 text-lg mb-4">
+                        <p class="text-lg mb-4">
                             Hello! I'm John Doe, a front-end developer based in New York City. I have a passion for creating beautiful and functional websites from the ground up. With a strong foundation in HTML, CSS, and JavaScript, I specialize in building interfaces that provide a seamless user experience.
                         </p>
-                        <p class="text-gray-600 text-lg mb-4">
+                        <p class="text-lg mb-4">
                             I'm proficient with modern frameworks like React and Vue.js, and I'm always eager to learn new technologies to stay at the forefront of web development. My goal is to turn complex problems into elegant, simple, and intuitive designs.
                         </p>
-                        <p class="text-gray-600 text-lg">
+                        <p class="text-lg">
                             When I'm not coding, you can find me exploring the city, trying out new coffee shops, or contributing to open-source projects.
                         </p>
                     </div>
@@ -105,34 +148,46 @@
         </section>
 
         <!-- Projects -->
-        <section id="projects" class="py-20">
+        <section id="projects" class="py-20" data-aos="fade-up">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">My Projects</h2>
+                <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Project 1 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card" data-aos="fade-up" data-aos-delay="100">
                         <img src="https://placehold.co/600x400/A3BFFA/FFFFFF?text=Project+One" class="w-full h-56 object-cover" alt="Project 1">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold mb-2">E-commerce Platform</h3>
-                            <p class="text-gray-600 mb-4">A fully responsive e-commerce website built with React, featuring product filtering, a shopping cart, and a checkout process.</p>
+                            <p class="mb-4">A fully responsive e-commerce website built with React, featuring product filtering, a shopping cart, and a checkout process.</p>
+                            <div class="mb-4">
+                                <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">React</span>
+                                <span class="inline-block bg-gray-200 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Tailwind CSS</span>
+                            </div>
                             <a href="#" class="text-indigo-600 font-semibold hover:underline">View Project &rarr;</a>
                         </div>
                     </div>
                     <!-- Project 2 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card" data-aos="fade-up" data-aos-delay="200">
                         <img src="https://placehold.co/600x400/FBBF24/FFFFFF?text=Project+Two" class="w-full h-56 object-cover" alt="Project 2">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold mb-2">Task Management App</h3>
-                            <p class="text-gray-600 mb-4">A sleek and intuitive task management application using Vue.js and Firebase for real-time data synchronization.</p>
+                            <p class="mb-4">A sleek and intuitive task management application using Vue.js and Firebase for real-time data synchronization.</p>
+                             <div class="mb-4">
+                                <span class="inline-block bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Vue.js</span>
+                                <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Firebase</span>
+                            </div>
                             <a href="#" class="text-indigo-600 font-semibold hover:underline">View Project &rarr;</a>
                         </div>
                     </div>
                     <!-- Project 3 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card" data-aos="fade-up" data-aos-delay="300">
                         <img src="https://placehold.co/600x400/34D399/FFFFFF?text=Project+Three" class="w-full h-56 object-cover" alt="Project 3">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold mb-2">Portfolio Website</h3>
-                            <p class="text-gray-600 mb-4">A personal portfolio website (like this one!) built with HTML, Tailwind CSS, and a touch of JavaScript.</p>
+                            <p class="mb-4">A personal portfolio website (like this one!) built with HTML, Tailwind CSS, and a touch of JavaScript.</p>
+                             <div class="mb-4">
+                                <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">HTML5</span>
+                                <span class="inline-block bg-pink-100 text-pink-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">JavaScript</span>
+                            </div>
                             <a href="#" class="text-indigo-600 font-semibold hover:underline">View Project &rarr;</a>
                         </div>
                     </div>
@@ -141,28 +196,58 @@
         </section>
 
         <!-- Skills -->
-        <section id="skills" class="bg-white py-20">
+        <section id="skills" class="bg-white py-20" data-aos="fade-up">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Technical Skills</h2>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <span class="bg-indigo-100 text-indigo-800 text-lg font-medium px-4 py-2 rounded-full">HTML5</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-lg font-medium px-4 py-2 rounded-full">CSS3 & Sass</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-lg font-medium px-4 py-2 rounded-full">JavaScript (ES6+)</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-lg font-medium px-4 py-2 rounded-full">React</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-lg font-medium px-4 py-2 rounded-full">Vue.js</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-lg font-medium px-4 py-2 rounded-full">Tailwind CSS</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-lg font-medium px-4 py-2 rounded-full">Git & GitHub</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-lg font-medium px-4 py-2 rounded-full">Webpack</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-lg font-medium px-4 py-2 rounded-full">Responsive Design</span>
-                    <span class="bg-indigo-100 text-indigo-800 text-lg font-medium px-4 py-2 rounded-full">Figma</span>
+                <h2 class="text-4xl font-bold text-center mb-12">Technical Skills</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
+                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
+                        <i class="devicon-html5-plain-wordmark colored text-6xl"></i>
+                        <p class="mt-2 font-semibold">HTML5</p>
+                    </div>
+                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
+                        <i class="devicon-css3-plain-wordmark colored text-6xl"></i>
+                        <p class="mt-2 font-semibold">CSS3</p>
+                    </div>
+                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
+                        <i class="devicon-javascript-plain colored text-6xl"></i>
+                        <p class="mt-2 font-semibold">JavaScript</p>
+                    </div>
+                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
+                        <i class="devicon-react-original-wordmark colored text-6xl"></i>
+                        <p class="mt-2 font-semibold">React</p>
+                    </div>
+                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
+                        <i class="devicon-vuejs-plain-wordmark colored text-6xl"></i>
+                        <p class="mt-2 font-semibold">Vue.js</p>
+                    </div>
+                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
+                        <i class="devicon-tailwindcss-plain colored text-6xl"></i>
+                        <p class="mt-2 font-semibold">Tailwind CSS</p>
+                    </div>
+                     <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
+                        <i class="devicon-sass-original colored text-6xl"></i>
+                        <p class="mt-2 font-semibold">Sass</p>
+                    </div>
+                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
+                        <i class="devicon-git-plain-wordmark colored text-6xl"></i>
+                        <p class="mt-2 font-semibold">Git</p>
+                    </div>
+                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
+                        <i class="devicon-webpack-plain-wordmark colored text-6xl"></i>
+                        <p class="mt-2 font-semibold">Webpack</p>
+                    </div>
+                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
+                        <i class="devicon-figma-plain colored text-6xl"></i>
+                        <p class="mt-2 font-semibold">Figma</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact -->
-        <section id="contact" class="py-20">
+        <section id="contact" class="py-20" data-aos="fade-up">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Let's Build Something Amazing</h2>
+                <h2 class="text-4xl font-bold mb-4">Let's Build Something Amazing</h2>
                 <p class="text-lg text-gray-600 mb-8">I'm currently available for freelance work and open to new opportunities. <br>Feel free to reach out!</p>
                 <a href="mailto:your.email@example.com" class="bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-indigo-700 transition duration-300 text-xl">
                     your.email@example.com
@@ -177,5 +262,13 @@
             &copy; 2024 John Doe. All Rights Reserved.
         </div>
     </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="to-top-button" title="Go To Top"
+        class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-semibold transition-opacity duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+            <path d="M12 4l8 8h-6v8h-4v-8H4l8-8z" />
+        </svg>
+    </button>
 
-   
+
