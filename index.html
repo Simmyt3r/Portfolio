@@ -1,427 +1,398 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Doe - Front-End Developer Portfolio</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sarverun Simeon Tertese — Managing Director, Silabs</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- AOS (Animate on Scroll) Library -->
+    <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Devicon for skill icons -->
+    <!-- Devicon (for tech/service icons) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        :root {
+            --brand: #0b74de;
         }
-        /* Custom styles for print resume button */
+        body { font-family: 'Inter', sans-serif; }
         @media print {
-            body * {
-                visibility: hidden;
-            }
-            .printable-resume, .printable-resume * {
-                visibility: visible;
-            }
-            .printable-resume {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-            }
-            .no-print {
-                display: none;
-            }
+            body * { visibility: hidden; }
+            .printable-resume, .printable-resume * { visibility: visible; }
+            .printable-resume { position: absolute; left: 0; top: 0; width: 100%; }
+            .no-print { display: none; }
         }
-
-        /* Simple animation for cards */
-        .project-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Dark mode transition */
-        .dark body {
-            background-color: #111827;
-            color: #d1d5db;
-        }
-        .dark header, .dark #mobile-menu, .dark #about, .dark #skills, .dark footer, .dark .project-card {
-            background-color: #1f2937;
-            border-color: #374151;
-        }
-        .dark h1, .dark h2, .dark h3, .dark a:not(.btn) {
-             color: #f9fafb;
-        }
-        .dark p, .dark .text-gray-600 {
-            color: #d1d5db;
-        }
-        .dark .project-card {
-             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.2);
-        }
-        .dark .skill-icon-card {
-            background-color: #374151;
-        }
+        .project-card { transition: transform 0.28s ease, box-shadow 0.28s ease; }
+        .project-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(12, 18, 35, 0.08); }
+        .dark body { background-color: #0b1220; color: #d1d5db; }
+        .dark header, .dark .card { background-color: #0f1724; border-color:#25303b; }
+        .logo-img { width:56px; height:56px; object-fit:contain; }
+        /* ensure hero image responsiveness */
+        .hero-art { max-width: 100%; border-radius: 12px; }
     </style>
-    <script>
-        // Set dark mode class based on localStorage
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    </script>
 </head>
 <body class="bg-gray-50 text-gray-800 transition-colors duration-300">
 
     <!-- Header -->
-    <header class="bg-white shadow-md fixed w-full z-20 no-print transition-colors duration-300">
+    <header class="bg-white shadow-md fixed w-full z-20 no-print">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold">John Doe</a>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#about" class="text-gray-600 hover:text-indigo-600 transition duration-300">About</a>
-                <a href="#projects" class="text-gray-600 hover:text-indigo-600 transition duration-300">Projects</a>
-                <a href="#skills" class="text-gray-600 hover:text-indigo-600 transition duration-300">Skills</a>
-                <a href="#contact" class="text-gray-600 hover:text-indigo-600 transition duration-300">Contact</a>
-                <a href="resume.html" target="_blank" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300">View Resume</a>
-                <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
-                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                </button>
+            <div class="flex items-center gap-3">
+                <!-- Replace src with your actual logo path -->
+                <img src="logo.png" alt="Silabs Logo" class="logo-img rounded-md" onerror="this.style.display='none'">
+                <div>
+                    <a href="#" class="text-xl font-bold leading-none">Sarverun Simeon Tertese</a>
+                    <div class="text-xs text-gray-500">Managing Director — Silabs & Co Technologies Ltd</div>
+                </div>
             </div>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#about" class="text-gray-600 hover:text-indigo-600">About</a>
+                <a href="#projects" class="text-gray-600 hover:text-indigo-600">Projects</a>
+                <a href="#services" class="text-gray-600 hover:text-indigo-600">Services</a>
+                <a href="#contact" class="text-gray-600 hover:text-indigo-600">Contact</a>
+                <a href="#resume" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">View CV</a>
+            </div>
+
             <div class="md:hidden flex items-center">
-                 <button id="theme-toggle-mobile" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-2">
-                    <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                    <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                </button>
                 <button id="mobile-menu-button" class="focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
         </nav>
+
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
-            <a href="#about" class="block hover:text-indigo-600 transition duration-300">About</a>
-            <a href="#projects" class="block hover:text-indigo-600 transition duration-300">Projects</a>
-            <a href="#skills" class="block hover:text-indigo-600 transition duration-300">Skills</a>
-            <a href="#contact" class="block hover:text-indigo-600 transition duration-300">Contact</a>
-            <a href="resume.html" target="_blank" class="block bg-indigo-600 text-white text-center px-4 py-2 rounded-md hover:bg-indigo-700 transition duration-300 mt-2">View Resume</a>
+            <a href="#about" class="block hover:text-indigo-600">About</a>
+            <a href="#projects" class="block hover:text-indigo-600">Projects</a>
+            <a href="#services" class="block hover:text-indigo-600">Services</a>
+            <a href="#contact" class="block hover:text-indigo-600">Contact</a>
+            <a href="#resume" class="block bg-indigo-600 text-white text-center px-4 py-2 rounded-md mt-2">View CV</a>
         </div>
     </header>
 
-    <main class="pt-20">
-        <!-- Hero Section -->
-        <section id="hero" class="container mx-auto px-6 py-24 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0" data-aos="fade-right">
-                <h1 class="text-5xl font-bold leading-tight mb-4">Creative & Passionate<br>Front-End Developer</h1>
-                <p class="text-lg text-gray-600 mb-8">I build modern, responsive, and user-friendly web applications.</p>
-                <a href="#contact" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition duration-300 text-lg">Get In Touch</a>
+    <main class="pt-24">
+        <!-- Hero -->
+        <section id="hero" class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-10">
+            <div class="md:w-1/2" data-aos="fade-right">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">I build technology that empowers people — not just products.</h1>
+                <p class="text-lg text-gray-600 mb-6">I’m Sarverun Simeon Tertese — Managing Director at Silabs. I lead our team to design practical software, train the next generation of IT talent, and build solutions that create sustainable work across Nigeria and Africa.</p>
+                <div class="flex items-center gap-4">
+                    <a href="#contact" class="bg-indigo-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-700">Contact Silabs</a>
+                    <a href="#projects" class="text-indigo-600 font-semibold hover:underline">See Projects →</a>
+                </div>
             </div>
-            <div class="md:w-1/2" data-aos="fade-left" data-aos-delay="200">
-                <img src="https://placehold.co/600x400/E2E8F0/333333?text=Your+Image" alt="Profile Picture" class="rounded-lg shadow-2xl mx-auto">
+            <div class="md:w-1/2" data-aos="fade-left">
+                <img src="https://placehold.co/800x520/0b74de/ffffff?text=Silabs+Leadership" alt="Silabs leadership" class="hero-art shadow-xl">
             </div>
         </section>
 
-        <!-- About Me -->
-        <section id="about" class="bg-white py-20" data-aos="fade-up">
+        <!-- About -->
+        <section id="about" class="bg-white py-16" data-aos="fade-up">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
-                <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/3 mb-8 md:mb-0">
-                        <img src="https://placehold.co/400x400/E2E8F0/333333?text=Your+Photo" class="rounded-full shadow-lg mx-auto" alt="John Doe">
+                <h2 class="text-3xl font-bold text-center mb-8">About Sarverun</h2>
+                <div class="flex flex-col md:flex-row items-start gap-8">
+                    <div class="md:w-1/3">
+                        <img src="https://placehold.co/400x400/E2E8F0/333333?text=Sarverun+Simeon" alt="Sarverun Simeon" class="rounded-lg shadow-lg mx-auto">
                     </div>
-                    <div class="md:w-2/3 md:pl-12">
-                        <p class="text-lg mb-4">
-                            Hello! I'm John Doe, a front-end developer based in New York City. I have a passion for creating beautiful and functional websites from the ground up. With a strong foundation in HTML, CSS, and JavaScript, I specialize in building interfaces that provide a seamless user experience.
-                        </p>
-                        <p class="text-lg mb-4">
-                            I'm proficient with modern frameworks like React and Vue.js, and I'm always eager to learn new technologies to stay at the forefront of web development. My goal is to turn complex problems into elegant, simple, and intuitive designs.
-                        </p>
-                        <p class="text-lg">
-                            When I'm not coding, you can find me exploring the city, trying out new coffee shops, or contributing to open-source projects.
-                        </p>
+                    <div class="md:w-2/3">
+                        <p class="text-lg mb-4">As Managing Director of <strong>Simeon's Laboratories & Co Technologies Ltd (Silabs)</strong>, I combine practical engineering with a deep focus on human outcomes. Our work is centered on delivering high-quality software, training young talent, and helping small businesses digitize so they can create jobs and scale.</p>
+
+                        <p class="text-lg mb-4">My leadership approach is guided by Silabs’ core values — <em>Innovation, Collaboration, Integrity, Customer-Centricity, Legacy, and Excellence</em> (ICICLE). I believe in measurable impact: we measure success by how many people gain skills, income, or opportunity because of our work.</p>
+
+                        <p class="text-lg">Outside of Silabs I mentor early-stage founders, run workshops for student entrepreneurs, and champion practical ways for African tech to solve local problems at scale.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects -->
-        <section id="projects" class="py-20" data-aos="fade-up">
+        <!-- Projects (Showcase style) -->
+        <section id="projects" class="py-16" data-aos="fade-up">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
+                <h2 class="text-3xl font-bold text-center mb-8">Selected Projects & Impact</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project 1 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://placehold.co/600x400/A3BFFA/FFFFFF?text=Project+One" class="w-full h-56 object-cover" alt="Project 1">
+                    <!-- Project: New Dawn For African Child -->
+                    <article class="bg-white rounded-lg shadow project-card overflow-hidden">
+                        <img src="https://placehold.co/800x450/1466a8/ffffff?text=New+Dawn+web+app" alt="New Dawn project" class="w-full h-44 object-cover">
                         <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">E-commerce Platform</h3>
-                            <p class="mb-4">A fully responsive e-commerce website built with React, featuring product filtering, a shopping cart, and a checkout process.</p>
-                            <div class="mb-4">
-                                <span class="inline-block bg-indigo-100 text-indigo-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">React</span>
-                                <span class="inline-block bg-gray-200 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Tailwind CSS</span>
-                            </div>
-                            <a href="#" class="text-indigo-600 font-semibold hover:underline">View Project &rarr;</a>
+                            <h3 class="text-2xl font-bold mb-2">New Dawn For African Child — Learning Web App</h3>
+                            <p class="text-gray-600 mb-3">Built and launched a training web app for an NGO in 6 weeks. Features: learner modules, parent/donor portal, secure hosting and maintenance.</p>
+                            <div class="text-sm text-gray-500 mb-3">Impact: increased reach and engagement across regions (detailed metrics available on request).</div>
+                            <a href="#" class="text-indigo-600 font-semibold">Read case study →</a>
                         </div>
+                    </article>
+
+                    <!-- Project: Risco Engineering -->
+                    <article class="bg-white rounded-lg shadow project-card overflow-hidden">
+                        <img src="https://placehold.co/800x450/0b74de/ffffff?text=Risco+Engineering" alt="Risco project" class="w-full h-44 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Risco Engineering & Agro-Tech — Website & Consultancy</h3>
+                            <p class="text-gray-600 mb-3">Delivered a bespoke corporate website and ongoing managed services. Services included UX design, CMS, and support.</p>
+                            <div class="text-sm text-gray-500 mb-3">Project value: ₦400,000 (ongoing site management contract).</div>
+                            <a href="#" class="text-indigo-600 font-semibold">View project →</a>
+                        </div>
+                    </article>
+
+                    <!-- Project: Satellite Academy (pro bono) -->
+                    <article class="bg-white rounded-lg shadow project-card overflow-hidden">
+                        <img src="https://placehold.co/800x450/34d399/ffffff?text=Satellite+Academy" alt="Satellite Academy" class="w-full h-44 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Satellite Academy — Pro Bono Site Audit</h3>
+                            <p class="text-gray-600 mb-3">Reverse-engineered the existing site, produced an actionable report and recommendations to improve performance and UX.</p>
+                            <div class="text-sm text-gray-500 mb-3">Community impact: capacity building and free consultancy to support education.</div>
+                            <a href="#" class="text-indigo-600 font-semibold">Download report →</a>
+                        </div>
+                    </article>
+
+                    <!-- Project: TeacherStriumph (Personal blog) -->
+                    <article class="bg-white rounded-lg shadow project-card overflow-hidden">
+                        <img src="https://placehold.co/800x450/f59e0b/ffffff?text=TeacherStriumph" alt="TeacherStriumph" class="w-full h-44 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">TeacherStriumph — Personal Blog Design</h3>
+                            <p class="text-gray-600 mb-3">Designed and launched a personal blog for an educator — includes content strategy, design and yearly maintenance plan.</p>
+                            <div class="text-sm text-gray-500 mb-3">Package: ₦25,000 + ₦5,000/yr maintenance.</div>
+                            <a href="#" class="text-indigo-600 font-semibold">Visit site →</a>
+                        </div>
+                    </article>
+
+                    <!-- Project: Sandy's Touch -->
+                    <article class="bg-white rounded-lg shadow project-card overflow-hidden">
+                        <img src="https://placehold.co/800x450/ef4444/ffffff?text=Sandy's+Touch" alt="Sandy's Touch" class="w-full h-44 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Sandy's Touch — Design & Branding</h3>
+                            <p class="text-gray-600 mb-3">Created visual marketing assets, including a high-conversion price-list poster and brand collateral.</p>
+                            <div class="text-sm text-gray-500 mb-3">Status: partnership docs in process.</div>
+                            <a href="#" class="text-indigo-600 font-semibold">See assets →</a>
+                        </div>
+                    </article>
+
+                    <!-- Project: Strategic partnerships -->
+                    <article class="bg-white rounded-lg shadow project-card overflow-hidden">
+                        <img src="https://placehold.co/800x450/6b7280/ffffff?text=Partnerships" alt="Partnerships" class="w-full h-44 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Partnerships & Ecosystem</h3>
+                            <p class="text-gray-600 mb-3">We partner with design houses, logistics providers and local SMEs to deliver end-to-end solutions and amplify impact.</p>
+                            <div class="text-sm text-gray-500 mb-3">Selected partners: Musty Graphics, De-East Computers, local carriers.</div>
+                            <a href="#" class="text-indigo-600 font-semibold">Partner with us →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services / Skills -->
+        <section id="services" class="bg-white py-16" data-aos="fade-up">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-8">Core Services & Capabilities</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="p-6 bg-white rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">Software Design & Development</h3>
+                        <p class="text-gray-600 mb-2">Custom web and enterprise systems, e-commerce platforms, and mobile-friendly web apps.</p>
+                        <div class="text-sm text-gray-500">Tech: React, Vue, Node.js, MySQL/Postgres.</div>
                     </div>
-                    <!-- Project 2 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://placehold.co/600x400/FBBF24/FFFFFF?text=Project+Two" class="w-full h-56 object-cover" alt="Project 2">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">Task Management App</h3>
-                            <p class="mb-4">A sleek and intuitive task management application using Vue.js and Firebase for real-time data synchronization.</p>
-                             <div class="mb-4">
-                                <span class="inline-block bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Vue.js</span>
-                                <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">Firebase</span>
-                            </div>
-                            <a href="#" class="text-indigo-600 font-semibold hover:underline">View Project &rarr;</a>
-                        </div>
+                    <div class="p-6 bg-white rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">Training & Academy</h3>
+                        <p class="text-gray-600 mb-2">Silabs Technology Academy: short courses, mentorship and placement-focused training for students.</p>
+                        <div class="text-sm text-gray-500">Focus: practical, project-based learning and job-readiness.</div>
                     </div>
-                    <!-- Project 3 -->
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden project-card" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://placehold.co/600x400/34D399/FFFFFF?text=Project+Three" class="w-full h-56 object-cover" alt="Project 3">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">Portfolio Website</h3>
-                            <p class="mb-4">A personal portfolio website (like this one!) built with HTML, Tailwind CSS, and a touch of JavaScript.</p>
-                             <div class="mb-4">
-                                <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">HTML5</span>
-                                <span class="inline-block bg-pink-100 text-pink-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full">JavaScript</span>
-                            </div>
-                            <a href="#" class="text-indigo-600 font-semibold hover:underline">View Project &rarr;</a>
-                        </div>
+                    <div class="p-6 bg-white rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">Hardware & Network Solutions</h3>
+                        <p class="text-gray-600 mb-2">Installation, maintenance, and data-center ready equipment provision.</p>
+                        <div class="text-sm text-gray-500">Services include on-site support and remote monitoring.</div>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">Outsourcing & Process Management</h3>
+                        <p class="text-gray-600 mb-2">Call center setup, back-office processing, CRM and business-process outsourcing.</p>
+                        <div class="text-sm text-gray-500">Scalable teams with local knowledge.</div>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">Digital Marketing & Growth</h3>
+                        <p class="text-gray-600 mb-2">Campaigns, content, and conversion-focused design for SMEs and NGOs.</p>
+                        <div class="text-sm text-gray-500">Paid + organic strategies that drive measurable results.</div>
+                    </div>
+                    <div class="p-6 bg-white rounded-lg shadow">
+                        <h3 class="text-xl font-semibold mb-2">General Contracting & Project Management</h3>
+                        <p class="text-gray-600 mb-2">End-to-end delivery for digital and hybrid projects — planning, execution and maintenance.</p>
+                        <div class="text-sm text-gray-500">Structured PM, risk mitigation and handover.</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills -->
-        <section id="skills" class="bg-white py-20" data-aos="fade-up">
+        <!-- Skills (technical + leadership) -->
+        <section id="skills" class="py-16" data-aos="fade-up">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-12">Technical Skills</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
-                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
-                        <i class="devicon-html5-plain-wordmark colored text-6xl"></i>
-                        <p class="mt-2 font-semibold">HTML5</p>
-                    </div>
-                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
-                        <i class="devicon-css3-plain-wordmark colored text-6xl"></i>
-                        <p class="mt-2 font-semibold">CSS3</p>
-                    </div>
-                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
-                        <i class="devicon-javascript-plain colored text-6xl"></i>
-                        <p class="mt-2 font-semibold">JavaScript</p>
-                    </div>
-                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
-                        <i class="devicon-react-original-wordmark colored text-6xl"></i>
+                <h2 class="text-3xl font-bold text-center mb-8">Skills & Leadership</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                    <div class="p-4 bg-white rounded-lg text-center">
+                        <i class="devicon-react-original-wordmark colored text-4xl"></i>
                         <p class="mt-2 font-semibold">React</p>
                     </div>
-                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
-                        <i class="devicon-vuejs-plain-wordmark colored text-6xl"></i>
-                        <p class="mt-2 font-semibold">Vue.js</p>
+                    <div class="p-4 bg-white rounded-lg text-center">
+                        <i class="devicon-nodejs-plain-wordmark colored text-4xl"></i>
+                        <p class="mt-2 font-semibold">Node.js</p>
                     </div>
-                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
-                        <i class="devicon-tailwindcss-plain colored text-6xl"></i>
-                        <p class="mt-2 font-semibold">Tailwind CSS</p>
+                    <div class="p-4 bg-white rounded-lg text-center">
+                        <i class="devicon-postgresql-plain colored text-4xl"></i>
+                        <p class="mt-2 font-semibold">Postgres</p>
                     </div>
-                     <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
-                        <i class="devicon-sass-original colored text-6xl"></i>
-                        <p class="mt-2 font-semibold">Sass</p>
+                    <div class="p-4 bg-white rounded-lg text-center">
+                        <i class="devicon-docker-plain colored text-4xl"></i>
+                        <p class="mt-2 font-semibold">Docker</p>
                     </div>
-                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
-                        <i class="devicon-git-plain-wordmark colored text-6xl"></i>
-                        <p class="mt-2 font-semibold">Git</p>
+                    <div class="p-4 bg-white rounded-lg text-center">
+                        <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 6 6 .5-4.5 4 1 6-5.5-3-5.5 3 1-6L3 8.5 9 8 12 2z" fill="#0b74de"/></svg>
+                        <p class="mt-2 font-semibold">Product Strategy</p>
                     </div>
-                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
-                        <i class="devicon-webpack-plain-wordmark colored text-6xl"></i>
-                        <p class="mt-2 font-semibold">Webpack</p>
+                    <div class="p-4 bg-white rounded-lg text-center">
+                        <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 6 6 .5-4.5 4 1 6-5.5-3-5.5 3 1-6L3 8.5 9 8 12 2z" fill="#16a34a"/></svg>
+                        <p class="mt-2 font-semibold">Team Leadership</p>
                     </div>
-                    <div class="skill-icon-card p-4 rounded-lg flex flex-col items-center justify-center transition-transform hover:scale-110">
-                        <i class="devicon-figma-plain colored text-6xl"></i>
-                        <p class="mt-2 font-semibold">Figma</p>
+                    <div class="p-4 bg-white rounded-lg text-center">
+                        <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none"><path d="M3 3h18v4H3zM3 9h18v12H3z" fill="#f59e0b"/></svg>
+                        <p class="mt-2 font-semibold">Business Ops</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg text-center">
+                        <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z" fill="#ef4444"/></svg>
+                        <p class="mt-2 font-semibold">Partnerships</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact -->
-        <section id="contact" class="py-20" data-aos="fade-up">
+        <section id="contact" class="bg-white py-16" data-aos="fade-up">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-4">Let's Build Something Amazing</h2>
-                <p class="text-lg text-gray-600 mb-8">I'm currently available for freelance work and open to new opportunities. <br>Feel free to reach out!</p>
-                <a href="mailto:your.email@example.com" class="bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-indigo-700 transition duration-300 text-xl">
-                    your.email@example.com
-                </a>
+                <h2 class="text-3xl font-bold mb-4">Work with Silabs</h2>
+                <p class="text-lg text-gray-600 mb-6">For projects, partnerships or training enquiries — let's talk. We focus on practical solutions that create jobs and grow businesses.</p>
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <a href="mailto:silabtechnologies@gmail.com" class="bg-indigo-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-700">Email: silabtechnologies@gmail.com</a>
+                    <a href="https://wa.me/2349039930006" class="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700">WhatsApp: +234 903 993 0006</a>
+                    <a href="https://silabtechnologies.ng" target="_blank" class="border border-indigo-600 text-indigo-600 px-6 py-3 rounded-full font-semibold hover:bg-indigo-50">Visit: silabtechnologies.ng</a>
+                </div>
+                <div class="mt-6 text-sm text-gray-500">
+                    <div>Offices: Abuja & Biu, Borno State</div>
+                    <div class="mt-2">Phone: +234 905 623 2366 • Email: silabtechnologies@gmail.com</div>
+                </div>
             </div>
         </section>
+
+        <!-- Resume (printable) -->
+        <section id="resume" class="py-12" data-aos="fade-up">
+            <div class="container mx-auto px-6">
+                <div class="printable-resume bg-white p-8 rounded-lg shadow-lg">
+                    <header class="text-center mb-6">
+                        <h1 class="text-4xl font-bold">Sarverun Simeon Tertese</h1>
+                        <p class="text-indigo-600 font-medium">Managing Director — SIMEON'S LABORATORIES & CO TECHNOLOGIES LTD (Silabs)</p>
+                        <div class="mt-3 text-gray-600">Email: silabtechnologies@gmail.com • Phone: +234 903 993 0006 • Website: silabtechnologies.ng</div>
+                    </header>
+
+                    <main>
+                        <section class="mb-6">
+                            <h3 class="text-xl font-semibold mb-2">Executive Summary</h3>
+                            <p class="text-gray-700">Strategic technology leader with experience in building product teams, delivering digital platforms for education and SMEs, and creating training programs that bridge skills-to-jobs. Passionate about tech for local impact and scalable solutions for African markets.</p>
+                        </section>
+
+                        <section class="mb-6">
+                            <h3 class="text-xl font-semibold mb-2">Experience</h3>
+                            <div class="mb-4">
+                                <h4 class="font-semibold">Managing Director — Silabs</h4>
+                                <div class="text-sm text-gray-600">2024 — Present</div>
+                                <ul class="list-disc list-inside mt-2 text-gray-700">
+                                    <li>Founded and scaled Silabs into a multi-service technology firm delivering software, training and digital services to NGOs, SMEs and institutions.</li>
+                                    <li>Led delivery of projects including NGO web apps, e-commerce platforms and capacity building programs.</li>
+                                    <li>Established partnerships with local design houses and service providers to create an end-to-end delivery ecosystem.</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 class="font-semibold">Technology & Consulting Lead — Various Projects</h4>
+                                <div class="text-sm text-gray-600">2018 — 2024</div>
+                                <ul class="list-disc list-inside mt-2 text-gray-700">
+                                    <li>Delivered multiple web and mobile projects for education and small business clients.</li>
+                                    <li>Designed training curricula and mentored cohorts of student developers.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="mb-6">
+                            <h3 class="text-xl font-semibold mb-2">Education</h3>
+                            <p class="text-gray-700">B.Sc. (or equivalent) — [Your University], [Year]</p>
+                        </section>
+
+                        <section class="mb-6">
+                            <h3 class="text-xl font-semibold mb-2">Selected Achievements</h3>
+                            <ul class="list-disc list-inside mt-2 text-gray-700">
+                                <li>Delivered a learning web app for an NGO in 6 weeks that expanded reach across regions.</li>
+                                <li>Built apprenticeship/training programs that placed interns into paying roles.</li>
+                                <li>Secured partnerships with local SMEs for design and support, enabling bundled service offerings.</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h3 class="text-xl font-semibold mb-2">Skills</h3>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-gray-700">
+                                <div>Product Strategy</div>
+                                <div>Technical Leadership</div>
+                                <div>Software Delivery</div>
+                                <div>Partnerships & Sales</div>
+                                <div>Training & Mentorship</div>
+                                <div>Operations & Project Management</div>
+                            </div>
+                        </section>
+                    </main>
+
+                    <div class="text-center mt-6 no-print">
+                        <button onclick="window.print()" class="bg-indigo-600 text-white px-6 py-2 rounded-md">Print / Save PDF</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
     <footer class="bg-white py-6 no-print">
         <div class="container mx-auto px-6 text-center text-gray-600">
-            &copy; 2024 John Doe. All Rights Reserved.
+            &copy; 2024 - 2025 SIMEON'S LABORATORIES AND CO TECHNOLOGIES LTD — Silabs
         </div>
     </footer>
-    
-    <!-- Back to Top Button -->
+
+    <!-- Back to Top -->
     <button id="to-top-button" title="Go To Top"
-        class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-semibold transition-opacity duration-300">
+        class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-semibold">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
             <path d="M12 4l8 8h-6v8h-4v-8H4l8-8z" />
         </svg>
     </button>
 
-
-    <!-- Resume HTML (resume.html) -->
-    <!-- This part should be in a separate file named resume.html -->
-    <div id="resume-content" style="display:none;">
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Resume - John Doe</title>
-            <script src="https://cdn.tailwindcss.com"></script>
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-            <style>
-                body {
-                    font-family: 'Inter', sans-serif;
-                    -webkit-print-color-adjust: exact;
-                }
-                @media print {
-                    body { margin: 0; padding: 0; }
-                    .no-print { display: none; }
-                    .printable-resume { box-shadow: none; margin: 0; max-width: 100%; border-radius: 0; }
-                }
-            </style>
-        </head>
-        <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-            <div class="printable-resume bg-white p-8 md:p-12 shadow-lg rounded-lg max-w-4xl w-full my-8">
-                <header class="text-center mb-10">
-                    <h1 class="text-5xl font-bold text-gray-800">John Doe</h1>
-                    <p class="text-xl text-indigo-600 font-medium">Front-End Developer</p>
-                    <div class="flex justify-center space-x-6 mt-4 text-gray-600">
-                        <span>(123) 456-7890</span>
-                        <span>your.email@example.com</span>
-                        <span>New York, NY</span>
-                    </div>
-                </header>
-                <main>
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4 text-indigo-800">Summary</h2>
-                        <p class="text-gray-700">Highly motivated and detail-oriented Front-End Developer with 5+ years of experience in building and maintaining responsive and user-friendly web applications. Proficient in modern web technologies including HTML5, CSS3, JavaScript, and frameworks like React and Vue.js. Passionate about creating elegant solutions to complex problems.</p>
-                    </section>
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4 text-indigo-800">Experience</h2>
-                        <div class="mb-6">
-                            <h3 class="text-xl font-semibold text-gray-800">Senior Front-End Developer</h3>
-                            <p class="text-md text-gray-600">Tech Solutions Inc. | New York, NY | 2020 - Present</p>
-                            <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
-                                <li>Led the development of a new client-facing dashboard using React, resulting in a 20% increase in user engagement.</li>
-                                <li>Mentored junior developers and conducted code reviews to ensure code quality and best practices.</li>
-                                <li>Collaborated with UI/UX designers to translate wireframes into high-quality, responsive code.</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-gray-800">Front-End Developer</h3>
-                            <p class="text-md text-gray-600">Web Crafters LLC | Brooklyn, NY | 2018 - 2020</p>
-                            <ul class="list-disc list-inside mt-2 text-gray-700 space-y-1">
-                                <li>Developed and maintained websites for various clients using HTML, CSS, and JavaScript.</li>
-                                <li>Implemented responsive designs to ensure optimal viewing on all devices.</li>
-                                <li>Improved website performance by optimizing images and code, reducing load times by 30%.</li>
-                            </ul>
-                        </div>
-                    </section>
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4 text-indigo-800">Education</h2>
-                        <div>
-                            <h3 class="text-xl font-semibold text-gray-800">Bachelor of Science in Computer Science</h3>
-                            <p class="text-md text-gray-600">State University | 2014 - 2018</p>
-                        </div>
-                    </section>
-                    <section>
-                        <h2 class="text-2xl font-bold border-b-2 border-indigo-200 pb-2 mb-4 text-indigo-800">Skills</h2>
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-gray-700">
-                            <ul class="list-disc list-inside space-y-1"><li>HTML5 & CSS3</li><li>JavaScript (ES6+)</li><li>React & Redux</li></ul>
-                            <ul class="list-disc list-inside space-y-1"><li>Vue.js & Vuex</li><li>Tailwind CSS</li><li>Sass/SCSS</li></ul>
-                            <ul class="list-disc list-inside space-y-1"><li>Git & GitHub</li><li>Responsive Design</li><li>Agile Methodologies</li></ul>
-                        </div>
-                    </section>
-                </main>
-                <div class="text-center mt-10 no-print">
-                    <button onclick="window.print()" class="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition duration-300">Print Resume</button>
-                </div>
-            </div>
-        </body>
-        </html>
-    </div>
-    
+    <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-        });
+        AOS.init({ duration: 700, once: true });
 
-        // Mobile menu toggle
+        // Mobile menu
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
-        for(let link of mobileMenuLinks) {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        }
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-        // Dark Mode Toggle
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-        const darkIcon = document.getElementById('theme-toggle-dark-icon');
-        const lightIcon = document.getElementById('theme-toggle-light-icon');
-        const darkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
-        const lightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
-
-        function toggleIcons() {
-            darkIcon.classList.toggle('hidden');
-            lightIcon.classList.toggle('hidden');
-            darkIconMobile.classList.toggle('hidden');
-            lightIconMobile.classList.toggle('hidden');
-        }
-        
-        // Set initial icon state
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            lightIcon.classList.remove('hidden');
-            lightIconMobile.classList.remove('hidden');
-        } else {
-            darkIcon.classList.remove('hidden');
-            darkIconMobile.classList.remove('hidden');
-        }
-
-        const toggleTheme = () => {
-            const isDarkMode = document.documentElement.classList.toggle('dark');
-            localStorage.setItem('color-theme', isDarkMode ? 'dark' : 'light');
-            toggleIcons();
-        };
-
-        themeToggleBtn.addEventListener('click', toggleTheme);
-        themeToggleMobileBtn.addEventListener('click', toggleTheme);
-        
-        // Back to Top Button
+        // Back to top visibility
         const toTopButton = document.getElementById('to-top-button');
-        window.onscroll = function () {
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                toTopButton.classList.remove('hidden');
-            } else {
-                toTopButton.classList.add('hidden');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) toTopButton.classList.remove('hidden'); else toTopButton.classList.add('hidden');
+        });
+        toTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // theme toggle (simple)
+        (function(){
+            // you can extend to save preference
+            const html = document.documentElement;
+            // detect prefers-color-scheme
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                html.classList.add('dark');
             }
-        };
-        toTopButton.onclick = function () {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        };
+        })();
     </script>
 </body>
 </html>
