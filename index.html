@@ -1,398 +1,2090 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Sarverun Simeon Tertese — Managing Director, Silabs</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔧</text></svg>">
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inter font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- AOS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Devicon (for tech/service icons) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <style>
-        :root {
-            --brand: #0b74de;
-        }
-        body { font-family: 'Inter', sans-serif; }
-        @media print {
-            body * { visibility: hidden; }
-            .printable-resume, .printable-resume * { visibility: visible; }
-            .printable-resume { position: absolute; left: 0; top: 0; width: 100%; }
-            .no-print { display: none; }
-        }
-        .project-card { transition: transform 0.28s ease, box-shadow 0.28s ease; }
-        .project-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(12, 18, 35, 0.08); }
-        .dark body { background-color: #0b1220; color: #d1d5db; }
-        .dark header, .dark .card { background-color: #0f1724; border-color:#25303b; }
-        .logo-img { width:56px; height:56px; object-fit:contain; }
-        /* ensure hero image responsiveness */
-        .hero-art { max-width: 100%; border-radius: 12px; }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sarverun Simeon Tertese — Software Engineer & Techpreneur</title>
+  <meta name="description" content="Software Engineer, Full-Stack Developer & Entrepreneur building impactful technology across Nigeria and Africa."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --bg:        #07090f;
+      --bg2:       #0d1117;
+      --bg3:       #111827;
+      --surface:   #161c2a;
+      --border:    rgba(0,229,255,0.12);
+      --cyan:      #00e5ff;
+      --cyan-dim:  rgba(0,229,255,0.15);
+      --cyan-glow: rgba(0,229,255,0.30);
+      --amber:     #fbbf24;
+      --text:      #e8eaf0;
+      --muted:     #7b8399;
+      --heading:   #ffffff;
+      --mono:      'DM Mono', monospace;
+      --sans:      'DM Sans', sans-serif;
+      --display:   'Syne', sans-serif;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ===== NOISE TEXTURE OVERLAY ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.4;
+    }
+
+    /* ===== GRID LINES BG ===== */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1,h2,h3,h4,h5 {
+      font-family: var(--display);
+      color: var(--heading);
+      line-height: 1.15;
+    }
+    .mono { font-family: var(--mono); }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 2px; }
+
+    /* ===== LAYOUT ===== */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    section { position: relative; z-index: 1; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(7,9,15,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--heading);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-brand span {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: var(--cyan);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-cta {
+      padding: 8px 20px;
+      background: var(--cyan);
+      color: var(--bg) !important;
+      border-radius: 4px;
+      font-weight: 500 !important;
+      font-family: var(--mono) !important;
+      font-size: 0.75rem !important;
+      transition: opacity 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; color: var(--bg) !important; }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+      padding: 20px 24px;
+    }
+    .mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border: none; color: var(--cyan); }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%);
+      top: -100px; right: -200px;
+      pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(251,191,36,0.05) 0%, transparent 70%);
+      bottom: 0; left: -100px;
+      pointer-events: none;
+    }
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.2s forwards;
+    }
+    .hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 40px; height: 1px;
+      background: var(--cyan);
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.35s forwards;
+    }
+    .hero-title .highlight {
+      color: var(--cyan);
+      position: relative;
+      display: inline-block;
+    }
+    .hero-title .highlight::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 4px;
+      width: 100%; height: 3px;
+      background: var(--cyan);
+      opacity: 0.35;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.5s forwards;
+      line-height: 1.8;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.65s forwards;
+    }
+    .btn-primary {
+      padding: 14px 32px;
+      background: var(--cyan);
+      color: var(--bg);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.25s;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,229,255,0.25);
+    }
+    .btn-outline {
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      transform: translateY(-2px);
+    }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 60px;
+      opacity: 0;
+      animation: fadeUp 0.6s 0.8s forwards;
+      flex-wrap: wrap;
+    }
+    .stat-item .stat-num {
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--cyan);
+    }
+    .stat-item .stat-label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 0.6s 1s forwards;
+    }
+    .hero-scroll span {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--cyan), transparent);
+      animation: scrollDown 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollDown {
+      0%   { opacity: 1; transform: scaleY(1) translateY(0); transform-origin: top; }
+      100% { opacity: 0; transform: scaleY(0.3) translateY(30px); transform-origin: top; }
+    }
+
+    /* ===== SECTION STYLE ===== */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--cyan);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .section-label::before {
+      content: '//';
+      opacity: 0.5;
+    }
+    .section-title {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .section-desc {
+      color: var(--muted);
+      max-width: 560px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .section-header { margin-bottom: 56px; }
+
+    /* ===== ABOUT ===== */
+    #about { padding: 100px 0; background: var(--bg2); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .about-photo-wrap {
+      position: relative;
+    }
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--surface);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .about-photo-placeholder {
+      font-size: 5rem;
+      opacity: 0.3;
+    }
+    .about-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 60%, rgba(0,229,255,0.08));
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -16px; right: -16px;
+      background: var(--cyan);
+      color: var(--bg);
+      padding: 12px 20px;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      z-index: 2;
+    }
+    .about-text h3 {
+      font-size: 1.05rem;
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-weight: 400;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 20px;
+      line-height: 1.9;
+    }
+    .about-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .fact-item {
+      padding: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .fact-item .fact-key {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--cyan);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .fact-item .fact-val {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ===== SKILLS ===== */
+    #skills { padding: 100px 0; }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .skill-category h3 {
+      font-size: 0.8rem;
+      font-family: var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skill-tag {
+      padding: 7px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text);
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .skill-tag:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: var(--cyan-dim);
+    }
+    .skill-tag.highlight-tag {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: var(--cyan-dim);
+    }
+
+    /* ===== PROJECTS ===== */
+    #projects { padding: 100px 0; background: var(--bg2); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: all 0.3s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,229,255,0.1);
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .project-card:hover::before { opacity: 1; }
+    .project-header {
+      padding: 28px 28px 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .project-icon {
+      width: 44px; height: 44px;
+      background: var(--cyan-dim);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .project-links { display: flex; gap: 10px; }
+    .project-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+    .project-link:hover { color: var(--cyan); }
+    .project-body { padding: 20px 28px 28px; flex: 1; display: flex; flex-direction: column; }
+    .project-name {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .project-desc {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .project-tag {
+      padding: 4px 10px;
+      background: rgba(0,229,255,0.06);
+      border: 1px solid rgba(0,229,255,0.15);
+      border-radius: 2px;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--cyan);
+      letter-spacing: 0.04em;
+    }
+    .project-status {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .status-live { background: rgba(52,211,153,0.1); color: #34d399; border: 1px solid rgba(52,211,153,0.2); }
+    .status-wip  { background: rgba(251,191,36,0.1); color: var(--amber); border: 1px solid rgba(251,191,36,0.2); }
+    .status-done { background: rgba(0,229,255,0.08); color: var(--cyan); border: 1px solid rgba(0,229,255,0.15); }
+
+    /* ===== EXPERIENCE ===== */
+    #experience { padding: 100px 0; }
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--cyan), transparent);
+      margin-left: 0;
+    }
+    .timeline-item {
+      padding-left: 32px;
+      padding-bottom: 48px;
+      position: relative;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -5px; top: 6px;
+      width: 11px; height: 11px;
+      background: var(--bg);
+      border: 2px solid var(--cyan);
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .timeline-item:hover .timeline-dot { background: var(--cyan); }
+    .timeline-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .timeline-year {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--cyan);
+      letter-spacing: 0.08em;
+    }
+    .timeline-org {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .timeline-role {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .timeline-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      max-width: 680px;
+    }
+
+    /* ===== BLOG ===== */
+    #blog { padding: 100px 0; background: var(--bg2); }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .blog-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      color: inherit;
+    }
+    .blog-card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-4px);
+    }
+    .blog-thumb {
+      height: 180px;
+      background: var(--bg3);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .blog-thumb-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.6;
+    }
+    .blog-thumb-emoji {
+      font-size: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+    .blog-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .blog-category {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--cyan);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .blog-title {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .blog-excerpt {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 16px;
+    }
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+    .blog-meta span:last-child { color: var(--cyan); }
+
+    /* ===== SERVICES ===== */
+    #services { padding: 100px 0; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--cyan);
+      background: rgba(0,229,255,0.02);
+    }
+    .service-icon {
+      width: 48px; height: 48px;
+      background: var(--cyan-dim);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+    .service-name {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .service-desc {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.75;
+    }
+
+    /* ===== CV / RESUME ===== */
+    #resume { padding: 100px 0; background: var(--bg2); }
+    .resume-wrap {
+      background: #fff;
+      color: #1a1a2e;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .resume-top {
+      background: #0a0e1a;
+      padding: 40px 48px;
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .resume-name {
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .resume-title-line {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--cyan);
+      margin-top: 6px;
+      letter-spacing: 0.06em;
+    }
+    .resume-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-end;
+    }
+    .resume-contacts a, .resume-contacts span {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: #8899aa;
+      text-decoration: none;
+    }
+    .resume-contacts a:hover { color: var(--cyan); }
+    .resume-body { padding: 40px 48px; }
+    .resume-section { margin-bottom: 32px; }
+    .resume-section:last-child { margin-bottom: 0; }
+    .resume-h2 {
+      font-family: var(--display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #0a0e1a;
+      border-bottom: 2px solid #00e5ff;
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .resume-p {
+      font-size: 0.88rem;
+      color: #444;
+      line-height: 1.75;
+    }
+    .resume-exp { margin-bottom: 20px; }
+    .resume-exp-title {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #1a1a2e;
+    }
+    .resume-exp-meta {
+      font-size: 0.75rem;
+      color: #777;
+      font-family: var(--mono);
+      margin-bottom: 6px;
+    }
+    .resume-exp ul {
+      padding-left: 18px;
+    }
+    .resume-exp ul li {
+      font-size: 0.83rem;
+      color: #555;
+      margin-bottom: 4px;
+      line-height: 1.6;
+    }
+    .resume-skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .resume-skill-tag {
+      padding: 5px 12px;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      font-family: var(--mono);
+      color: #0369a1;
+    }
+    .resume-certs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .resume-cert-tag {
+      padding: 4px 10px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 3px;
+      font-size: 0.72rem;
+      font-family: var(--mono);
+      color: #15803d;
+    }
+    .resume-print-btn {
+      display: block;
+      text-align: center;
+      margin-top: 32px;
+    }
+    @media print {
+      body > *:not(#resume) { display: none; }
+      #resume { padding: 0; background: #fff; }
+      .resume-wrap { box-shadow: none; border-radius: 0; max-width: 100%; }
+      .resume-no-print { display: none; }
+      nav, footer, .hero-scroll { display: none; }
+    }
+
+    /* ===== CONTACT ===== */
+    #contact { padding: 100px 0; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+    }
+    .contact-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+    .contact-info p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .contact-items { display: flex; flex-direction: column; gap: 16px; }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .contact-item-icon {
+      width: 40px; height: 40px;
+      background: var(--cyan-dim);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-item-text .c-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .contact-item-text .c-val {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .contact-item-text a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-item-text a:hover { color: var(--cyan); }
+    .socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .social-btn {
+      width: 40px; height: 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-family: var(--mono);
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .social-btn:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: var(--cyan-dim);
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .form-group input, .form-group textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--text);
+      transition: border-color 0.2s;
+      outline: none;
+      resize: none;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(0,229,255,0.06);
+    }
+    .form-group textarea { min-height: 120px; }
+    .form-success {
+      padding: 16px;
+      background: rgba(52,211,153,0.08);
+      border: 1px solid rgba(52,211,153,0.2);
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: #34d399;
+      display: none;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer-brand {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .footer-brand span { color: var(--cyan); }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--cyan); }
+
+    /* ===== BACK TO TOP ===== */
+    .btt {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      width: 44px; height: 44px;
+      background: var(--cyan);
+      color: var(--bg);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      transition: all 0.2s;
+    }
+    .btt:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btt.show { display: flex; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo { max-width: 320px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+      .resume-top { flex-direction: column; }
+      .resume-contacts { align-items: flex-start; }
+      .resume-body { padding: 28px; }
+      .resume-top { padding: 28px; }
+      .resume-skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .hero-stats { gap: 24px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about-facts { grid-template-columns: 1fr; }
+    }
+
+    /* ===== CURSOR GLOW ===== */
+    .cursor-glow {
+      position: fixed;
+      width: 300px; height: 300px;
+      pointer-events: none;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,229,255,0.04) 0%, transparent 70%);
+      transform: translate(-50%,-50%);
+      z-index: 0;
+      transition: transform 0.1s linear;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800 transition-colors duration-300">
+<body>
 
-    <!-- Header -->
-    <header class="bg-white shadow-md fixed w-full z-20 no-print">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <!-- Replace src with your actual logo path -->
-                <img src="logo.png" alt="Silabs Logo" class="logo-img rounded-md" onerror="this.style.display='none'">
-                <div>
-                    <a href="#" class="text-xl font-bold leading-none">Sarverun Simeon Tertese</a>
-                    <div class="text-xs text-gray-500">Managing Director — Silabs & Co Technologies Ltd</div>
-                </div>
-            </div>
+<!-- Cursor glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
 
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#about" class="text-gray-600 hover:text-indigo-600">About</a>
-                <a href="#projects" class="text-gray-600 hover:text-indigo-600">Projects</a>
-                <a href="#services" class="text-gray-600 hover:text-indigo-600">Services</a>
-                <a href="#contact" class="text-gray-600 hover:text-indigo-600">Contact</a>
-                <a href="#resume" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">View CV</a>
-            </div>
-
-            <div class="md:hidden flex items-center">
-                <button id="mobile-menu-button" class="focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </nav>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
-            <a href="#about" class="block hover:text-indigo-600">About</a>
-            <a href="#projects" class="block hover:text-indigo-600">Projects</a>
-            <a href="#services" class="block hover:text-indigo-600">Services</a>
-            <a href="#contact" class="block hover:text-indigo-600">Contact</a>
-            <a href="#resume" class="block bg-indigo-600 text-white text-center px-4 py-2 rounded-md mt-2">View CV</a>
-        </div>
-    </header>
-
-    <main class="pt-24">
-        <!-- Hero -->
-        <section id="hero" class="container mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-10">
-            <div class="md:w-1/2" data-aos="fade-right">
-                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">I build technology that empowers people — not just products.</h1>
-                <p class="text-lg text-gray-600 mb-6">I’m Sarverun Simeon Tertese — Managing Director at Silabs. I lead our team to design practical software, train the next generation of IT talent, and build solutions that create sustainable work across Nigeria and Africa.</p>
-                <div class="flex items-center gap-4">
-                    <a href="#contact" class="bg-indigo-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-700">Contact Silabs</a>
-                    <a href="#projects" class="text-indigo-600 font-semibold hover:underline">See Projects →</a>
-                </div>
-            </div>
-            <div class="md:w-1/2" data-aos="fade-left">
-                <img src="https://placehold.co/800x520/0b74de/ffffff?text=Silabs+Leadership" alt="Silabs leadership" class="hero-art shadow-xl">
-            </div>
-        </section>
-
-        <!-- About -->
-        <section id="about" class="bg-white py-16" data-aos="fade-up">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-8">About Sarverun</h2>
-                <div class="flex flex-col md:flex-row items-start gap-8">
-                    <div class="md:w-1/3">
-                        <img src="https://placehold.co/400x400/E2E8F0/333333?text=Sarverun+Simeon" alt="Sarverun Simeon" class="rounded-lg shadow-lg mx-auto">
-                    </div>
-                    <div class="md:w-2/3">
-                        <p class="text-lg mb-4">As Managing Director of <strong>Simeon's Laboratories & Co Technologies Ltd (Silabs)</strong>, I combine practical engineering with a deep focus on human outcomes. Our work is centered on delivering high-quality software, training young talent, and helping small businesses digitize so they can create jobs and scale.</p>
-
-                        <p class="text-lg mb-4">My leadership approach is guided by Silabs’ core values — <em>Innovation, Collaboration, Integrity, Customer-Centricity, Legacy, and Excellence</em> (ICICLE). I believe in measurable impact: we measure success by how many people gain skills, income, or opportunity because of our work.</p>
-
-                        <p class="text-lg">Outside of Silabs I mentor early-stage founders, run workshops for student entrepreneurs, and champion practical ways for African tech to solve local problems at scale.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects (Showcase style) -->
-        <section id="projects" class="py-16" data-aos="fade-up">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-8">Selected Projects & Impact</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project: New Dawn For African Child -->
-                    <article class="bg-white rounded-lg shadow project-card overflow-hidden">
-                        <img src="https://placehold.co/800x450/1466a8/ffffff?text=New+Dawn+web+app" alt="New Dawn project" class="w-full h-44 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">New Dawn For African Child — Learning Web App</h3>
-                            <p class="text-gray-600 mb-3">Built and launched a training web app for an NGO in 6 weeks. Features: learner modules, parent/donor portal, secure hosting and maintenance.</p>
-                            <div class="text-sm text-gray-500 mb-3">Impact: increased reach and engagement across regions (detailed metrics available on request).</div>
-                            <a href="#" class="text-indigo-600 font-semibold">Read case study →</a>
-                        </div>
-                    </article>
-
-                    <!-- Project: Risco Engineering -->
-                    <article class="bg-white rounded-lg shadow project-card overflow-hidden">
-                        <img src="https://placehold.co/800x450/0b74de/ffffff?text=Risco+Engineering" alt="Risco project" class="w-full h-44 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">Risco Engineering & Agro-Tech — Website & Consultancy</h3>
-                            <p class="text-gray-600 mb-3">Delivered a bespoke corporate website and ongoing managed services. Services included UX design, CMS, and support.</p>
-                            <div class="text-sm text-gray-500 mb-3">Project value: ₦400,000 (ongoing site management contract).</div>
-                            <a href="#" class="text-indigo-600 font-semibold">View project →</a>
-                        </div>
-                    </article>
-
-                    <!-- Project: Satellite Academy (pro bono) -->
-                    <article class="bg-white rounded-lg shadow project-card overflow-hidden">
-                        <img src="https://placehold.co/800x450/34d399/ffffff?text=Satellite+Academy" alt="Satellite Academy" class="w-full h-44 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">Satellite Academy — Pro Bono Site Audit</h3>
-                            <p class="text-gray-600 mb-3">Reverse-engineered the existing site, produced an actionable report and recommendations to improve performance and UX.</p>
-                            <div class="text-sm text-gray-500 mb-3">Community impact: capacity building and free consultancy to support education.</div>
-                            <a href="#" class="text-indigo-600 font-semibold">Download report →</a>
-                        </div>
-                    </article>
-
-                    <!-- Project: TeacherStriumph (Personal blog) -->
-                    <article class="bg-white rounded-lg shadow project-card overflow-hidden">
-                        <img src="https://placehold.co/800x450/f59e0b/ffffff?text=TeacherStriumph" alt="TeacherStriumph" class="w-full h-44 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">TeacherStriumph — Personal Blog Design</h3>
-                            <p class="text-gray-600 mb-3">Designed and launched a personal blog for an educator — includes content strategy, design and yearly maintenance plan.</p>
-                            <div class="text-sm text-gray-500 mb-3">Package: ₦25,000 + ₦5,000/yr maintenance.</div>
-                            <a href="#" class="text-indigo-600 font-semibold">Visit site →</a>
-                        </div>
-                    </article>
-
-                    <!-- Project: Sandy's Touch -->
-                    <article class="bg-white rounded-lg shadow project-card overflow-hidden">
-                        <img src="https://placehold.co/800x450/ef4444/ffffff?text=Sandy's+Touch" alt="Sandy's Touch" class="w-full h-44 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">Sandy's Touch — Design & Branding</h3>
-                            <p class="text-gray-600 mb-3">Created visual marketing assets, including a high-conversion price-list poster and brand collateral.</p>
-                            <div class="text-sm text-gray-500 mb-3">Status: partnership docs in process.</div>
-                            <a href="#" class="text-indigo-600 font-semibold">See assets →</a>
-                        </div>
-                    </article>
-
-                    <!-- Project: Strategic partnerships -->
-                    <article class="bg-white rounded-lg shadow project-card overflow-hidden">
-                        <img src="https://placehold.co/800x450/6b7280/ffffff?text=Partnerships" alt="Partnerships" class="w-full h-44 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2">Partnerships & Ecosystem</h3>
-                            <p class="text-gray-600 mb-3">We partner with design houses, logistics providers and local SMEs to deliver end-to-end solutions and amplify impact.</p>
-                            <div class="text-sm text-gray-500 mb-3">Selected partners: Musty Graphics, De-East Computers, local carriers.</div>
-                            <a href="#" class="text-indigo-600 font-semibold">Partner with us →</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services / Skills -->
-        <section id="services" class="bg-white py-16" data-aos="fade-up">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-8">Core Services & Capabilities</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="p-6 bg-white rounded-lg shadow">
-                        <h3 class="text-xl font-semibold mb-2">Software Design & Development</h3>
-                        <p class="text-gray-600 mb-2">Custom web and enterprise systems, e-commerce platforms, and mobile-friendly web apps.</p>
-                        <div class="text-sm text-gray-500">Tech: React, Vue, Node.js, MySQL/Postgres.</div>
-                    </div>
-                    <div class="p-6 bg-white rounded-lg shadow">
-                        <h3 class="text-xl font-semibold mb-2">Training & Academy</h3>
-                        <p class="text-gray-600 mb-2">Silabs Technology Academy: short courses, mentorship and placement-focused training for students.</p>
-                        <div class="text-sm text-gray-500">Focus: practical, project-based learning and job-readiness.</div>
-                    </div>
-                    <div class="p-6 bg-white rounded-lg shadow">
-                        <h3 class="text-xl font-semibold mb-2">Hardware & Network Solutions</h3>
-                        <p class="text-gray-600 mb-2">Installation, maintenance, and data-center ready equipment provision.</p>
-                        <div class="text-sm text-gray-500">Services include on-site support and remote monitoring.</div>
-                    </div>
-                    <div class="p-6 bg-white rounded-lg shadow">
-                        <h3 class="text-xl font-semibold mb-2">Outsourcing & Process Management</h3>
-                        <p class="text-gray-600 mb-2">Call center setup, back-office processing, CRM and business-process outsourcing.</p>
-                        <div class="text-sm text-gray-500">Scalable teams with local knowledge.</div>
-                    </div>
-                    <div class="p-6 bg-white rounded-lg shadow">
-                        <h3 class="text-xl font-semibold mb-2">Digital Marketing & Growth</h3>
-                        <p class="text-gray-600 mb-2">Campaigns, content, and conversion-focused design for SMEs and NGOs.</p>
-                        <div class="text-sm text-gray-500">Paid + organic strategies that drive measurable results.</div>
-                    </div>
-                    <div class="p-6 bg-white rounded-lg shadow">
-                        <h3 class="text-xl font-semibold mb-2">General Contracting & Project Management</h3>
-                        <p class="text-gray-600 mb-2">End-to-end delivery for digital and hybrid projects — planning, execution and maintenance.</p>
-                        <div class="text-sm text-gray-500">Structured PM, risk mitigation and handover.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills (technical + leadership) -->
-        <section id="skills" class="py-16" data-aos="fade-up">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center mb-8">Skills & Leadership</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-                    <div class="p-4 bg-white rounded-lg text-center">
-                        <i class="devicon-react-original-wordmark colored text-4xl"></i>
-                        <p class="mt-2 font-semibold">React</p>
-                    </div>
-                    <div class="p-4 bg-white rounded-lg text-center">
-                        <i class="devicon-nodejs-plain-wordmark colored text-4xl"></i>
-                        <p class="mt-2 font-semibold">Node.js</p>
-                    </div>
-                    <div class="p-4 bg-white rounded-lg text-center">
-                        <i class="devicon-postgresql-plain colored text-4xl"></i>
-                        <p class="mt-2 font-semibold">Postgres</p>
-                    </div>
-                    <div class="p-4 bg-white rounded-lg text-center">
-                        <i class="devicon-docker-plain colored text-4xl"></i>
-                        <p class="mt-2 font-semibold">Docker</p>
-                    </div>
-                    <div class="p-4 bg-white rounded-lg text-center">
-                        <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 6 6 .5-4.5 4 1 6-5.5-3-5.5 3 1-6L3 8.5 9 8 12 2z" fill="#0b74de"/></svg>
-                        <p class="mt-2 font-semibold">Product Strategy</p>
-                    </div>
-                    <div class="p-4 bg-white rounded-lg text-center">
-                        <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 6 6 .5-4.5 4 1 6-5.5-3-5.5 3 1-6L3 8.5 9 8 12 2z" fill="#16a34a"/></svg>
-                        <p class="mt-2 font-semibold">Team Leadership</p>
-                    </div>
-                    <div class="p-4 bg-white rounded-lg text-center">
-                        <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none"><path d="M3 3h18v4H3zM3 9h18v12H3z" fill="#f59e0b"/></svg>
-                        <p class="mt-2 font-semibold">Business Ops</p>
-                    </div>
-                    <div class="p-4 bg-white rounded-lg text-center">
-                        <svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z" fill="#ef4444"/></svg>
-                        <p class="mt-2 font-semibold">Partnerships</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="bg-white py-16" data-aos="fade-up">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-4">Work with Silabs</h2>
-                <p class="text-lg text-gray-600 mb-6">For projects, partnerships or training enquiries — let's talk. We focus on practical solutions that create jobs and grow businesses.</p>
-                <div class="flex flex-col md:flex-row justify-center gap-4">
-                    <a href="mailto:silabtechnologies@gmail.com" class="bg-indigo-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-700">Email: silabtechnologies@gmail.com</a>
-                    <a href="https://wa.me/2349039930006" class="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700">WhatsApp: +234 903 993 0006</a>
-                    <a href="https://silabtechnologies.ng" target="_blank" class="border border-indigo-600 text-indigo-600 px-6 py-3 rounded-full font-semibold hover:bg-indigo-50">Visit: silabtechnologies.ng</a>
-                </div>
-                <div class="mt-6 text-sm text-gray-500">
-                    <div>Offices: Abuja & Biu, Borno State</div>
-                    <div class="mt-2">Phone: +234 905 623 2366 • Email: silabtechnologies@gmail.com</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Resume (printable) -->
-        <section id="resume" class="py-12" data-aos="fade-up">
-            <div class="container mx-auto px-6">
-                <div class="printable-resume bg-white p-8 rounded-lg shadow-lg">
-                    <header class="text-center mb-6">
-                        <h1 class="text-4xl font-bold">Sarverun Simeon Tertese</h1>
-                        <p class="text-indigo-600 font-medium">Managing Director — SIMEON'S LABORATORIES & CO TECHNOLOGIES LTD (Silabs)</p>
-                        <div class="mt-3 text-gray-600">Email: silabtechnologies@gmail.com • Phone: +234 903 993 0006 • Website: silabtechnologies.ng</div>
-                    </header>
-
-                    <main>
-                        <section class="mb-6">
-                            <h3 class="text-xl font-semibold mb-2">Executive Summary</h3>
-                            <p class="text-gray-700">Strategic technology leader with experience in building product teams, delivering digital platforms for education and SMEs, and creating training programs that bridge skills-to-jobs. Passionate about tech for local impact and scalable solutions for African markets.</p>
-                        </section>
-
-                        <section class="mb-6">
-                            <h3 class="text-xl font-semibold mb-2">Experience</h3>
-                            <div class="mb-4">
-                                <h4 class="font-semibold">Managing Director — Silabs</h4>
-                                <div class="text-sm text-gray-600">2024 — Present</div>
-                                <ul class="list-disc list-inside mt-2 text-gray-700">
-                                    <li>Founded and scaled Silabs into a multi-service technology firm delivering software, training and digital services to NGOs, SMEs and institutions.</li>
-                                    <li>Led delivery of projects including NGO web apps, e-commerce platforms and capacity building programs.</li>
-                                    <li>Established partnerships with local design houses and service providers to create an end-to-end delivery ecosystem.</li>
-                                </ul>
-                            </div>
-
-                            <div>
-                                <h4 class="font-semibold">Technology & Consulting Lead — Various Projects</h4>
-                                <div class="text-sm text-gray-600">2018 — 2024</div>
-                                <ul class="list-disc list-inside mt-2 text-gray-700">
-                                    <li>Delivered multiple web and mobile projects for education and small business clients.</li>
-                                    <li>Designed training curricula and mentored cohorts of student developers.</li>
-                                </ul>
-                            </div>
-                        </section>
-
-                        <section class="mb-6">
-                            <h3 class="text-xl font-semibold mb-2">Education</h3>
-                            <p class="text-gray-700">B.Sc. (or equivalent) — [Your University], [Year]</p>
-                        </section>
-
-                        <section class="mb-6">
-                            <h3 class="text-xl font-semibold mb-2">Selected Achievements</h3>
-                            <ul class="list-disc list-inside mt-2 text-gray-700">
-                                <li>Delivered a learning web app for an NGO in 6 weeks that expanded reach across regions.</li>
-                                <li>Built apprenticeship/training programs that placed interns into paying roles.</li>
-                                <li>Secured partnerships with local SMEs for design and support, enabling bundled service offerings.</li>
-                            </ul>
-                        </section>
-
-                        <section>
-                            <h3 class="text-xl font-semibold mb-2">Skills</h3>
-                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-gray-700">
-                                <div>Product Strategy</div>
-                                <div>Technical Leadership</div>
-                                <div>Software Delivery</div>
-                                <div>Partnerships & Sales</div>
-                                <div>Training & Mentorship</div>
-                                <div>Operations & Project Management</div>
-                            </div>
-                        </section>
-                    </main>
-
-                    <div class="text-center mt-6 no-print">
-                        <button onclick="window.print()" class="bg-indigo-600 text-white px-6 py-2 rounded-md">Print / Save PDF</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-white py-6 no-print">
-        <div class="container mx-auto px-6 text-center text-gray-600">
-            &copy; 2024 - 2025 SIMEON'S LABORATORIES AND CO TECHNOLOGIES LTD — Silabs
-        </div>
-    </footer>
-
-    <!-- Back to Top -->
-    <button id="to-top-button" title="Go To Top"
-        class="hidden fixed z-50 bottom-10 right-10 p-4 border-0 w-14 h-14 rounded-full shadow-md bg-indigo-600 hover:bg-indigo-700 text-white text-lg font-semibold">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-            <path d="M12 4l8 8h-6v8h-4v-8H4l8-8z" />
-        </svg>
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <span></span>
+      Sarverun.dev
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#blog">blog</a></li>
+      <li><a href="#services">services</a></li>
+      <li><a href="#contact" class="nav-cta">hire_me()</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
     </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#projects" onclick="closeMobile()">Projects</a>
+  <a href="#experience" onclick="closeMobile()">Experience</a>
+  <a href="#blog" onclick="closeMobile()">Blog</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#resume" onclick="closeMobile()">Resume</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
 
-    <!-- AOS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 700, once: true });
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="container">
+    <div class="hero-label">Available for projects &amp; partnerships</div>
+    <h1 class="hero-title">
+      Building the <span class="highlight">future</span><br>
+      of African tech,<br>
+      one system at a time.
+    </h1>
+    <p class="hero-sub">
+      I'm <strong>Sarverun Simeon Tertese</strong> — Software Engineer, Full-Stack Developer, and Managing Director of Silabs. I design and ship software that empowers communities, accelerates businesses, and trains the next generation of tech talent across Nigeria.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+        View Projects
+      </a>
+      <a href="#contact" class="btn-outline">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Let's Talk
+      </a>
+      <a href="#resume" class="btn-outline">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Download CV
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">4.46</div>
+        <div class="stat-label">CGPA / 5.00</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Key Projects</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
 
-        // Mobile menu
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-wrap reveal">
+        <div class="about-photo">
+          <img src="profile.jpg" alt="Sarverun Simeon Tertese"
+               onerror="this.style.display='none'; this.parentNode.querySelector('.about-photo-placeholder').style.display='block'">
+          <div class="about-photo-placeholder" style="display:none">👨‍💻</div>
+        </div>
+        <div class="about-badge">
+          B.Sc. Software Engineering<br>NAUB · CGPA 4.46/5.00
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-label">about me</div>
+        <h2 class="section-title">Engineer. Founder.<br>Community Builder.</h2>
+        <h3>The why behind the work</h3>
+        <p>
+          I'm a software engineer and entrepreneur based in Abuja, Nigeria. As Managing Director of <strong>Simeon's Laboratories &amp; Co Technologies Ltd (Silabs)</strong>, I lead a multi-disciplinary team building software solutions, training programs, and digital platforms that create real opportunities for Nigerians.
+        </p>
+        <p>
+          My journey started at De-East Computers in 2012, where I spent four years learning computer fundamentals from the ground up. That hands-on foundation shaped my philosophy: technology only matters when it actually works for people.
+        </p>
+        <p>
+          Beyond code, I serve as Acting Director of Media &amp; PR for Sanitatem Rehabilitation International Initiative (SRII), mentor aspiring developers, and run workshops for student entrepreneurs. I believe African tech can solve African problems at scale — and I'm building toward that vision.
+        </p>
+        <div class="about-facts">
+          <div class="fact-item">
+            <div class="fact-key">Location</div>
+            <div class="fact-val">Abuja, Nigeria</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-key">Degree</div>
+            <div class="fact-val">B.Sc. Software Engineering</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-key">Company</div>
+            <div class="fact-val">Silabs &amp; Co Technologies</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-key">Status</div>
+            <div class="fact-val" style="color:#34d399">● Open to opportunities</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Back to top visibility
-        const toTopButton = document.getElementById('to-top-button');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) toTopButton.classList.remove('hidden'); else toTopButton.classList.add('hidden');
-        });
-        toTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">technical skills</div>
+      <h2 class="section-title">My Toolkit</h2>
+      <p class="section-desc">From low-level systems thinking to polished frontends — the technologies I reach for to get things done.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category reveal">
+        <h3>Languages &amp; Core</h3>
+        <div class="skill-tags">
+          <span class="skill-tag highlight-tag">Python</span>
+          <span class="skill-tag highlight-tag">PHP</span>
+          <span class="skill-tag highlight-tag">JavaScript</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">Bash</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <h3>Frameworks &amp; Libraries</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">React Native</span>
+          <span class="skill-tag">Bootstrap 5</span>
+          <span class="skill-tag">Flask</span>
+          <span class="skill-tag">Streamlit</span>
+          <span class="skill-tag">Tailwind</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <h3>Databases &amp; DevOps</h3>
+        <div class="skill-tags">
+          <span class="skill-tag highlight-tag">MySQL / MariaDB</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">SQLite</span>
+          <span class="skill-tag">Firebase</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">cPanel</span>
+          <span class="skill-tag">Linux</span>
+        </div>
+      </div>
+      <div class="skill-category reveal">
+        <h3>Specialties</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">System Design</span>
+          <span class="skill-tag">Algorithm Design</span>
+          <span class="skill-tag">Reverse Engineering</span>
+          <span class="skill-tag">AI/ML Integration</span>
+          <span class="skill-tag">Chrome DevTools</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">PWA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // theme toggle (simple)
-        (function(){
-            // you can extend to save preference
-            const html = document.documentElement;
-            // detect prefers-color-scheme
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                html.classList.add('dark');
-            }
-        })();
-    </script>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">selected work</div>
+      <h2 class="section-title">Projects &amp; Products</h2>
+      <p class="section-desc">Systems I've built — from academic platforms to AI forensics tools and social marketplaces.</p>
+    </div>
+    <div class="projects-grid">
+
+      <article class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">🎓</div>
+          <div class="project-links">
+            <span class="project-status status-live">Live</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-name">UniXpress</h3>
+          <p class="project-desc">Academic platform for Nigerian university students — SIWES/IT placement, marketplace, printing service, Unifeeds social feed, Unichat messaging, and earn-from-notes features. Co-founded by Silabs.</p>
+          <div class="project-tags">
+            <span class="project-tag">PHP</span>
+            <span class="project-tag">MySQL</span>
+            <span class="project-tag">Bootstrap 5</span>
+            <span class="project-tag">PWA</span>
+            <span class="project-tag">cPanel</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">🤝</div>
+          <div class="project-links">
+            <span class="project-status status-wip">In Progress</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-name">AlumBridge</h3>
+          <p class="project-desc">Alumni networking platform for Nigerian universities. Features event management, donation flows, job board, collaborative campaigns, and a Facebook Messenger-style messaging system. Built with a navy/amber design system.</p>
+          <div class="project-tags">
+            <span class="project-tag">PHP</span>
+            <span class="project-tag">MySQL</span>
+            <span class="project-tag">PHPMailer</span>
+            <span class="project-tag">PWA</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">🔍</div>
+          <div class="project-links">
+            <span class="project-status status-done">Delivered</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-name">FraudNet (Project Vanguard)</h3>
+          <p class="project-desc">Streamlit-based audio intelligence &amp; forensic analysis platform for Nigerian law enforcement. Features Whisper transcription, SpeechBrain speaker ID, financial entity detection, and forensic PDF report generation.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Streamlit</span>
+            <span class="project-tag">Whisper AI</span>
+            <span class="project-tag">SpeechBrain</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">🛖</div>
+          <div class="project-links">
+            <span class="project-status status-done">Delivered</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-name">ArtisanConnect NG</h3>
+          <p class="project-desc">PHP/MySQL social marketplace for Nigerian artisans — built as a final year project at Nasarawa State University. Features profiles, service listings, reviews, and a messaging system. Deployed to GitHub and InfinityFree hosting.</p>
+          <div class="project-tags">
+            <span class="project-tag">PHP</span>
+            <span class="project-tag">MySQL</span>
+            <span class="project-tag">Bootstrap</span>
+            <span class="project-tag">GitHub</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">🌍</div>
+          <div class="project-links">
+            <span class="project-status status-wip">Beta</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-name">Techdialect</h3>
+          <p class="project-desc">STEM knowledge platform in Nigerian local languages, starting with Tiv. Flask app using Facebook's NLLB-200 model with multi-user auth, admin approval workflow, WAL-mode SQLite, and user-proposable language support.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Flask</span>
+            <span class="project-tag">NLLB-200</span>
+            <span class="project-tag">HuggingFace</span>
+            <span class="project-tag">SQLite</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">😴</div>
+          <div class="project-links">
+            <span class="project-status status-done">Completed</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-name">AI Drowsiness Detection System</h3>
+          <p class="project-desc">Real-time driver drowsiness detection using computer vision and deep learning. Eye aspect ratio analysis with alarm trigger system — built to address road safety challenges in Nigeria.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">OpenCV</span>
+            <span class="project-tag">Deep Learning</span>
+            <span class="project-tag">dlib</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">☁️</div>
+          <div class="project-links">
+            <span class="project-status status-done">Completed</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-name">Cloud Storage System</h3>
+          <p class="project-desc">A cloud storage system with folder-level authentication — users can create hierarchical storage structures with granular access control, sharing permissions, and secure file management.</p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">SQL</span>
+            <span class="project-tag">Auth Systems</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">🪖</div>
+          <div class="project-links">
+            <span class="project-status status-done">Delivered</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-name">Military Logistics Management System</h3>
+          <p class="project-desc">Asset tracking and logistics management system for military operations — real-time inventory, movement logs, asset assignment, and reporting dashboard built for operational security and auditability.</p>
+          <div class="project-tags">
+            <span class="project-tag">Full-Stack</span>
+            <span class="project-tag">Asset Tracking</span>
+            <span class="project-tag">SQL</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-header">
+          <div class="project-icon">📱</div>
+          <div class="project-links">
+            <span class="project-status status-wip">In Progress</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <h3 class="project-name">PayQuick VTU App</h3>
+          <p class="project-desc">React Native / Expo VTU utility app with Firebase, Flutterwave, and VTPass integration. Nine screens, six Cloud Functions, Firestore rules. Supports airtime, data, electricity bill payments and more.</p>
+          <div class="project-tags">
+            <span class="project-tag">React Native</span>
+            <span class="project-tag">Expo</span>
+            <span class="project-tag">Firebase</span>
+            <span class="project-tag">Flutterwave</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">work history</div>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-year">2023 – Present</span>
+          <span class="timeline-org">· Simeon's Laboratories &amp; Co Technologies Ltd</span>
+        </div>
+        <div class="timeline-role">Managing Director — Silabs</div>
+        <div class="timeline-desc">Founded and scaled Silabs into a multi-service technology firm delivering software, hardware solutions, IT training, and digital services to NGOs, SMEs, and institutions across Nigeria. Leading a board of 9 directors across departments spanning tech, operations, PR, finance, and HR.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-year">2025 – Present</span>
+          <span class="timeline-org">· Sanitatem Rehabilitation International Initiative</span>
+        </div>
+        <div class="timeline-role">Ag. Director of Media &amp; Public Relations</div>
+        <div class="timeline-desc">Leading all media production, digital content strategy, and technology partnerships for SRII. Built the complete 2026 media asset suite including branded PowerPoint campaigns, social media series, and the organization's official website.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-year">2024 – 2025</span>
+          <span class="timeline-org">· Federal Ministry of Communications, Innovation &amp; Digital Economy</span>
+        </div>
+        <div class="timeline-role">ICT Service Center Intern</div>
+        <div class="timeline-desc">Hands-on IT service operations, systems maintenance, and digital infrastructure support within one of Nigeria's key government ministries during the Tinubu administration's digital economy push.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-year">2024 – 2025</span>
+          <span class="timeline-org">· Satellite Academy Ltd, Karshi, Abuja</span>
+        </div>
+        <div class="timeline-role">Class Teacher — ICT</div>
+        <div class="timeline-desc">Delivered practical computer science and ICT curriculum to secondary students, bridging the gap between academic theory and real-world technology skills.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-year">2020 – 2022</span>
+          <span class="timeline-org">· Self-Employed</span>
+        </div>
+        <div class="timeline-role">Freelance Web Developer &amp; Consultant</div>
+        <div class="timeline-desc">Delivered web development and IT consulting projects for SMEs and individuals — website design, e-commerce, digital marketing, and business process automation.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-year">2016 – 2018</span>
+          <span class="timeline-org">· De-East Computers</span>
+        </div>
+        <div class="timeline-role">General Manager</div>
+        <div class="timeline-desc">Managed daily operations of a computer hardware and services business — inventory, customer service, technical repairs, and team coordination. This role gave me my first real leadership experience in the tech space.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">thoughts &amp; writing</div>
+      <h2 class="section-title">The Blog</h2>
+      <p class="section-desc">Reflections on building tech in Nigeria, software engineering, entrepreneurship, and the future of African innovation.</p>
+    </div>
+    <div class="blog-grid">
+
+      <a href="#" class="blog-card reveal">
+        <div class="blog-thumb">
+          <div class="blog-thumb-bg" style="background: linear-gradient(135deg, #0d1117 0%, #003545 100%);"></div>
+          <div class="blog-thumb-emoji">🌍</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-category">Entrepreneurship</div>
+          <h3 class="blog-title">Why I Build Software in Nigeria (and Why It's Worth It)</h3>
+          <p class="blog-excerpt">The honest account of founding Silabs — from a one-person consultancy to a registered company with 9 directors. What I've learned about building a real tech business in a constrained but opportunity-rich market.</p>
+          <div class="blog-meta">
+            <span>Apr 2025 · 8 min read</span>
+            <span>Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card reveal">
+        <div class="blog-thumb">
+          <div class="blog-thumb-bg" style="background: linear-gradient(135deg, #0d1117 0%, #1a1a00 100%);"></div>
+          <div class="blog-thumb-emoji">🤖</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-category">AI &amp; Engineering</div>
+          <h3 class="blog-title">Building FraudNet: Whisper AI Meets Nigerian Law Enforcement</h3>
+          <p class="blog-excerpt">A deep-dive into building an audio forensics platform from scratch — speaker identification, financial entity detection, and the debugging hell of Windows + ffmpeg + torchaudio. What worked, what didn't, and what I shipped.</p>
+          <div class="blog-meta">
+            <span>Mar 2025 · 12 min read</span>
+            <span>Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card reveal">
+        <div class="blog-thumb">
+          <div class="blog-thumb-bg" style="background: linear-gradient(135deg, #0d1117 0%, #001a33 100%);"></div>
+          <div class="blog-thumb-emoji">📚</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-category">Education &amp; Edtech</div>
+          <h3 class="blog-title">Techdialect: Teaching STEM in Tiv — The Language Barrier Nobody Talks About</h3>
+          <p class="blog-excerpt">Millions of Nigerians can't access quality tech education because it's only available in English. Here's why I built Techdialect and how NLLB-200 is helping us change that — one local language at a time.</p>
+          <div class="blog-meta">
+            <span>Feb 2025 · 9 min read</span>
+            <span>Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card reveal">
+        <div class="blog-thumb">
+          <div class="blog-thumb-bg" style="background: linear-gradient(135deg, #0d1117 0%, #1a000a 100%);"></div>
+          <div class="blog-thumb-emoji">🔧</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-category">Software Engineering</div>
+          <h3 class="blog-title">PHP in 2025: The Honest Developer's Take</h3>
+          <p class="blog-excerpt">Despite the hype around modern frameworks, PHP powers 70%+ of the web and is still the most practical stack for rapid full-stack development in constrained environments like Nigerian shared hosting. Here's how I make it work.</p>
+          <div class="blog-meta">
+            <span>Jan 2025 · 7 min read</span>
+            <span>Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card reveal">
+        <div class="blog-thumb">
+          <div class="blog-thumb-bg" style="background: linear-gradient(135deg, #0d1117 0%, #001a0a 100%);"></div>
+          <div class="blog-thumb-emoji">🎓</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-category">University Life</div>
+          <h3 class="blog-title">How I Graduated With a 4.46 CGPA While Running a Tech Company</h3>
+          <p class="blog-excerpt">Four years at Nigerian Army University Biu, juggling lectures, final year projects, client work, and company operations simultaneously. The systems I used to stay sane and the lessons I'd do differently.</p>
+          <div class="blog-meta">
+            <span>Dec 2024 · 10 min read</span>
+            <span>Read →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card reveal">
+        <div class="blog-thumb">
+          <div class="blog-thumb-bg" style="background: linear-gradient(135deg, #0d1117 0%, #0a001a 100%);"></div>
+          <div class="blog-thumb-emoji">🚀</div>
+        </div>
+        <div class="blog-body">
+          <div class="blog-category">Startups</div>
+          <h3 class="blog-title">The Real Cost of Building AlumBridge: What No One Tells You About Edtech</h3>
+          <p class="blog-excerpt">Alumni platforms sound simple — they're not. From donation flows and PWA architecture to PHP schema migrations and Facebook Messenger clones, here's the full engineering story behind AlumBridge.</p>
+          <div class="blog-meta">
+            <span>Nov 2024 · 11 min read</span>
+            <span>Read →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">what I offer</div>
+      <h2 class="section-title">Services</h2>
+      <p class="section-desc">Whether you need software built, a team trained, or a digital strategy — Silabs delivers end-to-end.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">⚙️</div>
+        <h3 class="service-name">Software Design &amp; Development</h3>
+        <p class="service-desc">Custom web applications, enterprise platforms, e-commerce systems, and mobile-ready apps. From idea to deployed product with full support.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🎓</div>
+        <h3 class="service-name">Technology Training &amp; Academy</h3>
+        <p class="service-desc">Practical, project-based courses and mentorship through Silabs Technology Academy. We train for job-readiness, not just certificates.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🖥️</div>
+        <h3 class="service-name">Hardware &amp; Network Solutions</h3>
+        <p class="service-desc">Computer system installation, network infrastructure, data center equipment provision, and on-site/remote maintenance support.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📢</div>
+        <h3 class="service-name">Digital Marketing &amp; Content</h3>
+        <p class="service-desc">Campaigns, social media management, branded content creation, and growth strategy — paid and organic — for SMEs and NGOs.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🔄</div>
+        <h3 class="service-name">Outsourcing &amp; Process Management</h3>
+        <p class="service-desc">Call center management, back-office processing, CRM setup, and scalable business-process outsourcing with local market knowledge.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📐</div>
+        <h3 class="service-name">IT Consulting &amp; Project Management</h3>
+        <p class="service-desc">Strategic technology consulting, end-to-end project delivery, risk mitigation, and structured handover — for digital and hybrid projects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME / CV -->
+<section id="resume">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">curriculum vitae</div>
+      <h2 class="section-title">Full Résumé</h2>
+    </div>
+    <div class="resume-wrap reveal">
+      <div class="resume-top">
+        <div>
+          <div class="resume-name">Sarverun Simeon Tertese</div>
+          <div class="resume-title-line">Software Engineer · Full-Stack Developer · Entrepreneur · Intrapreneur</div>
+        </div>
+        <div class="resume-contacts">
+          <span>📍 Fed. Low Cost Estate, Karshi, Abuja</span>
+          <a href="mailto:simmyt3r@gmail.com">✉️ simmyt3r@gmail.com</a>
+          <a href="tel:+2349056232366">📞 +234 905 623 2366</a>
+          <a href="https://github.com/Simmyt3r" target="_blank">⌥ github.com/Simmyt3r</a>
+          <a href="https://linkedin.com/in/simmyt3r" target="_blank">🔗 linkedin.com/in/simmyt3r</a>
+        </div>
+      </div>
+      <div class="resume-body">
+
+        <div class="resume-section">
+          <div class="resume-h2">Career Objective</div>
+          <p class="resume-p">Entrepreneur and Software Engineer with technical proficiency as a developer — strong foundation in algorithmic design, software construction, and full-stack web technologies. Seeking to apply rigorous academic training and practical problem-solving skills to deliver high-impact solutions. Committed to building technology that empowers communities across Nigeria and Africa.</p>
+        </div>
+
+        <div class="resume-section">
+          <div class="resume-h2">Work Experience</div>
+
+          <div class="resume-exp">
+            <div class="resume-exp-title">Managing Director — Simeon's Laboratories &amp; Co Technologies Ltd (Silabs)</div>
+            <div class="resume-exp-meta">2023 – Present · Abuja, Nigeria</div>
+            <ul>
+              <li>Founded and scaled Silabs into a registered multi-service technology firm (CAMA 2020)</li>
+              <li>Lead a board of 9 directors across Technology, Operations, Finance, PR, Security, PM, Marketing, HR</li>
+              <li>Delivered software, training programs, and digital services for NGOs, SMEs, and institutions</li>
+              <li>Co-founded UniXpress — student academic platform — and initiated AlumBridge, Techdialect, PayQuick</li>
+            </ul>
+          </div>
+
+          <div class="resume-exp">
+            <div class="resume-exp-title">Ag. Director of Media &amp; PR — Sanitatem Rehabilitation International Initiative</div>
+            <div class="resume-exp-meta">2025 – Present · Calabar, Nigeria (Remote)</div>
+            <ul>
+              <li>Lead all media production and digital content strategy for a registered Nigerian NGO</li>
+              <li>Built complete 2026 media asset suite: 5 monthly PowerPoint campaigns, festive days deck, branded website, 15 social media image series</li>
+            </ul>
+          </div>
+
+          <div class="resume-exp">
+            <div class="resume-exp-title">ICT Service Center Intern — Federal Ministry of Communications, Innovation &amp; Digital Economy</div>
+            <div class="resume-exp-meta">2024 – 2025 · Abuja, Nigeria</div>
+            <ul>
+              <li>IT service operations, systems maintenance, and digital infrastructure support</li>
+              <li>Hands-on experience with government-scale technology operations and digital economy initiatives</li>
+            </ul>
+          </div>
+
+          <div class="resume-exp">
+            <div class="resume-exp-title">Class Teacher (ICT) — Satellite Academy Ltd</div>
+            <div class="resume-exp-meta">2024 – 2025 · Karshi, Abuja</div>
+            <ul>
+              <li>Delivered practical ICT curriculum to secondary school students</li>
+              <li>Conducted pro bono site audit and improvement recommendations for the school</li>
+            </ul>
+          </div>
+
+          <div class="resume-exp">
+            <div class="resume-exp-title">General Manager — De-East Computers</div>
+            <div class="resume-exp-meta">2016 – 2018</div>
+            <ul>
+              <li>Managed operations, inventory, customer service, and technical repairs for a computer hardware business</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="resume-section">
+          <div class="resume-h2">Education</div>
+          <div class="resume-exp">
+            <div class="resume-exp-title">B.Sc. Software Engineering — Nigerian Army University Biu (NAUB)</div>
+            <div class="resume-exp-meta">2022 – 2025 · CGPA: 4.46 / 5.00</div>
+          </div>
+          <div class="resume-exp">
+            <div class="resume-exp-title">Computer Fundamentals (12 Months) — De-East Computers</div>
+            <div class="resume-exp-meta">2012 – 2016</div>
+          </div>
+        </div>
+
+        <div class="resume-section">
+          <div class="resume-h2">Key Projects</div>
+          <p class="resume-p">UniXpress (Academic Platform) · AlumBridge (Alumni Network) · FraudNet/Project Vanguard (Audio Forensics AI) · ArtisanConnect NG (Social Marketplace) · Techdialect (STEM in Local Languages) · AI Drowsiness Detection · Cloud Storage with Folder Auth · Military Logistics Management System · PayQuick VTU App · DIGI Framework</p>
+        </div>
+
+        <div class="resume-section">
+          <div class="resume-h2">Technical Skills</div>
+          <div class="resume-skills-grid">
+            <span class="resume-skill-tag">Python</span>
+            <span class="resume-skill-tag">PHP</span>
+            <span class="resume-skill-tag">JavaScript</span>
+            <span class="resume-skill-tag">SQL / MySQL</span>
+            <span class="resume-skill-tag">HTML5 &amp; CSS3</span>
+            <span class="resume-skill-tag">React / React Native</span>
+            <span class="resume-skill-tag">Node.js</span>
+            <span class="resume-skill-tag">Flask / Streamlit</span>
+            <span class="resume-skill-tag">GitHub</span>
+            <span class="resume-skill-tag">System Design</span>
+            <span class="resume-skill-tag">Algorithm Design</span>
+            <span class="resume-skill-tag">Reverse Engineering</span>
+          </div>
+        </div>
+
+        <div class="resume-section">
+          <div class="resume-h2">Certifications (Selected)</div>
+          <div class="resume-certs">
+            <span class="resume-cert-tag">Front-End Web Dev</span>
+            <span class="resume-cert-tag">Programming Fundamentals</span>
+            <span class="resume-cert-tag">Data Analysis</span>
+            <span class="resume-cert-tag">Project Management</span>
+            <span class="resume-cert-tag">Business Analysis</span>
+            <span class="resume-cert-tag">Entrepreneur Skills</span>
+            <span class="resume-cert-tag">IoT</span>
+            <span class="resume-cert-tag">System Administration</span>
+            <span class="resume-cert-tag">Web Design</span>
+            <span class="resume-cert-tag">Marketing &amp; Sales</span>
+            <span class="resume-cert-tag">Static Site Development</span>
+            <span class="resume-cert-tag">Digital Literacy</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="resume-print-btn reveal resume-no-print">
+      <button onclick="window.print()" class="btn-primary" style="margin:0 auto;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print / Save PDF
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-label">get in touch</div>
+        <h2 class="section-title">Let's Build Something</h2>
+        <p>Whether you have a project in mind, want to partner with Silabs, or just want to talk tech — I read every message and reply personally.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-text">
+              <div class="c-label">Email</div>
+              <div class="c-val"><a href="mailto:simmyt3r@gmail.com">simmyt3r@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text">
+              <div class="c-label">Phone / WhatsApp</div>
+              <div class="c-val"><a href="https://wa.me/2349056232366">+234 905 623 2366</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🌐</div>
+            <div class="contact-item-text">
+              <div class="c-label">Company</div>
+              <div class="c-val"><a href="https://unixpress.com.ng" target="_blank">unixpress.com.ng</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <div class="c-label">Location</div>
+              <div class="c-val">Abuja &amp; Biu, Nigeria</div>
+            </div>
+          </div>
+        </div>
+        <div class="socials">
+          <a href="https://github.com/Simmyt3r" target="_blank" class="social-btn" title="GitHub">GH</a>
+          <a href="https://linkedin.com/in/simmyt3r" target="_blank" class="social-btn" title="LinkedIn">LI</a>
+          <a href="https://wa.me/2349056232366" target="_blank" class="social-btn" title="WhatsApp">WA</a>
+          <a href="mailto:simmyt3r@gmail.com" class="social-btn" title="Email">@</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" id="fname" placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="femail" placeholder="your@email.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" id="fsubject" placeholder="Project enquiry / Partnership / Other">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="fmessage" placeholder="Tell me about your project or idea..."></textarea>
+          </div>
+          <button class="btn-primary" onclick="handleContact()" style="width:100%;justify-content:center;">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send Message
+          </button>
+          <div class="form-success" id="formSuccess">
+            ✓ Message sent! I'll get back to you within 24 hours.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">Sarverun<span>.</span>dev</div>
+      <div class="footer-copy">© 2025 Simeon's Laboratories &amp; Co Technologies Ltd (Silabs). All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // Cursor glow
+  const glow = document.getElementById('cursorGlow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top  = e.clientY + 'px';
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block');
+  function closeMobile() { mobileMenu.style.display = 'none'; }
+
+  // Back to top
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('show', window.scrollY > 400);
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Stagger children in grids
+  document.querySelectorAll('.projects-grid, .blog-grid, .services-grid, .skills-grid').forEach(grid => {
+    const cards = grid.querySelectorAll('.reveal');
+    cards.forEach((card, i) => {
+      card.style.transitionDelay = (i * 0.07) + 's';
+    });
+  });
+
+  // Typewriter effect for hero
+  const heroTitle = document.querySelector('.hero-title');
+  if(heroTitle) {
+    const highlight = heroTitle.querySelector('.highlight');
+    const words = ['future','change','next chapter'];
+    let wi = 0, ci = 0, deleting = false;
+    function type() {
+      const word = words[wi];
+      if(!deleting) {
+        highlight.textContent = word.slice(0, ++ci);
+        if(ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
+      } else {
+        highlight.textContent = word.slice(0, --ci);
+        if(ci === 0) { deleting = false; wi = (wi+1) % words.length; }
+      }
+      setTimeout(type, deleting ? 60 : 100);
+    }
+    setTimeout(type, 2000);
+  }
+
+  // Contact form handler
+  function handleContact() {
+    const n = document.getElementById('fname').value;
+    const e = document.getElementById('femail').value;
+    const s = document.getElementById('fsubject').value;
+    const m = document.getElementById('fmessage').value;
+    if(!n || !e || !m) { alert('Please fill in all required fields.'); return; }
+    // Fallback: open email client
+    const mailto = `mailto:simmyt3r@gmail.com?subject=${encodeURIComponent(s || 'Portfolio Enquiry')}&body=${encodeURIComponent(`Name: ${n}\nEmail: ${e}\n\n${m}`)}`;
+    window.location.href = mailto;
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if(window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#'+cur ? 'var(--cyan)' : '';
+    });
+  });
+</script>
 </body>
 </html>
