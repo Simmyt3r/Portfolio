@@ -592,548 +592,275 @@
   </div>
 </section>
 
-<!-- ═══ BUILDER BLUEPRINT ══════════════════════════ -->
+<!-- ═══ BUILDER ═══════════════════════════════════════ -->
 <section id="builder">
-  <div class="bldr-hero">
+  <div class="bldr-topbar">
     <div class="container">
-      <div class="bldr-hero-inner reveal">
-        <div class="bldr-badge">3-Month Program · Weeks 1–12</div>
-        <h2 class="bldr-headline">The Senior Builder<br><span>Blueprint</span></h2>
-        <p class="bldr-sub">A coaching roadmap for teenagers (13–19) who want to build real skills, real products, and real income — on Facebook. One channel, full control, disciplined execution.</p>
-        <div class="bldr-pillars">
-          <div class="bldr-pillar"><div class="bp-icon">🎯</div><div class="bp-label">One Platform</div><div class="bp-note">Facebook only. No noise.</div></div>
-          <div class="bldr-pillar"><div class="bp-icon">⚙️</div><div class="bp-label">Private Group</div><div class="bp-note">The Engine Room.</div></div>
-          <div class="bldr-pillar"><div class="bp-icon">📅</div><div class="bp-label">Weekly Rhythm</div><div class="bp-note">2 posts · 1 live · 1 challenge</div></div>
-          <div class="bldr-pillar"><div class="bp-icon">🚫</div><div class="bp-label">No PDFs</div><div class="bp-note">Just action &amp; assignments.</div></div>
+      <div class="bldr-topbar-inner">
+        <div>
+          <div class="sec-label" style="margin-bottom:6px">Learning Hub</div>
+          <h2 class="sec-title" style="margin-bottom:8px">Builder &amp; Tutorials</h2>
+          <p style="font-size:.92rem;color:var(--muted);max-width:540px">Practical coaching for teenagers and young entrepreneurs. Explained simply, with real-life analogies. No jargon. Just clarity.</p>
+        </div>
+        <div class="bldr-stats">
+          <div class="bstat"><span class="bstat-n">12</span><span class="bstat-l">Weeks</span></div>
+          <div class="bstat"><span class="bstat-n">9</span><span class="bstat-l">Modules</span></div>
+          <div class="bstat"><span class="bstat-n">100+</span><span class="bstat-l">Lessons</span></div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="container bldr-body">
-    <!-- Phase Tabs -->
-    <div class="phase-tabs reveal">
-      <button class="phase-tab active" onclick="openPhase('phase1',this)">
-        <span class="pt-num">01</span>
-        <span class="pt-label">Foundation</span>
-        <span class="pt-weeks">Weeks 1–3</span>
+  <div class="container bldr-wrap">
+    <div class="bldr-main-tabs">
+      <button class="bmt active" onclick="switchTab('builder-program',this)">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        Builder Program <span class="bmt-sub">12-Week Coaching</span>
       </button>
-      <button class="phase-tab" onclick="openPhase('phase2',this)">
-        <span class="pt-num">02</span>
-        <span class="pt-label">Skill Acquisition</span>
-        <span class="pt-weeks">Weeks 4–7</span>
-      </button>
-      <button class="phase-tab" onclick="openPhase('phase3',this)">
-        <span class="pt-num">03</span>
-        <span class="pt-label">Monetization</span>
-        <span class="pt-weeks">Weeks 8–10</span>
-      </button>
-      <button class="phase-tab" onclick="openPhase('phase4',this)">
-        <span class="pt-num">04</span>
-        <span class="pt-label">Identity</span>
-        <span class="pt-weeks">Weeks 11–12</span>
+      <button class="bmt" onclick="switchTab('biz-mastery',this)">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        Business Mastery <span class="bmt-sub">9 Modules &middot; 100+ Lessons</span>
       </button>
     </div>
 
-    <!-- ── PHASE 1 ── -->
-    <div class="phase-panel active" id="phase1">
-      <div class="phase-intro reveal">
-        <h3>Foundation — Building the Right Mindset First</h3>
-        <p>Before you touch any tool, you need to understand <em>why</em> you're building. Phase 1 rewires how you think about money, time, and opportunity. Most teenagers skip this. That's why they quit.</p>
+    <!-- TAB 1: BUILDER PROGRAM -->
+    <div class="bldr-tab active" id="builder-program">
+      <div class="phase-strip">
+        <button class="phs active" onclick="openPhase('ph1',this)"><span class="ph-n">01</span><span class="ph-l">Foundation</span><span class="ph-w">Wk 1-3</span></button>
+        <button class="phs" onclick="openPhase('ph2',this)"><span class="ph-n">02</span><span class="ph-l">Skills</span><span class="ph-w">Wk 4-7</span></button>
+        <button class="phs" onclick="openPhase('ph3',this)"><span class="ph-n">03</span><span class="ph-l">Money</span><span class="ph-w">Wk 8-10</span></button>
+        <button class="phs" onclick="openPhase('ph4',this)"><span class="ph-n">04</span><span class="ph-l">Identity</span><span class="ph-w">Wk 11-12</span></button>
       </div>
-      <div class="tut-list">
 
-        <!-- Week 1 -->
-        <div class="tut-item reveal">
-          <div class="tut-header" onclick="openTutorial('w1')">
-            <div class="tut-meta"><span class="tut-week">Week 1</span><span class="tut-tag">Foundation</span></div>
-            <h4 class="tut-title">Money &amp; Value — Why Skills Beat Certificates</h4>
-            <div class="tut-arrow">↓</div>
-          </div>
-          <div class="tut-body" id="w1">
-            <div class="tut-content">
-              <div class="tut-analogy">
-                <div class="ta-icon">🍕</div>
-                <div>
-                  <strong>The Pizza Analogy</strong>
-                  <p>Imagine two people. Person A has a certificate that says "I know how to make pizza." Person B has actually made 200 pizzas and people paid them for it. Who gets hired at the restaurant? Person B. Every time.<br><br>A certificate is just a paper saying you <em>studied</em> something. A skill is proof you can <em>do</em> something. The market pays for doing, not studying.</p>
-                </div>
-              </div>
-              <div class="tut-points">
-                <div class="tut-point"><span class="tp-num">1</span><div><strong>What is value?</strong><p>Value is simply solving someone's problem. If your neighbour has a broken phone and you fix it, you created value. If your school friend doesn't understand maths and you explain it, you created value. Wherever there's a problem, there's an opportunity.</p></div></div>
-                <div class="tut-point"><span class="tp-num">2</span><div><strong>Why teenagers have the advantage</strong><p>You have no mortgage. No family to feed. No reputation to protect. You can try, fail, and pivot 10 times while adults are still afraid to start once. Your biggest asset right now is not money — it's <em>time with no consequences</em>. Use it.</p></div></div>
-                <div class="tut-point"><span class="tp-num">3</span><div><strong>The certificate trap</strong><p>The Nigerian education system trains you to collect certificates. WAEC, JAMB, NYSC — all certificates. None of them teach you to earn. Skills teach you to earn. A 16-year-old who can build a website for ₦50,000 has more economic power than a graduate waiting for a job offer.</p></div></div>
-              </div>
-              <div class="tut-assignment">
-                <div class="ta-label">📋 Week 1 Assignment</div>
-                <p>Write down <strong>5 problems</strong> you see around you every day that people complain about. Big or small. "NEPA cuts light and food spoils." "My friend can't type fast enough." "Our school gate has no signboard." Anything. Problems = money waiting to be unlocked.</p>
-              </div>
-            </div>
-          </div>
+      <div class="phase-panel active" id="ph1">
+        <p class="phase-intro-txt">Before touching any tool, you need to understand <em>why</em> you are building. Phase 1 rewires how you think about money, time, and opportunity.</p>
+        <div class="acc-list">
+          <div class="acc-item reveal"><div class="acc-hd" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-badge">Week 1</span><span class="acc-tag">Foundation</span><h4>Money and Value - Skills Beat Certificates</h4></div><span class="acc-chevron">+</span></div><div class="acc-bd"><div class="analogy-box"><span class="an-icon">pizza</span><div><strong>The Pizza Analogy</strong><p>Person A has a certificate saying he knows how to make pizza. Person B has actually made 200 pizzas and people paid for them. Who gets hired at the restaurant? Person B. Every time. A certificate says you studied. A skill proves you can do. The market pays for doing, not studying.</p></div></div><div class="lesson-pts"><div class="lp"><span class="lp-n">1</span><div><strong>What is value?</strong><p>Value is solving someone's problem. Fix your neighbour's broken phone - value created. Explain maths to a classmate - value created. Wherever there is a problem, there is an opportunity to earn money.</p></div></div><div class="lp"><span class="lp-n">2</span><div><strong>Why teenagers have the advantage</strong><p>No mortgage. No family to feed. No reputation to protect. You can try, fail, and pivot 10 times while adults are afraid to start once. Your biggest asset right now is time with no consequences. Use it now before responsibilities arrive.</p></div></div><div class="lp"><span class="lp-n">3</span><div><strong>The certificate trap</strong><p>WAEC, JAMB, NYSC - all certificates. None teach you to earn. A 16-year-old who builds websites for clients at 50,000 naira has more real economic power than a graduate waiting for a job offer that may never come.</p></div></div></div><div class="assign-box"><div class="asgn-lbl">Assignment</div><p>Write <strong>5 problems</strong> you see around you daily that people complain about. Examples: NEPA cuts and food spoils in the fridge. My friend cannot type fast enough to finish school work. Our school gate has no signboard. Problems equal money waiting to be unlocked.</p></div></div></div>
+
+          <div class="acc-item reveal"><div class="acc-hd" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-badge">Week 2</span><span class="acc-tag">Foundation</span><h4>Decision Making - Long-term vs Short-term Thinking</h4></div><span class="acc-chevron">+</span></div><div class="acc-bd"><div class="analogy-box"><span class="an-icon">tree</span><div><strong>The Mango Tree Analogy</strong><p>If someone offers you 1,000 naira today or a mango seedling, most people take the cash. But in 5 years the mango tree feeds your whole family and earns 50,000 naira every season forever. Every decision you make is either a cash withdrawal or a seed planted. Watching TikTok for 4 hours is a withdrawal from your future.</p></div></div><div class="lesson-pts"><div class="lp"><span class="lp-n">1</span><div><strong>Consistency is a superpower</strong><p>Improve just 1 percent every day. After one year, you are 37 times better than when you started. That is not motivation - that is mathematics. Show up daily, especially when it feels boring and pointless.</p></div></div><div class="lp"><span class="lp-n">2</span><div><strong>Sacrifice now, enjoy later</strong><p>While others go to parties on weekends, you spend 2 hours learning or building something. It feels unfair today. In two years, when you are earning and they are still broke, you will understand the trade you made.</p></div></div><div class="lp"><span class="lp-n">3</span><div><strong>One simple decision filter</strong><p>Before any choice, ask yourself: Does this make the next 5 years better or worse? If the answer is worse - even if it feels good right now - it is the wrong choice. One question. Use it for everything you do.</p></div></div></div><div class="assign-box"><div class="asgn-lbl">Assignment</div><p>From your Week 1 list, pick <strong>ONE problem</strong>. Then write specifically: Who suffers from this problem? How old are they? What do they currently do to solve it? Why is that current solution bad? This is the beginning of your real business idea.</p></div></div></div>
+
+          <div class="acc-item reveal"><div class="acc-hd" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-badge">Week 3</span><span class="acc-tag">Foundation</span><h4>Tech Literacy - User vs Builder vs Owner</h4></div><span class="acc-chevron">+</span></div><div class="acc-bd"><div class="analogy-box"><span class="an-icon">bus</span><div><strong>The Danfo Bus Analogy</strong><p>There are 3 types of people on a Danfo bus. The passenger pays to ride. The driver earns by providing the ride. The bus owner earns whether they drive or not. In tech, 99 percent of people are passengers. They scroll feeds and use apps. Builders create those apps. Owners build systems that keep earning while they sleep. The goal is to move from passenger to builder to owner.</p></div></div><div class="lesson-pts"><div class="lp"><span class="lp-n">1</span><div><strong>The 3 Paths available to you</strong><p>Creator path: make content, build an audience that trusts you, earn from that trust. Freelancer path: sell one skill directly to clients for fast income. Founder path: build a product that solves a problem at scale. Slowest to earn but highest ceiling. Pick one path for the next 90 days.</p></div></div><div class="lp"><span class="lp-n">2</span><div><strong>Tech does not mean programming</strong><p>Tech literacy means understanding how technology works and how people make money from it - not necessarily writing code. You can be deeply in tech as a designer, marketer, or community manager. Code is one tool in the toolbox, not the whole toolbox.</p></div></div></div><div class="assign-box"><div class="asgn-lbl">Assignment</div><p>Choose your path for the next 90 days: <strong>Creator, Freelancer, or Founder.</strong> Post in the group and explain why you chose it and what you plan to build. No wrong answers but you must pick one and commit.</p></div></div></div>
         </div>
+      </div>
 
-        <!-- Week 2 -->
-        <div class="tut-item reveal">
-          <div class="tut-header" onclick="openTutorial('w2')">
-            <div class="tut-meta"><span class="tut-week">Week 2</span><span class="tut-tag">Foundation</span></div>
-            <h4 class="tut-title">Decision Making — Long-term vs Short-term Thinking</h4>
-            <div class="tut-arrow">↓</div>
-          </div>
-          <div class="tut-body" id="w2">
-            <div class="tut-content">
-              <div class="tut-analogy">
-                <div class="ta-icon">🌱</div>
-                <div>
-                  <strong>The Mango Tree Analogy</strong>
-                  <p>If I give you ₦1,000 today or a mango seedling, most people take the cash. But in 5 years, the mango tree feeds your whole family and earns you ₦50,000 every season — forever. Short-term thinkers always take the ₦1,000. Long-term thinkers always plant the tree.<br><br>Every decision you make is either a cash withdrawal or a seed planted. Building a skill is planting a seed. Watching TikTok for 4 hours is a withdrawal.</p>
-                </div>
-              </div>
-              <div class="tut-points">
-                <div class="tut-point"><span class="tp-num">1</span><div><strong>Consistency is a superpower</strong><p>Imagine you improve by just 1% every day. After one year, you are 37 times better than when you started. That's not motivation — that's maths. Consistency is what separates builders from dreamers. Show up every day, even when it's boring.</p></div></div>
-                <div class="tut-point"><span class="tp-num">2</span><div><strong>The "sacrifice now, enjoy later" formula</strong><p>While your mates are spending weekends at parties, you spend 2 hours learning or building. It will feel unfair now. In two years, when you're earning and they're still broke, you'll understand. Every successful person traded short-term fun for long-term freedom.</p></div></div>
-                <div class="tut-point"><span class="tp-num">3</span><div><strong>How to make better decisions</strong><p>Before any choice, ask: "Does this make the next 5 years better or worse?" If the answer is worse — even if it feels good right now — it's the wrong choice. That's it. One question. Use it for everything.</p></div></div>
-              </div>
-              <div class="tut-assignment">
-                <div class="ta-label">📋 Week 2 Assignment</div>
-                <p>Go back to your list of 5 problems from Week 1. Pick <strong>ONE</strong>. Then write exactly: <em>Who suffers from this problem? How old are they? What do they currently do to solve it? Why is that solution bad?</em> This is the beginning of your business idea.</p>
-              </div>
-            </div>
-          </div>
+      <div class="phase-panel" id="ph2">
+        <p class="phase-intro-txt">Every week you learn something, you must also <em>make</em> something. No passive watching. No saved videos. Build now.</p>
+        <div class="acc-list">
+          <div class="acc-item reveal"><div class="acc-hd" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-badge">Week 4</span><span class="acc-tag">Skills</span><h4>Internet Basics - How Websites Actually Earn Money</h4></div><span class="acc-chevron">+</span></div><div class="acc-bd"><div class="analogy-box"><span class="an-icon">shop</span><div><strong>The Shop Analogy</strong><p>A website is just a shop on the internet. A domain name like yoursite.com is the shop's address so people can find it. Hosting is the building that keeps the shop open 24 hours a day, 7 days a week. When someone visits your website they are walking into your shop. When they fill in their email they are giving you their phone number. When they buy something, money enters your account. That is the entire internet business model.</p></div></div><div class="lesson-pts"><div class="lp"><span class="lp-n">1</span><div><strong>5 ways websites make money</strong><p>Selling products which is ecommerce. Selling services which is freelancing. Collecting emails and selling to that list later. Showing ads the way YouTube does. Charging for membership or access. Everything else online is a variation of these 5 models.</p></div></div><div class="lp"><span class="lp-n">2</span><div><strong>Your email list is gold</strong><p>A list of 1,000 email subscribers is worth more than 10,000 social media followers. Facebook can delete your page tomorrow and your audience disappears. Your email list is yours forever and you can sell to it whenever you want at zero extra cost.</p></div></div></div><div class="assign-box"><div class="asgn-lbl">Assignment</div><p>Create a Google Form for a <strong>fake idea</strong> such as: Free guide - How to earn 10,000 naira as a student. Share the link in the group and see if people actually fill it in. If they do, your idea has real market demand.</p></div></div></div>
+
+          <div class="acc-item reveal"><div class="acc-hd" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-badge">Week 5</span><span class="acc-tag">Skills</span><h4>Web Building - Your First Page on the Internet</h4></div><span class="acc-chevron">+</span></div><div class="acc-bd"><div class="analogy-box"><span class="an-icon">lego</span><div><strong>The Lego Analogy</strong><p>Building a webpage is like building with Lego. HTML is the Lego bricks - they give the page its structure. CSS is the paint that makes the bricks look the colour and shape you want. JavaScript is the mechanism that makes things move and respond when you press them. A house made of plain grey Lego is still a house. Get the structure right first. Worry about making it beautiful later.</p></div></div><div class="lesson-pts"><div class="lp"><span class="lp-n">1</span><div><strong>HTML in 3 minutes</strong><p>HTML tags are like labels. h1 tags make big headings. p tags make paragraphs. img tags show images. That is literally all HTML is - labels telling the browser what each piece of content is. You can learn the basics in one afternoon.</p></div></div><div class="lp"><span class="lp-n">2</span><div><strong>Done beats perfect every time</strong><p>A half-finished website published online is worth ten perfect websites still saved on your laptop. Publish first. Then improve. The world can only see and react to what you actually put out into the world.</p></div></div></div><div class="assign-box"><div class="asgn-lbl">Assignment</div><p>Build a <strong>1-page website</strong> with your name, what you do, and a way to contact you. Google Sites or Carrd are both allowed. Writing HTML in Notepad is also allowed. Share the live link in the group.</p></div></div></div>
+
+          <div class="acc-item reveal"><div class="acc-hd" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-badge">Week 6</span><span class="acc-tag">Skills</span><h4>Tech Plus Business - Turning a Tool into a Solution</h4></div><span class="acc-chevron">+</span></div><div class="acc-bd"><div class="analogy-box"><span class="an-icon">hammer</span><div><strong>The Hammer Analogy</strong><p>A hammer is just a tool. It becomes a business when a carpenter uses it to build houses for paying clients. Saying I know Canva is nothing. Saying I design social media graphics for small businesses at 5,000 naira per post is a real business. You must connect your tool to a specific problem for a specific person.</p></div></div><div class="lesson-pts"><div class="lp"><span class="lp-n">1</span><div><strong>The connection formula</strong><p>Tool plus real person's problem equals your service. Web builder plus local schools have no online presence equals school website service at 30,000 naira. Always make the connection explicit and specific before you pitch anything to anyone.</p></div></div><div class="lp"><span class="lp-n">2</span><div><strong>Document and show your work</strong><p>Screenshot everything you build. Record before and after comparisons. This is your portfolio building itself in real time. Every thing you make is proof and proof is what clients pay for - not your promises about what you can do.</p></div></div></div><div class="assign-box"><div class="asgn-lbl">Assignment</div><p>Update your Week 5 website to directly address the <strong>real problem from Week 2.</strong> Add one section that says: I help this type of person solve this problem by doing this specific thing. Post before and after screenshots in the group.</p></div></div></div>
+
+          <div class="acc-item reveal"><div class="acc-hd" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-badge">Week 7</span><span class="acc-tag">Skills</span><h4>Proof Over Perfection - Ship It and Show It</h4></div><span class="acc-chevron">+</span></div><div class="acc-bd"><div class="analogy-box"><span class="an-icon">plate</span><div><strong>The Restaurant Analogy</strong><p>No restaurant waits until their food is perfect before opening. They open. Customers come. They get real feedback. They improve the recipe. Then more customers come. If they waited for perfection, they would run out of money before serving a single plate. Your project does not need to be perfect. It needs to be done enough to show to real people.</p></div></div><div class="lesson-pts"><div class="lp"><span class="lp-n">1</span><div><strong>Why publishing publicly matters</strong><p>When you put something out publicly, two things happen. First you get real feedback from real people, not imaginary feedback from your own nervous mind. Second you hold yourself accountable because it is much harder to quit something the whole group has already seen.</p></div></div><div class="lp"><span class="lp-n">2</span><div><strong>Your pitch in exactly 3 sentences</strong><p>What problem does it solve? Who is it for? What did you build? Three sentences. That is a complete pitch. Practice saying it out loud before you post it so you sound confident and clear.</p></div></div></div><div class="assign-box"><div class="asgn-lbl">Assignment</div><p>Post your project in the group. Explain <strong>what it is, who it is for, and what problem it solves.</strong> Then genuinely comment on at least 2 other people's projects - encourage them, critique the work honestly, and ask one good question.</p></div></div></div>
         </div>
+      </div>
 
-        <!-- Week 3 -->
-        <div class="tut-item reveal">
-          <div class="tut-header" onclick="openTutorial('w3')">
-            <div class="tut-meta"><span class="tut-week">Week 3</span><span class="tut-tag">Foundation</span></div>
-            <h4 class="tut-title">Tech Literacy — User vs Builder vs Owner</h4>
-            <div class="tut-arrow">↓</div>
-          </div>
-          <div class="tut-body" id="w3">
-            <div class="tut-content">
-              <div class="tut-analogy">
-                <div class="ta-icon">🚌</div>
-                <div>
-                  <strong>The Danfo Bus Analogy</strong>
-                  <p>There are 3 types of people on a Danfo bus. The <strong>passenger</strong> pays to ride — they use the service. The <strong>driver</strong> earns by providing the service. The <strong>bus owner</strong> earns whether they drive or not.<br><br>In tech, 99% of people are passengers — they use apps, scroll feeds, and buy things online. Builders (drivers) create those apps. Owners build systems that keep working even when they sleep. The goal of this program is to move you from passenger → builder → eventually, owner.</p>
-                </div>
-              </div>
-              <div class="tut-points">
-                <div class="tut-point"><span class="tp-num">1</span><div><strong>The 3 Paths</strong><p><strong>Creator:</strong> You make content — videos, posts, tutorials — and build an audience that trusts you. Income comes from that trust (selling, sponsorship, products). <strong>Freelancer:</strong> You sell a skill directly. Build websites, edit videos, manage social media for clients. Direct income, fast. <strong>Founder:</strong> You build a product or platform that solves a problem at scale. Slowest to earn, but highest ceiling.</p></div></div>
-                <div class="tut-point"><span class="tp-num">2</span><div><strong>Which path fits you?</strong><p>Creator path needs you to be comfortable talking or writing. Freelancer path needs one strong skill. Founder path needs patience and a clear problem to solve. You don't have to decide forever — but for the next 90 days, pick ONE and go all in.</p></div></div>
-                <div class="tut-point"><span class="tp-num">3</span><div><strong>Tech is not programming</strong><p>Tech literacy means understanding how technology works and how people make money from it — not necessarily writing code. You can be deeply "in tech" as a designer, marketer, community manager, or salesperson. Code is one tool, not the whole toolbox.</p></div></div>
-              </div>
-              <div class="tut-assignment">
-                <div class="ta-label">📋 Week 3 Assignment</div>
-                <p>Choose your path: <strong>Creator, Freelancer, or Founder</strong>. Post in the group and explain why you chose it and what you plan to build in the next 90 days. No wrong answers — but you must pick one.</p>
-              </div>
-            </div>
-          </div>
+      <div class="phase-panel" id="ph3">
+        <p class="phase-intro-txt">Money is not shameful. Asking for money in exchange for real value is honourable. This phase removes the mental blocks around earning.</p>
+        <div class="acc-list">
+          <div class="acc-item reveal"><div class="acc-hd" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-badge">Week 8</span><span class="acc-tag">Money</span><h4>Earning Legally - Service vs Product and How to Price</h4></div><span class="acc-chevron">+</span></div><div class="acc-bd"><div class="analogy-box"><span class="an-icon">barber</span><div><strong>The Barber vs Shampoo Analogy</strong><p>A barber sells a service. He earns only when he works. If he stops working, income stops. A shampoo factory sells a product. The shampoo is made once then sold thousands of times while the owner sleeps. Both are valid ways to earn. As a teenager starting out, services are faster to sell because you have a skill, someone needs it, and money can change hands today.</p></div></div><div class="lesson-pts"><div class="lp"><span class="lp-n">1</span><div><strong>What you can sell right now</strong><p>If you use a computer confidently: typing, data entry, and document formatting. If you know Canva: logos, flyers, and social media graphics. If you know HTML: simple websites for churches and schools. If you write clearly: captions, blog posts, and WhatsApp broadcast messages for businesses. Pick one skill. Not all of them. Just one.</p></div></div><div class="lp"><span class="lp-n">2</span><div><strong>Price based on value, not your time</strong><p>Ask yourself: What does it cost the client to NOT solve this problem? If a shop owner loses 10 customers a week because they have no Instagram page, your 15,000 naira setup is actually cheap to them even if it only took you 2 hours to build.</p></div></div></div><div class="assign-box"><div class="asgn-lbl">Assignment</div><p>Write this sentence and post it: I offer this specific service for this type of client at this exact price. Even if the service is imaginary for now, give it a real price. Getting comfortable writing a price publicly is the first step to saying it out loud to a real client.</p></div></div></div>
+
+          <div class="acc-item reveal"><div class="acc-hd" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-badge">Week 9</span><span class="acc-tag">Money</span><h4>Selling Without Shame - The Simple Pitch Formula</h4></div><span class="acc-chevron">+</span></div><div class="acc-bd"><div class="analogy-box"><span class="an-icon">sun</span><div><strong>The Umbrella Seller Analogy</strong><p>When it rains, an umbrella seller walks through Lagos traffic selling umbrellas. Does he feel ashamed? No. He knows the people in those cars need exactly what he has. He is not begging. He is matching a solution to an obvious problem. If your service genuinely helps someone, telling them about it is a favour to them, not a burden on you.</p></div></div><div class="lesson-pts"><div class="lp"><span class="lp-n">1</span><div><strong>The 3-part pitch formula</strong><p>Problem, then Solution, then Proof. Most Abuja shops lose customers because they have no online presence. That is the problem. I build clean professional websites for 30,000 naira that help them get found. That is the solution. Here is one I built for a shop in Wuse last month. That is the proof. No tricks. Just clarity.</p></div></div><div class="lp"><span class="lp-n">2</span><div><strong>Rejection is free market research</strong><p>When someone says no, ask them: What would need to change for this to work for you? Their answer tells you exactly how to improve your offer. Most sales happen after the 3rd conversation, not the 1st. The one who follows up professionally almost always wins the client.</p></div></div></div><div class="assign-box"><div class="asgn-lbl">Assignment</div><p>Write a pitch for your service using the <strong>Problem then Solution then Proof</strong> formula, in under 80 words. Post it in the comments. Then comment on 2 other people's pitches and tell them what was clear and what was confusing and how to improve it.</p></div></div></div>
+
+          <div class="acc-item reveal"><div class="acc-hd" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-badge">Week 10</span><span class="acc-tag">Money</span><h4>First Money Framework - Save, Reinvest, Repeat</h4></div><span class="acc-chevron">+</span></div><div class="acc-bd"><div class="analogy-box"><span class="an-icon">river</span><div><strong>The Bucket and River Analogy</strong><p>Most people treat income like a bucket. Money comes in and money goes out and the bucket is always empty. Smart people treat income like a river. Some water flows out for living expenses. Some fills a lake which is your savings. And some is poured back upstream to make the river stronger over time. That upstream water is your reinvestment into tools, courses, and assets that make you earn more.</p></div></div><div class="lesson-pts"><div class="lp"><span class="lp-n">1</span><div><strong>The 50-30-20 money split</strong><p>When you earn money, split it deliberately. 50 percent goes to what you genuinely need like school materials and transport. 30 percent goes into savings that you do not touch. 20 percent gets reinvested into your builder journey such as a domain name, a book, a course, or a software subscription that helps you earn more.</p></div></div><div class="lp"><span class="lp-n">2</span><div><strong>Track every naira that moves</strong><p>Get a simple notebook or open a free Google Sheet. Write down every income and every expense. Not because anyone is watching you. But because clarity about money is the foundation of confidence about money. People who do not track their money spend it emotionally and always wonder where it went.</p></div></div></div><div class="assign-box"><div class="asgn-lbl">Assignment</div><p>Create a simple <strong>money plan for your next 10,000 naira</strong> earned. Show how you would split it: what you would spend on needs, what you would save, and what you would reinvest and exactly why. Any format works - spreadsheet, notebook photo, or a written post.</p></div></div></div>
         </div>
+      </div>
 
+      <div class="phase-panel" id="ph4">
+        <p class="phase-intro-txt">Skills can be copied. Your reputation, values, and vision cannot be. This is the foundation that carries everything for the next decade of your life.</p>
+        <div class="acc-list">
+          <div class="acc-item reveal"><div class="acc-hd" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-badge">Week 11</span><span class="acc-tag">Identity</span><h4>Personal Brand - Your Reputation Is Your Currency</h4></div><span class="acc-chevron">+</span></div><div class="acc-bd"><div class="analogy-box"><span class="an-icon">coin</span><div><strong>The Coin Analogy</strong><p>A coin has two sides. Heads is what the world sees. Tails is who you actually are. Your personal brand is the heads side - what people see when they Google your name, visit your profile, or hear your name mentioned in a room. Every public post you make, every comment you write, and every photo you share contributes to that heads side. What people find in 30 seconds will decide in 30 seconds whether they want to work with you.</p></div></div><div class="lesson-pts"><div class="lp"><span class="lp-n">1</span><div><strong>How to audit your online presence</strong><p>Search your own name on Google right now. Look at your Facebook and Instagram profiles with fresh eyes. Ask yourself honestly: If a serious client or future employer saw this today, would they hire me or trust me? Delete or archive anything that conflicts with the professional builder you are becoming. This is not pretending. This is alignment.</p></div></div><div class="lp"><span class="lp-n">2</span><div><strong>Visible struggle builds more trust than hidden success</strong><p>Building in public means your wins and your struggles are both visible. That is a feature not a problem. Showing your real struggle builds trust faster than hiding everything and only posting when you succeed. But be thoughtful. Do not share things you would regret later. Do not attack people publicly online.</p></div></div></div><div class="assign-box"><div class="asgn-lbl">Assignment</div><p>Audit your online presence this week. Google your name. Review your Facebook profile carefully. Then <strong>update your profile photo, your bio, and your cover photo</strong> to reflect the builder you are right now, not the student you were before this program. Share your updated profile link in the group.</p></div></div></div>
+
+          <div class="acc-item reveal"><div class="acc-hd" onclick="toggleAcc(this)"><div class="acc-left"><span class="acc-badge">Week 12</span><span class="acc-tag">Identity</span><h4>Vision and Direction - The 2-Year Version of You</h4></div><span class="acc-chevron">+</span></div><div class="acc-bd"><div class="analogy-box"><span class="an-icon">map</span><div><strong>The GPS Analogy</strong><p>A GPS device is completely useless if you never enter a destination. You can drive forever and never arrive anywhere meaningful. Most teenagers are driving without a destination and reacting to whatever feels exciting or urgent that week. A 2-year vision is your GPS destination. You may take a different route than planned. You may arrive late. But knowing where you are going changes every single daily decision you make.</p></div></div><div class="lesson-pts"><div class="lp"><span class="lp-n">1</span><div><strong>How to write a real vision statement</strong><p>Answer these specific questions in writing: Where do I want to be in exactly 2 years from today? What will I be earning per month? What product or service will I have built? What kind of person will I have become? Who will I have helped along the way? A specific personal vision beats a vague borrowed dream every single time.</p></div></div><div class="lp"><span class="lp-n">2</span><div><strong>Build slowly, deliberately, and visibly</strong><p>12 weeks is long enough to change your thinking. It is not long enough to change your life. The foundation is now set. The real work is showing up every single day with discipline. Teenagers respect clarity, not hype. Be clear about who you are and where you are going. Keep building consistently.</p></div></div></div><div class="assign-box"><div class="asgn-lbl">Assignment</div><p>Write your <strong>2-year vision statement</strong> and post it. Start it with: By this specific month and year, I will be... Make it specific. Include what you will be doing to earn, what you will have built, who you will have helped, and what kind of person you will have become. This is your public contract with yourself.</p></div></div></div>
+        </div>
+        <div class="closing-q reveal"><blockquote>Do not over-motivate. Do not oversell. Build slowly, deliberately, visibly.</blockquote><cite>The Builder's Mantra</cite></div>
       </div>
     </div>
 
-    <!-- ── PHASE 2 ── -->
-    <div class="phase-panel" id="phase2">
-      <div class="phase-intro reveal">
-        <h3>Skill Acquisition — Learn by Building, Not by Watching</h3>
-        <p>This is where you pick up the actual tools. The rule here is simple: every week you learn something, you must also <em>make</em> something. No passive watching. No saved videos you'll "watch later." Build now.</p>
-      </div>
-      <div class="tut-list">
+    <!-- TAB 2: BUSINESS MASTERY -->
+    <div class="bldr-tab" id="biz-mastery">
+      <div class="biz-intro reveal"><p>100 lessons from <strong>Lean Startup</strong> and <strong>Rich Dad Poor Dad</strong> broken into 9 practical modules. Every lesson uses a real Nigerian analogy so the concept actually sticks in your mind.</p></div>
+      <div class="mod-list">
 
-        <!-- Week 4 -->
-        <div class="tut-item reveal">
-          <div class="tut-header" onclick="openTutorial('w4')">
-            <div class="tut-meta"><span class="tut-week">Week 4</span><span class="tut-tag">Skill</span></div>
-            <h4 class="tut-title">Internet Basics — How Websites Actually Earn Money</h4>
-            <div class="tut-arrow">↓</div>
-          </div>
-          <div class="tut-body" id="w4">
-            <div class="tut-content">
-              <div class="tut-analogy">
-                <div class="ta-icon">🏪</div>
-                <div>
-                  <strong>The Shop Analogy</strong>
-                  <p>A website is just a shop on the internet. Your house has a physical address so people can find it. A website has a domain name (like shopname.com) — that's its address. A physical shop has a building — a website has hosting, which is just a computer somewhere in the world that keeps the website running 24/7.<br><br>When someone visits your website, they're walking into your shop. When they fill in their email, they're giving you their phone number. When they buy something, money enters your account. That's the whole internet business model.</p>
-                </div>
-              </div>
-              <div class="tut-points">
-                <div class="tut-point"><span class="tp-num">1</span><div><strong>How websites make money</strong><p>There are 5 main ways: Selling products (ecommerce). Selling services (freelance). Collecting emails and selling to that list later. Showing ads (like YouTube). Charging for membership or access. Everything else is a variation of these 5.</p></div></div>
-                <div class="tut-point"><span class="tp-num">2</span><div><strong>What is a landing page?</strong><p>A landing page is a single webpage with one job: convert a visitor into a lead or a customer. It's like the entrance to your shop that has exactly one sign saying "Come in and buy this one thing." No distractions. No menus. Just one offer and one button.</p></div></div>
-                <div class="tut-point"><span class="tp-num">3</span><div><strong>Data collection is gold</strong><p>When someone gives you their email, you can market to them forever. A list of 1,000 emails is worth more than 10,000 social media followers because you <em>own</em> the list. Facebook can delete your page tomorrow. Your email list is yours forever.</p></div></div>
-              </div>
-              <div class="tut-assignment">
-                <div class="ta-label">📋 Week 4 Assignment</div>
-                <p>Create a Google Form for a <strong>fake idea</strong> (it doesn't have to be real yet). Example: "Free guide: How to earn ₦10,000 as a student." Share the link in the group and see if people actually fill it in. If they do, your idea has demand.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="mod-item reveal"><div class="mod-hd" onclick="toggleMod(this)"><div class="mod-left"><span class="mod-num">01</span><div><strong>Mindset Foundation</strong><span class="mod-count">4 lessons</span></div></div><span class="mod-chev">+</span></div><div class="mod-bd">
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">brain</span><strong>Employee vs Entrepreneur Mindset</strong></div><div class="analogy-box sm"><span class="an-icon">house</span><div><strong>The Tenant vs Landlord Analogy</strong><p>A tenant pays rent every month and their money goes to build someone else's asset. A landlord collects rent and someone else's money builds their own wealth. Employees are tenants of their own time. They sell hours and go home empty. Entrepreneurs are landlords of their skills. They build systems that keep earning even when they are not working.</p></div></div><p class="ml-body">Employee mindset seeks security and follows instructions. Entrepreneur mindset builds assets, takes calculated risks, and creates systems. Your first business decision is to choose which mindset to operate from starting today.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">chart</span><strong>Financial Intelligence - Your Greatest Asset</strong></div><div class="analogy-box sm"><span class="an-icon">key</span><div><strong>The Master Key Analogy</strong><p>Financial intelligence is like a master key. Without it, even if someone hands you one million naira today, you will lose it because you do not understand the locks that hold wealth in place. With financial intelligence, you can open almost any financial door even when starting with almost nothing in your pocket.</p></div></div><p class="ml-body">Financial IQ has four components: Accounting which means understanding your numbers clearly. Investing which means making money work and grow for you. Markets which means understanding how supply and demand determine prices. Law which means understanding taxes and business structure. Without all four, wealth slips away even when it arrives.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">scale</span><strong>Assets vs Liabilities - The Only Rule That Matters</strong></div><div class="analogy-box sm"><span class="an-icon">car</span><div><strong>The Personal Car vs Taxi Analogy</strong><p>A personal car is a liability. It takes money out every single month through fuel, repairs, insurance, and depreciation. A taxi is an asset. It puts money into your pocket every day. It is the same physical object but with a completely different relationship to your cash flow. Rich people deliberately buy assets. Poor people buy liabilities while thinking they are assets.</p></div></div><p class="ml-body">An asset puts money into your pocket consistently. A liability takes money out of your pocket consistently. Your clear goal is to build assets: businesses that run without you, digital products that sell repeatedly, and intellectual property. Stop spending money on depreciating items when that same money could become an investment.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">briefcase</span><strong>The Cash Flow Quadrant</strong></div><div class="analogy-box sm"><span class="an-icon">game</span><div><strong>The Video Game Level Analogy</strong><p>The cash flow quadrant is like a video game with 4 levels. Level E for Employee is the starter level - safe but very limited in how far you can go. Level S for Self-Employed is harder because you own a job not a business. Level B for Business Owner is where real freedom begins because systems work without you. Level I for Investor is the final level where money works for you full time.</p></div></div><p class="ml-body">E means Employee who trades time for a fixed salary. S means Self-Employed who owns a demanding job. B means Business Owner who owns a system that works without them. I means Investor whose money generates more money independently. True wealth lives in the B and I quadrants. Your long-term goal is to move from E or S all the way to B and then I.</p></div>
+        </div></div>
 
-        <!-- Week 5 -->
-        <div class="tut-item reveal">
-          <div class="tut-header" onclick="openTutorial('w5')">
-            <div class="tut-meta"><span class="tut-week">Week 5</span><span class="tut-tag">Skill</span></div>
-            <h4 class="tut-title">Web Building — Your First Page on the Internet</h4>
-            <div class="tut-arrow">↓</div>
-          </div>
-          <div class="tut-body" id="w5">
-            <div class="tut-content">
-              <div class="tut-analogy">
-                <div class="ta-icon">🧱</div>
-                <div>
-                  <strong>The Lego Analogy</strong>
-                  <p>Building a webpage is like building with Lego. HTML is the Lego bricks — they give the page its structure (here's a heading, here's a paragraph, here's an image). CSS is the paint — it makes the bricks look the colour and shape you want. JavaScript is the mechanism — it makes things move and respond when you press them.<br><br>You don't need all three to start. A house made of plain grey Lego is still a house. Get the structure right first, then worry about making it beautiful.</p>
-                </div>
-              </div>
-              <div class="tut-points">
-                <div class="tut-point"><span class="tp-num">1</span><div><strong>HTML in 3 minutes</strong><p>HTML tags are like labels. <code>&lt;h1&gt;Hello&lt;/h1&gt;</code> means "make this text a big heading." <code>&lt;p&gt;I am a paragraph&lt;/p&gt;</code> means "this is a paragraph." <code>&lt;img src="photo.jpg"&gt;</code> means "put this image here." That's literally all HTML is — labels telling the browser what each piece of content is.</p></div></div>
-                <div class="tut-point"><span class="tp-num">2</span><div><strong>Use no-code tools first</strong><p>If writing code feels like too much for now, use Google Sites, Carrd.co, or Notion. These are like Lego kits with instructions already included. The goal this week is to have <em>something</em> live on the internet with your name on it — not to write perfect code.</p></div></div>
-                <div class="tut-point"><span class="tp-num">3</span><div><strong>"Done" beats "perfect"</strong><p>A half-finished website published online is worth 10 perfect websites that are still saved on your laptop. Publish. Then improve. The world can only see what you put out — not what you're "still working on."</p></div></div>
-              </div>
-              <div class="tut-assignment">
-                <div class="ta-label">📋 Week 5 Assignment</div>
-                <p>Build a <strong>1-page website</strong> about yourself or your idea. It only needs: your name, what you do, and a way to contact you. Google Sites is allowed. Carrd is allowed. Writing HTML in Notepad is also allowed. Share the link in the group.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="mod-item reveal"><div class="mod-hd" onclick="toggleMod(this)"><div class="mod-left"><span class="mod-num">02</span><div><strong>Lean Startup Fundamentals</strong><span class="mod-count">5 lessons</span></div></div><span class="mod-chev">+</span></div><div class="mod-bd">
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">flask</span><strong>Validated Learning - Test Before You Build Everything</strong></div><div class="analogy-box sm"><span class="an-icon">chef</span><div><strong>The Chef Analogy</strong><p>A chef who plans a perfect menu for 6 months, cooks the whole thing, and then finds out nobody likes the food has wasted everything. A chef who tests one single dish on 10 customers first, adjusts based on real feedback, and then expands the menu is practising validated learning. Always test a small dish before you build the whole restaurant.</p></div></div><p class="ml-body">Startup success can be engineered through method, not just guessed through luck. The Lean Startup method says: eliminate uncertainty early, test your assumptions with real customers before spending big money, and iterate your product based on actual feedback you receive. Never build something at full scale that nobody has confirmed they want.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">loop</span><strong>Build-Measure-Learn Loop</strong></div><div class="analogy-box sm"><span class="an-icon">doctor</span><div><strong>The Doctor Analogy</strong><p>A good doctor never prescribes treatment based on pure guesswork. They examine the patient, run tests, measure the results, and then prescribe based on real evidence. If the patient does not improve, they adjust the prescription. Build is the examination. Measure is the test results. Learn is the adjusted prescription. Repeat this cycle until your business is genuinely healthy and growing.</p></div></div><p class="ml-body">Step 1: Build your minimum viable product quickly. Step 2: Measure how real customers actually respond to it, not how you imagined they would respond. Step 3: Learn from the data - should you pivot to a new direction or persevere with improvements? Traditional business plans fail because they assume instead of test. Speed of iteration matters more than chasing perfection.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">tools</span><strong>MVP - Start Small and Learn Fast</strong></div><div class="analogy-box sm"><span class="an-icon">foundation</span><div><strong>The Foundation Test Analogy</strong><p>You do not build the entire house before checking whether the land is solid enough to hold it. You dig carefully, test the foundation thoroughly, and then build floor by floor. An MVP is your foundation test. It is the smallest possible version of your idea that lets real people show you through their actual behaviour whether the ground beneath your business idea is solid or not.</p></div></div><p class="ml-body">MVP examples that work well: a landing page that collects email signups before the product exists. A simple hand-drawn prototype shown to real users. Doing the service completely manually before building any automation. Sending a survey to 50 people before creating a product. The core principle is to collect maximum learning with minimum investment of time and money.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">chart2</span><strong>Real Metrics vs Vanity Metrics</strong></div><div class="analogy-box sm"><span class="an-icon">mirror</span><div><strong>The Mirror vs Weighing Scale Analogy</strong><p>Social media likes and follower counts are like a mirror. They make you feel good but they do not tell you the truth about your actual health. Revenue, customer retention, and real engagement are the weighing scale. They show whether your business is genuinely growing or just looking impressive on a screen. Stop checking the mirror and start reading the scale every week.</p></div></div><p class="ml-body">Vanity metrics to ignore: total likes, total followers, and total downloads with no purchase attached. Real metrics that matter: customer retention rate, monthly recurring revenue, genuine engagement rate, and net promoter score which measures whether customers recommend you. Track what actually shows whether people value your product enough to pay for it and come back.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">arrows</span><strong>Pivot - Structured and Intelligent Course Correction</strong></div><div class="analogy-box sm"><span class="an-icon">ship</span><div><strong>The Ship Captain Analogy</strong><p>A ship captain who receives real-time weather data showing a massive storm directly ahead does not sail straight into the storm just to stay committed to the original planned route. He pivots intelligently and adjusts course based on new information. Pivoting in business is not failure or giving up. Stubbornly sailing your company directly into a storm because you wrote it in a business plan is what failure actually looks like.</p></div></div><p class="ml-body">Clear signs you need to pivot: consistently low customer engagement with your current offer. High churn rate meaning customers leave after one purchase. No repeat purchases from satisfied customers. Consistent market rejection after multiple honest attempts. Types of helpful pivots: zoom in to a narrower more specific focus. Change the target customer segment. Change your distribution channel. Pivot with real data, never with emotions or ego.</p></div>
+        </div></div>
 
-        <!-- Week 6 -->
-        <div class="tut-item reveal">
-          <div class="tut-header" onclick="openTutorial('w6')">
-            <div class="tut-meta"><span class="tut-week">Week 6</span><span class="tut-tag">Skill</span></div>
-            <h4 class="tut-title">Tech + Business — Turning Your Tool into a Solution</h4>
-            <div class="tut-arrow">↓</div>
-          </div>
-          <div class="tut-body" id="w6">
-            <div class="tut-content">
-              <div class="tut-analogy">
-                <div class="ta-icon">🔧</div>
-                <div>
-                  <strong>The Hammer Analogy</strong>
-                  <p>A hammer is just a tool. It becomes a business when a carpenter uses it to build houses for clients. A website builder is just a tool. It becomes a business when you use it to solve the problem you identified in Week 2.<br><br>The mistake most people make is learning tools without connecting them to real problems. "I know Canva" is nothing. "I design social media graphics for small businesses at ₦5,000 per post" is a business.</p>
-                </div>
-              </div>
-              <div class="tut-points">
-                <div class="tut-point"><span class="tp-num">1</span><div><strong>The connection formula</strong><p>Take your tool + take a real person's problem = your service. Designer + "small businesses can't afford professional graphics" = graphics design service for SMEs. Web builder + "local schools have no online presence" = school website service. Always make the connection explicit.</p></div></div>
-                <div class="tut-point"><span class="tp-num">2</span><div><strong>Improve, don't rebuild</strong><p>Take your Week 5 website and make it better — not from scratch, but by adding one section that directly addresses the problem you chose in Week 2. Add a section that says "I help [person] solve [problem] by doing [solution]." That sentence is the foundation of your entire business.</p></div></div>
-                <div class="tut-point"><span class="tp-num">3</span><div><strong>Show your work</strong><p>Document everything you build. Screenshots. Short videos. Before and after comparisons. This is your portfolio building itself in real time. Every thing you make is proof — and proof is what clients pay for, not promises.</p></div></div>
-              </div>
-              <div class="tut-assignment">
-                <div class="ta-label">📋 Week 6 Assignment</div>
-                <p>Update your website from Week 5 to clearly show how it solves the <strong>real problem you picked in Week 2</strong>. Add a specific section that addresses that problem. Post before &amp; after screenshots in the group.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="mod-item reveal"><div class="mod-hd" onclick="toggleMod(this)"><div class="mod-left"><span class="mod-num">03</span><div><strong>Customer Development</strong><span class="mod-count">4 lessons</span></div></div><span class="mod-chev">+</span></div><div class="mod-bd">
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">door</span><strong>Get Out of the Building and Talk to Real People</strong></div><div class="analogy-box sm"><span class="an-icon">tea</span><div><strong>The Mai Shayi Analogy</strong><p>A mai shayi tea seller does not sit alone in the kitchen all day inventing new flavours that nobody ordered. He goes to where the people actually sit, listens carefully to what they complain about, watches closely what they refuse to drink, and adjusts his tea recipe based on feedback from actual customers rather than his own imagination. That is the entire essence of customer development.</p></div></div><p class="ml-body">The four essential steps are: Customer Discovery where you find out what problems really exist. Customer Validation where you confirm people will actually pay for your solution. Customer Creation where you scale what is already working. Company Building where you build the organisation around proven demand. Your personal opinion about what customers want is worth nothing. Only their actual observed behaviour matters. Talk to at least 20 real potential customers before building anything significant.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">mic</span><strong>Customer Interview Techniques That Actually Work</strong></div><div class="analogy-box sm"><span class="an-icon">detective</span><div><strong>The Detective Analogy</strong><p>A skilled detective does not walk into a room and immediately announce that they think you committed the crime. They ask open and careful questions, listen much more than they speak, and let the real evidence lead them to the truth rather than confirming their initial assumptions. Customer interviews work exactly the same way. Do not pitch your solution during the interview. Ask deeply about their real problem and let their honest words build the case for your product.</p></div></div><p class="ml-body">The core rules for effective customer interviews: always ask open-ended questions that cannot be answered with yes or no. Never pitch your solution during the interview session itself. Focus all your questions on past behaviour rather than future hypothetical intentions. The single most powerful question to ask is: What have you actually done about this problem so far? The best product insights always come from what people genuinely do in real life, never from what they say they might do someday.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">lock</span><strong>Customer Retention - Make People Want to Come Back</strong></div><div class="analogy-box sm"><span class="an-icon">suya</span><div><strong>The Suya Seller Analogy</strong><p>The best suya seller in your area does not just cook well. He remembers that Mr. Chukwu always wants extra pepper. He greets you by your name when you arrive. He gives you a small piece to taste for free when a fresh hot batch is ready. That personal attention costs him almost nothing extra but it keeps Mr. Chukwu coming back loyally every week for many years. Retention is simply this: keep making your customers feel genuinely seen and valued.</p></div></div><p class="ml-body">It costs businesses 5 times more money to acquire a brand new customer than to simply retain an existing satisfied one. Proven retention strategies include: delivering excellent customer service consistently every single time. Following up regularly with useful communication. Creating loyalty rewards for repeat customers. Delivering continuous value beyond what was initially promised. Customer churn which means people leaving after one purchase will kill a business faster than competition from other companies.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">chart3</span><strong>Acquire Customers Profitably from the Very Start</strong></div><div class="analogy-box sm"><span class="an-icon">fish</span><div><strong>The Fishing Analogy</strong><p>A fisherman who spends 5,000 naira on bait to catch a fish worth 1,000 naira is going broke very quickly. A fisherman who spends 500 naira on bait to catch a fish worth 10,000 naira is building a profitable and sustainable business. Your Customer Acquisition Cost must always be lower than the Customer Lifetime Value you receive from that same customer. Fish where the big fish actually swim, and use the most affordable effective bait you can find.</p></div></div><p class="ml-body">The main customer acquisition channels available to you: content marketing which is free but takes time to compound. Social media marketing which is cheap and scalable. Email marketing which delivers the highest return on investment of any digital channel. Organic word-of-mouth referrals which are the most powerful and completely free. Strategic partnerships with complementary businesses. The most important rule: your Customer Acquisition Cost must always remain lower than your Customer Lifetime Value or your business model is not sustainable and will eventually collapse.</p></div>
+        </div></div>
 
-        <!-- Week 7 -->
-        <div class="tut-item reveal">
-          <div class="tut-header" onclick="openTutorial('w7')">
-            <div class="tut-meta"><span class="tut-week">Week 7</span><span class="tut-tag">Skill</span></div>
-            <h4 class="tut-title">Proof &gt; Perfection — Ship It and Show It</h4>
-            <div class="tut-arrow">↓</div>
-          </div>
-          <div class="tut-body" id="w7">
-            <div class="tut-content">
-              <div class="tut-analogy">
-                <div class="ta-icon">🍽️</div>
-                <div>
-                  <strong>The Restaurant Analogy</strong>
-                  <p>No restaurant waits until their food is "perfect" before opening. They open. Customers come. They get feedback. They improve the recipe. Then more customers come. If they waited for perfection, they'd never open — and they'd run out of money before serving a single plate.<br><br>Your project doesn't need to be perfect. It needs to be <em>done enough to show</em>. The feedback you'll get from real people in Week 7 is worth more than 3 more months of working alone.</p>
-                </div>
-              </div>
-              <div class="tut-points">
-                <div class="tut-point"><span class="tp-num">1</span><div><strong>Why shipping matters</strong><p>When you publish something publicly, two things happen. First, you get real feedback from real people — not imaginary feedback from your own head. Second, you hold yourself accountable. It's much harder to give up on something the whole group has seen than something only you know about.</p></div></div>
-                <div class="tut-point"><span class="tp-num">2</span><div><strong>How to present your work</strong><p>You don't need to be a great speaker. Just explain three things: What problem does it solve? Who is it for? What did you build? Three sentences. That's a pitch. Practice saying it out loud before you post.</p></div></div>
-                <div class="tut-point"><span class="tp-num">3</span><div><strong>Discipline over motivation</strong><p>Motivation is the feeling you get when you start something exciting. Discipline is what keeps you going when the feeling is gone — which is usually by Week 3. If you made it to Week 7, you have more discipline than 80% of people who started with you. That is the real achievement.</p></div></div>
-              </div>
-              <div class="tut-assignment">
-                <div class="ta-label">📋 Week 7 Assignment</div>
-                <p>Post your project in the group. Explain: <strong>What it is. Who it's for. What problem it solves.</strong> Then, genuinely comment on at least 2 other people's projects. Encourage, critique, and question. This is how the group becomes valuable for everyone.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="mod-item reveal"><div class="mod-hd" onclick="toggleMod(this)"><div class="mod-left"><span class="mod-num">04</span><div><strong>Financial Intelligence</strong><span class="mod-count">5 lessons</span></div></div><span class="mod-chev">+</span></div><div class="mod-bd">
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">money</span><strong>Play the Cash Flow Game Deliberately</strong></div><div class="analogy-box sm"><span class="an-icon">cycle</span><div><strong>The Water Cycle Analogy</strong><p>The rich person's money cycle works like this: Income arrives, they use it to buy assets, those assets generate more income automatically, and they use that new income to buy even more assets. The poor person's cycle is: income arrives, expenses consume it all, and the result is zero every month. The game of financial freedom is to break into the first cycle as quickly and deliberately as possible.</p></div></div><p class="ml-body">The core Rich Dad philosophy is: always buy assets first and luxuries absolutely last. Track your personal cash flow every single month without exception. Learn to understand the difference between an income statement which shows money moving in and out and a balance sheet which shows what you own versus what you owe. Never buy a luxury item until the assets you own are generating enough income to pay for that luxury on your behalf.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">clipboard</span><strong>Read and Understand Financial Statements</strong></div><div class="analogy-box sm"><span class="an-icon">plane</span><div><strong>The Cockpit Dashboard Analogy</strong><p>A pilot never flies an aeroplane with their eyes closed and no instruments showing. The cockpit dashboard tells them their exact altitude, remaining fuel, current speed, and direction of travel at all times. Financial statements are your business cockpit dashboard. Your Income Statement shows your speed: are you moving fast or slowly? Your Balance Sheet shows your fuel: what do you have versus what do you owe? Your Cash Flow Statement shows your altitude: are you rising or falling right now?</p></div></div><p class="ml-body">Every entrepreneur must understand three essential financial statements. The Income Statement shows all revenue versus all expenses over a specific time period. The Balance Sheet shows all assets owned versus all liabilities owed at a specific point in time. The Cash Flow Statement shows the actual real movement of real money into and out of the business. Accounting is the language of business. If you cannot read these three documents, you are running your business completely blind.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">bank</span><strong>Good Debt vs Bad Debt - Understanding the Difference</strong></div><div class="analogy-box sm"><span class="an-icon">machine</span><div><strong>The Machine Analogy</strong><p>If you borrow 100,000 naira, buy a productive piece of equipment with it, earn 200,000 naira using that equipment, and then repay 120,000 naira total including interest, you are 80,000 naira ahead and the machine is now fully yours. That is good debt working for you. If you borrow 100,000 naira to buy nice clothes and pay for entertainment, you are left with debt and absolutely nothing to show for the borrowed money. Debt is a tool. Used with discipline it builds. Used carelessly it destroys everything you have worked for.</p></div></div><p class="ml-body">Good debt is borrowed money used specifically to purchase income-generating assets that produce positive cash flow and may be tax-deductible. Bad debt is borrowed money used to purchase depreciating items that produce zero cash flow and zero return. Rich people study and use good debt strategically to multiply their financial position. Poor people take on bad debt repeatedly to fund a lifestyle they cannot genuinely afford.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">cash</span><strong>Cash is King - Manage Your Burn Rate Carefully</strong></div><div class="analogy-box sm"><span class="an-icon">fire</span><div><strong>The Firewood Analogy</strong><p>Your available cash is firewood that keeps your business fire burning. Your burn rate is exactly how fast you are consuming that firewood. If you are burning 20 logs every day and you only have 100 logs remaining in your store, you have precisely 5 days before your fire goes completely out regardless of how warm and comfortable the room currently feels. More businesses die from running out of cash than from having genuinely bad ideas or products.</p></div></div><p class="ml-body">The essential cash flow management rules every entrepreneur must follow: track every single inflow and outflow daily without exception. Maintain at minimum 3 to 6 months of total operating expenses as your emergency cash runway at all times. Issue invoices to clients immediately upon completing any delivery. Collect all payments as fast as humanly possible. Here is the critical insight that surprises most people: a business can appear completely profitable on paper and still run out of actual cash and die within weeks. Profit is a calculated opinion. Cash in the bank account is a hard fact.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">graph</span><strong>Minimise Costs - Be Lean, Not Cheap</strong></div><div class="analogy-box sm"><span class="an-icon">athlete</span><div><strong>The Lean Athlete Analogy</strong><p>A lean athlete and an underweight athlete look similar from a distance but are completely different in reality. The lean athlete cut body fat while keeping all their muscle. They are fast, powerful, and competitive. The underweight athlete cut everything including the essential muscle. They are weak and cannot perform when it matters. Being lean in business means cutting expenses that generate no measurable return while keeping every investment that genuinely makes you stronger, faster, and more competitive.</p></div></div><p class="ml-body">Keep your fixed costs - the ones that do not change regardless of revenue - as absolutely minimal as possible at every stage of your business. Your variable costs should scale upward only in direct proportion to increasing revenue. Before every single purchase, honestly ask yourself: does this directly and measurably help me earn more or build a better product? If the honest answer is no then defer the purchase until your revenue justifies it. The vast majority of businesses that fail do so because they ran out of cash long before they ran out of good ideas.</p></div>
+        </div></div>
+
+        <div class="mod-item reveal"><div class="mod-hd" onclick="toggleMod(this)"><div class="mod-left"><span class="mod-num">05</span><div><strong>Business Systems and Models</strong><span class="mod-count">4 lessons</span></div></div><span class="mod-chev">+</span></div><div class="mod-bd">
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">gear</span><strong>Build Systems That Work Without You</strong></div><div class="analogy-box sm"><span class="an-icon">factory</span><div><strong>The Factory Analogy</strong><p>A factory that only runs and produces goods when the owner is physically present on the factory floor is not actually a factory. It is just the owner doing factory-level work in an expensive building. A real factory has machines, standardised processes, and trained workers that produce consistent goods at high quality whether the owner is present, at home, or on the other side of the country. If your business stops completely when you stop working, you do not own a business. You own a very demanding job.</p></div></div><p class="ml-body">The key components of a real business system: maximum automation of repetitive tasks wherever technology makes it possible. Standardised written procedures for every important business process so anyone can follow them. Scalable operations that function properly without requiring your direct personal involvement in every decision. Clear measurable metrics that allow you to manage and improve the business remotely from a high level. The richest entrepreneurs in the world build powerful networks and scalable systems. Everyone else just keeps working longer hours.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">streams</span><strong>Multiple Revenue Streams - Never Depend on Just One</strong></div><div class="analogy-box sm"><span class="an-icon">roof</span><div><strong>The Roof Drainage Analogy</strong><p>A roof with only one drainage pipe is dangerously risky. If that single pipe becomes blocked during a heavy rainstorm, the entire roof floods and causes damage everywhere. A roof with five separate drainage pipes means that one pipe becoming blocked barely causes any problem at all because the others handle the flow. Single-income individuals panic completely when their one income stream dries up suddenly. People with multiple streams can lose one entirely and still function comfortably.</p></div></div><p class="ml-body">The main types of revenue streams available to entrepreneurs: direct product sales which are one-time transactions. Direct service fees which require ongoing delivery of your time or expertise. Subscription or membership fees which are recurring and therefore the most powerful and predictable type. Licensing fees where others pay to use something you created. Affiliate commissions where you earn by recommending other people's products. Sponsorship income from brands that want access to your audience. The practical strategy is to master one stream completely first, then deliberately add a second stream once the first is stable and growing.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">target</span><strong>The 80/20 Rule - Focus Ruthlessly on What Produces Results</strong></div><div class="analogy-box sm"><span class="an-icon">farmer</span><div><strong>The Farmer and His Fields Analogy</strong><p>A farmer with 10 separate fields notices after careful observation that just 2 of those fields are producing 80 percent of his entire harvest while the other 8 fields combined produce barely 20 percent. The smart and experienced farmer does not water all 10 fields equally out of fairness. He pours most of his precious water, time, and fertiliser into the 2 best performing fields. That focused approach is the 80/20 principle applied to agriculture and it applies equally powerfully to every aspect of your business.</p></div></div><p class="ml-body">In practical business terms: 80 percent of your total revenue typically comes from just 20 percent of your customers. 80 percent of your meaningful results come from just 20 percent of your daily activities and efforts. 80 percent of your frustrating problems come from just 20 percent of your customer base or processes. The essential discipline is to systematically identify your vital 20 percent - your best customers, your most effective marketing channels, your most profitable products - and focus the majority of your energy and resources there. Ruthlessly minimise or eliminate the 80 percent that contributes barely anything to your growth.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">castle</span><strong>Build a Competitive Moat Around Your Business</strong></div><div class="analogy-box sm"><span class="an-icon">shield</span><div><strong>The Castle and Moat Analogy</strong><p>A castle built with no moat around it can be attacked easily by any enemy army because they can simply walk straight up to the walls without any obstacle. A castle surrounded by a wide and deep moat forces even the most determined enemy to think very carefully about whether an attack is worth attempting at all. Your competitive moat in business is everything that makes it genuinely difficult for competitors to copy what you do and steal your customers away.</p></div></div><p class="ml-body">The four most powerful types of business moats that create lasting competitive advantage: network effects where more users automatically make the product more valuable for all existing users, the way WhatsApp works. Brand power where customers pay premium prices specifically because they trust your name and reputation. Intellectual property including patents, proprietary processes, and unique methodologies that competitors cannot legally copy. Significant cost advantages that allow you to produce at lower cost than any competitor. The most important strategic question to ask regularly is: what specifically would stop a well-funded competitor from copying exactly what I do starting tomorrow? If your honest answer is nothing, then building your moat must become your highest priority.</p></div>
+        </div></div>
+
+        <div class="mod-item reveal"><div class="mod-hd" onclick="toggleMod(this)"><div class="mod-left"><span class="mod-num">06</span><div><strong>Marketing and Growth</strong><span class="mod-count">5 lessons</span></div></div><span class="mod-chev">+</span></div><div class="mod-bd">
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">email</span><strong>Build Your Email List Before Everything Else</strong></div><div class="analogy-box sm"><span class="an-icon">land</span><div><strong>The Rented vs Owned Land Analogy</strong><p>Building your audience exclusively on social media is like farming on someone else's rented land. Instagram can change its algorithm overnight and your harvest drops to zero without any warning or compensation. An email list is land that you own outright. You built it yourself, you control it completely, and absolutely nobody can take it away from you. 1,000 real email subscribers who trust you is an asset you own permanently.</p></div></div><p class="ml-body">Email marketing consistently delivers the highest return on investment of any digital marketing channel available, averaging thousands of percent return on every naira spent. The proven strategy is to collect email addresses from day one using a compelling free lead magnet such as a practical guide, a useful checklist, or a valuable template that your target audience genuinely wants. Then send consistent, valuable, and genuinely helpful emails to your list regularly for weeks or months before you ever attempt to sell anything to them. Build the relationship and the trust first. The sales will follow naturally.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">pen</span><strong>Content Marketing - Give Real Value Before Asking for Anything</strong></div><div class="analogy-box sm"><span class="an-icon">groundnut</span><div><strong>The Groundnut Seller Analogy</strong><p>The smartest and most successful groundnut seller always lets you taste one groundnut before you decide whether to buy. That small taste is completely free and costs him almost nothing. But it creates genuine trust and real appetite in you as a potential buyer. The vast majority of people who taste end up buying a full bag. Content marketing is your free taste: tutorials, tips, behind-the-scenes honesty, and useful guides that demonstrate your expertise before you ever ask anyone to pay you money.</p></div></div><p class="ml-body">The types of content that consistently build real trust with an audience: educational posts where you teach something specific and genuinely useful that you know well. Behind-the-scenes content where you show your real process including mistakes and lessons. Detailed case studies that prove concretely that you have already solved the exact problem your audience faces. Honest personal storytelling that shares real struggles alongside real achievements. The core principle of content marketing is that it attracts people who are already interested in what you offer, which dramatically reduces the selling effort required to convert them into paying customers.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">test</span><strong>A/B Testing - Test Systematically and Assume Nothing</strong></div><div class="analogy-box sm"><span class="an-icon">stall</span><div><strong>The Market Stall Sign Analogy</strong><p>A clever market seller hangs a red-coloured sign above their stall on Monday and a blue-coloured sign on Tuesday. They carefully count which day more people stopped and made a purchase. They are not relying on personal preference or guessing which colour looks better. They are letting the real purchasing behaviour of actual customers decide which sign is more effective. You can and should apply this exact evidence-based thinking to every element of your business from pricing to headlines to button colours.</p></div></div><p class="ml-body">The disciplined approach to A/B testing that produces reliable results: run only one test at a single time so you know clearly which change caused the result. Change only one variable per test so there is no confusion about what made the difference. Let the test run long enough to gather statistically meaningful data before drawing any conclusions. Apply this systematic testing method to: your written headlines and marketing copy. Your different pricing strategies and price points. The layout and design of your landing pages. Your email subject lines. Your calls-to-action. Even small improvements of 5 or 10 percent compound into massive competitive advantages over time when applied consistently.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">handshake</span><strong>Strategic Partnerships That Multiply Your Reach</strong></div><div class="analogy-box sm"><span class="an-icon">gym</span><div><strong>The Gym Training Partner Analogy</strong><p>When you train alone at the gym, you push yourself hard until you get tired and then you stop. When you train with a motivated and encouraging partner, you consistently push harder, attempt more repetitions than you thought possible, and hold each other accountable to showing up even when motivation is low. Strategic business partnerships work the same powerful way: a complementary business brings their established audience to your offer and you bring yours to theirs. When the partnership fits perfectly, one plus one becomes eleven rather than two.</p></div></div><p class="ml-body">The main types of strategic business partnerships worth pursuing: affiliate partnerships where the partner earns a meaningful commission on every sale they successfully refer to you. Joint ventures where two parties co-create a product or service together and share both the investment and the resulting profits. Co-marketing arrangements where both businesses share their audiences simultaneously and both benefit from the expanded reach. Strategic alliances where complementary service providers bundle their offerings together to serve the same customer base more comprehensively. The key principle for selecting the right partners: look for businesses that serve exactly the same customer you serve but do not compete directly with what you offer.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">web</span><strong>The Real Power of Your Professional Network</strong></div><div class="analogy-box sm"><span class="an-icon">spider</span><div><strong>The Spider Web Analogy</strong><p>A spider's web appears fragile and delicate when you look at it closely. But it consistently catches far more prey than any single thread working alone ever could. Your professional network functions exactly like this web. Each individual connection you build is one thread. The complete web catches opportunities, referrals, valuable collaborations, and critical market information that you working in isolation could never reach on your own. Every single strong connection you build multiplies your potential reach and your visible opportunities exponentially.</p></div></div><p class="ml-body">Building a powerful professional network is not about aggressively selling yourself or your products to everyone you meet. It is about building genuine human relationships that create mutual value for both people involved over a long period of time. The fundamental principle that separates great networkers from average ones: give generously and consistently before you ever ask for anything in return. The quality of your professional network is often described as your net worth for a very good reason. Consistently invest in building real relationships with people who inspire you, challenge your thinking, and open doors you could not open alone.</p></div>
+        </div></div>
+
+        <div class="mod-item reveal"><div class="mod-hd" onclick="toggleMod(this)"><div class="mod-left"><span class="mod-num">07</span><div><strong>Build and Scale Smart</strong><span class="mod-count">4 lessons</span></div></div><span class="mod-chev">+</span></div><div class="mod-bd">
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">target2</span><strong>Product-Market Fit - The Most Important Milestone</strong></div><div class="analogy-box sm"><span class="an-icon">socket</span><div><strong>The Socket and Plug Analogy</strong><p>An electrical plug fits perfectly into some wall sockets and not into others. Product-market fit is the moment when your product fits your target market socket perfectly and power flows easily without forcing or struggling. The clear signs that you have found your socket: customers are actively pulling you toward them rather than you pushing your product at them. People recommend your product to friends without you ever asking them to. Your customer retention rate is genuinely high. Until you find your socket, everything you do is just expensive and exhausting guesswork.</p></div></div><p class="ml-body">The most reliable signs that you have genuinely achieved product-market fit: strong and consistent pull from the market meaning customers come to you without heavy paid advertising. Organic word-of-mouth growth where satisfied customers actively recommend you to others. A high customer retention rate meaning people keep coming back and keep paying. Increasing usage and engagement patterns over time as your user base grows. The critical strategic warning is: never attempt to scale your business aggressively before you have clearly achieved product-market fit. Scaling before fit simply means you will spend dramatically more money pouring water into a bucket with holes in the bottom. Find the fit first with a small audience. Then and only then should you scale.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">rocket</span><strong>Scale Intelligently, Not Just Quickly</strong></div><div class="analogy-box sm"><span class="an-icon">bamboo</span><div><strong>The Bamboo Growth Analogy</strong><p>Bamboo plants spend their entire first 4 years building an extensive and incredibly strong root system completely underground with nothing visible whatsoever above the surface during all that time. Then in year 5, the bamboo plant grows an astonishing 27 metres in height in just 6 weeks. Businesses that attempt to grow too fast before building strong roots which are their systems, cash flow, and proven retention will collapse under the weight of their own rapid growth. Build the roots first. Then allow the bamboo to shoot upward naturally.</p></div></div><p class="ml-body">The practical scaling readiness checklist to work through before committing to serious growth: do you have a completely repeatable and documented sales process that anyone on your team can follow? Are all your core business systems written down and standardised? Do you have adequate cash runway of at least 6 months of operating expenses? Have you proven strong customer retention rates over at least 3 to 6 months of real data? The essential principle is to scale your systems and processes before you attempt to scale your revenue. Never hire new team members rapidly just because your revenue is currently growing fast. Always make sure your operational foundation can genuinely support the weight of significant growth before you add it.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">search</span><strong>Know Your Market Deeply and Completely</strong></div><div class="analogy-box sm"><span class="an-icon">weather</span><div><strong>The Weather Forecast Analogy</strong><p>A farmer who studies accurate weather forecasts carefully before deciding when to plant their crops is aligning all their effort and investment with observable reality and dramatically increasing the probability of a successful harvest. A farmer who plants entirely based on gut feeling and optimism is risking their entire season's investment and income on a guess. Market research is your weather forecast for business. It does not eliminate all risk from the equation. But it dramatically reduces the risk by helping you align your efforts with market reality rather than personal hope.</p></div></div><p class="ml-body">The four critical areas of market research that every entrepreneur must investigate before committing significant resources: total market size and whether the market is currently expanding or contracting. Comprehensive competitor analysis to understand what specific approaches are working well and what gaps currently exist that you could fill. Detailed customer demographics including exactly who buys, how often they buy, and most importantly why they choose one solution over another. Current and emerging industry trends to understand clearly where the market is heading over the next 2 to 5 years rather than where it is today. Thorough research conducted before you build reduces your total business risk by up to 90 percent. Never build into a clearly shrinking or declining market unless you possess a genuinely unique and defensible competitive advantage that others cannot easily replicate.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">doc</span><strong>Business Setup - Legal Basics Every Nigerian Entrepreneur Needs</strong></div><div class="analogy-box sm"><span class="an-icon">permit</span><div><strong>The Building Permit Analogy</strong><p>You can construct a building in Nigeria without obtaining the proper government permit and it might stand perfectly fine for many years without any problems. But the moment someone files a complaint with the appropriate authorities, your entire building can be legally demolished with no compensation paid to you whatsoever. A properly and legally registered business with the correct structure is like a building with full permits: government authorities cannot simply shut it down arbitrarily, your personal assets are legally protected from business debts and liabilities, and serious professional clients immediately take you more seriously when they see your registration documents.</p></div></div><p class="ml-body">The essential legal and financial steps for every Nigerian entrepreneur to complete: register your business with the Corporate Affairs Commission when your revenue justifies the cost and compliance requirement. Open a completely separate bank account dedicated exclusively to your business from your very first day of operation and never mix personal and business money. Understand clearly which specific taxes apply to your type and size of business including VAT obligations, company income tax, and PAYE if you employ staff. Track every single business expense meticulously from the start because many legitimate business expenses are tax-deductible and reduce the total tax you legally owe. Every naira you save through legitimate and compliant tax planning is a naira that can be reinvested directly into growing your business faster.</p></div>
+        </div></div>
+
+        <div class="mod-item reveal"><div class="mod-hd" onclick="toggleMod(this)"><div class="mod-left"><span class="mod-num">08</span><div><strong>Leadership and Team Building</strong><span class="mod-count">3 lessons</span></div></div><span class="mod-chev">+</span></div><div class="mod-bd">
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">crown</span><strong>True Leadership Is Earned Influence, Not Imposed Authority</strong></div><div class="analogy-box sm"><span class="an-icon">magnet</span><div><strong>The Magnet Analogy</strong><p>A weak magnet has to be forced and pressed directly against metal before it can hold anything in place. The moment you remove the pressure it falls away. A powerful magnet pulls things toward it naturally and effortlessly from a meaningful distance. Leadership based on fear or imposed authority must be constantly maintained and pushed by the leader. The moment that leader turns their attention away, everything falls apart immediately. But a leader who has genuinely earned real influence through consistent action and demonstrated integrity pulls their team naturally toward the shared vision even when the leader is not present or watching.</p></div></div><p class="ml-body">The fundamental leadership principles that every founder must embody consistently: lead by clear personal example first and foremost because people watch what you actually do far more carefully than they listen to what you say. Communicate the shared vision clearly, repeatedly, and with genuine conviction until every team member can articulate it without prompting. Empower your team to make real decisions within defined boundaries rather than creating a culture where every small decision must wait for your personal approval. Take full and complete personal responsibility for every failure and mistake while generously sharing credit for every win and success with the people who made it happen. The foundational truth that every great leader eventually discovers: you absolutely cannot lead other people with consistency and integrity until you have first learned to lead yourself with the same consistency and integrity every single day.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">team</span><strong>Build a World-Class Team Even on a Tight Budget</strong></div><div class="analogy-box sm"><span class="an-icon">football</span><div><strong>The Football Team Analogy</strong><p>A football team that spends a fortune acquiring the most expensive and famous players in the market, but then places all those expensive players in the completely wrong positions for their individual skills, will consistently lose to a well-organised, well-coached team of average players who are each placed in exactly the right position to maximise their individual strengths. Hiring is fundamentally about fit: the right person in the right role with the right attitude and values. The best leaders always hire people who are better than themselves in specific areas. Mediocre leaders hire weaker people so that they can feel safely superior. Always hire upward.</p></div></div><p class="ml-body">The proven hiring principles that build great early-stage teams: always hire primarily for genuine attitude and demonstrated learning ability first, then train specifically for the technical skill your business needs. Cultural fit with your company's values and working style matters significantly more than impressive qualifications or an extensive CV at the early stage when everyone on the team has direct impact on the culture. Be deliberately slow and thorough during the hiring process and take adequate time to properly assess genuine fit. But be completely decisive and act quickly when you clearly have evidence that someone is not working out and is damaging the team or the culture. Write down and document your company culture explicitly before you grow significantly so that every new person who joins knows exactly what they are joining and what is expected of them.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">plant</span><strong>Company Culture Eats Strategy for Breakfast Every Time</strong></div><div class="analogy-box sm"><span class="an-icon">soil</span><div><strong>The Soil Analogy</strong><p>You can plant the absolute best and most expensive seed available in the entire world. But if you plant it in genuinely poor soil that lacks the nutrients it needs, the resulting tree will struggle to survive and may die before it ever produces fruit. Company culture is your organisational soil. A brilliant and well-researched business strategy planted in a toxic, low-trust company culture will fail consistently and predictably. A simple and straightforward strategy planted in a great culture where people genuinely trust each other, take real ownership of their work, and care deeply about the outcomes they are creating will consistently thrive and outperform. Fix the soil quality first before you worry about which seeds to plant.</p></div></div><p class="ml-body">Company culture in practice is determined by the sum total of these observable elements: which specific behaviours are actually rewarded with recognition, promotion, and compensation. Which problematic behaviours are genuinely corrected or removed versus what is simply tolerated and allowed to continue. How your team members communicate honestly with each other when things are genuinely difficult and under pressure. What the team collectively believes about the importance of serving customers well and delivering high quality consistently. The critically important insight that every founder must internalise: culture is entirely shaped and defined by what the founder does every single day in their actual behaviour, not by the inspiring values written on the company website or painted on the office wall. What you consistently do defines the culture. What you say is simply decoration that nobody believes if it does not match the daily reality.</p></div>
+        </div></div>
+
+        <div class="mod-item reveal"><div class="mod-hd" onclick="toggleMod(this)"><div class="mod-left"><span class="mod-num">09</span><div><strong>Action and Execution</strong><span class="mod-count">3 lessons</span></div></div><span class="mod-chev">+</span></div><div class="mod-bd">
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">launch</span><strong>What Is Your Next Concrete Move Starting Today?</strong></div><div class="analogy-box sm"><span class="an-icon">blueprint</span><div><strong>The Architect and Blueprint Analogy</strong><p>An architect who designs the most beautiful and technically perfect building blueprint in the entire world but then never breaks ground and never pours a single foundation has produced absolutely nothing of real value. The blueprint was necessary and important as a plan. But it is the foundation actually poured into the earth, the walls genuinely raised, and the roof physically placed that creates the building that real people can live and work in. You have now studied 9 complete business modules. The time for studying is over. Now you must break ground on your own business.</p></div></div><p class="ml-body">The concrete actions you need to take starting immediately, not next week: choose your specific business idea today and write it down with a clear description of the problem it solves. Research your target market this week by talking to real potential customers, not by reading articles about them. Have meaningful conversations with at least 5 potential customers before you build or buy anything at all. Build the simplest possible MVP version of your product or service even if it feels embarrassingly basic and rough. Put it in front of real people and observe their genuine reaction to it. The most important truth in all of entrepreneurship is this: the best time to have started was yesterday. The second best time is right now, today, in this moment.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">muscle</span><strong>Feel the Fear Fully - Then Act Anyway</strong></div><div class="analogy-box sm"><span class="an-icon">swim</span><div><strong>The Swimming Lesson Analogy</strong><p>No amount of reading swimming technique books, watching swimming videos, or studying the physics of water will teach your body how to actually swim. At some unavoidable point you must get into the water. The very first time is genuinely terrifying for almost everyone. You will almost certainly swallow some water uncomfortably. You will likely panic briefly. You will probably feel embarrassed in front of others watching. But after 20 minutes of actual practice in the water you are floating. After one committed week you are moving. The fear itself does not disappear as you hoped it would. Instead you develop the ability and the discipline to act effectively despite it. That gap between feeling fear and acting anyway is precisely what separates serious builders from permanent spectators.</p></div></div><p class="ml-body">The common fears that paralyse aspiring entrepreneurs at the start: the fear of public failure and what others will think and say about them. The fear of harsh judgment from people they know personally and respect. The fear of the genuinely unknown territory of running a real business. Even the fear of unexpected success and the new responsibilities it brings. Here is the truth that changes everything when you truly accept it: none of these fears are anywhere near as painful, humiliating, or damaging as looking back in 5 years and realising you are in exactly the same position because you chose not to start. Fear without any direction is simply anxiety. Fear with a clear direction and a concrete action to take becomes productive energy. Channel every bit of that energy directly into building something real rather than waiting for the fear to disappear, which it never completely does for anyone.</p></div>
+          <div class="mod-lesson"><div class="ml-top"><span class="ml-icon">star</span><strong>Applied Knowledge Is the Only Real Power</strong></div><div class="analogy-box sm"><span class="an-icon">generator</span><div><strong>The Generator Analogy</strong><p>Electrical power sitting unused inside a generator that never gets started and never runs helps absolutely nobody. That same electrical power flowing through wires and actively running a productive business, providing light to homes at night, and keeping a hospital's life-saving equipment operational - that is what real and meaningful power looks like in action. All the knowledge you have studied and absorbed across these 9 modules is stored potential energy sitting in your generator right now. Applied knowledge that you actually use to take real action is the only form of power that creates any value in the world.</p></div></div><p class="ml-body">Take complete and honest stock of what you now possess after completing all 9 modules: you have a comprehensive understanding of the Lean Startup methodology and how to test ideas before investing heavily in them. You have absorbed the core financial wisdom from Rich Dad Poor Dad about assets, liabilities, and building lasting wealth. You have worked through 9 complete modules containing over 30 individual lessons, each grounded in a real Nigerian analogy that makes the concept memorable and applicable. You have a complete and actionable business roadmap that most entrepreneurs never access. Here is the final and most important truth of this entire course: knowledge by itself is not power in any meaningful sense. Applied knowledge that you act on consistently and courageously is the only real power that exists in business and in life. The entrepreneurs who build something meaningful and lasting are not the ones who know the most information. They are the ones who act most consistently and persistently on what they know, even when it is hard, even when they are scared, and even when progress feels painfully slow. Your business journey and your real education both begin right now.</p></div>
+        </div></div>
 
       </div>
+      <div class="biz-cta reveal"><p>Ready to put all of this into practice with real accountability? Join the coaching group for live weekly sessions, peer accountability, and honest feedback every week.</p><a href="https://wa.me/2349056232366?text=I%20want%20to%20join%20the%20Business%20Mastery%20coaching" target="_blank" class="btn-dark" style="display:inline-flex;margin-top:16px">Apply to Join</a></div>
     </div>
-
-    <!-- ── PHASE 3 ── -->
-    <div class="phase-panel" id="phase3">
-      <div class="phase-intro reveal">
-        <h3>Monetization — Getting Paid Without Feeling Uncomfortable</h3>
-        <p>Money isn't shameful. Asking for money in exchange for real value is honourable. This phase removes the mental blocks around earning and gives you a simple framework to start charging for what you do.</p>
-      </div>
-      <div class="tut-list">
-
-        <!-- Week 8 -->
-        <div class="tut-item reveal">
-          <div class="tut-header" onclick="openTutorial('w8')">
-            <div class="tut-meta"><span class="tut-week">Week 8</span><span class="tut-tag">Money</span></div>
-            <h4 class="tut-title">Earning Legally — Service vs Product &amp; Freelancing Basics</h4>
-            <div class="tut-arrow">↓</div>
-          </div>
-          <div class="tut-body" id="w8">
-            <div class="tut-content">
-              <div class="tut-analogy">
-                <div class="ta-icon">💇</div>
-                <div>
-                  <strong>The Barber vs Shampoo Analogy</strong>
-                  <p>A barber sells a <strong>service</strong> — you come, he cuts, you pay. He earns only when he works. A shampoo factory sells a <strong>product</strong> — they make it once, then sell the same bottle thousands of times while they sleep.<br><br>Both are valid ways to earn. As a teenager starting out, services are faster to sell — you have a skill, someone needs it, money changes hands today. Products take longer to build but scale better. Start with services. Build toward products.</p>
-                </div>
-              </div>
-              <div class="tut-points">
-                <div class="tut-point"><span class="tp-num">1</span><div><strong>What can you sell right now?</strong><p>If you can use a computer confidently: typing, formatting documents, data entry. If you know Canva: logo design, flyers, social media graphics. If you know HTML: simple websites for churches, schools, small businesses. If you can write clearly: captions, blog posts, WhatsApp broadcast messages for businesses. Pick one. Not all. One.</p></div></div>
-                <div class="tut-point"><span class="tp-num">2</span><div><strong>How to price yourself</strong><p>Start by asking: "What would it cost the client to NOT solve this problem?" If a shop owner has no Instagram presence and loses 10 customers a week because of it, your ₦15,000 page setup is cheap. Price based on the value you create, not how long it takes you.</p></div></div>
-                <div class="tut-point"><span class="tp-num">3</span><div><strong>Legal doesn't mean complicated</strong><p>In Nigeria, you can earn as an individual without registering a business — up to a point. Get a separate bank account for your earnings. Keep a simple record of who paid you, what for, and when. That's your accounting system for now. Simple = sustainable.</p></div></div>
-              </div>
-              <div class="tut-assignment">
-                <div class="ta-label">📋 Week 8 Assignment</div>
-                <p>Name your service and price it. Write: <em>"I offer [service] for [type of client] at [price]."</em> Even if the service is imaginary for now, give it a real price. Then post it in the group. Getting comfortable writing a price publicly is the first step to getting comfortable saying it out loud.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Week 9 -->
-        <div class="tut-item reveal">
-          <div class="tut-header" onclick="openTutorial('w9')">
-            <div class="tut-meta"><span class="tut-week">Week 9</span><span class="tut-tag">Money</span></div>
-            <h4 class="tut-title">Selling Without Shame — Communication &amp; Handling Rejection</h4>
-            <div class="tut-arrow">↓</div>
-          </div>
-          <div class="tut-body" id="w9">
-            <div class="tut-content">
-              <div class="tut-analogy">
-                <div class="ta-icon">☀️</div>
-                <div>
-                  <strong>The Umbrella Seller Analogy</strong>
-                  <p>When it rains, an umbrella seller walks through traffic selling umbrellas. Does he feel ashamed? No — because he knows the people in those cars need what he's selling. He's not begging. He's matching a solution to a problem.<br><br>That's what selling is. If your service genuinely helps someone, telling them about it is a favour — not a burden. The shame comes from selling things people don't need. Sell things people actually need, and the shame disappears.</p>
-                </div>
-              </div>
-              <div class="tut-points">
-                <div class="tut-point"><span class="tp-num">1</span><div><strong>The simple pitch formula</strong><p>Every good pitch has three parts: the problem, the solution, and the proof. "Most small businesses in Abuja lose customers because they have no online presence [problem]. I build simple, clean websites for ₦30,000 that get them found online [solution]. Here's one I built for a shop in Wuse [proof]." That's it. No grammar tricks. No pressure. Just clarity.</p></div></div>
-                <div class="tut-point"><span class="tp-num">2</span><div><strong>Rejection is data, not failure</strong><p>When someone says no, they're not rejecting you — they're rejecting the offer as it was presented. Ask: "What would need to change for this to work for you?" Their answer is free market research. Sometimes they say "I can't afford it" — that means price it differently. Sometimes they say "I don't think I need it" — that means your pitch wasn't clear enough.</p></div></div>
-                <div class="tut-point"><span class="tp-num">3</span><div><strong>Follow up without being annoying</strong><p>Most sales happen after the 3rd conversation — not the 1st. If someone says "let me think about it," check in after 3 days. Say: "Just checking if you had any questions." That's it. Not pressure. Just presence. The one who follows up professionally almost always wins.</p></div></div>
-              </div>
-              <div class="tut-assignment">
-                <div class="ta-label">📋 Week 9 Assignment</div>
-                <p>Write a pitch for your service in the comments using the formula: <strong>Problem → Solution → Proof</strong>. Keep it under 80 words. Then comment on two other people's pitches — tell them what was clear, what was confusing, and how they could make it stronger.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Week 10 -->
-        <div class="tut-item reveal">
-          <div class="tut-header" onclick="openTutorial('w10')">
-            <div class="tut-meta"><span class="tut-week">Week 10</span><span class="tut-tag">Money</span></div>
-            <h4 class="tut-title">First Money Framework — Save, Reinvest, Repeat</h4>
-            <div class="tut-arrow">↓</div>
-          </div>
-          <div class="tut-body" id="w10">
-            <div class="tut-content">
-              <div class="tut-analogy">
-                <div class="ta-icon">🌊</div>
-                <div>
-                  <strong>The Bucket &amp; River Analogy</strong>
-                  <p>Most people treat income like a bucket — money comes in, money goes out, bucket stays empty. Smart people treat it like a river — some water flows out for living expenses, some fills a lake (savings), and some is poured back upstream to make the river stronger (reinvestment).<br><br>Your first ₦10,000 earned should not all go to new clothes or phone data. It should go: some to cover costs, some saved, some reinvested into growing your skill or business. That's how small money becomes big money over time.</p>
-                </div>
-              </div>
-              <div class="tut-points">
-                <div class="tut-point"><span class="tp-num">1</span><div><strong>The 50-30-20 rule (simplified)</strong><p>When you earn, split it: 50% for what you need (school materials, transport). 30% saved — don't touch this. 20% reinvested into your builder journey (a domain, a book, a software subscription, ads). This isn't a strict rule, but having a plan for your money stops it from disappearing.</p></div></div>
-                <div class="tut-point"><span class="tp-num">2</span><div><strong>What to reinvest in first</strong><p>The highest return on investment at your stage is your own skills. ₦3,000 spent on a course that teaches you a skill worth ₦30,000 per client is the best investment available. Before you buy a gadget, ask: "Does this help me build or earn?" If no — wait.</p></div></div>
-                <div class="tut-point"><span class="tp-num">3</span><div><strong>Track everything</strong><p>Get a simple notebook or a Google Sheet. Every income and every expense. Not because FIRS is watching (they're not, not yet) but because clarity about money is the foundation of confidence about money. People who don't track spend emotionally. People who track, spend strategically.</p></div></div>
-              </div>
-              <div class="tut-assignment">
-                <div class="ta-label">📋 Week 10 Assignment</div>
-                <p>Create a simple <strong>money plan</strong> for your next ₦10,000 earned. Use any format — spreadsheet, notebook photo, or a written post. Show how you'd split it: what you'd spend, what you'd save, and what you'd reinvest and why.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ── PHASE 4 ── -->
-    <div class="phase-panel" id="phase4">
-      <div class="phase-intro reveal">
-        <h3>Identity — Who You Are Becoming Is More Important Than What You've Built</h3>
-        <p>The hardest and most important phase. Skills can be copied. Your reputation, your values, and your vision cannot be. This is where you build the foundation that will carry everything else for the next decade.</p>
-      </div>
-      <div class="tut-list">
-
-        <!-- Week 11 -->
-        <div class="tut-item reveal">
-          <div class="tut-header" onclick="openTutorial('w11')">
-            <div class="tut-meta"><span class="tut-week">Week 11</span><span class="tut-tag">Identity</span></div>
-            <h4 class="tut-title">Personal Brand — Your Reputation Is Your Most Valuable Asset</h4>
-            <div class="tut-arrow">↓</div>
-          </div>
-          <div class="tut-body" id="w11">
-            <div class="tut-content">
-              <div class="tut-analogy">
-                <div class="ta-icon">🪙</div>
-                <div>
-                  <strong>The Coin Analogy</strong>
-                  <p>A coin has two sides — heads (what you show the world) and tails (who you actually are). Your personal brand is the heads side: what people see when they Google you, visit your profile, or hear your name mentioned.<br><br>Right now, your digital presence is either building your reputation or quietly destroying it. Every public post, comment, and photo contributes. Employers, clients, and collaborators will check — and what they find in 30 seconds will decide in 30 seconds whether they move forward with you or not.</p>
-                </div>
-              </div>
-              <div class="tut-points">
-                <div class="tut-point"><span class="tp-num">1</span><div><strong>What "cleaning up your presence" means</strong><p>Search your name on Google. Look at your Facebook, Instagram, Twitter. Ask: "If a client or employer saw this today, would they hire me?" Delete or archive anything that conflicts with the professional you're becoming. This is not about pretending — it's about alignment.</p></div></div>
-                <div class="tut-point"><span class="tp-num">2</span><div><strong>Reputation as currency</strong><p>In Nigeria's business culture, who vouches for you matters enormously. When your name comes up in a room and people say "Oh, Simeon? He always delivers" — that reputation opens doors no certificate can. Build it intentionally by showing up consistently, delivering what you promise, and never burning bridges.</p></div></div>
-                <div class="tut-point"><span class="tp-num">3</span><div><strong>Digital responsibility</strong><p>You are building in public — which means your wins and your failures are visible. That's a feature, not a bug. Visible struggle builds trust faster than hidden success. But be thoughtful. Don't share what you'd regret. Don't attack people publicly. Don't make promises you can't keep online.</p></div></div>
-              </div>
-              <div class="tut-assignment">
-                <div class="ta-label">📋 Week 11 Assignment</div>
-                <p>Audit your online presence this week. Google your name. Review your Facebook profile. Then: <strong>update your profile photo, bio, and cover photo</strong> to reflect the builder you are now — not the student you were before this program started. Share your updated profile link in the group.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Week 12 -->
-        <div class="tut-item reveal">
-          <div class="tut-header" onclick="openTutorial('w12')">
-            <div class="tut-meta"><span class="tut-week">Week 12</span><span class="tut-tag">Identity</span></div>
-            <h4 class="tut-title">Vision &amp; Direction — The 2-Year Version of You</h4>
-            <div class="tut-arrow">↓</div>
-          </div>
-          <div class="tut-body" id="w12">
-            <div class="tut-content">
-              <div class="tut-analogy">
-                <div class="ta-icon">🗺️</div>
-                <div>
-                  <strong>The GPS Analogy</strong>
-                  <p>A GPS is useless if you don't enter a destination. You can drive forever and never arrive anywhere meaningful. Most teenagers are driving without a destination — reacting to whatever feels urgent or exciting, going where the road takes them.<br><br>A 2-year vision is your GPS destination. You may take a different route than planned. You may arrive late. But knowing where you're headed changes every daily decision you make — because you can now ask "does this take me closer or further from where I'm going?"</p>
-                </div>
-              </div>
-              <div class="tut-points">
-                <div class="tut-point"><span class="tp-num">1</span><div><strong>How to write a vision statement</strong><p>Answer these questions in writing: Where do I want to be in 2 years? What do I want to be earning? What will I have built? What kind of person will I be? Who will I have helped? It doesn't have to be big. It has to be yours. A clear, specific, personal vision beats a vague, borrowed dream every time.</p></div></div>
-                <div class="tut-point"><span class="tp-num">2</span><div><strong>Faith, values, and responsibility</strong><p>Building without values leads to shortcuts that destroy everything you built. What do you believe in? What won't you compromise even for money? Your values are the architecture of your character. They determine what you say yes to, what you say no to, and who you become along the way.</p></div></div>
-                <div class="tut-point"><span class="tp-num">3</span><div><strong>This is not the end</strong><p>12 weeks is long enough to change your thinking. It's not long enough to change your life. What you've built here — the mindset, the skills, the connections — is a foundation. Now comes the real work: showing up every day, building slowly, deliberately, visibly. Teenagers respect clarity, not hype. Be clear. Keep building.</p></div></div>
-              </div>
-              <div class="tut-assignment">
-                <div class="ta-label">📋 Week 12 Assignment</div>
-                <p>Write your <strong>2-year vision statement</strong>. Start it with: "By [month, year], I will be..." Make it specific. Include: what you'll be doing, what you'll have earned or built, who you'll have helped, and what kind of person you'll have become. This is your contract with yourself. Post it in the group.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Closing quote -->
-      <div class="bldr-quote reveal">
-        <blockquote>"Do not over-motivate. Do not oversell. Build slowly, deliberately, visibly."</blockquote>
-        <cite>— The Senior Builder Blueprint</cite>
-      </div>
-
-    </div><!-- /phase4 -->
-
-    <!-- CTA -->
-    <div class="bldr-cta reveal">
-      <h3>Join the Senior Builder Group</h3>
-      <p>The coaching happens inside a private Facebook group — live sessions, assignments, peer accountability, and real feedback. One channel. No noise. Disciplined execution.</p>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:24px">
-        <a href="https://wa.me/2349056232366?text=I%20want%20to%20join%20the%20Senior%20Builder%20Blueprint" target="_blank" class="btn-dark">Apply to Join</a>
-        <a href="mailto:simmyt3r@gmail.com?subject=Senior Builder Blueprint Enquiry" class="btn-ghost">Ask a Question</a>
-      </div>
-    </div>
-
-  </div><!-- /container -->
+  </div>
 </section>
-
-<!-- BUILDER CSS -->
 <style>
-/* ─── BUILDER HERO ─── */
-#builder{border-top:1px solid var(--rule)}
-.bldr-hero{background:var(--navy);padding:90px 0 70px}
-.bldr-hero-inner{max-width:760px}
-.bldr-badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.68rem;color:rgba(255,255,255,.5);letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:6px 14px;border-radius:2px;margin-bottom:24px}
-.bldr-headline{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;color:#fff;line-height:1.08;margin-bottom:20px}
-.bldr-headline span{color:#c8f135}
-.bldr-sub{font-size:1rem;color:rgba(255,255,255,.65);line-height:1.85;max-width:580px;margin-bottom:48px}
-.bldr-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.bldr-pillar{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:18px 16px}
-.bp-icon{font-size:1.4rem;margin-bottom:8px}
-.bp-label{font-family:var(--sans);font-size:.85rem;font-weight:600;color:#fff;margin-bottom:4px}
-.bp-note{font-family:var(--mono);font-size:.68rem;color:rgba(255,255,255,.45)}
-
-/* ─── BUILDER BODY ─── */
-.bldr-body{padding:60px 28px}
-.phase-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-bottom:40px}
-.phase-tab{background:var(--white);border:none;padding:20px 16px;cursor:pointer;text-align:left;transition:background .2s;display:flex;flex-direction:column;gap:4px}
-.phase-tab:hover{background:var(--off)}
-.phase-tab.active{background:var(--navy)}
-.pt-num{font-family:var(--mono);font-size:.65rem;color:var(--muted);letter-spacing:.08em;transition:color .2s}
-.phase-tab.active .pt-num{color:rgba(200,241,53,.7)}
-.pt-label{font-family:var(--serif);font-size:.92rem;font-weight:600;color:var(--navy);transition:color .2s}
-.phase-tab.active .pt-label{color:#fff}
-.pt-weeks{font-family:var(--mono);font-size:.65rem;color:var(--muted);transition:color .2s}
-.phase-tab.active .pt-weeks{color:rgba(255,255,255,.45)}
-
+#builder{border-top:1px solid var(--rule);background:var(--off)}
+.bldr-topbar{padding:52px 0 0}
+.bldr-topbar-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.bldr-stats{display:flex;gap:8px;flex-shrink:0}
+.bstat{display:flex;flex-direction:column;align-items:center;padding:12px 14px;background:var(--white);border:1px solid var(--rule);border-radius:3px;min-width:70px}
+.bstat-n{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy);line-height:1}
+.bstat-l{font-family:var(--mono);font-size:.57rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:3px;text-align:center}
+.bldr-wrap{padding-top:24px;padding-bottom:64px}
+.bldr-main-tabs{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-bottom:20px}
+.bmt{background:var(--white);border:none;padding:13px 14px;cursor:pointer;display:flex;align-items:center;gap:8px;font-family:var(--sans);font-size:.84rem;font-weight:600;color:var(--ink2);transition:all .2s;text-align:left;-webkit-tap-highlight-color:transparent;flex-wrap:wrap}
+.bmt svg{flex-shrink:0;color:var(--muted);transition:color .2s}
+.bmt-sub{font-family:var(--mono);font-size:.59rem;color:var(--muted);font-weight:400;letter-spacing:.04em;width:100%;margin-top:1px;display:block}
+.bmt:hover{background:var(--off)}
+.bmt.active{background:var(--navy);color:#fff}
+.bmt.active .bmt-sub,.bmt.active svg{color:rgba(255,255,255,.45)}
+.bldr-tab{display:none}
+.bldr-tab.active{display:block}
+.phase-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-bottom:16px}
+.phs{background:var(--white);border:none;padding:10px 5px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;transition:background .2s;-webkit-tap-highlight-color:transparent}
+.ph-n{font-family:var(--mono);font-size:.57rem;color:var(--muted);letter-spacing:.07em;transition:color .2s}
+.ph-l{font-family:var(--sans);font-size:.76rem;font-weight:600;color:var(--navy);transition:color .2s}
+.ph-w{font-family:var(--mono);font-size:.57rem;color:var(--light);transition:color .2s}
+.phs.active{background:var(--navy)}
+.phs.active .ph-n,.phs.active .ph-l,.phs.active .ph-w{color:#fff}
+.phs.active .ph-n{color:rgba(255,255,255,.4)}
 .phase-panel{display:none}
 .phase-panel.active{display:block}
-.phase-intro{margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid var(--rule)}
-.phase-intro h3{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--navy);margin-bottom:10px}
-.phase-intro p{font-size:.93rem;color:var(--muted);line-height:1.8;max-width:680px}
-
-/* ─── TUTORIAL ACCORDIONS ─── */
-.tut-list{display:flex;flex-direction:column;gap:0}
-.tut-item{border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-bottom:12px;background:var(--white)}
-.tut-header{padding:22px 24px;cursor:pointer;display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;transition:background .15s;user-select:none}
-.tut-header:hover{background:var(--off)}
-.tut-header.open{background:var(--navy)}
-.tut-header.open .tut-title{color:#fff}
-.tut-header.open .tut-week{background:rgba(200,241,53,.15);color:#c8f135;border-color:rgba(200,241,53,.2)}
-.tut-header.open .tut-tag{color:rgba(255,255,255,.5)}
-.tut-header.open .tut-arrow{color:#fff;transform:rotate(180deg)}
-.tut-meta{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-.tut-week{font-family:var(--mono);font-size:.65rem;font-weight:500;background:var(--off);border:1px solid var(--rule);border-radius:2px;padding:3px 9px;color:var(--accent);letter-spacing:.06em;transition:all .2s}
-.tut-tag{font-family:var(--mono);font-size:.63rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
-.tut-title{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--navy);line-height:1.35;transition:color .2s}
-.tut-arrow{font-size:1rem;color:var(--muted);transition:transform .3s,color .2s;flex-shrink:0}
-
-.tut-body{max-height:0;overflow:hidden;transition:max-height .45s ease}
-.tut-content{padding:32px 24px;background:var(--paper);border-top:1px solid var(--rule)}
-
-/* tutorial analogy */
-.tut-analogy{display:flex;gap:16px;padding:20px;background:var(--white);border:1px solid var(--rule);border-left:3px solid var(--navy);border-radius:3px;margin-bottom:28px}
-.ta-icon{font-size:1.8rem;flex-shrink:0;margin-top:2px}
-.tut-analogy strong{font-family:var(--serif);font-size:.95rem;font-weight:600;color:var(--navy);display:block;margin-bottom:8px}
-.tut-analogy p{font-size:.86rem;color:var(--ink2);line-height:1.8}
-
-/* tutorial points */
-.tut-points{display:flex;flex-direction:column;gap:20px;margin-bottom:28px}
-.tut-point{display:flex;gap:16px;align-items:flex-start}
-.tp-num{width:28px;height:28px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.72rem;font-weight:500;flex-shrink:0;margin-top:2px}
-.tut-point strong{font-size:.9rem;font-weight:600;color:var(--navy);display:block;margin-bottom:5px}
-.tut-point p{font-size:.85rem;color:var(--ink2);line-height:1.8}
-.tut-point code{font-family:var(--mono);font-size:.78rem;background:var(--off);padding:1px 5px;border-radius:2px}
-
-/* assignment */
-.tut-assignment{padding:18px 20px;background:var(--white);border:1px solid var(--rule);border-left:3px solid #c8f135;border-radius:3px}
-.ta-label{font-family:var(--mono);font-size:.67rem;color:var(--navy);font-weight:500;letter-spacing:.08em;margin-bottom:8px}
-.tut-assignment p{font-size:.86rem;color:var(--ink2);line-height:1.8}
-.tut-assignment strong{color:var(--navy)}
-
-/* closing quote */
-.bldr-quote{margin-top:48px;padding:48px;background:var(--navy);border-radius:3px;text-align:center}
-.bldr-quote blockquote{font-family:var(--serif);font-size:clamp(1.2rem,2.5vw,1.6rem);font-style:italic;color:#fff;line-height:1.5;margin-bottom:16px}
-.bldr-quote cite{font-family:var(--mono);font-size:.7rem;color:rgba(255,255,255,.4);letter-spacing:.08em}
-
-/* CTA */
-.bldr-cta{margin-top:48px;padding:48px;text-align:center;background:var(--off);border:1px solid var(--rule);border-radius:3px}
-.bldr-cta h3{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:12px}
-.bldr-cta p{font-size:.95rem;color:var(--muted);line-height:1.8;max-width:500px;margin:0 auto}
-
-/* ─── BUILDER RESPONSIVE ─── */
-@media(max-width:900px){.bldr-pillars{grid-template-columns:repeat(2,1fr)}.phase-tabs{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.bldr-pillars{grid-template-columns:1fr 1fr}.phase-tabs{grid-template-columns:1fr 1fr}.bldr-body{padding:40px 0}.tut-content{padding:20px 16px}.tut-header{padding:18px 16px}.bldr-quote{padding:32px 20px}.bldr-cta{padding:32px 20px}.tut-analogy{flex-direction:column;gap:10px}}
+.phase-intro-txt{font-size:.87rem;color:var(--muted);line-height:1.8;margin-bottom:14px;padding:11px 13px;background:var(--white);border-left:3px solid var(--accent);border-radius:2px}
+.acc-list,.mod-list{display:flex;flex-direction:column;gap:6px}
+.acc-item,.mod-item{border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:var(--white)}
+.acc-hd{padding:13px 12px;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;transition:background .15s;-webkit-tap-highlight-color:transparent;min-height:52px}
+.acc-hd:hover{background:var(--off)}
+.acc-hd.open{background:var(--navy)}
+.acc-hd.open .acc-badge{background:rgba(200,241,53,.1);color:#b8e020;border-color:rgba(200,241,53,.2)}
+.acc-hd.open .acc-tag,.acc-hd.open h4,.acc-hd.open .acc-chevron{color:#fff}
+.acc-left{flex:1;min-width:0}
+.acc-badge{display:inline-block;font-family:var(--mono);font-size:.59rem;background:var(--off);border:1px solid var(--rule);padding:2px 7px;border-radius:2px;color:var(--accent);letter-spacing:.05em;margin-bottom:3px;transition:all .2s}
+.acc-tag{font-family:var(--mono);font-size:.57rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-left:6px;transition:color .2s}
+.acc-hd h4{font-family:var(--serif);font-size:.88rem;font-weight:600;color:var(--navy);line-height:1.3;margin-top:2px;transition:color .2s}
+.acc-chevron{font-size:.85rem;color:var(--muted);transition:color .2s;flex-shrink:0;padding-top:3px;font-style:normal;font-weight:700}
+.acc-hd.open .acc-chevron{color:#fff}
+.acc-bd{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.acc-bd.open{max-height:3000px}
+.analogy-box{display:flex;gap:10px;padding:12px;background:var(--paper);border:1px solid var(--rule);border-left:3px solid var(--navy);border-radius:3px;margin:13px 12px 11px}
+.analogy-box.sm{margin:11px 12px 9px}
+.an-icon{font-size:1.4rem;flex-shrink:0;line-height:1.2;display:none}
+.analogy-box strong{font-family:var(--serif);font-size:.87rem;font-weight:600;color:var(--navy);display:block;margin-bottom:4px}
+.analogy-box p{font-size:.79rem;color:var(--ink2);line-height:1.75;margin:0}
+.lesson-pts{display:flex;flex-direction:column;gap:11px;margin:0 12px 11px}
+.lp{display:flex;gap:10px;align-items:flex-start}
+.lp-n{width:22px;height:22px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;font-weight:500;flex-shrink:0;margin-top:2px}
+.lp strong{font-size:.83rem;font-weight:600;color:var(--navy);display:block;margin-bottom:3px}
+.lp p{font-size:.79rem;color:var(--ink2);line-height:1.75;margin:0}
+.lp code{font-family:var(--mono);font-size:.72rem;background:var(--off);padding:1px 4px;border-radius:2px}
+.assign-box{padding:11px 13px;background:var(--white);border:1px solid var(--rule);border-left:3px solid #b8e020;border-radius:3px;margin:0 12px 13px}
+.asgn-lbl{font-family:var(--mono);font-size:.61rem;color:var(--navy);font-weight:500;letter-spacing:.07em;margin-bottom:5px}
+.assign-box p{font-size:.79rem;color:var(--ink2);line-height:1.75;margin:0}
+.assign-box strong{color:var(--navy)}
+.closing-q{margin-top:22px;padding:26px 18px;background:var(--navy);border-radius:3px;text-align:center}
+.closing-q blockquote{font-family:var(--serif);font-size:clamp(.97rem,2.8vw,1.25rem);font-style:italic;color:#fff;line-height:1.5;margin-bottom:9px}
+.closing-q cite{font-family:var(--mono);font-size:.62rem;color:rgba(255,255,255,.38);letter-spacing:.08em}
+.mod-hd{padding:15px 12px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:background .2s;-webkit-tap-highlight-color:transparent}
+.mod-hd:hover{background:var(--off)}
+.mod-hd.mopen{background:var(--navy)}
+.mod-hd.mopen .mod-num{color:rgba(200,241,53,.22)}
+.mod-hd.mopen strong{color:#fff}
+.mod-hd.mopen .mod-count{color:rgba(255,255,255,.32)}
+.mod-hd.mopen .mod-chev{color:#fff}
+.mod-left{display:flex;align-items:center;gap:11px}
+.mod-num{font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--stone);line-height:1;transition:all .2s;flex-shrink:0}
+.mod-left strong{font-family:var(--serif);font-size:.9rem;font-weight:600;color:var(--navy);display:block;line-height:1.2;transition:color .2s}
+.mod-count{font-family:var(--mono);font-size:.59rem;color:var(--muted);letter-spacing:.06em;transition:color .2s;display:block;margin-top:2px}
+.mod-chev{font-size:.85rem;color:var(--muted);transition:color .2s;flex-shrink:0;font-weight:700}
+.mod-bd{max-height:0;overflow:hidden;transition:max-height .6s ease}
+.mod-bd.open{max-height:10000px}
+.mod-lesson{padding:16px 12px;border-top:1px solid var(--rule)}
+.ml-top{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+.ml-icon{font-size:1rem;flex-shrink:0;display:none}
+.ml-top strong{font-family:var(--serif);font-size:.9rem;font-weight:600;color:var(--navy)}
+.ml-body{font-size:.79rem;color:var(--ink2);line-height:1.8;margin:0}
+.ml-body strong{color:var(--navy)}
+.biz-intro{padding-bottom:18px;border-bottom:1px solid var(--rule);margin-bottom:18px;font-size:.89rem;color:var(--muted);line-height:1.8}
+.biz-intro strong{color:var(--navy)}
+.biz-cta{margin-top:24px;padding:22px 18px;background:var(--stone);border:1px solid var(--rule);border-radius:3px;text-align:center}
+.biz-cta p{font-size:.87rem;color:var(--muted);line-height:1.75;margin:0}
+@media(max-width:680px){
+  .bldr-topbar-inner{flex-direction:column;gap:14px}
+  .bldr-stats{width:100%;justify-content:space-between}
+  .bstat{flex:1}
+  .bldr-main-tabs{grid-template-columns:1fr}
+  .bmt{padding:12px 13px}
+  .phase-strip{grid-template-columns:repeat(2,1fr)}
+  .phs{padding:9px 4px}
+  .ph-l{font-size:.72rem}
+  .acc-hd{padding:12px 10px}
+  .acc-hd h4{font-size:.83rem}
+  .analogy-box{flex-direction:row}
+  .closing-q{padding:20px 14px}
+  .mod-hd{padding:13px 10px}
+  .mod-num{font-size:1.15rem}
+  .mod-lesson{padding:13px 10px}
+  .biz-cta{padding:16px 12px}
+  .bldr-wrap{padding-bottom:40px}
+}
+@media(max-width:360px){
+  .phase-strip{grid-template-columns:1fr 1fr}
+  .bstat-n{font-size:1.15rem}
+  .acc-hd h4,.ml-top strong{font-size:.8rem}
+}
 </style>
 
 <!-- FOOTER -->
@@ -1217,22 +944,43 @@ function render(repos){
 }
 loadRepos();
 
-/* builder tabs */
-function openPhase(id,btn){
-  document.querySelectorAll('.phase-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.phase-tab').forEach(b=>b.classList.remove('active'));
+/* ── builder interactions ── */
+function switchTab(id,btn){
+  document.querySelectorAll('.bldr-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.bmt').forEach(b=>b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
 }
-function openTutorial(weekId){
-  const panel=document.getElementById(weekId);
-  const isOpen=panel.classList.contains('open');
-  document.querySelectorAll('.tut-body').forEach(p=>{p.classList.remove('open');p.style.maxHeight='0'});
-  document.querySelectorAll('.tut-header').forEach(h=>h.classList.remove('open'));
+function openPhase(id,btn){
+  /* only affect panels inside the same tab */
+  const tab=btn.closest('.bldr-tab');
+  tab.querySelectorAll('.phase-panel').forEach(p=>p.classList.remove('active'));
+  btn.closest('.phase-strip').querySelectorAll('.phs').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleAcc(hd){
+  const bd=hd.nextElementSibling;
+  const isOpen=bd.classList.contains('open');
+  /* close all in same acc-list */
+  const list=hd.closest('.acc-list');
+  list.querySelectorAll('.acc-bd').forEach(b=>{b.classList.remove('open');b.style.maxHeight='0'});
+  list.querySelectorAll('.acc-hd').forEach(h=>h.classList.remove('open'));
   if(!isOpen){
-    panel.classList.add('open');
-    panel.style.maxHeight=panel.scrollHeight+'px';
-    panel.previousElementSibling.classList.add('open');
+    bd.classList.add('open');
+    bd.style.maxHeight=bd.scrollHeight+'px';
+    hd.classList.add('open');
+  }
+}
+function toggleMod(hd){
+  const bd=hd.nextElementSibling;
+  const isOpen=bd.classList.contains('open');
+  document.querySelectorAll('.mod-bd').forEach(b=>{b.classList.remove('open');b.style.maxHeight='0'});
+  document.querySelectorAll('.mod-hd').forEach(h=>h.classList.remove('mopen'));
+  if(!isOpen){
+    bd.classList.add('open');
+    bd.style.maxHeight=bd.scrollHeight+'px';
+    hd.classList.add('mopen');
   }
 }
 
