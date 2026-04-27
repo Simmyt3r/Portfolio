@@ -145,11 +145,17 @@
     /* ─── BLOG ─── */
     #blog{padding:90px 0;background:var(--white);border-top:1px solid var(--rule)}
     .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+    .blog-section-label{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+    .bsl-tag{font-family:var(--mono);font-size:.67rem;font-weight:500;letter-spacing:.07em;background:var(--off);border:1px solid var(--rule);padding:4px 10px;border-radius:2px;color:var(--navy)}
+    .bsl-date{font-family:var(--mono);font-size:.64rem;color:var(--muted);letter-spacing:.05em}
+    .bc-cat-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+    .bc-trending{font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.06em;color:var(--muted);background:var(--off);border:1px solid var(--rule);padding:2px 7px;border-radius:2px;white-space:nowrap}
     .bc{border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:var(--white);transition:box-shadow .2s,transform .2s;display:flex;flex-direction:column}
     .bc:hover{box-shadow:0 8px 28px rgba(0,0,0,.07);transform:translateY(-3px)}
     .bc-stripe{height:4px}
     .bc-body{padding:24px;flex:1;display:flex;flex-direction:column}
     .bc-cat{font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+    .bc-cat-row .bc-cat{margin-bottom:0}
     .bc-title{font-family:var(--serif);font-size:1.02rem;font-weight:600;color:var(--navy);line-height:1.4;margin-bottom:10px}
     .bc-ex{font-size:.84rem;color:var(--muted);line-height:1.75;flex:1;margin-bottom:16px}
     .bc-meta{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:.64rem;color:var(--light);padding-top:14px;border-top:1px solid var(--rule)}
@@ -484,8 +490,91 @@
     <div class="sec-header reveal">
       <div class="sec-label">Thoughts &amp; Writing</div>
       <h2 class="sec-title">The Blog</h2>
-      <p class="sec-desc">Reflections on building tech in Nigeria, software engineering, entrepreneurship, and the future of African innovation.</p>
+      <p class="sec-desc">Reflections on building tech in Nigeria, software engineering, entrepreneurship, and the future of African innovation — plus the biggest trending stories in tech and business, explained simply.</p>
     </div>
+
+    <!-- TRENDING NEWS LABEL -->
+    <div class="blog-section-label reveal">
+      <span class="bsl-tag">🔥 Trending Now</span>
+      <span class="bsl-date">Updated April 27, 2026</span>
+    </div>
+
+    <div class="blog-grid" id="trending-grid">
+
+      <!-- TRENDING 1: GPT-5.5 -->
+      <a href="https://techstartups.com/2026/04/24/top-tech-news-today-april-24-2026/" target="_blank" rel="noopener" class="bc reveal">
+        <div class="bc-stripe" style="background:#10a37f"></div>
+        <div class="bc-body">
+          <div class="bc-cat-row"><span class="bc-cat">AI &amp; Technology</span><span class="bc-trending">🔥 Trending</span></div>
+          <h3 class="bc-title">OpenAI Just Released GPT-5.5 — Here Is What That Actually Means For You</h3>
+          <p class="bc-ex">Imagine you hired a very smart assistant. Last year, that assistant could write your emails and summarise documents. Now, OpenAI — the company behind ChatGPT — just released a version of that assistant that can actually <em>use your computer</em> on your behalf. It can open software, do research, debug code, and work through complex tasks from start to finish without asking you every five minutes. They call it GPT-5.5. It is faster than before, uses less computing power, and is already beating most other AI tools in tests. For Nigerian developers and entrepreneurs, this is important because these same tools are now cheap enough to build products with — meaning the gap between a solo founder in Abuja and a tech company in San Francisco is shrinking every month.</p>
+          <div class="bc-meta"><span>Apr 24, 2026 · Tech Startups</span><span>Read →</span></div>
+        </div>
+      </a>
+
+      <!-- TRENDING 2: Apple new CEO -->
+      <a href="https://techcrunch.com/2026/04/25/apple-under-ternus-what-comes-next-for-the-tech-giants-hardware-strategy/" target="_blank" rel="noopener" class="bc reveal">
+        <div class="bc-stripe" style="background:#555555"></div>
+        <div class="bc-body">
+          <div class="bc-cat-row"><span class="bc-cat">Big Tech</span><span class="bc-trending">🔥 Trending</span></div>
+          <h3 class="bc-title">Apple Has a New CEO — And It Changes Everything About Where the Company Is Going</h3>
+          <p class="bc-ex">Think of Apple like a big Nigerian company that has had one Managing Director for over 13 years. That MD built it from a struggling company into the world's most valuable business — worth over 4 trillion dollars. Now he is stepping down, and the new MD is someone very different. Tim Cook, the outgoing CEO, was a business and supply chain genius. He made Apple extremely profitable by selling iPhones and services. The incoming CEO, John Ternus, is an engineer — someone who has spent his whole career building the actual hardware: AirPods, Apple Watch, and the Vision Pro headset. What this means is that Apple's next chapter will likely be less about selling subscriptions and more about building new kinds of physical devices — possibly tied to AI. For tech entrepreneurs in Nigeria, it is a reminder that the people who build things eventually lead things.</p>
+          <div class="bc-meta"><span>Apr 25, 2026 · TechCrunch</span><span>Read →</span></div>
+        </div>
+      </a>
+
+      <!-- TRENDING 3: Tesla $25B AI bet -->
+      <a href="https://techstartups.com/2026/04/24/top-tech-news-today-april-24-2026/" target="_blank" rel="noopener" class="bc reveal">
+        <div class="bc-stripe" style="background:#cc0000"></div>
+        <div class="bc-body">
+          <div class="bc-cat-row"><span class="bc-cat">Business &amp; Investment</span><span class="bc-trending">🔥 Trending</span></div>
+          <h3 class="bc-title">Tesla Is Spending 25 Billion Dollars on Robots and Self-Driving Cars — What Is Actually Going On?</h3>
+          <p class="bc-ex">You know how Keke Napep changed transportation in Nigerian cities? Imagine if the Keke could drive itself with no driver, pick you up, drop you off, and pay its owner money while he sleeps at home. That is what Tesla is betting 25 billion dollars on in 2026. They want to build fleets of self-driving electric taxis called Robotaxis, and humanoid robots called Optimus that can do physical work. To put that 25 billion in perspective — that is roughly the entire budget of the Nigerian federal government for one year, being spent by one company on future technology. Elon Musk calls it a leap of faith. Some investors are nervous because the returns are not guaranteed. But the lesson for entrepreneurs here is bigger: the companies that bet early on the future — even when it is unproven — are usually the ones that define it.</p>
+          <div class="bc-meta"><span>Apr 24, 2026 · Tech Startups</span><span>Read →</span></div>
+        </div>
+      </a>
+
+      <!-- TRENDING 4: Nigerian startups Google Accelerator -->
+      <a href="https://businesspost.ng/technology/4-nigerian-firms-for-2026-google-for-startups-accelerator-africa-cohort/" target="_blank" rel="noopener" class="bc reveal">
+        <div class="bc-stripe" style="background:#008000"></div>
+        <div class="bc-body">
+          <div class="bc-cat-row"><span class="bc-cat">Nigeria &amp; Africa</span><span class="bc-trending">🇳🇬 Local Win</span></div>
+          <h3 class="bc-title">4 Nigerian Startups Just Beat 2,600 Others to Get Into Google's Elite Africa Programme</h3>
+          <p class="bc-ex">Imagine JAMB, but instead of a university giving you admission, Google itself is offering you free mentorship, free cloud computing, and direct access to their global network of experts — and only 15 companies in all of Africa get selected. That is exactly what just happened. From nearly 2,600 applications across the continent, four Nigerian startups made the cut: <strong>Bani</strong> which helps African businesses send money across borders without delays, <strong>MasteryHive AI</strong> which automatically detects financial fraud using artificial intelligence, <strong>Regxta</strong> which helps small businesses access loans using alternative credit scoring (not the traditional bank method), and <strong>Termii</strong> which builds the communication technology that sends you OTP messages and transaction alerts. This matters because it shows the world that serious, globally competitive technology is being built right here in Nigeria — not just consumed here.</p>
+          <div class="bc-meta"><span>Apr 21, 2026 · Business Post Nigeria</span><span>Read →</span></div>
+        </div>
+      </a>
+
+      <!-- TRENDING 5: African startup funding up 35% -->
+      <a href="https://disruptafrica.com/" target="_blank" rel="noopener" class="bc reveal">
+        <div class="bc-stripe" style="background:#c05621"></div>
+        <div class="bc-body">
+          <div class="bc-cat-row"><span class="bc-cat">Africa Business</span><span class="bc-trending">📈 Data</span></div>
+          <h3 class="bc-title">African Startups Raised 382 Million Dollars in Just 3 Months — Up 35% From Last Year</h3>
+          <p class="bc-ex">Think of startup funding like a marketplace. Investors are the buyers. Startups are the sellers. The product being sold is shares — small pieces of ownership in the company — in exchange for money the startup needs to grow. When investors pour more money into African startups, it means they believe the continent's businesses are worth betting on. In just the first 3 months of 2026, African tech startups raised a combined 382 million US dollars — which is 35 percent more than the same period last year. To understand what 35 percent growth means: if you earned 100,000 naira in January 2025, earning 135,000 naira in January 2026 would be 35 percent growth. That is not small. For young entrepreneurs in Nigeria, this trend is important because it signals that global money is actively looking for opportunities on this continent. The question is: will you have something ready when those investors come looking?</p>
+          <div class="bc-meta"><span>Apr 13, 2026 · Disrupt Africa</span><span>Read →</span></div>
+        </div>
+      </a>
+
+      <!-- TRENDING 6: Dangote IPO -->
+      <a href="https://www.businesstechafrica.co.za/news/2026/04/23/breaking-news-today-thursday-23-april-2026/" target="_blank" rel="noopener" class="bc reveal">
+        <div class="bc-stripe" style="background:#92400e"></div>
+        <div class="bc-body">
+          <div class="bc-cat-row"><span class="bc-cat">Nigeria Business</span><span class="bc-trending">🇳🇬 Local Win</span></div>
+          <h3 class="bc-title">Dangote Is About to List His Refinery on the Stock Exchange — Here Is Why Every Nigerian Should Care</h3>
+          <p class="bc-ex">You have probably heard of Aliko Dangote — Africa's richest man and the owner of the largest oil refinery in the world, right here in Lagos. Now he is about to do something that could change how ordinary Nigerians think about wealth. He is planning to sell a small piece (about 10%) of that refinery on the Nigerian Stock Exchange (NGX). This process is called an IPO — Initial Public Offering — and it simply means: "We are opening the doors for ordinary people to buy a small share of our company." The refinery is valued at between 40 and 50 billion US dollars. If he raises even 2 billion dollars from this listing, it would be one of the biggest fundraising events in African stock market history. Why does this matter to you? Because if you understand how stock markets work, an event like this is an opportunity to invest — to use your money to buy a small piece of a profitable business and grow your wealth alongside it. This is exactly the kind of financial intelligence that the Business Mastery module above talks about.</p>
+          <div class="bc-meta"><span>Apr 23, 2026 · Business Tech Africa</span><span>Read →</span></div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- DIVIDER BEFORE ORIGINAL POSTS -->
+    <div class="blog-section-label reveal" style="margin-top:48px">
+      <span class="bsl-tag" style="background:var(--navy);color:#fff">✍️ From the Desk</span>
+      <span class="bsl-date">Original Articles</span>
+    </div>
+
     <div class="blog-grid">
       <a href="#" class="bc reveal"><div class="bc-stripe" style="background:#1a56db"></div><div class="bc-body"><div class="bc-cat">Entrepreneurship</div><h3 class="bc-title">Why I Build Software in Nigeria (and Why It's Worth It)</h3><p class="bc-ex">The honest account of founding Silabs — from a one-person consultancy to a registered company with 9 directors. What I've learned about building a real tech business in a constrained but opportunity-rich market.</p><div class="bc-meta"><span>Apr 2025 · 8 min</span><span>Read →</span></div></div></a>
       <a href="#" class="bc reveal"><div class="bc-stripe" style="background:#0f2744"></div><div class="bc-body"><div class="bc-cat">AI &amp; Engineering</div><h3 class="bc-title">Building FraudNet: Whisper AI Meets Nigerian Law Enforcement</h3><p class="bc-ex">A deep-dive into building an audio forensics platform — speaker ID, financial entity detection, and debugging Windows + ffmpeg + torchaudio. What shipped, what didn't, and what I'd change.</p><div class="bc-meta"><span>Mar 2025 · 12 min</span><span>Read →</span></div></div></a>
