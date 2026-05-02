@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>The Builder — Simeon Tertese | Learn. Build. Earn.</title>
+<meta name="description" content="Free tutorials for Nigerian teenagers on tech, business, money and mindset. Explained simply. Built by Simeon Tertese, Silabs."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width='100' height='100' fill='%230f2744'/><text y='.85em' font-size='65' x='10' fill='%23a8e63d'>B</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root{
+  --navy:#0f2744;
+  --navy2:#162f50;
+  --lime:#a8e63d;
+  --lime-dim:rgba(168,230,61,.12);
+  --white:#ffffff;
+  --off:#f8f9fb;
+  --paper:#f3f4f6;
+  --rule:#e4e7ec;
+  --ink:#1c1c1e;
+  --ink2:#374151;
+  --muted:#6b7280;
+  --light:#9ca3af;
+  --amber:#f59e0b;
+  --green:#16a34a;
+  --red:#dc2626;
+  --display:'Syne',sans-serif;
+  --body:'Manrope',sans-serif;
+  --mono:'JetBrains Mono','Courier New',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--white);color:var(--ink);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--off)}
+::-webkit-scrollbar-thumb{background:var(--lime);border-radius:2px}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* ── NAV ── */
+.topnav{background:var(--navy);padding:0;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,.06)}
+.topnav-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between}
+.back-link{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.72rem;color:rgba(255,255,255,.55);letter-spacing:.05em;transition:color .2s}
+.back-link:hover{color:#fff}
+.nav-brand{font-family:var(--display);font-size:1rem;font-weight:800;color:#fff;display:flex;align-items:center;gap:8px}
+.nav-brand .lime{color:var(--lime)}
+.nav-cta-sm{padding:7px 18px;background:var(--lime);color:var(--navy);font-family:var(--mono);font-size:.7rem;font-weight:600;border-radius:3px;letter-spacing:.04em;transition:opacity .2s;white-space:nowrap}
+.nav-cta-sm:hover{opacity:.85;color:var(--navy)}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:72px 0 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(168,230,61,.12) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-40px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(26,86,219,.2) 0%,transparent 70%);pointer-events:none}
+.hero-label{font-family:var(--mono);font-size:.7rem;color:var(--lime);letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.hero-label::before{content:'';display:block;width:24px;height:1px;background:var(--lime)}
+.hero-h1{font-family:var(--display);font-size:clamp(2.4rem,6vw,4rem);font-weight:800;color:#fff;line-height:1.05;margin-bottom:16px}
+.hero-h1 .lime{color:var(--lime)}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.65);line-height:1.8;max-width:560px;margin-bottom:36px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
+.btn-lime{padding:13px 28px;background:var(--lime);color:var(--navy);font-family:var(--body);font-size:.87rem;font-weight:700;border-radius:3px;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-lime:hover{background:#b8f04d;transform:translateY(-1px)}
+.btn-ghost-w{padding:13px 28px;background:transparent;color:#fff;font-family:var(--body);font-size:.87rem;font-weight:600;border-radius:3px;border:1.5px solid rgba(255,255,255,.25);transition:all .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-ghost-w:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
+.hstat{padding:20px 16px;text-align:center}
+.hstat-n{font-family:var(--display);font-size:1.8rem;font-weight:800;color:var(--lime);line-height:1}
+.hstat-l{font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
+
+/* ── MONEY MACHINE PLAN ── */
+.plan-section{padding:72px 0;background:var(--off);border-bottom:1px solid var(--rule)}
+.plan-label{font-family:var(--mono);font-size:.67rem;color:var(--lime);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.plan-label::before{content:'//';color:rgba(168,230,61,.4)}
+.plan-h2{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;color:var(--navy);margin-bottom:12px;line-height:1.1}
+.plan-desc{font-size:.95rem;color:var(--muted);max-width:600px;line-height:1.8;margin-bottom:48px}
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:48px}
+.plan-card{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:24px;position:relative;transition:all .2s}
+.plan-card:hover{border-color:var(--navy);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.plan-card.featured{border-color:var(--lime);background:linear-gradient(135deg,var(--navy) 0%,#162f50 100%)}
+.plan-card.featured .pc-title,.plan-card.featured .pc-price,.plan-card.featured .pc-desc{color:#fff}
+.plan-card.featured .pc-price{color:var(--lime)}
+.plan-card.featured .pc-list li{color:rgba(255,255,255,.75)}
+.plan-card.featured .pc-list li::before{background:var(--lime)}
+.pc-badge{display:inline-block;font-family:var(--mono);font-size:.6rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;background:var(--lime);color:var(--navy);border-radius:2px;margin-bottom:14px}
+.pc-title{font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.pc-price{font-family:var(--display);font-size:2rem;font-weight:800;color:var(--navy);line-height:1;margin-bottom:4px}
+.pc-price span{font-size:.85rem;font-weight:400;color:var(--muted)}
+.plan-card.featured .pc-price span{color:rgba(255,255,255,.5)}
+.pc-desc{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--rule)}
+.plan-card.featured .pc-desc{border-color:rgba(255,255,255,.1)}
+.pc-list{list-style:none}
+.pc-list li{font-size:.82rem;color:var(--ink2);padding:5px 0;display:flex;align-items:flex-start;gap:8px}
+.pc-list li::before{content:'';display:block;width:5px;height:5px;border-radius:50%;background:var(--navy);flex-shrink:0;margin-top:6px}
+.revenue-box{background:var(--navy);color:#fff;border-radius:4px;padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.rb-left h3{font-family:var(--display);font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:8px}
+.rb-left p{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.8}
+.rb-right{display:flex;flex-direction:column;gap:12px}
+.rb-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(255,255,255,.06);border-radius:3px;border:1px solid rgba(255,255,255,.08)}
+.rb-label{font-family:var(--mono);font-size:.72rem;color:rgba(255,255,255,.6)}
+.rb-value{font-family:var(--display);font-size:.95rem;font-weight:700;color:var(--lime)}
+.rb-total{background:rgba(168,230,61,.1);border-color:rgba(168,230,61,.25)}
+.rb-total .rb-label{color:rgba(255,255,255,.8);font-weight:500}
+.rb-total .rb-value{font-size:1.1rem}
+
+/* ── TUTORIAL SECTION ── */
+.tutorial-section{padding:72px 0;background:var(--white)}
+.track-tabs{display:flex;gap:2px;background:var(--rule);border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-bottom:32px;flex-wrap:wrap}
+.track-btn{flex:1;min-width:120px;background:var(--white);border:none;padding:14px 12px;cursor:pointer;font-family:var(--body);font-size:.84rem;font-weight:600;color:var(--muted);transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:4px;-webkit-tap-highlight-color:transparent}
+.track-btn:hover{background:var(--off);color:var(--ink)}
+.track-btn.active{background:var(--navy);color:#fff}
+.track-btn .tb-icon{font-size:1.1rem}
+.track-btn .tb-count{font-family:var(--mono);font-size:.58rem;color:var(--muted);letter-spacing:.05em;transition:color .2s}
+.track-btn.active .tb-count{color:rgba(255,255,255,.45)}
+.track-panel{display:none}
+.track-panel.active{display:block}
+.track-intro{font-size:.9rem;color:var(--muted);line-height:1.8;padding:14px 16px;background:var(--off);border-left:3px solid var(--lime);border-radius:2px;margin-bottom:20px}
+/* tutorial cards */
+.tut-cards{display:flex;flex-direction:column;gap:8px}
+.tcard{border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--white)}
+.tcard-hd{padding:16px;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;transition:background .15s;-webkit-tap-highlight-color:transparent;min-height:60px}
+.tcard-hd:hover{background:var(--off)}
+.tcard-hd.open{background:var(--navy)}
+.tcard-hd.open .tc-title,.tcard-hd.open .tc-toggle{color:#fff}
+.tcard-hd.open .tc-num{background:rgba(168,230,61,.15);color:var(--lime);border-color:rgba(168,230,61,.25)}
+.tcard-hd.open .tc-tag{color:rgba(255,255,255,.45)}
+.tc-left{flex:1;min-width:0}
+.tc-meta{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.tc-num{font-family:var(--mono);font-size:.6rem;font-weight:500;background:var(--off);border:1px solid var(--rule);padding:2px 8px;border-radius:2px;color:var(--muted);letter-spacing:.05em;transition:all .2s;white-space:nowrap}
+.tc-tag{font-family:var(--mono);font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;transition:color .2s}
+.tc-new{background:var(--lime);color:var(--navy);padding:1px 6px;border-radius:2px;font-size:.56rem;font-weight:700;letter-spacing:.04em}
+.tc-title{font-family:var(--display);font-size:.92rem;font-weight:700;color:var(--navy);line-height:1.3;transition:color .2s}
+.tc-toggle{font-size:.9rem;color:var(--muted);transition:all .3s;flex-shrink:0;font-weight:700;padding-top:2px}
+.tcard-bd{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.tcard-bd.open{max-height:4000px}
+/* tutorial body */
+.tbd-inner{padding:20px 16px;background:var(--paper);border-top:1px solid var(--rule)}
+.tbd-analogy{display:flex;gap:12px;padding:14px;background:var(--white);border:1px solid var(--rule);border-left:3px solid var(--navy);border-radius:3px;margin-bottom:16px}
+.tbd-analogy-icon{font-size:1.5rem;flex-shrink:0;line-height:1.2}
+.tbd-analogy strong{font-family:var(--display);font-size:.9rem;font-weight:700;color:var(--navy);display:block;margin-bottom:5px}
+.tbd-analogy p{font-size:.82rem;color:var(--ink2);line-height:1.78;margin:0}
+.tbd-body{font-size:.83rem;color:var(--ink2);line-height:1.85;margin-bottom:16px}
+.tbd-body p{margin-bottom:12px}
+.tbd-body p:last-child{margin-bottom:0}
+.tbd-body strong{color:var(--navy);font-weight:600}
+.tbd-body code{font-family:var(--mono);font-size:.78rem;background:var(--white);border:1px solid var(--rule);padding:1px 5px;border-radius:2px;color:#1a56db}
+.tbd-steps{margin-bottom:16px}
+.tbd-steps h4{font-family:var(--mono);font-size:.65rem;color:var(--muted);letter-spacing:.09em;text-transform:uppercase;margin-bottom:10px}
+.step-list{display:flex;flex-direction:column;gap:10px}
+.step-item{display:flex;gap:12px;align-items:flex-start}
+.step-n{width:24px;height:24px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.62rem;font-weight:500;flex-shrink:0;margin-top:1px}
+.step-item p{font-size:.82rem;color:var(--ink2);line-height:1.75;margin:0}
+.step-item p strong{color:var(--navy)}
+.tbd-action{padding:13px 16px;background:var(--white);border:1px solid var(--rule);border-left:3px solid var(--lime);border-radius:3px}
+.tbd-action-lbl{font-family:var(--mono);font-size:.63rem;color:var(--navy);font-weight:600;letter-spacing:.07em;margin-bottom:5px}
+.tbd-action p{font-size:.82rem;color:var(--ink2);line-height:1.78;margin:0}
+.tbd-action strong{color:var(--navy)}
+
+/* ── MEMBERSHIP ── */
+.membership-section{padding:72px 0;background:var(--navy)}
+.ms-label{font-family:var(--mono);font-size:.67rem;color:var(--lime);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.ms-h2{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:800;color:#fff;margin-bottom:12px}
+.ms-sub{font-size:.92rem;color:rgba(255,255,255,.6);max-width:540px;line-height:1.8;margin-bottom:48px}
+.ms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.ms-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:24px;transition:all .2s}
+.ms-card:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)}
+.ms-card.best{background:var(--lime);border-color:var(--lime)}
+.ms-card.best .ms-tier,.ms-card.best .ms-price,.ms-card.best .ms-pdesc,.ms-card.best li{color:var(--navy)}
+.ms-card.best li::before{background:var(--navy)}
+.ms-tier{font-family:var(--mono);font-size:.65rem;font-weight:600;color:rgba(255,255,255,.5);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.ms-price{font-family:var(--display);font-size:1.9rem;font-weight:800;color:#fff;line-height:1;margin-bottom:4px}
+.ms-price span{font-size:.8rem;font-weight:400;color:rgba(255,255,255,.45)}
+.ms-card.best .ms-price span{color:rgba(15,39,68,.55)}
+.ms-pdesc{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ms-card.best .ms-pdesc{border-color:rgba(15,39,68,.15)}
+.ms-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.ms-list li{font-size:.8rem;color:rgba(255,255,255,.75);display:flex;align-items:flex-start;gap:8px;line-height:1.55}
+.ms-list li::before{content:'';display:block;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4);flex-shrink:0;margin-top:5px}
+.ms-btn{display:block;text-align:center;padding:12px;border-radius:3px;font-family:var(--body);font-size:.84rem;font-weight:700;transition:all .2s;cursor:pointer;border:none;width:100%}
+.ms-btn-lime{background:var(--lime);color:var(--navy)}
+.ms-btn-lime:hover{background:#b8f04d}
+.ms-btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.2)}
+.ms-btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.ms-btn-navy{background:var(--navy);color:#fff}
+.ms-btn-navy:hover{background:#0a1e38}
+
+/* ── CTA STRIP ── */
+.cta-strip{padding:56px 0;background:var(--lime)}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-text h2{font-family:var(--display);font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800;color:var(--navy);margin-bottom:6px}
+.cta-text p{font-size:.9rem;color:rgba(15,39,68,.7);line-height:1.7}
+.btn-navy{padding:14px 32px;background:var(--navy);color:#fff;font-family:var(--body);font-size:.87rem;font-weight:700;border-radius:3px;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.btn-navy:hover{background:#162f50;transform:translateY(-1px)}
+
+/* ── FOOTER ── */
+.bfooter{background:var(--navy);border-top:1px solid rgba(255,255,255,.06);padding:32px 0}
+.bf-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.bf-brand{font-family:var(--display);font-size:.95rem;font-weight:700;color:#fff}
+.bf-brand .lime{color:var(--lime)}
+.bf-copy{font-family:var(--mono);font-size:.65rem;color:rgba(255,255,255,.3)}
+.bf-link{font-family:var(--mono);font-size:.65rem;color:rgba(255,255,255,.4);transition:color .2s}
+.bf-link:hover{color:#fff}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.fa0{animation:fu .6s .1s both}
+.fa1{animation:fu .6s .25s both}
+.fa2{animation:fu .6s .4s both}
+.fa3{animation:fu .6s .55s both}
+@keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .revenue-box{grid-template-columns:1fr}
+  .track-tabs{flex-wrap:wrap}
+  .track-btn{min-width:calc(50% - 1px);flex:none}
+  .cta-inner{flex-direction:column;align-items:flex-start}
+  .tbd-analogy{flex-direction:column;gap:8px}
+}
+@media(max-width:420px){
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .hstat-n{font-size:1.4rem}
+  .ms-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="back-link">
+      ← Back to Portfolio
+    </a>
+    <div class="nav-brand">The <span class="lime">Builder</span></div>
+    <a href="https://wa.me/2349056232366?text=I%20want%20to%20join%20The%20Builder%20community" target="_blank" class="nav-cta-sm">Join Free →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-label fa0">By Simeon Tertese · Silabs &amp; Co Technologies</div>
+    <h1 class="hero-h1 fa1">Learn it. Build it.<br><span class="lime">Earn from it.</span></h1>
+    <p class="hero-sub fa2">Free daily tutorials for Nigerian teenagers on tech, business, money and mindset. Explained like you know absolutely nothing — because everyone starts from zero. New lessons added every day.</p>
+    <div class="hero-actions fa3">
+      <a href="#tutorials" class="btn-lime">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        Start Learning Free
+      </a>
+      <a href="#join" class="btn-ghost-w">
+        See Membership Plans
+      </a>
+    </div>
+    <div class="hero-stats fa3">
+      <div class="hstat"><div class="hstat-n">4</div><div class="hstat-l">Tracks</div></div>
+      <div class="hstat"><div class="hstat-n" id="tutCount">17</div><div class="hstat-l">Tutorials</div></div>
+      <div class="hstat"><div class="hstat-n">Free</div><div class="hstat-l">To Start</div></div>
+      <div class="hstat"><div class="hstat-n">Daily</div><div class="hstat-l">New Content</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MONEY MACHINE PLAN -->
+<section class="plan-section" id="plan">
+  <div class="container">
+    <div class="plan-label reveal">The Business Model</div>
+    <h2 class="plan-h2 reveal">How This Builder Becomes<br>a Money Machine</h2>
+    <p class="plan-desc reveal">This section is here on purpose. Everything you read here is a real-life example of how a content platform makes money. Study it. Then apply the same thinking to your own idea.</p>
+
+    <div class="plan-grid">
+      <div class="plan-card reveal">
+        <span class="pc-badge">Stream 1</span>
+        <div class="pc-title">Community Membership</div>
+        <div class="pc-price">₦2,000 <span>/month</span></div>
+        <p class="pc-desc">Private WhatsApp group with weekly live sessions, accountability partners, and real feedback on your work.</p>
+        <ul class="pc-list">
+          <li>Target: 200 paying members</li>
+          <li>Monthly revenue: ₦400,000</li>
+          <li>Zero inventory, zero delivery cost</li>
+          <li>Grows while you sleep</li>
+        </ul>
+      </div>
+      <div class="plan-card featured reveal">
+        <span class="pc-badge" style="background:var(--lime);color:var(--navy)">Stream 2 ★</span>
+        <div class="pc-title">12-Week Cohort Coaching</div>
+        <div class="pc-price">₦25,000 <span>/cohort</span></div>
+        <p class="pc-desc">Live group coaching programme. 20 students per cohort. 4 cohorts per year. Every student follows the Builder Program from Week 1 to Week 12 with real assignments and reviews.</p>
+        <ul class="pc-list">
+          <li>20 students × ₦25,000 = ₦500,000/cohort</li>
+          <li>4 cohorts/year = ₦2,000,000</li>
+          <li>Students get a Certificate on completion</li>
+          <li>Alumni become ambassadors</li>
+        </ul>
+      </div>
+      <div class="plan-card reveal">
+        <span class="pc-badge">Stream 3</span>
+        <div class="pc-title">Digital Products</div>
+        <div class="pc-price">₦1,500–5,000</div>
+        <p class="pc-desc">Downloadable workbooks, business plan templates, client proposal templates, and resource packs. Made once. Sold forever.</p>
+        <ul class="pc-list">
+          <li>Builder Workbook (₦2,500)</li>
+          <li>Client Proposal Template (₦2,000)</li>
+          <li>Money Tracker Spreadsheet (₦1,500)</li>
+          <li>Target: ₦100,000+/month passive</li>
+        </ul>
+      </div>
+      <div class="plan-card reveal">
+        <span class="pc-badge">Stream 4</span>
+        <div class="pc-title">Corporate: Sponsor a Teen</div>
+        <div class="pc-price">₦50,000 <span>/slot</span></div>
+        <p class="pc-desc">Nigerian SMEs and NGOs pay to sponsor a young person's membership or cohort. A CSR (corporate social responsibility) product that companies love.</p>
+        <ul class="pc-list">
+          <li>Sponsor 1 teen's full year: ₦50,000</li>
+          <li>20 sponsors = ₦1,000,000</li>
+          <li>Sponsors get brand recognition</li>
+          <li>Works with Silabs' NGO relationships</li>
+        </ul>
+      </div>
+      <div class="plan-card reveal">
+        <span class="pc-badge">Stream 5</span>
+        <div class="pc-title">Affiliate Commissions</div>
+        <div class="pc-price">Passive</div>
+        <p class="pc-desc">Every tool recommended in a tutorial — Canva Pro, Hostinger, Paystack, etc. — earns a commission when a student signs up using the Builder link. No extra work required.</p>
+        <ul class="pc-list">
+          <li>Canva: 25% commission</li>
+          <li>Hostinger: up to 60% commission</li>
+          <li>Flutterwave / Paystack referrals</li>
+          <li>Target: ₦50,000+/month passive</li>
+        </ul>
+      </div>
+      <div class="plan-card reveal">
+        <span class="pc-badge">Stream 6</span>
+        <div class="pc-title">Live Workshops</div>
+        <div class="pc-price">₦5,000 <span>/seat</span></div>
+        <p class="pc-desc">Quarterly in-person or online workshops in Abuja. 50 seats × ₦5,000 = ₦250,000 per event. Three events per year minimum.</p>
+        <ul class="pc-list">
+          <li>3 workshops/year = ₦750,000</li>
+          <li>Sponsorship slots for corporates</li>
+          <li>Recordings sold afterwards</li>
+          <li>Builds local community fast</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="revenue-box reveal">
+      <div class="rb-left">
+        <h3>Conservative Month 6 Target</h3>
+        <p>Based on 100 members, 1 cohort per quarter, digital product sales, and affiliate commissions. All without a single naira in paid advertising — only the tutorials you are reading right now.</p>
+      </div>
+      <div class="rb-right">
+        <div class="rb-row"><span class="rb-label">Community (100 members)</span><span class="rb-value">₦200,000</span></div>
+        <div class="rb-row"><span class="rb-label">Cohort (20 students)</span><span class="rb-value">₦500,000</span></div>
+        <div class="rb-row"><span class="rb-label">Digital products</span><span class="rb-value">₦100,000</span></div>
+        <div class="rb-row"><span class="rb-label">Affiliate + sponsors</span><span class="rb-value">₦100,000</span></div>
+        <div class="rb-row rb-total"><span class="rb-label">Total Month 6</span><span class="rb-value">₦900,000+</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TUTORIALS -->
+<section class="tutorial-section" id="tutorials">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:36px">
+      <div class="plan-label">Free Tutorial Library</div>
+      <h2 class="plan-h2">Start Learning Today</h2>
+      <p style="font-size:.92rem;color:var(--muted);max-width:540px;line-height:1.8">New tutorials added every day. Pick your track below. Click any lesson to open it. Read it. Do the action at the bottom. That is the entire system.</p>
+    </div>
+
+    <div class="track-tabs reveal">
+      <button class="track-btn active" onclick="openTrack('tech',this)">
+        <span class="tb-icon">💻</span>
+        Tech Skills
+        <span class="tb-count">5 lessons</span>
+      </button>
+      <button class="track-btn" onclick="openTrack('biz',this)">
+        <span class="tb-icon">💼</span>
+        Business
+        <span class="tb-count">5 lessons</span>
+      </button>
+      <button class="track-btn" onclick="openTrack('money',this)">
+        <span class="tb-icon">💰</span>
+        Money
+        <span class="tb-count">4 lessons</span>
+      </button>
+      <button class="track-btn" onclick="openTrack('mindset',this)">
+        <span class="tb-icon">🧠</span>
+        Mindset
+        <span class="tb-count">3 lessons</span>
+      </button>
+    </div>
+
+    <!-- ════ TECH TRACK ════ -->
+    <div class="track-panel active" id="track-tech">
+      <p class="track-intro">You do not need to be a programmer to understand technology. But understanding how it works gives you a massive advantage. Start here.</p>
+      <div class="tut-cards">
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Tech 01</span><span class="tc-tag">Fundamentals</span><span class="tc-new">New</span></div>
+              <div class="tc-title">What Is the Internet? (Explained Like You Have Never Heard of It)</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🛣️</span>
+                <div>
+                  <strong>The Road Network Analogy</strong>
+                  <p>Imagine Nigeria's road network. Roads connect Lagos to Abuja, Abuja to Kano, Kano to Port Harcourt. Cars travel on these roads carrying goods and people from one place to another. Now imagine instead of roads, there are invisible cables — buried underground, stretched across ocean floors, bounced off satellites in space. And instead of cars carrying goods, these cables carry information: your messages, your photos, your bank balance, this very tutorial. That invisible network of cables and the information flowing through them is the Internet.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>The word <strong>Internet</strong> is short for "interconnected networks." It is a massive collection of computers around the world connected to each other, designed to share information. When you type something into Google, your phone sends a tiny digital message through your network provider (MTN, Airtel, Glo), through undersea cables, all the way to Google's computers in a data centre in America or Europe, and back — in less than a second.</p>
+                <p>There are roughly <strong>5 billion people</strong> connected to the Internet today. Every time any one of them does anything online — sends a message, watches a video, makes a payment — information travels across this invisible road network at the speed of light.</p>
+                <p>Three things make the Internet work: <strong>devices</strong> (your phone, laptop, computer), <strong>connections</strong> (WiFi, mobile data, cables), and <strong>servers</strong> (powerful computers that store and send information when requested).</p>
+              </div>
+              <div class="tbd-steps">
+                <h4>Key terms to know</h4>
+                <div class="step-list">
+                  <div class="step-item"><span class="step-n">1</span><p><strong>IP Address:</strong> Every device on the Internet has a unique address — like a house number. Your phone has one. Every server has one. This is how information knows where to go.</p></div>
+                  <div class="step-item"><span class="step-n">2</span><p><strong>Server:</strong> A powerful computer that stores information and sends it to you when you request it. When you open a website, a server somewhere sends that website to your screen.</p></div>
+                  <div class="step-item"><span class="step-n">3</span><p><strong>Browser:</strong> The app you use to access websites — Google Chrome, Safari, Firefox. It reads the information sent by servers and shows it to you in a readable format.</p></div>
+                </div>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>On your phone, go to Settings and look at your current IP address. Then open a new tab and type <strong>whatismyip.com</strong> — compare what you see. You just found your device's address on the Internet.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Tech 02</span><span class="tc-tag">Fundamentals</span><span class="tc-new">New</span></div>
+              <div class="tc-title">What Is a Website? Domain Names and Hosting Explained Simply</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🏪</span>
+                <div>
+                  <strong>The Physical Shop Analogy</strong>
+                  <p>Every business that wants customers needs two things: a location where customers can find them, and a building to operate from. Your website works exactly the same way. The <strong>domain name</strong> (like silabs.com.ng) is your shop's address — the name people type to find you. The <strong>hosting</strong> is the physical land and building — the computer somewhere in the world that stores your website's files 24 hours a day, 7 days a week, so visitors can access your site at any time.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>A website is simply a collection of files — text, images, code — stored on a computer called a <strong>server</strong>. When someone types your domain name (e.g. <code>mysite.com</code>) into their browser, their computer asks the Internet: "Where is mysite.com?" The Internet looks up the address, finds the server where your files are stored, and sends those files back to the visitor's screen.</p>
+                <p>A domain name costs between <strong>₦3,000 and ₦8,000 per year</strong> depending on the extension (.com, .ng, .com.ng). Hosting costs between <strong>₦3,000 and ₦20,000 per year</strong> for basic plans on platforms like Hostinger or cPanel-based Nigerian hosting companies.</p>
+                <p>Together, a domain and hosting are all you need to have a presence on the Internet. That is the entire barrier to entry. Many people spend years thinking about having a website. The total cost of actually having one for a full year is often less than a pair of good shoes.</p>
+              </div>
+              <div class="tbd-steps">
+                <h4>Domain extensions — what they mean</h4>
+                <div class="step-list">
+                  <div class="step-item"><span class="step-n">1</span><p><strong>.com</strong> — The most recognised globally. Best for businesses that want to look international or professional.</p></div>
+                  <div class="step-item"><span class="step-n">2</span><p><strong>.ng or .com.ng</strong> — Specifically Nigerian. Good for businesses that primarily serve Nigerian customers.</p></div>
+                  <div class="step-item"><span class="step-n">3</span><p><strong>.tech / .dev / .io</strong> — Popular with technology companies and startups. Signals a tech focus.</p></div>
+                </div>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Go to <strong>namecheap.com</strong> or <strong>qservers.net</strong> and search for a domain name using your real name, a business idea, or a creative brand name. Just search — you do not have to buy today. Notice the price. Notice the options. That is the real cost of existing on the Internet.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Tech 03</span><span class="tc-tag">Web Dev</span><span class="tc-new">New</span></div>
+              <div class="tc-title">Your First HTML Page — Building the Skeleton of the Internet</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🦴</span>
+                <div>
+                  <strong>The Human Body Analogy</strong>
+                  <p>A human body has three layers. The skeleton gives it structure and shape — without bones, everything would be a pile of skin and muscle. The skin and clothes give it appearance — colour, style, what it looks like. The muscles and nerves make it move and respond. A website has exactly the same three layers. <strong>HTML</strong> is the skeleton. <strong>CSS</strong> is the appearance. <strong>JavaScript</strong> is the movement. Today we build the skeleton.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p><strong>HTML</strong> stands for HyperText Markup Language. Do not worry about what that means. What matters is what it does: it tells the browser what type of content each thing is. Is this a heading? Is this a paragraph? Is this an image? Is this a button? HTML uses "tags" — words inside angle brackets — to label everything.</p>
+                <p>Here are the most important HTML tags you will use:</p>
+                <p><code>&lt;h1&gt;This is a big heading&lt;/h1&gt;</code> — Makes large text like a page title.<br>
+                <code>&lt;h2&gt;Smaller heading&lt;/h2&gt;</code> — A section heading.<br>
+                <code>&lt;p&gt;This is a paragraph of text.&lt;/p&gt;</code> — Normal body text.<br>
+                <code>&lt;a href="https://google.com"&gt;Click here&lt;/a&gt;</code> — A link.<br>
+                <code>&lt;img src="photo.jpg"&gt;</code> — An image.<br>
+                <code>&lt;button&gt;Click me&lt;/button&gt;</code> — A button.</p>
+                <p>Every tag has an opening <code>&lt;tag&gt;</code> and a closing <code>&lt;/tag&gt;</code> (with a forward slash). Everything between them is affected by that tag. That is the entire logic of HTML.</p>
+              </div>
+              <div class="tbd-steps">
+                <h4>Build your first page right now</h4>
+                <div class="step-list">
+                  <div class="step-item"><span class="step-n">1</span><p>Open Notepad (Windows) or any text editor on your computer.</p></div>
+                  <div class="step-item"><span class="step-n">2</span><p>Type exactly this: <code>&lt;h1&gt;My name is [your name]&lt;/h1&gt;&lt;p&gt;I am building something.&lt;/p&gt;</code></p></div>
+                  <div class="step-item"><span class="step-n">3</span><p>Save the file as <strong>index.html</strong> (not index.txt — make sure the extension is .html).</p></div>
+                  <div class="step-item"><span class="step-n">4</span><p>Find the file in your file manager and double-click it. It will open in your web browser as a webpage.</p></div>
+                </div>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Complete the 4 steps above. Take a screenshot of your browser showing your first HTML page with your name on it. That is <strong>your first webpage</strong>. Share it in the Builder community group.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Tech 04</span><span class="tc-tag">Web Dev</span><span class="tc-new">New</span></div>
+              <div class="tc-title">Making Things Look Good — CSS Explained From Scratch</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🎨</span>
+                <div>
+                  <strong>The Interior Design Analogy</strong>
+                  <p>Imagine you have built the walls and roof of a room (that is your HTML — the structure). Now you want to make it beautiful. You choose the colour to paint the walls. You decide how big the windows should be. You pick where the furniture goes and what style it should be. All of those decisions about appearance are what CSS does for your webpage. HTML builds the room. CSS decorates it.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p><strong>CSS</strong> stands for Cascading Style Sheets. Again, do not worry about the name. CSS lets you control how every element on your page looks: colour, size, position, spacing, fonts, background, borders, and much more.</p>
+                <p>CSS works by selecting an HTML element and giving it style rules. The pattern is always the same:</p>
+                <p><code>selector { property: value; }</code></p>
+                <p>For example: <code>h1 { color: blue; font-size: 40px; }</code> — This makes every h1 heading blue and 40 pixels tall.</p>
+                <p>Or: <code>body { background-color: #f5f5f5; font-family: Arial; }</code> — This gives the whole page a light grey background and uses Arial font for all text.</p>
+                <p>Colours in CSS can be written as: colour names (<code>red</code>, <code>navy</code>, <code>green</code>), or hex codes like <code>#0f2744</code> (the navy colour used on this page), or RGB values. Hex codes give you millions of exact colour options.</p>
+              </div>
+              <div class="tbd-steps">
+                <h4>Add CSS to your HTML page</h4>
+                <div class="step-list">
+                  <div class="step-item"><span class="step-n">1</span><p>Open your index.html file from the previous tutorial.</p></div>
+                  <div class="step-item"><span class="step-n">2</span><p>Add this at the very top: <code>&lt;style&gt; h1 { color: #0f2744; } p { color: #666; font-size: 18px; } &lt;/style&gt;</code></p></div>
+                  <div class="step-item"><span class="step-n">3</span><p>Save and open in browser. Your heading is now dark navy. Your paragraph text is grey and slightly larger.</p></div>
+                  <div class="step-item"><span class="step-n">4</span><p>Experiment: change the colour, try different font-size numbers, add <code>background-color: lightyellow;</code> to the body. Break it and fix it. That is how you learn.</p></div>
+                </div>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Style your HTML page from Tutorial 03. Give it a background colour, change the heading colour to any colour you like, and make the text a comfortable reading size. <strong>The goal is not to make it perfect. The goal is to make it look intentional.</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Tech 05</span><span class="tc-tag">Fundamentals</span><span class="tc-new">New</span></div>
+              <div class="tc-title">What Is a Programming Language? And Which One Should You Learn First?</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🗣️</span>
+                <div>
+                  <strong>The Language Analogy</strong>
+                  <p>You speak Hausa or Yoruba or Igbo or English to communicate with other people. A programming language is how you communicate with computers. Just as different human languages have different vocabularies and grammar rules, different programming languages have different syntax (writing style) and are used for different purposes. Hausa is excellent for communicating in Northern Nigeria. Python is excellent for communicating data analysis instructions to computers. Neither is universally "better" — it depends on what you are trying to do.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>A programming language is a set of words and rules that a computer can understand and execute. You write instructions in that language, and the computer follows them precisely. Computers only understand 0s and 1s (binary), so programming languages are essentially translators that convert human-readable instructions into machine instructions.</p>
+                <p>The most important languages to know about as a beginner:</p>
+                <p><strong>Python</strong> — The easiest to read and write. Used for AI, data analysis, automation, and backend web development. Best first language for most people.</p>
+                <p><strong>JavaScript</strong> — The only language that runs directly inside web browsers. Essential if you want websites to be interactive and dynamic.</p>
+                <p><strong>PHP</strong> — Powers 78% of all websites including WordPress. Extremely practical for Nigerian hosting environments and fast deployment.</p>
+                <p><strong>HTML and CSS</strong> — Technically not "programming" languages but markup/styling languages. You need these first before anything else on the web.</p>
+                <p>The honest answer to "which should I learn first?" is: <strong>learn HTML and CSS first, then Python or JavaScript depending on what you want to build.</strong></p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Go to <strong>scratch.mit.edu</strong> — a free visual programming platform from MIT. Spend 20 minutes building anything you want with their drag-and-drop blocks. This is real programming logic in a visual form. When it clicks visually, written code becomes much easier to understand.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════ BUSINESS TRACK ════ -->
+    <div class="track-panel" id="track-biz">
+      <p class="track-intro">Business is not complicated. It is solving a problem for someone and getting paid for it. These tutorials break down every part of that process from scratch.</p>
+      <div class="tut-cards">
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Biz 01</span><span class="tc-tag">Foundations</span><span class="tc-new">New</span></div>
+              <div class="tc-title">How to Find a Business Idea — The Only Method That Actually Works</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">👁️</span>
+                <div>
+                  <strong>The Mechanic's Eye Analogy</strong>
+                  <p>An experienced mechanic can walk through any neighbourhood and immediately notice three things: which cars have worn tyres, which ones are burning fuel inefficiently, and which owners clearly do not know how to do basic maintenance. He sees problems everywhere he looks — because he trained himself to. Most people walk through the same neighbourhood and see nothing. Business ideas work the same way. The skill is not having ideas. The skill is <em>training your eyes to see problems</em> that other people have stopped noticing because they have accepted them as normal.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Every business idea comes from the same source: <strong>a problem that people have and are not solving well.</strong> That is it. There is no other source of valid business ideas. Not passion alone. Not what you are good at. Not what is trendy. All of those things might help you choose between ideas, but the idea itself must start with a real problem.</p>
+                <p>Here are the three most reliable places to find business ideas:</p>
+                <p><strong>1. Your own frustrations.</strong> What annoys you regularly? What do you spend time doing that you wish was easier, faster, or cheaper? If it frustrates you, it frustrates thousands of others like you.</p>
+                <p><strong>2. What people complain about.</strong> Listen to conversations at school, at the market, at church or mosque. Every complaint is a business opportunity in disguise. "There is never a reliable okada around here" is someone describing a problem. "I cannot find good fabric at a fair price" is a problem. "My parents spend hours at PHCN trying to sort out electricity issues" is a problem.</p>
+                <p><strong>3. What successful businesses are doing in other countries.</strong> Something that works in London or Nairobi may not yet exist in your city. That gap is an opportunity.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Set a 24-hour alarm on your phone. For the next 24 hours, every time you notice something that frustrates you, costs you unnecessary time, or feels broken — write it down immediately. Do not evaluate the ideas yet. Just collect them. Tomorrow you will have a real list of potential business ideas that came from your actual lived experience.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Biz 02</span><span class="tc-tag">Validation</span><span class="tc-new">New</span></div>
+              <div class="tc-title">How to Know If Your Idea Will Make Money Before You Build Anything</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🌧️</span>
+                <div>
+                  <strong>The Umbrella Test Analogy</strong>
+                  <p>Before you manufacture 500 umbrellas to sell, do one simple thing: stand in a market on a sunny day and say loudly that you will be selling umbrellas for ₦2,000 each when it rains next week. Count how many people ask for your number. If 50 people ask, you have demand and you make the umbrellas. If nobody responds, you saved yourself from manufacturing 500 unsellable umbrellas. That is validation: finding out if people will actually pay for your idea <em>before</em> you spend significant time and money building it.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Most failed businesses failed not because the founders were lazy or unintelligent. They failed because they spent months or years building something and only discovered at the end that nobody wanted to pay for it. Validation is how you avoid that mistake.</p>
+                <p>The three questions every idea must pass before you invest seriously in it:</p>
+                <p><strong>Question 1: Does the problem really exist?</strong> Have you personally experienced it? Have you talked to at least 5 other people who have experienced it? If you can only find 2 people with the problem, the market may be too small.</p>
+                <p><strong>Question 2: Are people currently paying to solve it?</strong> If someone is already paying for an imperfect solution (like paying a middleman extra money because there is no direct service), they will pay for a better one. If people are just living with the problem without paying anyone, getting them to pay you is much harder.</p>
+                <p><strong>Question 3: Will they pay what you need to charge?</strong> You can only find this out by telling real people your price and watching their reaction. Not asking hypothetically — actually saying "I can solve this for you for ₦15,000. Are you interested?" And watching what happens next.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Take one idea from your list (Biz 01 action). Identify 5 real people who have the problem you want to solve. Text, call, or speak to at least 3 of them today. Do not pitch. Just ask: "Do you ever experience this problem? How do you currently deal with it? What would you pay for a solution?" Write down exactly what they say.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Biz 03</span><span class="tc-tag">Pricing</span><span class="tc-new">New</span></div>
+              <div class="tc-title">How to Price What You Sell — Without Undercharging or Overcharging</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">⚖️</span>
+                <div>
+                  <strong>The Tailor Analogy</strong>
+                  <p>Imagine two tailors who both sew the same quality agbada. The first tailor charges ₦5,000 because it takes him 4 hours at ₦1,250 per hour and that feels fair to him. The second tailor charges ₦25,000 because the customer is a businessman who will wear it to important meetings and it would cost him ₦50,000 to buy a ready-made one elsewhere. Same skill, same agbada, very different pricing — and the second tailor is not wrong. He is just pricing based on the value to the customer, not the cost to himself.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>There are three ways most people price things. Two of them consistently lead to undercharging.</p>
+                <p><strong>Method 1 (Common but weak): Cost-plus pricing.</strong> You calculate how much it costs you to deliver the service and add a profit margin. The problem: this ignores what the customer is willing to pay and keeps you trapped at the bottom of the market.</p>
+                <p><strong>Method 2 (Also weak): Matching competitors.</strong> You look at what others charge and charge the same. The problem: you might be copying someone who is also undercharging. And it removes your ability to differentiate.</p>
+                <p><strong>Method 3 (Correct): Value-based pricing.</strong> You price based on what the outcome is worth to the customer. Ask yourself: "What would it cost my customer to NOT have this problem solved?" or "What is the benefit they get from this?" Then price as a fraction of that value.</p>
+                <p>A website for a shop that earns ₦200,000 per month in revenue — if your website brings in even 10% more customers, that is ₦20,000 per month in additional revenue. Charging ₦50,000 for that website is very reasonable. Charging ₦8,000 is not a favour to them — it is a signal that you do not understand the value you create.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Take the service you are considering offering. Instead of thinking about what it costs you, think about: <strong>what is this worth to the customer?</strong> Write down 3 specific benefits they get from your service. Assign a naira value to each benefit. Then set your price at between 10% and 30% of the total value you calculated. Write your new price down and say it out loud three times so it stops feeling uncomfortable.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Biz 04</span><span class="tc-tag">Sales</span><span class="tc-new">New</span></div>
+              <div class="tc-title">How to Find Your Very First Customer — Without Social Media or Advertising</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🔦</span>
+                <div>
+                  <strong>The Torch Analogy</strong>
+                  <p>When it is dark and you need to find something, you do not light a bonfire and hope the thing appears — that would waste a lot of fuel for uncertain results. You take a torch, point it precisely at where the thing is likely to be, and search there. Getting your first customer is the same. You do not post on Instagram and hope someone relevant sees it. You point your torch at the specific type of person who has the exact problem you solve, and you go directly to where they already are.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Your first customer will almost certainly come from your existing network — people you already know, or people one step away from people you know. This is not a limitation. It is actually an advantage, because trust already exists.</p>
+                <p><strong>Step 1: Make a list of 20 people you know.</strong> Family, neighbours, church/mosque members, school friends, teachers, relatives. Do not pre-judge whether they need your service. Just make the list.</p>
+                <p><strong>Step 2: For each person, think: do they have the problem I solve?</strong> If yes, reach out directly. If no, think: do they know someone who has the problem? A referral from a trusted person is the fastest path to a paying customer.</p>
+                <p><strong>Step 3: Be direct, not vague.</strong> Do not say "I am doing graphics design, let me know if you need anything." Say: "I design social media graphics for small businesses at ₦5,000 per design. I noticed your business has no consistent visual branding. I would love to show you what I can create. Can we speak for 10 minutes this week?"</p>
+                <p><strong>Step 4: Follow up once.</strong> If they do not respond, send one follow-up 3 days later. After that, move to the next person. Never chase more than twice. Your time is valuable too.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Write a list of 10 people you know personally. For each one, write whether they have your target problem or know someone who does. Then send a direct message to the 3 most likely prospects today. Use the specific language above — not vague, not shy, not apologetic. Direct and helpful. Track what happens.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Biz 05</span><span class="tc-tag">Operations</span><span class="tc-new">New</span></div>
+              <div class="tc-title">How to Write a Simple Business Proposal That Gets You Hired</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">📋</span>
+                <div>
+                  <strong>The Court Case Analogy</strong>
+                  <p>In a court case, a lawyer does not just stand up and say "my client is innocent, trust me." They present evidence, structure their argument clearly, address the judge's likely concerns, and close with a specific request. A business proposal works exactly the same way. You are making a case to the client — here is the problem, here is my solution, here is the proof I can deliver, here is what I need from you. A strong proposal does not beg. It presents a logical case that makes saying yes the obvious and sensible choice.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>A business proposal is a formal document you send to a potential client explaining what you will do for them and what you need in return. It does not have to be long. A single page is fine for most small business situations.</p>
+                <p>Every proposal must have these five sections:</p>
+                <p><strong>1. The Problem Statement:</strong> Show the client that you understand their specific situation. "I notice that XYZ Supermarket currently has no online presence, which means customers in the surrounding area who search online for groceries will not find you." Clients will trust you more if you understand their problem before you start talking about solutions.</p>
+                <p><strong>2. Your Solution:</strong> "I will design and build a simple website for XYZ Supermarket that appears in local Google searches, displays your product categories, and allows customers to call directly or request delivery." Be specific. Vague proposals lose to specific ones every time.</p>
+                <p><strong>3. What You Deliver:</strong> List the exact items the client receives. A 5-page website. 3 rounds of revisions. 30 days of support. Be precise so there are no misunderstandings later.</p>
+                <p><strong>4. Timeline:</strong> "The completed website will be ready in 14 working days from the date of payment."</p>
+                <p><strong>5. Investment Required:</strong> "Total: ₦35,000. 50% upfront (₦17,500) to begin work. Balance due on delivery." Always include payment terms.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Write a one-page proposal for a real or imaginary client using the 5-section structure above. Even if you do not have a client yet, writing this proposal will clarify your own thinking about exactly what you offer, for whom, at what price, and on what timeline. Save it. Edit it until it sounds professional. This is a document you will send to real clients soon.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════ MONEY TRACK ════ -->
+    <div class="track-panel" id="track-money">
+      <p class="track-intro">Nobody teaches Nigerians how to manage, grow, and build wealth with money. These tutorials fix that — from the very basics to compound growth.</p>
+      <div class="tut-cards">
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Money 01</span><span class="tc-tag">Basics</span><span class="tc-new">New</span></div>
+              <div class="tc-title">Saving vs Investing — They Are Not the Same Thing, and Confusing Them Is Costing You</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🌾</span>
+                <div>
+                  <strong>The Farmer's Grain Analogy</strong>
+                  <p>After harvest, a farmer has two options for the grain he does not eat immediately. He can store it in a dry silo and it will still be there next season, unchanged — that is saving. Or he can plant it back into the ground, and if conditions are good, 1 grain becomes 200 grains by next season — that is investing. Saving protects what you have. Investing grows what you have. Both are necessary. But confusing them — like planting grain in concrete or leaving seeds in the silo forever — wastes the opportunity completely.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p><strong>Saving</strong> means keeping money safe and accessible so you can use it when needed. A savings account, a piggybank, keeping cash at home — these are all saving. The money you save stays roughly the same amount over time (or even decreases in real value because of inflation — which we will cover in a future tutorial).</p>
+                <p><strong>Investing</strong> means putting money to work so it can grow into more money over time. When you invest, you accept some level of risk in exchange for the potential of growth. You might invest in stocks (buying a small piece of a company), in fixed deposits (lending your money to a bank for a set period at a guaranteed interest rate), in real estate (buying land or property that increases in value), or in your own business (using money to generate more money through your work).</p>
+                <p>The critical insight: <strong>money sitting in a regular savings account in Nigeria is actually losing value every year</strong> because Nigerian inflation often runs at 20–30%. If your savings account gives you 5% interest but inflation is 25%, your money has effectively lost 20% of its purchasing power in a year. This is why investing is not optional for anyone who wants to build wealth.</p>
+                <p>The rule: <strong>save 3–6 months of expenses as an emergency fund. Then invest everything else.</strong></p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Open a free account on <strong>Cowrywise</strong> or <strong>Piggyvest</strong> — Nigerian savings and investment apps designed for beginners. Both are regulated by the SEC and CBN. Just create the account today. You do not need to deposit anything yet. Explore what investment options they offer. Understanding your options is the first step.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Money 02</span><span class="tc-tag">Basics</span><span class="tc-new">New</span></div>
+              <div class="tc-title">How to Open a Business Bank Account — Why This Matters More Than You Think</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🚰</span>
+                <div>
+                  <strong>The Water Pipe Analogy</strong>
+                  <p>Imagine you are a plumber who uses the same pipe to supply water to your house and to all your clients' buildings. When something goes wrong — a leak, a burst pipe, a contamination — you cannot tell which part of the system is your personal supply and which is the client's. You cannot fix the problem properly without shutting down everything. A dedicated business pipe means you always know exactly what is flowing where, and a problem in one place does not affect the other. Your money needs two separate pipes: personal and business.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Most young entrepreneurs make the same mistake: they receive all money into their personal account and spend from the same account. The consequences are serious and predictable. You cannot track whether your business is actually making money. Tax obligations become complicated. Clients see you as informal and unreliable. You spend business money on personal things and wonder why you never seem to have enough.</p>
+                <p>Opening a business bank account solves all of these problems. In Nigeria, you can open a business account with most banks. If you are not yet registered with the CAC (Corporate Affairs Commission), you can open an account in your personal name but dedicated to business — clearly labelling it as your business account.</p>
+                <p>The rule from day one: <strong>every naira your business earns goes into the business account. Every business expense comes from the business account. Your salary is the only transfer you make to your personal account.</strong></p>
+                <p>Why pay yourself a salary from your own business? Because it forces you to treat the business as separate from yourself — which is how real businesses work. When you do this, you will know immediately if the business is profitable, how much you can reinvest, and what you can responsibly spend personally.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>If you already have a personal account, create a second account — even at the same bank — that you will dedicate exclusively to your business. Name it in your notes as "[Business Name] Account." Transfer ₦0 to it today. From this point forward, every business income goes there first. This single habit separates serious entrepreneurs from hobbyists.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Money 03</span><span class="tc-tag">Tracking</span><span class="tc-new">New</span></div>
+              <div class="tc-title">How to Track Your Money Every Month — The Simple System That Takes 10 Minutes</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🩺</span>
+                <div>
+                  <strong>The Doctor's Chart Analogy</strong>
+                  <p>When a patient is admitted to a hospital, nurses record their temperature, blood pressure, and pulse every few hours and write it on a chart attached to the bed. The doctor looks at this chart and can immediately see: Is the patient improving? Getting worse? Is something that used to be normal now dangerously high? Without the chart, the doctor is guessing. With the chart, every decision is based on real, tracked data. Your financial health works exactly the same way. Without tracking, you are making decisions about your money based on feelings and guesses. With tracking, you are making them based on facts.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Tracking your money does not require complicated software or a degree in accounting. It requires one simple habit: <strong>record every money movement every time it happens.</strong></p>
+                <p>Your money tracker has two sides. <strong>Income:</strong> every naira that comes in — from what source, on what date, for what amount. <strong>Expenses:</strong> every naira that goes out — on what date, for what purpose, in what amount.</p>
+                <p>At the end of every month, you calculate one number: <strong>Income minus Expenses = Net</strong>. If Net is positive, your business made money this month. If negative, it spent more than it earned. That single number tells you more about the health of your business than any number of meetings or plans.</p>
+                <p>Categories to track for expenses: Operations (tools, internet, transport), Marketing (any paid promotion), People (anyone you pay for help), and Personal Withdrawal (what you pay yourself). Having categories lets you see exactly where money goes — so you can cut intelligently, not blindly.</p>
+              </div>
+              <div class="tbd-steps">
+                <h4>Set up your tracker in 10 minutes</h4>
+                <div class="step-list">
+                  <div class="step-item"><span class="step-n">1</span><p>Open Google Sheets (free) or a physical notebook.</p></div>
+                  <div class="step-item"><span class="step-n">2</span><p>Create two sections: INCOME and EXPENSES. Each row: Date | Description | Amount.</p></div>
+                  <div class="step-item"><span class="step-n">3</span><p>At the bottom: Total Income, Total Expenses, Net (Income minus Expenses).</p></div>
+                  <div class="step-item"><span class="step-n">4</span><p>Fill in everything from this month that you can remember. Commit to recording new entries same-day going forward.</p></div>
+                </div>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Create your money tracker right now. It can be a Google Sheet, a notes app, or a physical notebook. Fill in every income and expense you can remember from this month. Calculate your net. If it is positive — excellent, now protect that. If it is negative or zero — now you know exactly what needs to change.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Money 04</span><span class="tc-tag">Growth</span><span class="tc-new">New</span></div>
+              <div class="tc-title">Compound Interest — The Concept That Can Make You Wealthy Without Working Harder</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🌊</span>
+                <div>
+                  <strong>The Snowball on a Hill Analogy</strong>
+                  <p>Imagine you roll a small ball of snow down a very long hill. At first it is tiny and slow. But as it rolls, it picks up more snow on the outside, which makes it bigger, which means it picks up even more snow, faster. By the time it reaches the bottom of a long enough hill, that small ball has become an enormous boulder. This is compound interest. Your money earns returns. Those returns are added to your money. The bigger amount then earns even bigger returns. Over time, the growth accelerates dramatically — not because you added more money but because the previous growth itself is growing.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p><strong>Simple interest</strong> means you earn returns only on the original amount you invested. If you invest ₦100,000 at 10% per year, you earn ₦10,000 every year. After 10 years: ₦200,000.</p>
+                <p><strong>Compound interest</strong> means you earn returns on both the original amount AND on all the returns you have already earned. Same ₦100,000 at 10% per year, compounding: after Year 1 you have ₦110,000. Year 2 you earn 10% of ₦110,000 = ₦121,000. Year 3: ₦133,100. After 10 years: <strong>₦259,374.</strong> That is ₦59,374 more than simple interest — without putting in a single extra naira.</p>
+                <p>Over 30 years at 10% compounded: ₦100,000 becomes <strong>₦1,744,940</strong>. That is over 17 times your original investment.</p>
+                <p>Albert Einstein reportedly called compound interest the eighth wonder of the world. Whether he actually said that does not matter. The mathematics is undeniable. <strong>The most important variable in compound interest is time.</strong> The earlier you start investing, the longer your money has to compound. A 17-year-old who starts today has a massive advantage over a 35-year-old who starts in 18 years — even if the 35-year-old invests more money per month.</p>
+                <p><strong>This is why starting now — even with small amounts — matters more than waiting until you have a lot of money.</strong></p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Go to a compound interest calculator (search "compound interest calculator" on Google). Enter ₦5,000 as your starting amount. Enter ₦5,000 as a monthly addition. Enter 12% annual interest (achievable with Nigerian money market funds). Set the period to 10 years. Look at the final number. Then change the period to 20 years. The difference between those two numbers is the cost of waiting 10 years to start. Start now.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════ MINDSET TRACK ════ -->
+    <div class="track-panel" id="track-mindset">
+      <p class="track-intro">Skills without the right mindset produce nothing. These tutorials address the mental side of building — the part most courses skip entirely.</p>
+      <div class="tut-cards">
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Mind 01</span><span class="tc-tag">Consistency</span><span class="tc-new">New</span></div>
+              <div class="tc-title">How to Stay Consistent When You Do Not Feel Like It — The Real Secret Nobody Tells You</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🔌</span>
+                <div>
+                  <strong>The Generator Analogy</strong>
+                  <p>When NEPA takes light, a generator does not ask itself if it feels like providing power today. It does not check its mood before starting. It does not wait until conditions are perfect. Someone pulls the cord, and if it has fuel, it runs. Full stop. High-performing people treat their daily work habits exactly like a generator: they do not run on motivation (emotion), they run on fuel (systems and routines). Motivation is weather — unpredictable and unreliable. Systems are engines — mechanical and dependable.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Here is the truth that will save you years of frustration: <strong>motivation is not the source of consistent action. Action is the source of motivation.</strong> You do not wait to feel motivated before you work. You work, and then motivation follows. Every time. This is not philosophy — it is neuroscience. Physical action triggers the release of dopamine in your brain, which creates the feeling of motivation. The feeling comes after you start, not before.</p>
+                <p>The three systems that eliminate the need for motivation:</p>
+                <p><strong>1. A fixed time:</strong> Decide exactly when you do your work every day — not "in the morning" but "at 6:30am." When it is 6:30am, you work. No decision required. Decision fatigue is a real thing; every time you decide whether to work, you waste mental energy and give yourself a chance to say no.</p>
+                <p><strong>2. A minimum standard:</strong> On hard days, commit only to the smallest possible version of the task. Not "I will write 10 pages" but "I will open my document and write one sentence." That one sentence nearly always leads to more. But even if it does not — you maintained the streak.</p>
+                <p><strong>3. Accountability:</strong> Tell someone specific what you will do today and when. The social pressure of potentially letting someone down is one of the most reliable consistency mechanisms that exists.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Set one fixed time for building every day — even if just 30 minutes. Write it in your phone calendar as a recurring event for the next 30 days. Then tell one person — a friend, a family member, anyone — what that time is and what you will be doing. You have now created accountability and a system. Start tomorrow at exactly that time regardless of how you feel.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Mind 02</span><span class="tc-tag">Resilience</span><span class="tc-new">New</span></div>
+              <div class="tc-title">How to Handle Failure Without Quitting — What Every Successful Builder Knows That Others Do Not</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🏋️</span>
+                <div>
+                  <strong>The Muscle Growth Analogy</strong>
+                  <p>When you lift weights that are too heavy for you, the muscle fibres actually tear microscopically. This sounds bad. But here is what happens next: your body detects the damage, repairs the fibres, and makes them slightly thicker and stronger than they were before — so that the same weight will not tear them again. Growth in the gym is literally built on controlled damage. Business and personal growth work exactly the same way. Every failure is muscle fibre tearing. The repair process — the thinking, the adjusting, the trying again — is what makes you stronger. Failure is not the opposite of success. It is the raw material of success.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Every successful Nigerian entrepreneur has stories of failure. Aliko Dangote's first business attempts did not all work. Innocent Chukwuma (who founded Innoson Motors) had setbacks that would have ended most careers. The difference between people who eventually succeed and people who do not is not whether they fail. It is what they do immediately after failing.</p>
+                <p>The two-step failure protocol that actually works:</p>
+                <p><strong>Step 1: Allow the emotion for 24 hours.</strong> When something fails — a client rejects you, a product flops, a partnership falls through — allow yourself to feel it fully for one day. Do not suppress it. Do not pretend you do not care. Feel the disappointment completely and consciously. This is important because suppressed failure emotions tend to convert into fear that stops you from trying again.</p>
+                <p><strong>Step 2: After 24 hours, do a post-mortem — not a pity party.</strong> Ask only factual questions: What specifically went wrong? Was it my product, my pitch, my timing, or external factors? What is the one thing I would change if I tried again? What did I learn that I did not know before this failure? Write the answers down. Then use those answers to try again — smarter, not harder.</p>
+                <p>The goal is to fail <em>forward</em> — to treat every failure as tuition paid toward a lesson that will eventually produce success. The only real failure is stopping the experiment permanently.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Think of one thing you tried and gave up on because of a bad experience — a business idea, a skill, a goal. Write down honestly: what specifically went wrong? Then write one thing you would do differently if you tried again. You do not have to try again today. Just complete the post-mortem. Turning a vague failure into specific lessons is the first step to not repeating it.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Mind 03</span><span class="tc-tag">Execution</span><span class="tc-new">New</span></div>
+              <div class="tc-title">How to Stop Overthinking and Actually Start Building Something</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🛵</span>
+                <div>
+                  <strong>The Okada Analogy</strong>
+                  <p>An okada rider does not wait until every pothole on his route has been filled before he leaves the garage. He starts the engine, gets on the road, and navigates around the potholes as he encounters them. If he waited for perfect road conditions, he would never leave the garage — and his customers would never get to their destinations. Most people who never start a business are not waiting for the right idea, the right time, or the right conditions. They are waiting for a road with no potholes. That road does not exist. Start the engine. Navigate as you go.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Overthinking is not a character flaw. It is a survival mechanism that has gotten confused. Your brain tries to protect you from risk by making you think through every possible problem before you act. This is useful in genuinely life-threatening situations. It is disastrous in business, where the actual risk of thinking and not acting is almost always higher than the risk of acting imperfectly.</p>
+                <p>The three most common overthinking traps and how to escape each one:</p>
+                <p><strong>Trap 1: "My idea is not ready yet."</strong> No idea is ever ready. Every product in history launched with imperfections. The solution: define the minimum thing you need to do or build to test whether your idea has merit. Build only that. Launch that. The real test — actual customers responding — will tell you what to fix next. Your imagination will not.</p>
+                <p><strong>Trap 2: "What if it fails?"</strong> Reverse the question: what happens if you spend another 6 months not starting? You lose 6 months of learning, building, and potential income. The actual cost of not starting is almost always higher than the cost of starting badly.</p>
+                <p><strong>Trap 3: "Someone else is already doing this."</strong> Someone else is also already selling jollof rice, running a printing shop, and offering accounting services — and new ones open successfully every week. Competition means demand exists. Your job is not to be the only one. Your job is to be the best one for a specific group of customers.</p>
+                <p><strong>The rule: if you can take one concrete action on your idea today in under 30 minutes, take it right now.</strong> A text message sent. A page written. A form created. A name registered. One concrete action breaks the overthinking loop better than any amount of motivation.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Write down the one thing you have been overthinking about starting. Then identify the single smallest action you could take on it in the next 30 minutes. Not the perfect action. Not the complete action. The <em>smallest possible</em> action. Set a timer for 30 minutes. Do only that one thing. When the timer goes off, you are no longer someone who is "thinking about" starting. You have started.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="membership-section" id="join">
+  <div class="container">
+    <div class="ms-label reveal">Membership Plans</div>
+    <h2 class="ms-h2 reveal">Go Further With Support</h2>
+    <p class="ms-sub reveal">Free tutorials get you started. Membership gets you there faster — with live coaching, accountability, and direct feedback on your work every single week.</p>
+    <div class="ms-grid">
+      <div class="ms-card reveal">
+        <div class="ms-tier">Free Forever</div>
+        <div class="ms-price">₦0 <span>/always</span></div>
+        <p class="ms-pdesc">Access all written tutorials. New lessons added daily. No payment required, ever.</p>
+        <ul class="ms-list">
+          <li>All 4 tutorial tracks</li>
+          <li>New tutorials added daily</li>
+          <li>Weekly news digest (Fridays)</li>
+          <li>Action items &amp; assignments</li>
+        </ul>
+        <button class="ms-btn ms-btn-outline">You're already in</button>
+      </div>
+      <div class="ms-card best reveal">
+        <div class="ms-tier">Most Popular</div>
+        <div class="ms-price">₦2,000 <span>/month</span></div>
+        <p class="ms-pdesc">Join the private Builder community. Weekly live sessions, assignment reviews, and a group that holds you accountable.</p>
+        <ul class="ms-list">
+          <li>Everything in Free</li>
+          <li>Private WhatsApp community</li>
+          <li>Weekly 60-min live session</li>
+          <li>Your assignments reviewed</li>
+          <li>Accountability partner</li>
+          <li>Priority Q&amp;A access</li>
+        </ul>
+        <a href="https://wa.me/2349056232366?text=I%20want%20to%20join%20Builder%20Community%20(₦2,000/month)" target="_blank" class="ms-btn ms-btn-navy">Join Community →</a>
+      </div>
+      <div class="ms-card reveal">
+        <div class="ms-tier">12-Week Cohort</div>
+        <div class="ms-price">₦25,000 <span>one-time</span></div>
+        <p class="ms-pdesc">Full 12-week guided programme with Simeon. Live coaching, weekly assignments, peer group, and a verified completion certificate.</p>
+        <ul class="ms-list">
+          <li>Everything in Community</li>
+          <li>Direct coaching by Simeon</li>
+          <li>Structured 12-week curriculum</li>
+          <li>Project reviews &amp; feedback</li>
+          <li>Verified Builder Certificate</li>
+          <li>Alumni network access</li>
+          <li>Job &amp; client referrals</li>
+        </ul>
+        <a href="https://wa.me/2349056232366?text=I%20want%20to%20enrol%20in%20the%2012-Week%20Builder%20Cohort" target="_blank" class="ms-btn ms-btn-lime">Apply for Cohort →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip" id="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2>Start today. Not when you feel ready.</h2>
+        <p>Pick a tutorial from any track above. Read it. Do the action. That is all. One step today beats a perfect plan you never act on.</p>
+      </div>
+      <a href="#tutorials" class="btn-navy">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Go to Tutorials
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bfooter">
+  <div class="container">
+    <div class="bf-inner">
+      <div class="bf-brand">The <span class="lime">Builder</span> by Simeon Tertese</div>
+      <div class="bf-copy">© 2026 Simeon's Laboratories &amp; Co Technologies Ltd (Silabs)</div>
+      <a href="index.html" class="bf-link">← Main Portfolio</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* track switching */
+function openTrack(id,btn){
+  document.querySelectorAll('.track-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.track-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('track-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* tutorial accordion */
+function toggleTut(hd){
+  const bd=hd.nextElementSibling;
+  const isOpen=bd.classList.contains('open');
+  const list=hd.closest('.tut-cards');
+  list.querySelectorAll('.tcard-bd').forEach(b=>{b.classList.remove('open');b.style.maxHeight='0'});
+  list.querySelectorAll('.tcard-hd').forEach(h=>{h.classList.remove('open');h.querySelector('.tc-toggle').textContent='+'});
+  if(!isOpen){
+    bd.classList.add('open');
+    bd.style.maxHeight=bd.scrollHeight+'px';
+    hd.classList.add('open');
+    hd.querySelector('.tc-toggle').textContent='−';
+  }
+}
+
+/* scroll reveal */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.06,rootMargin:'0px 0px -24px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*.07)+'s';ro.observe(el)});
+</script>
+</body>
+</html>

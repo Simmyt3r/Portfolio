@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://simmyt3r.github.io/Portfolio/sitemap.xml
