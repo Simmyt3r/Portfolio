@@ -221,11 +221,23 @@ img{max-width:100%;display:block}
   .cta-inner{flex-direction:column;align-items:flex-start}
   .tbd-analogy{flex-direction:column;gap:8px}
 }
-@media(max-width:420px){
-  .hero-stats{grid-template-columns:repeat(2,1fr)}
-  .hstat-n{font-size:1.4rem}
-  .ms-grid{grid-template-columns:1fr}
-}
+/* ── PREMIUM LOCK CARDS ── */
+.tc-premium{background:linear-gradient(90deg,#f59e0b,#d97706);color:var(--navy);padding:1px 7px;border-radius:2px;font-size:.58rem;font-weight:700;letter-spacing:.05em}
+.tc-lock-icon{font-size:.9rem;flex-shrink:0;padding-top:2px;color:var(--amber)}
+.tcard.premium-card{border-color:rgba(245,158,11,.3);background:linear-gradient(135deg,#fffbeb 0%,#fff 100%)}
+.tcard.premium-card .tcard-hd:hover{background:#fefce8}
+.lock-overlay{display:none;flex-direction:column;align-items:center;justify-content:center;padding:28px 20px;background:linear-gradient(135deg,#fffbeb,#fff7ed);border-top:1px solid rgba(245,158,11,.2);gap:14px;text-align:center}
+.lock-icon-big{font-size:2.2rem;line-height:1}
+.lock-title{font-family:var(--display);font-size:.95rem;font-weight:700;color:var(--navy)}
+.lock-desc{font-size:.8rem;color:var(--muted);line-height:1.7;max-width:340px}
+.lock-desc a{color:var(--amber);font-weight:600}
+.lock-row{display:flex;gap:8px;width:100%;max-width:340px}
+.lock-input{flex:1;padding:10px 13px;border:1.5px solid rgba(245,158,11,.4);border-radius:3px;font-family:var(--mono);font-size:.82rem;color:var(--ink);background:var(--white);outline:none;transition:border-color .2s}
+.lock-input:focus{border-color:var(--amber)}
+.lock-btn{padding:10px 18px;background:var(--amber);color:var(--white);border:none;border-radius:3px;font-family:var(--body);font-size:.82rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .2s}
+.lock-btn:hover{background:#d97706}
+.lock-err{font-family:var(--mono);font-size:.68rem;color:var(--red);min-height:14px;max-width:340px;line-height:1.5}
+@media(max-width:480px){.lock-row{flex-direction:column}.lock-btn{width:100%}}
 </style>
 </head>
 <body>
@@ -258,7 +270,7 @@ img{max-width:100%;display:block}
     </div>
     <div class="hero-stats fa3">
       <div class="hstat"><div class="hstat-n">4</div><div class="hstat-l">Tracks</div></div>
-      <div class="hstat"><div class="hstat-n" id="tutCount">17</div><div class="hstat-l">Tutorials</div></div>
+      <div class="hstat"><div class="hstat-n" id="tutCount">27</div><div class="hstat-l">Tutorials</div></div>
       <div class="hstat"><div class="hstat-n">Free</div><div class="hstat-l">To Start</div></div>
       <div class="hstat"><div class="hstat-n">Daily</div><div class="hstat-l">New Content</div></div>
     </div>
@@ -376,22 +388,22 @@ img{max-width:100%;display:block}
       <button class="track-btn active" onclick="openTrack('tech',this)">
         <span class="tb-icon">💻</span>
         Tech Skills
-        <span class="tb-count">5 lessons</span>
+        <span class="tb-count">8 lessons (3 premium)</span>
       </button>
       <button class="track-btn" onclick="openTrack('biz',this)">
         <span class="tb-icon">💼</span>
         Business
-        <span class="tb-count">5 lessons</span>
+        <span class="tb-count">8 lessons (3 premium)</span>
       </button>
       <button class="track-btn" onclick="openTrack('money',this)">
         <span class="tb-icon">💰</span>
         Money
-        <span class="tb-count">4 lessons</span>
+        <span class="tb-count">6 lessons (2 premium)</span>
       </button>
       <button class="track-btn" onclick="openTrack('mindset',this)">
         <span class="tb-icon">🧠</span>
         Mindset
-        <span class="tb-count">3 lessons</span>
+        <span class="tb-count">5 lessons (2 premium)</span>
       </button>
     </div>
 
@@ -600,6 +612,162 @@ img{max-width:100%;display:block}
       </div>
     </div>
 
+        <!-- TECH 06 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-tech06">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Tech 06</span><span class="tc-tag">JavaScript</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">JavaScript From Zero — Making Your Website Actually Do Things</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">This lesson is available to paid members. Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 06.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('tech06')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🎮</span>
+                <div>
+                  <strong>The Video Game Controller Analogy</strong>
+                  <p>When you play a video game, pressing a button makes something happen on screen immediately. The controller listens for your input and responds. JavaScript turns your webpage into a controller. Without it, your page is a poster — static and unresponsive. With JavaScript, pressing a button can show a menu, submit a form, calculate a result, or change what is displayed — all without loading a new page. JavaScript is what makes the web feel alive.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>JavaScript (often written as JS) is the programming language of the web browser. Every interactive thing you have ever seen on a website — dropdown menus, pop-up notifications, live search results, the counter that shows how many items are in your cart — was built with JavaScript.</p>
+                <p>The three things JavaScript does on a webpage:</p>
+                <p><strong>1. Reacts to events.</strong> An event is anything a user does: clicks a button, moves the mouse, types in a box, submits a form. JavaScript can detect these events and respond immediately.</p>
+                <p><strong>2. Changes the page content.</strong> JavaScript can add, remove, or modify any text, image, or element on a page without reloading it. This is how Twitter shows new tweets without you refreshing.</p>
+                <p><strong>3. Communicates with servers.</strong> JavaScript can send and receive data from external computers (APIs) in the background — which is how Google Maps updates your location without reloading the whole page.</p>
+                <p>Your first JavaScript program: <code>alert("Hello Nigeria!");</code> — Put this inside a <code>&lt;script&gt;</code> tag in your HTML. Open the page. You will see a pop-up. That is JavaScript running in your browser.</p>
+              </div>
+              <div class="tbd-steps">
+                <h4>Build your first interactive element</h4>
+                <div class="step-list">
+                  <div class="step-item"><span class="step-n">1</span><p>Open your index.html from previous tutorials.</p></div>
+                  <div class="step-item"><span class="step-n">2</span><p>Add a button: <code>&lt;button onclick="myFunction()"&gt;Click me&lt;/button&gt;</code></p></div>
+                  <div class="step-item"><span class="step-n">3</span><p>Add before <code>&lt;/body&gt;</code>: <code>&lt;script&gt; function myFunction(){ alert("You clicked the button!"); } &lt;/script&gt;</code></p></div>
+                  <div class="step-item"><span class="step-n">4</span><p>Save and open in browser. Click the button. Congratulations — you just wrote working JavaScript.</p></div>
+                </div>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Add a button to your HTML page. When clicked, it should change a paragraph's text to anything you choose. Use <code>document.getElementById('myPara').textContent = 'New text';</code>. Search "how to change text with JavaScript" if you get stuck. Figuring it out yourself is part of the lesson.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TECH 07 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-tech07">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Tech 07</span><span class="tc-tag">AI Tools</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">How to Build a Full App Using AI — Even If You Cannot Code Properly Yet</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 07.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('tech07')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🏗️</span>
+                <div>
+                  <strong>The Architect and Contractor Analogy</strong>
+                  <p>An architect does not pour concrete or lay bricks. They draw the design — what goes where, what it should look like, what problem it solves. Then they hand it to a contractor who builds it. AI coding tools are your contractor. You are the architect. You describe clearly what you want — in plain English — and the AI writes the code. Your job is to know what to build, who it is for, and what it must do. The AI's job is to write the actual instructions that make it work.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>In 2026, a Nigerian teenager with no formal coding knowledge can build a working web application in a single afternoon using AI tools. This is not hype — it is what tools like <strong>Bolt.new</strong>, <strong>Replit AI</strong>, <strong>Cursor</strong>, and <strong>Claude</strong> make possible right now.</p>
+                <p>The process is called <strong>vibe coding</strong> — you describe what you want the app to do, the AI generates the code, you test it in your browser, tell the AI what to fix, and repeat. The skill you need is not programming syntax. It is clear thinking and clear communication.</p>
+                <p>What you actually need to know to use AI coding tools effectively:</p>
+                <p><strong>1. Be specific about what the user does.</strong> Bad: "Make a website for my business." Good: "Build a one-page website where a user can enter their name and email, press a button, and see a thank-you message. The page should have a navy blue background and white text."</p>
+                <p><strong>2. Test everything immediately.</strong> Every time the AI generates code, run it. See what breaks. Describe the problem back to the AI exactly as it appears.</p>
+                <p><strong>3. Understand the output even if you cannot write it.</strong> Read through the code the AI produces. Ask it to explain any line you do not understand. This builds your technical vocabulary over time.</p>
+                <p>Best free AI coding tools for Nigerian beginners: <strong>Bolt.new</strong> (complete apps in browser), <strong>Replit</strong> (free hosting + AI), <strong>Claude.ai</strong> (free tier for code generation).</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Go to <strong>bolt.new</strong> (free, no account needed). In the text box, type exactly this: "Build a simple landing page for a Nigerian teenager's freelance graphics design service. Include a headline, a short description, a list of 3 services with prices in naira, and a WhatsApp contact button." Press Enter. Watch what it builds. Then ask it to change one thing. You just directed the building of a real webpage without writing a single line of code yourself.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TECH 08 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-tech08">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Tech 08</span><span class="tc-tag">Git & GitHub</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">What Is Git and GitHub? — How Every Professional Developer Saves and Shares Their Work</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 08.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('tech08')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">📸</span>
+                <div>
+                  <strong>The Photo Album Analogy</strong>
+                  <p>Imagine you are writing a long essay and you want to save a copy every time you finish a paragraph — so that if you accidentally delete something, you can go back to any earlier version. Now imagine sharing that same essay with 5 friends, all editing different sections at the same time, and the system automatically merges all their changes without losing anyone's work. That is exactly what Git does for code. It is a version control system — a tool that saves every change you ever make to your code, lets you go back in time, and allows multiple people to work on the same project simultaneously without chaos.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p><strong>Git</strong> is the tool. <strong>GitHub</strong> is the website where developers store their Git projects online — so they can access them from anywhere, share them with others, and collaborate.</p>
+                <p>The three most important Git commands you will use every single day as a developer:</p>
+                <p><code>git add .</code> — "Package everything I changed and prepare it to be saved."</p>
+                <p><code>git commit -m "What I changed"</code> — "Take a permanent snapshot of this version of my code with this description."</p>
+                <p><code>git push</code> — "Upload this snapshot to GitHub so it is safe online and others can see it."</p>
+                <p>Why does this matter for a Nigerian teenage builder? Because: every employer and client who is serious about tech will look at your GitHub profile to see what you have actually built. A GitHub profile with real projects is worth more than any certificate. Second, Git prevents the heartbreak of losing work — which every developer who has not used version control has experienced at least once, usually on something important.</p>
+                <p>Simeon's own GitHub profile at <strong>github.com/Simmyt3r</strong> shows all the real projects built by Silabs — every repository on this page's Projects section came from that account. That is what a working developer's GitHub looks like.</p>
+              </div>
+              <div class="tbd-steps">
+                <h4>Create your first GitHub repository</h4>
+                <div class="step-list">
+                  <div class="step-item"><span class="step-n">1</span><p>Go to <strong>github.com</strong> and create a free account. Use your real name or a professional version of it.</p></div>
+                  <div class="step-item"><span class="step-n">2</span><p>Click "New Repository." Name it "my-first-site." Make it Public. Click "Create Repository."</p></div>
+                  <div class="step-item"><span class="step-n">3</span><p>Upload your index.html from previous tutorials by clicking "uploading an existing file."</p></div>
+                  <div class="step-item"><span class="step-n">4</span><p>Click "Commit changes." Your code is now live on GitHub — accessible from any device, anywhere in the world.</p></div>
+                </div>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Create your GitHub account and upload your HTML page from Tutorial 03 or 04. Then go to Settings → Pages → Source → Main branch → Save. Within 2 minutes, GitHub will give you a free public URL where your website is live on the internet. Share that link in the Builder community. You just published your first website — for free, forever.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
     <!-- ════ BUSINESS TRACK ════ -->
     <div class="track-panel" id="track-biz">
       <p class="track-intro">Business is not complicated. It is solving a problem for someone and getting paid for it. These tutorials break down every part of that process from scratch.</p>
@@ -770,6 +938,156 @@ img{max-width:100%;display:block}
       </div>
     </div>
 
+        <!-- BIZ 06 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-biz06">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Biz 06</span><span class="tc-tag">Legal</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">How to Write a Simple Client Contract That Protects You and Your Money</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Biz 06.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('biz06')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🤝</span>
+                <div>
+                  <strong>The Verbal Promise Analogy</strong>
+                  <p>Two people shake hands and agree on a deal. One promises to pay ₦50,000, the other promises to deliver a website in 2 weeks. Two weeks later, the client says he never agreed to pay ₦50,000 — he thought it was ₦20,000. The developer says the website is done; the client says it is not what they asked for. Both people remember the agreement differently. A written contract solves this completely. It is not about distrust. It is about clarity. A contract forces both parties to agree on exactly the same thing before any work begins — so that there is nothing to argue about later.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Every time you do paid work for any client, you need a contract. It does not have to be written by a lawyer. It does not have to be long. It just has to be written, agreed to by both parties, and kept on record. A WhatsApp message where the client confirms the agreed terms is a valid record in many Nigerian courts.</p>
+                <p>A simple client contract for a teenage freelancer needs only these six elements:</p>
+                <p><strong>1. Who is involved:</strong> Your full name and the client's full name (or business name).</p>
+                <p><strong>2. What you will deliver:</strong> Specific list. Not "a website" — but "a 5-page website with Home, About, Services, Portfolio, and Contact pages, designed in blue and white, with a WhatsApp contact button on every page."</p>
+                <p><strong>3. What you will NOT deliver:</strong> This is often more important. "This project does not include logo design, copywriting, or ongoing monthly maintenance unless separately agreed."</p>
+                <p><strong>4. Timeline:</strong> "First draft delivered within 10 working days of receiving 50% deposit payment."</p>
+                <p><strong>5. Payment terms:</strong> "50% (₦17,500) upfront before work begins. Remaining 50% (₦17,500) due upon delivery of the completed project. Work does not begin until the deposit is received."</p>
+                <p><strong>6. What happens if things go wrong:</strong> "If the client requests changes beyond 2 rounds of revisions, each additional round costs ₦3,000. If the project is cancelled after work has begun, the deposit is non-refundable."</p>
+                <p>Send this as a written message or document. Get a written reply confirming agreement. Then begin work.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Write a contract template for your specific service using the 6 elements above. Fill in real numbers — your actual price, your actual timeline, your actual deliverables. Save it in Google Docs. Title it "Service Agreement — [Your Name]." The next time a client engages you, send this document. The professionalism alone will make some clients trust you more than competitors who work without contracts.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIZ 07 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-biz07">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Biz 07</span><span class="tc-tag">Marketing</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">Social Media Marketing for Nigerian Small Businesses — The System That Actually Gets Clients</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Biz 07.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('biz07')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">📣</span>
+                <div>
+                  <strong>The Market Announcer Analogy</strong>
+                  <p>At a busy Nigerian market, an announcer with a megaphone can reach 500 people in 5 minutes. But a skilled announcer does not just shout their name and hope for sales. They describe a specific problem ("who is still struggling to cook beans that take 3 hours?"), offer a specific solution ("this pressure cooker cuts it to 25 minutes"), and show proof ("watch me demonstrate right now"). That sequence — problem, solution, proof — is the entire formula for effective social media marketing. The megaphone is your phone. The market is the internet.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Most Nigerian small businesses on social media make three consistent mistakes: they post randomly with no strategy, they post only when they remember, and they post about themselves rather than about their customers' problems. These three mistakes explain why most business pages have 200 followers and zero sales.</p>
+                <p>The system that actually works is called <strong>3-1-1 content</strong>: for every 5 posts, 3 should educate or help your audience (free value), 1 should share a story or behind-the-scenes moment (trust-building), and 1 should be a direct offer (selling). If you sell more than 1 in 5 posts, you train your audience to ignore you.</p>
+                <p><strong>The four content types that consistently perform for Nigerian service businesses:</strong></p>
+                <p><strong>Before and after:</strong> Show a client's problem and your solution side by side. A messy vs. designed logo. A blank vs. built website. A confusing vs. clear business proposal. Visual proof outperforms any written claim.</p>
+                <p><strong>The "3 things" post:</strong> "3 reasons your small business needs a website in 2026." "3 mistakes Nigerian freelancers make when pricing their services." Numbered posts get more saves and shares than any other format.</p>
+                <p><strong>Client testimonials:</strong> When a client is happy, ask for a written or voice note review immediately — not next week. "Would you mind sending me a message saying what you liked about the work?" Copy it exactly, credit them (or ask permission to post anonymously), and post it. Social proof is the most powerful sales tool available.</p>
+                <p><strong>Personal story posts:</strong> Share a real mistake you made, a lesson you learned, or a challenge you overcame. Authenticity builds the kind of trust that advertising money cannot buy.</p>
+                <p>Consistency beats virality. Posting 4 good posts per week for 52 weeks beats going viral once and disappearing. Set a posting schedule — Monday, Wednesday, Friday, Saturday — and keep it regardless of how many people are watching. The audience comes after consistency, not before it.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Plan your next 5 social media posts using the 3-1-1 system. Post 1: Educational (teach one specific thing your audience needs to know). Post 2: Educational. Post 3: Educational. Post 4: Story or behind-the-scenes. Post 5: Direct offer. Write the captions for all 5 today. Schedule or post the first one today. The goal is not likes — it is consistency that builds a real audience over 90 days.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIZ 08 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-biz08">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Biz 08</span><span class="tc-tag">Legal</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">How to Register Your Business in Nigeria (CAC) — Step by Step, No Lawyer Needed</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Biz 08.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('biz08')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">📋</span>
+                <div>
+                  <strong>The ID Card Analogy</strong>
+                  <p>You can walk around Nigeria without a national ID card, and most people do every day without problems. But when you need to open a bank account, collect a government benefit, travel, or interact with any formal institution — suddenly not having an ID creates enormous barriers. A registered business is the same. You can run a business without registering it. But when you want to open a dedicated business bank account, bid for corporate contracts, apply for grants, or be taken seriously by major clients — suddenly not being registered is a significant disadvantage. Registration is your business's ID card.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>In Nigeria, businesses are registered through the <strong>Corporate Affairs Commission (CAC)</strong> — the government body responsible for forming and regulating companies. The CAC has a fully online registration portal at <strong>pre.cac.gov.ng</strong> where you can complete the entire process without visiting any office.</p>
+                <p>There are two main types of business registration relevant to most young Nigerian entrepreneurs:</p>
+                <p><strong>Business Name Registration (Sole Proprietorship or Partnership):</strong> The simplest option. Your business operates under a registered name. You as an individual remain personally responsible for all debts and obligations. Cost: approximately ₦10,000–₦15,000. Best for freelancers, sole traders, and very early-stage businesses.</p>
+                <p><strong>Private Limited Company (Ltd):</strong> A separate legal entity — the company is distinct from you as a person. Your personal assets are protected if the company has debts. Requires a minimum of 2 shareholders and 1 director. Cost: approximately ₦25,000–₦50,000 depending on share capital. Silabs was registered as a Private Limited Company. Best when building a company with partners or planning to raise investment.</p>
+                <p>The CAC process online (simplified): Create an account on the CAC portal. Search for your desired business name to confirm availability. Complete the registration form with your personal details, proposed business activities, and addresses. Pay the filing fee online. Submit. You receive your Certificate of Incorporation or Business Name certificate within 2–7 working days.</p>
+                <p>You do not need a lawyer for a Business Name registration. For a Private Limited Company, a lawyer is helpful but not legally required if you follow the CAC online guides carefully.</p>
+              </div>
+              <div class="tbd-steps">
+                <h4>Before you register — prepare these</h4>
+                <div class="step-list">
+                  <div class="step-item"><span class="step-n">1</span><p><strong>Your business name:</strong> Think of 3 options in case your first choice is taken. The name cannot be identical or too similar to an existing registered business.</p></div>
+                  <div class="step-item"><span class="step-n">2</span><p><strong>Your NIN (National Identification Number):</strong> Required for all CAC registrations. If you do not have one, visit the nearest NIMC centre first.</p></div>
+                  <div class="step-item"><span class="step-n">3</span><p><strong>Your business address:</strong> Can be your home address — it does not need to be a commercial property.</p></div>
+                  <div class="step-item"><span class="step-n">4</span><p><strong>Payment:</strong> Have a working debit card or online banking set up to pay the filing fee on the portal.</p></div>
+                </div>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Go to <strong>pre.cac.gov.ng</strong> and search for your desired business name in the name availability checker. This is completely free and takes 2 minutes. If your name is available, that is your green light. Make a note of it. The registration itself can wait until you have the fees — but knowing your name is available is the first concrete step toward making your business legally real.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
     <!-- ════ MONEY TRACK ════ -->
     <div class="track-panel" id="track-money">
       <p class="track-intro">Nobody teaches Nigerians how to manage, grow, and build wealth with money. These tutorials fix that — from the very basics to compound growth.</p>
@@ -912,6 +1230,97 @@ img{max-width:100%;display:block}
       </div>
     </div>
 
+        <!-- MON 05 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-mon05">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Money 05</span><span class="tc-tag">Investing</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">How to Buy Nigerian Stocks — Your First Investment on the NGX Explained Simply</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Money 05.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('mon05')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🏪</span>
+                <div>
+                  <strong>The Market Stall Ownership Analogy</strong>
+                  <p>Imagine Dangote's cement business is a market stall. It is a very large and profitable stall, and Dangote owns all of it. Now imagine he decides to sell small pieces of ownership — let us say he splits the stall into 10 million tiny pieces and lets anyone buy them. You buy 100 pieces at ₦500 each. You spend ₦50,000. If the stall becomes more profitable and those pieces become worth ₦700 each, your 100 pieces are now worth ₦70,000. You made ₦20,000 without doing any work — simply by owning a piece of a business that grew. That is the stock market. Those tiny pieces are called shares. The market where they are bought and sold is called the Nigerian Exchange (NGX).</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>The <strong>Nigerian Exchange (NGX)</strong> — formerly called the Nigerian Stock Exchange — is the official marketplace in Nigeria where shares of major companies are bought and sold. Companies listed on the NGX include Dangote Cement, GTBank, Access Bank, MTN Nigeria, Airtel Africa, Nestle Nigeria, Nigerian Breweries, and over 150 others.</p>
+                <p>To buy shares in Nigeria, you need three things: a <strong>CSCS account</strong> (Central Securities Clearing System — your official share holding account), a <strong>stockbroker</strong> (a licensed person or platform that executes the actual trades on your behalf), and <strong>money to invest</strong> (you can start with as little as ₦5,000 on some platforms).</p>
+                <p>The easiest way to start in 2026: use a mobile investing app that bundles all three. The best options for Nigerian beginners are <strong>Chaka</strong>, <strong>Bamboo</strong>, and <strong>Trove</strong> — all regulated by the SEC, all with simple mobile apps, and all allowing you to invest in both Nigerian stocks and international stocks like Apple, Amazon, and Google using naira.</p>
+                <p>Two ways stocks make you money: <strong>Capital appreciation</strong> — the share price rises and your shares are worth more than you paid. <strong>Dividends</strong> — the company shares a portion of its profits with shareholders every year. Dangote Cement, for example, has paid dividends consistently for over a decade.</p>
+                <p>What to research before buying any share: Is the company profitable? Is it growing revenue year on year? What is its dividend history? Is the industry it operates in growing or declining? Never buy a share just because someone told you the price will go up — always understand what the underlying business does and whether it is genuinely strong.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Download the <strong>Chaka</strong> or <strong>Bamboo</strong> app. Create a free account (both are free to open). Browse the list of available Nigerian stocks. Look at MTN Nigeria or Dangote Cement — click on each and read their price history for the past 12 months. Do not deposit or buy anything yet. Just look. Familiarise yourself with how the interface works and what information is shown. Next week, open the app again and see if the prices have changed. You have just started paying attention to the stock market. That is where wealth-building begins.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MON 06 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-mon06">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Money 06</span><span class="tc-tag">Tax</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">Tax in Nigeria for Young Entrepreneurs — What You Must Know Before You Start Earning</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Money 06.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('mon06')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🏗️</span>
+                <div>
+                  <strong>The Road Toll Analogy</strong>
+                  <p>When you drive on a federal toll road in Nigeria, you pay a toll. That money goes toward maintaining the road you are using. Tax works the same way — it is the toll you pay for using the infrastructure of society: roads, hospitals, schools, electricity (in theory), courts, and security. As a business earns money, it pays a portion to the government as tax. Understanding tax is not about finding loopholes. It is about knowing exactly what you owe, when you owe it, and how to structure your business so you do not pay more than required.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Nigerian tax is administered primarily by two bodies: the <strong>FIRS</strong> (Federal Inland Revenue Service) for companies, and the <strong>State Internal Revenue Service</strong> for individuals and some businesses depending on state.</p>
+                <p>The taxes most relevant to a young Nigerian entrepreneur:</p>
+                <p><strong>Personal Income Tax (PIT):</strong> If you earn money as an individual (freelancer, sole trader), you are technically subject to personal income tax. In Nigeria, income below ₦300,000 per year is taxed at 7%. The rate increases progressively for higher income. Many young freelancers do not file these returns — but as your income grows, filing becomes important both legally and practically (tax compliance history helps you access loans and tenders).</p>
+                <p><strong>Company Income Tax (CIT):</strong> If you register a private limited company (Ltd), the company pays 30% of its profits to FIRS annually. Small companies with turnover below ₦25 million per year pay a reduced rate of 20%. Very small companies below ₦25 million turnover qualify for 0% CIT for the first 3 years if they file returns.</p>
+                <p><strong>Value Added Tax (VAT):</strong> Nigeria has a 7.5% VAT on most goods and services. If your annual business turnover exceeds ₦25 million, you are required to register for VAT, collect it from clients, and remit it to FIRS monthly. Below ₦25 million, you are exempt.</p>
+                <p><strong>The most important tax action for young entrepreneurs:</strong> Get a Tax Identification Number (TIN) early. It is free, takes 24–48 hours, and is available online at <strong>tin.jtb.gov.ng</strong>. You will need a TIN to open a business account, apply for contracts, and eventually file any returns.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Go to <strong>tin.jtb.gov.ng</strong> and check if you already have a TIN linked to your BVN. If not, apply for one — it is completely free and takes less than 10 minutes online. Having a TIN costs you nothing now but opens every financial and legal door as your business grows. Write your TIN number down in a safe place once you have it.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
     <!-- ════ MINDSET TRACK ════ -->
     <div class="track-panel" id="track-mindset">
       <p class="track-intro">Skills without the right mindset produce nothing. These tutorials address the mental side of building — the part most courses skip entirely.</p>
@@ -1014,6 +1423,99 @@ img{max-width:100%;display:block}
           </div>
         </div>
 
+        <!-- MIND 04 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-mind04">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Mind 04</span><span class="tc-tag">Planning</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">Goal Setting That Actually Works — The System Used by Every High-Achieving Entrepreneur</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Mind 04.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('mind04')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🎯</span>
+                <div>
+                  <strong>The Archery Analogy</strong>
+                  <p>An archer who stands at the range and shoots without aiming at a specific target will hit something — probably random spots on the wall. An archer who picks a specific target, adjusts their stance precisely for that distance, and focuses on the bullseye will consistently hit near the centre. Goals work the same way. "I want to be successful" is shooting without a target. "I want to earn ₦150,000 per month from freelance graphics work within 90 days by landing 3 regular clients at ₦50,000 each" is a target with a bullseye. You can aim at it. You can measure whether your arrows are getting closer.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Most people who "set goals" write vague statements on January 1st and forget them by February. The reason is not lack of discipline — it is that vague goals do not create a clear path forward. If you cannot tell someone exactly what completing the goal looks like, it is not a goal. It is a wish.</p>
+                <p>The goal framework that consistently produces results is called <strong>SMART goals</strong>: Specific, Measurable, Achievable, Relevant, Time-bound.</p>
+                <p><strong>Specific:</strong> What exactly do you want to achieve? Not "get clients" but "get 3 paying clients for web design services."</p>
+                <p><strong>Measurable:</strong> How will you know you have achieved it? Not "earn more money" but "earn ₦150,000 per month from client payments."</p>
+                <p><strong>Achievable:</strong> Is this realistic given your current resources and timeline? A teenager with basic HTML skills targeting ₦1 million per month in 30 days is not achievable. ₦50,000 in 90 days is achievable with focused effort.</p>
+                <p><strong>Relevant:</strong> Does this goal actually move you toward your bigger vision? If your long-term goal is to run a tech company, a goal to learn HTML is relevant. A goal to become a better footballer is not.</p>
+                <p><strong>Time-bound:</strong> What is the exact deadline? "Someday" is not a deadline. "By August 31, 2026" is a deadline. Deadlines create urgency. Urgency creates action.</p>
+                <p>Beyond setting the goal: break it into weekly milestones. If your 90-day goal is 3 clients at ₦50,000 each, your Week 1 milestone might be "reach out to 10 potential clients." Week 2: "follow up with all 10, book 2 discovery calls." Week 4: "close first client." Small weekly targets keep you moving when the 90-day goal feels distant.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Write one SMART goal for the next 90 days using the framework above. Write it in full — all 5 components. Then break it into 12 weekly milestones (one per week of the 90-day period). Write what you need to accomplish each week for the goal to be on track. Put this in your phone or on paper where you will see it every single morning. Review it every Sunday. Adjust the weekly targets as reality teaches you what works.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MIND 05 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-mind05">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Mind 05</span><span class="tc-tag">Productivity</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">Time Management for Young Nigerian Builders — How to Do More in Less Time Without Burning Out</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056Francis2366" target="_blank">WhatsApp</a> for the password to Mind 05.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('mind05')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">⚡</span>
+                <div>
+                  <strong>The PHCN Power Schedule Analogy</strong>
+                  <p>In areas where electricity is unreliable, experienced Nigerians do not do everything randomly whenever power is available. They learn the schedule — power usually comes at certain hours — and they plan their most energy-intensive tasks for exactly those hours. Charging devices, running appliances, welding, sewing. They use the available power strategically. Your mental energy works the same way. It is not constant throughout the day. It peaks in the morning for most people and drops in the afternoon. Planning your most important, most mentally demanding work for your peak hours is the single biggest productivity upgrade available to you — and it costs nothing.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Time is the one resource that every person on earth receives in exactly equal measure: 24 hours per day. Bill Gates has 24. Aliko Dangote has 24. You have 24. The difference between people who build significant things and people who do not is not how much time they have. It is what they choose to do with it, and specifically what they choose NOT to do.</p>
+                <p>The four-category system for managing everything that demands your time:</p>
+                <p><strong>Category 1 — Urgent and Important:</strong> Do it immediately. Crisis, deadline, emergency. Example: client needs a file today. Example: your device is broken and you need it to work.</p>
+                <p><strong>Category 2 — Not Urgent but Important:</strong> Schedule it. This is where all real building happens. Learning a skill, working on your project, planning, health. Most people never spend enough time here because urgency pulls them elsewhere constantly.</p>
+                <p><strong>Category 3 — Urgent but Not Important:</strong> Delegate or minimise. Other people's emergencies that land on you. WhatsApp messages demanding immediate responses. Requests that interrupt your deep work.</p>
+                <p><strong>Category 4 — Not Urgent and Not Important:</strong> Eliminate. Endless scrolling, binge-watching content that does not teach you anything, arguing online, drama. This category steals hours every single day from most young people.</p>
+                <p>The practical daily system: Every morning, write down the ONE most important thing you must accomplish today for your building journey. Do that first — before social media, before WhatsApp, before anything else. That one thing, done consistently, produces more results than a long to-do list done sporadically.</p>
+                <p>Protect your deep work time with physical signals — a specific location, headphones in, phone on silent. Your environment shapes your behaviour. An environment designed for distraction produces a distracted worker. An environment designed for focus produces a focused builder.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>For the next 7 days, every morning before you open any social media or WhatsApp, write down the single most important thing you will do that day for your building journey. Then do that thing first, for at least 45 uninterrupted minutes. Track how many of the 7 days you achieve this. At the end of 7 days, review: how much more did you accomplish compared to a normal week? The answer will tell you everything about what this habit can do for your next 12 months.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </div>
 
@@ -1100,7 +1602,7 @@ img{max-width:100%;display:block}
 </footer>
 
 <script>
-/* track switching */
+/* ── track switching ── */
 function openTrack(id,btn){
   document.querySelectorAll('.track-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.track-btn').forEach(b=>b.classList.remove('active'));
@@ -1108,7 +1610,7 @@ function openTrack(id,btn){
   btn.classList.add('active');
 }
 
-/* tutorial accordion */
+/* ── free tutorial accordion ── */
 function toggleTut(hd){
   const bd=hd.nextElementSibling;
   const isOpen=bd.classList.contains('open');
@@ -1123,7 +1625,88 @@ function toggleTut(hd){
   }
 }
 
-/* scroll reveal */
+/* ── premium lock system ── */
+/* passwords stored as base64 — lightweight soft paywall */
+/* each key maps tutorial id → btoa(password) */
+const LOCKS={
+  'tech06':'U2lsYWJzI0hUTUwyMDI2',
+  'tech07':'VmliZSRDb2RlOWph',
+  'tech08':'R2l0UHVzaCROYWlqYQ==',
+  'biz06' :'Q29udHJhY3QmV2luMjAyNg==',
+  'biz07' :'U29jaWFsU2VsbCNOR1I=',
+  'biz08' :'Q0FDJFJlZ2lzdGVyMjY=',
+  'mon05' :'TkdYJEludmVzdDIwMjY=',
+  'mon06' :'VGF4U21hcnQjOWph',
+  'mind04':'R29hbFNldCRCdWlsZGVy',
+  'mind05':'VGltZUlzTmFpcmEjMjY='
+};
+
+function tryUnlock(id){
+  const card=document.getElementById('pcard-'+id);
+  const input=card.querySelector('.lock-input');
+  const err=card.querySelector('.lock-err');
+  const pw=input.value.trim();
+  if(!pw){input.focus();return;}
+  /* check btoa of entered password against stored hash */
+  if(btoa(pw)===LOCKS[id]){
+    /* unlock: hide overlay, reveal content */
+    card.querySelector('.lock-overlay').style.display='none';
+    const bd=card.querySelector('.tcard-bd');
+    bd.classList.add('open');
+    bd.style.maxHeight=bd.scrollHeight+'px';
+    card.querySelector('.tcard-hd').classList.add('open');
+    card.querySelector('.tc-toggle').textContent='−';
+    /* mark unlocked so re-opens work */
+    card.dataset.unlocked='1';
+    input.value='';
+    err.textContent='';
+  } else {
+    err.textContent='Incorrect password. WhatsApp Simeon at +234 905 623 2366 to get access.';
+    input.value='';
+    input.focus();
+  }
+}
+
+function togglePremium(hd){
+  const card=hd.closest('.tcard');
+  /* if already unlocked, behave like normal toggle */
+  if(card.dataset.unlocked==='1'){
+    const bd=card.querySelector('.tcard-bd');
+    const isOpen=bd.classList.contains('open');
+    const list=hd.closest('.tut-cards');
+    list.querySelectorAll('.tcard-bd').forEach(b=>{b.classList.remove('open');b.style.maxHeight='0'});
+    list.querySelectorAll('.tcard-hd').forEach(h=>{h.classList.remove('open');h.querySelector('.tc-toggle').textContent='+'});
+    if(!isOpen){
+      bd.classList.add('open');
+      bd.style.maxHeight=bd.scrollHeight+'px';
+      hd.classList.add('open');
+      hd.querySelector('.tc-toggle').textContent='−';
+    }
+    return;
+  }
+  /* show lock overlay inline */
+  const overlay=card.querySelector('.lock-overlay');
+  const isVisible=overlay.style.display==='flex';
+  /* close any open overlays on same list first */
+  hd.closest('.tut-cards').querySelectorAll('.lock-overlay').forEach(o=>o.style.display='none');
+  if(!isVisible){
+    overlay.style.display='flex';
+    overlay.querySelector('.lock-input').focus();
+  }
+}
+
+/* allow Enter key to submit password */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'){
+    const active=document.querySelector('.lock-overlay[style*="flex"] .lock-input');
+    if(active){
+      const id=active.closest('.tcard').id.replace('pcard-','');
+      tryUnlock(id);
+    }
+  }
+});
+
+/* ── scroll reveal ── */
 const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.06,rootMargin:'0px 0px -24px 0px'});
 document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*.07)+'s';ro.observe(el)});
 </script>
