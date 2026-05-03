@@ -71,12 +71,6 @@ img{max-width:100%;display:block}
 .hstat-l{font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
 
 /* ── MONEY MACHINE PLAN ── */
-.plan-section{padding:72px 0;background:var(--off);border-bottom:1px solid var(--rule)}
-.plan-label{font-family:var(--mono);font-size:.67rem;color:var(--lime);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.plan-label::before{content:'//';color:rgba(168,230,61,.4)}
-.plan-h2{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;color:var(--navy);margin-bottom:12px;line-height:1.1}
-.plan-desc{font-size:.95rem;color:var(--muted);max-width:600px;line-height:1.8;margin-bottom:48px}
-.plan-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:48px}
 .plan-card{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:24px;position:relative;transition:all .2s}
 .plan-card:hover{border-color:var(--navy);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
 .plan-card.featured{border-color:var(--lime);background:linear-gradient(135deg,var(--navy) 0%,#162f50 100%)}
@@ -265,115 +259,18 @@ img{max-width:100%;display:block}
         Start Learning Free
       </a>
       <a href="#join" class="btn-ghost-w">
-        See Membership Plans
+        Browse All Tracks
       </a>
     </div>
     <div class="hero-stats fa3">
       <div class="hstat"><div class="hstat-n">4</div><div class="hstat-l">Tracks</div></div>
-      <div class="hstat"><div class="hstat-n" id="tutCount">27</div><div class="hstat-l">Tutorials</div></div>
+      <div class="hstat"><div class="hstat-n" id="tutCount">40</div><div class="hstat-l">Tutorials</div></div>
       <div class="hstat"><div class="hstat-n">Free</div><div class="hstat-l">To Start</div></div>
       <div class="hstat"><div class="hstat-n">Daily</div><div class="hstat-l">New Content</div></div>
     </div>
   </div>
 </section>
 
-<!-- MONEY MACHINE PLAN -->
-<section class="plan-section" id="plan">
-  <div class="container">
-    <div class="plan-label reveal">The Business Model</div>
-    <h2 class="plan-h2 reveal">How This Builder Becomes<br>a Money Machine</h2>
-    <p class="plan-desc reveal">This section is here on purpose. Everything you read here is a real-life example of how a content platform makes money. Study it. Then apply the same thinking to your own idea.</p>
-
-    <div class="plan-grid">
-      <div class="plan-card reveal">
-        <span class="pc-badge">Stream 1</span>
-        <div class="pc-title">Community Membership</div>
-        <div class="pc-price">₦2,000 <span>/month</span></div>
-        <p class="pc-desc">Private WhatsApp group with weekly live sessions, accountability partners, and real feedback on your work.</p>
-        <ul class="pc-list">
-          <li>Target: 200 paying members</li>
-          <li>Monthly revenue: ₦400,000</li>
-          <li>Zero inventory, zero delivery cost</li>
-          <li>Grows while you sleep</li>
-        </ul>
-      </div>
-      <div class="plan-card featured reveal">
-        <span class="pc-badge" style="background:var(--lime);color:var(--navy)">Stream 2 ★</span>
-        <div class="pc-title">12-Week Cohort Coaching</div>
-        <div class="pc-price">₦25,000 <span>/cohort</span></div>
-        <p class="pc-desc">Live group coaching programme. 20 students per cohort. 4 cohorts per year. Every student follows the Builder Program from Week 1 to Week 12 with real assignments and reviews.</p>
-        <ul class="pc-list">
-          <li>20 students × ₦25,000 = ₦500,000/cohort</li>
-          <li>4 cohorts/year = ₦2,000,000</li>
-          <li>Students get a Certificate on completion</li>
-          <li>Alumni become ambassadors</li>
-        </ul>
-      </div>
-      <div class="plan-card reveal">
-        <span class="pc-badge">Stream 3</span>
-        <div class="pc-title">Digital Products</div>
-        <div class="pc-price">₦1,500–5,000</div>
-        <p class="pc-desc">Downloadable workbooks, business plan templates, client proposal templates, and resource packs. Made once. Sold forever.</p>
-        <ul class="pc-list">
-          <li>Builder Workbook (₦2,500)</li>
-          <li>Client Proposal Template (₦2,000)</li>
-          <li>Money Tracker Spreadsheet (₦1,500)</li>
-          <li>Target: ₦100,000+/month passive</li>
-        </ul>
-      </div>
-      <div class="plan-card reveal">
-        <span class="pc-badge">Stream 4</span>
-        <div class="pc-title">Corporate: Sponsor a Teen</div>
-        <div class="pc-price">₦50,000 <span>/slot</span></div>
-        <p class="pc-desc">Nigerian SMEs and NGOs pay to sponsor a young person's membership or cohort. A CSR (corporate social responsibility) product that companies love.</p>
-        <ul class="pc-list">
-          <li>Sponsor 1 teen's full year: ₦50,000</li>
-          <li>20 sponsors = ₦1,000,000</li>
-          <li>Sponsors get brand recognition</li>
-          <li>Works with Silabs' NGO relationships</li>
-        </ul>
-      </div>
-      <div class="plan-card reveal">
-        <span class="pc-badge">Stream 5</span>
-        <div class="pc-title">Affiliate Commissions</div>
-        <div class="pc-price">Passive</div>
-        <p class="pc-desc">Every tool recommended in a tutorial — Canva Pro, Hostinger, Paystack, etc. — earns a commission when a student signs up using the Builder link. No extra work required.</p>
-        <ul class="pc-list">
-          <li>Canva: 25% commission</li>
-          <li>Hostinger: up to 60% commission</li>
-          <li>Flutterwave / Paystack referrals</li>
-          <li>Target: ₦50,000+/month passive</li>
-        </ul>
-      </div>
-      <div class="plan-card reveal">
-        <span class="pc-badge">Stream 6</span>
-        <div class="pc-title">Live Workshops</div>
-        <div class="pc-price">₦5,000 <span>/seat</span></div>
-        <p class="pc-desc">Quarterly in-person or online workshops in Abuja. 50 seats × ₦5,000 = ₦250,000 per event. Three events per year minimum.</p>
-        <ul class="pc-list">
-          <li>3 workshops/year = ₦750,000</li>
-          <li>Sponsorship slots for corporates</li>
-          <li>Recordings sold afterwards</li>
-          <li>Builds local community fast</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="revenue-box reveal">
-      <div class="rb-left">
-        <h3>Conservative Month 6 Target</h3>
-        <p>Based on 100 members, 1 cohort per quarter, digital product sales, and affiliate commissions. All without a single naira in paid advertising — only the tutorials you are reading right now.</p>
-      </div>
-      <div class="rb-right">
-        <div class="rb-row"><span class="rb-label">Community (100 members)</span><span class="rb-value">₦200,000</span></div>
-        <div class="rb-row"><span class="rb-label">Cohort (20 students)</span><span class="rb-value">₦500,000</span></div>
-        <div class="rb-row"><span class="rb-label">Digital products</span><span class="rb-value">₦100,000</span></div>
-        <div class="rb-row"><span class="rb-label">Affiliate + sponsors</span><span class="rb-value">₦100,000</span></div>
-        <div class="rb-row rb-total"><span class="rb-label">Total Month 6</span><span class="rb-value">₦900,000+</span></div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- TUTORIALS -->
 <section class="tutorial-section" id="tutorials">
@@ -388,22 +285,22 @@ img{max-width:100%;display:block}
       <button class="track-btn active" onclick="openTrack('tech',this)">
         <span class="tb-icon">💻</span>
         Tech Skills
-        <span class="tb-count">8 lessons (3 premium)</span>
+        <span class="tb-count">12 lessons (5 premium)</span>
       </button>
       <button class="track-btn" onclick="openTrack('biz',this)">
         <span class="tb-icon">💼</span>
         Business
-        <span class="tb-count">8 lessons (3 premium)</span>
+        <span class="tb-count">12 lessons (5 premium)</span>
       </button>
       <button class="track-btn" onclick="openTrack('money',this)">
         <span class="tb-icon">💰</span>
         Money
-        <span class="tb-count">6 lessons (2 premium)</span>
+        <span class="tb-count">9 lessons (3 premium)</span>
       </button>
       <button class="track-btn" onclick="openTrack('mindset',this)">
         <span class="tb-icon">🧠</span>
         Mindset
-        <span class="tb-count">5 lessons (2 premium)</span>
+        <span class="tb-count">8 lessons (3 premium)</span>
       </button>
     </div>
 
@@ -765,6 +662,181 @@ img{max-width:100%;display:block}
         </div>
 
 
+
+        <!-- TECH 09 FREE -->
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Tech 09</span><span class="tc-tag">Web Dev</span><span class="tc-new">New</span></div>
+              <div class="tc-title">How the Internet Finds Your Website — DNS Explained Simply</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">📒</span>
+                <div>
+                  <strong>The Phone Book Analogy</strong>
+                  <p>Before smartphones, if you wanted to call Mama Ngozi's provisions store you looked up her name in a physical phone book to get her number. You could not dial the name — you needed the actual number. The internet works exactly the same way. Your browser cannot connect to "google.com" directly — it needs the actual numerical IP address like 142.250.185.46. The DNS (Domain Name System) is the internet's phone book. It translates human-friendly names like "google.com" into machine-readable numbers every single time you visit a website.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p><strong>DNS</strong> stands for Domain Name System. It is a global network of servers whose only job is to answer one question: "What is the IP address for this domain name?" This lookup happens in milliseconds every time you visit any website — you just never see it because it is invisible and instant.</p>
+                <p>The DNS lookup process step by step:</p>
+                <p><strong>Step 1:</strong> You type "unixpress.com.ng" into your browser. Your computer first checks its own memory (cache) to see if it recently looked up this address. If yes, it uses the saved answer.</p>
+                <p><strong>Step 2:</strong> If not cached, your computer asks your ISP's (MTN, Airtel, Glo) DNS resolver: "What is the IP address for unixpress.com.ng?"</p>
+                <p><strong>Step 3:</strong> The resolver contacts a Root Name Server — one of only 13 clusters of servers in the world that know where to find every domain's information.</p>
+                <p><strong>Step 4:</strong> The root server points to the .ng country server. That server points to the actual nameserver that holds unixpress.com.ng's records. That nameserver returns the IP address.</p>
+                <p><strong>Step 5:</strong> Your browser uses that IP address to connect to the server and load the website. Total time: under 100 milliseconds.</p>
+                <p>Why does this matter for a builder? Because when you buy a domain and hosting separately — say your domain from Namecheap and hosting from Hostinger — you must update your domain's DNS records to point to your hosting provider's IP address. Without doing this, your domain is an address with no building behind it.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Open your terminal or command prompt (search "cmd" on Windows). Type <strong>nslookup google.com</strong> and press Enter. You will see the actual IP address that Google.com resolves to. Then try <strong>nslookup unixpress.com.ng</strong>. You just performed a DNS lookup manually — the same thing your browser does automatically millions of times per day.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TECH 10 FREE -->
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Tech 10</span><span class="tc-tag">Security</span><span class="tc-new">New</span></div>
+              <div class="tc-title">What HTTPS Means and Why Every Website You Build Must Have It</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">✉️</span>
+                <div>
+                  <strong>The Sealed Envelope vs Postcard Analogy</strong>
+                  <p>When you send a postcard through the post, anyone who handles it along the way — the postman, the sorting office worker, anyone — can read what you wrote. But when you put the same message in a sealed, locked envelope that only the recipient has the key to open, nobody in between can read it. HTTP (without the S) sends your data like a postcard — visible to anyone intercepting it on the network. HTTPS (with the S) seals it in an encrypted envelope that only the destination server can open. When someone enters their password or payment details on your website, HTTPS is what keeps it private.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p><strong>HTTP</strong> (HyperText Transfer Protocol) is the language web browsers use to communicate with web servers. When you type a URL and press Enter, your browser sends an HTTP request to the server, and the server sends back an HTTP response with the webpage content.</p>
+                <p><strong>HTTPS</strong> (HTTP Secure) is the same thing but with an extra layer: <strong>encryption</strong>. All data travelling between the browser and the server is scrambled using a mathematical key so that even if someone intercepts it on the network, they see only meaningless characters — not your password, not your credit card number, not your private messages.</p>
+                <p>The padlock icon you see in your browser's address bar when visiting a secure site indicates HTTPS is active. The "S" stands for secure.</p>
+                <p>As a Nigerian website builder, every website you build must have HTTPS for three important reasons:</p>
+                <p><strong>1. Trust:</strong> Browsers like Chrome now display "Not Secure" warnings on HTTP sites. Visitors see this and leave immediately.</p>
+                <p><strong>2. SEO:</strong> Google ranks HTTPS websites higher in search results than HTTP ones. Your client's website will be harder to find without it.</p>
+                <p><strong>3. Data protection:</strong> Any form on your website — contact, login, payment — sends sensitive information. Without HTTPS, that information travels in plain text anyone on the same network can read.</p>
+                <p>The good news: HTTPS is now free. Most Nigerian hosting providers (Hostinger, QServers, WhoGoHost) provide a free SSL certificate through Let's Encrypt that you activate with one click in cPanel. There is no excuse for any website you build to be HTTP-only in 2026.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Visit any 5 websites you use regularly. Look at the address bar. Does it say <strong>https://</strong> or just <strong>http://</strong>? Click the padlock icon on any HTTPS site and read the certificate details — it shows who issued the certificate and when it expires. Then if you have a hosting account, log into cPanel and find the SSL/TLS section. Install a free Let's Encrypt certificate on any domain you own. It takes under 3 minutes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TECH 11 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-tech11">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Tech 11</span><span class="tc-tag">Databases</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">What Is a Database? — How Apps Remember Everything You Do</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 11.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('tech11')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🗃️</span>
+                <div>
+                  <strong>The Filing Cabinet Analogy</strong>
+                  <p>Imagine a government ministry with thousands of citizens' records. Each record is in a folder with the person's name. The folders are organised alphabetically in filing cabinets. When a clerk needs Ade Bello's record, they go to the B cabinet, find the B-E section, and pull out the folder in seconds. A database is a digital filing cabinet that stores organised information and retrieves specific records in milliseconds — even when there are millions of records. Every app that remembers anything — your username, your order history, your chat messages — is using a database.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>A <strong>database</strong> is an organised collection of data stored electronically. The most common type is a <strong>relational database</strong>, which organises data into tables — like spreadsheets — where each row is one record and each column is one piece of information about that record.</p>
+                <p>For example, a users table in a database for UniXpress might look like this:</p>
+                <p><strong>ID | Name | Email | Password | Date Joined</strong><br>
+                1 | Aisha Bello | aisha@mail.com | (encrypted) | 2025-01-15<br>
+                2 | Emeka Obi | emeka@mail.com | (encrypted) | 2025-02-03</p>
+                <p>The language used to communicate with relational databases is called <strong>SQL</strong> (Structured Query Language). Here are the four most important SQL commands:</p>
+                <p><code>SELECT * FROM users;</code> — Get all records from the users table.<br>
+                <code>SELECT name FROM users WHERE id = 1;</code> — Get only the name where ID is 1.<br>
+                <code>INSERT INTO users (name, email) VALUES ('Ngozi', 'ngozi@mail.com');</code> — Add a new record.<br>
+                <code>UPDATE users SET name = 'Ngozi Adams' WHERE id = 3;</code> — Update an existing record.</p>
+                <p>The most widely used databases in Nigerian web development are <strong>MySQL</strong> and <strong>MariaDB</strong> — both come pre-installed with almost all Nigerian cPanel hosting accounts and are used in UniXpress, AlumBridge, and ArtisanConnect NG built by Silabs.</p>
+              </div>
+              <div class="tbd-steps">
+                <h4>Create your first database in 5 minutes</h4>
+                <div class="step-list">
+                  <div class="step-item"><span class="step-n">1</span><p>If you have hosting, log into cPanel. Find "MySQL Databases." Create a new database named "my_first_db".</p></div>
+                  <div class="step-item"><span class="step-n">2</span><p>Open phpMyAdmin (also in cPanel). Click your new database. Click "SQL" tab.</p></div>
+                  <div class="step-item"><span class="step-n">3</span><p>Run: <code>CREATE TABLE students (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), age INT);</code></p></div>
+                  <div class="step-item"><span class="step-n">4</span><p>Run: <code>INSERT INTO students (name, age) VALUES ('Fatima', 17);</code> Then <code>SELECT * FROM students;</code> to see your data.</p></div>
+                </div>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>No hosting? Use <strong>sqliteonline.com</strong> — a free browser-based SQL editor. Create a table, insert 3 rows with your friends' names and ages, then write a SELECT query that retrieves only entries where age is greater than 16. You just wrote real database queries that power real applications.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TECH 12 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-tech12">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Tech 12</span><span class="tc-tag">APIs</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">What Is an API? — How Different Apps Talk to Each Other (Explained With Food)</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 12.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('tech12')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🍽️</span>
+                <div>
+                  <strong>The Restaurant Waiter Analogy</strong>
+                  <p>When you sit in a restaurant, you do not walk into the kitchen to cook your own food. You tell the waiter what you want. The waiter carries your order to the kitchen. The kitchen prepares it. The waiter brings it back to you. You never see the inside of the kitchen — you only interact with the waiter. An API (Application Programming Interface) is the waiter between two software systems. Your app does not access another company's database directly. It sends a request to their API (the waiter), the API fetches the information from their system (the kitchen), and returns it to your app (your table). You get the result without ever needing to understand how their system works internally.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>An <strong>API</strong> is a set of rules that allows one software application to request information or actions from another. Almost every app you use daily is built by combining multiple APIs.</p>
+                <p>Real examples of APIs in apps you know:</p>
+                <p><strong>When you log in with Google:</strong> Your app sends a request to Google's API saying "this user wants to log in." Google's API verifies the user's identity and sends back a confirmation. The app never sees your Google password — only the confirmation.</p>
+                <p><strong>When Bolt shows you nearby drivers:</strong> The app sends your GPS coordinates to Google Maps' API. The Maps API returns a map image and driver locations. Bolt displays them. One company's product, three companies' APIs working together.</p>
+                <p><strong>When Paystack processes your payment:</strong> Your checkout page sends the transaction details to Paystack's API. Paystack communicates with your bank's systems. The bank confirms or declines. Paystack sends the result back to the website.</p>
+                <p>APIs communicate in a format called <strong>JSON</strong> (JavaScript Object Notation) — a structured text format that both humans and computers can read. A JSON response from a weather API might look like: <code>{"city": "Abuja", "temp": 34, "condition": "sunny"}</code></p>
+                <p>As a builder, you will use free APIs to add powerful features to your products without building those features yourself. Weather data, currency exchange rates, SMS alerts, email sending, maps, payment processing — all available through APIs.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Open your browser and visit this URL exactly: <strong>https://restcountries.com/v3.1/name/nigeria</strong> — You will see raw JSON data about Nigeria returned by a free API. That is a real API response. Every field you see (population, capital, flag, currency) can be pulled into any app you build. Then try changing "nigeria" to "ghana" or "kenya" in the URL. You are now making live API requests.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1085,6 +1157,121 @@ img{max-width:100%;display:block}
         </div>
 
 
+
+        <!-- BIZ 09 FREE -->
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Biz 09</span><span class="tc-tag">Branding</span><span class="tc-new">New</span></div>
+              <div class="tc-title">What Is a Brand? — Why How You Look Affects How Much People Pay You</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">👔</span>
+                <div>
+                  <strong>The Uniform Analogy</strong>
+                  <p>Two mechanics walk toward you — both with equal skill and experience. One is in dirty, torn clothes with no name tag. The other is in a clean branded uniform with a company name, a professional badge, and a tidy tool bag. Both will fix your car equally well. But you instinctively trust the second one more — and you will probably pay more without complaining. Their clothing communicated something about their professionalism before they spoke a word. That communication — the visual, verbal, and emotional impression your business creates — is your brand.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>A <strong>brand</strong> is not your logo. It is not your business name. It is the complete impression your business makes on people — the feeling they get when they think about you, see your work, or hear your name mentioned.</p>
+                <p>Your brand has three layers:</p>
+                <p><strong>Visual identity:</strong> Logo, colours, fonts, design style. The things people see. These should be consistent across every platform — your WhatsApp profile, your Instagram, your invoices, your website. Inconsistency signals unprofessionalism.</p>
+                <p><strong>Verbal identity:</strong> Your name, tagline, how you describe what you do, the tone of your captions and messages. Casual or formal? Technical or plain language? Playful or serious? Choose intentionally based on who your customer is.</p>
+                <p><strong>Reputation:</strong> What people say about you when you are not in the room. The most powerful and the hardest to control. Built entirely through the quality of your work and your reliability.</p>
+                <p>For a Nigerian teenage freelancer, the minimum viable brand includes: a professional profile photo (not a group photo cropped awkwardly), a clear one-sentence description of what you do and for whom, consistent colour use across all platforms, and a portfolio of your actual work.</p>
+                <p>Canva has free logo makers and brand kit tools. You do not need to pay a designer when you are starting — but you must be intentional. Random colours, no logo, inconsistent fonts, blurry photos all signal: this person is not serious. Serious = higher prices.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Go to <strong>canva.com</strong> (free account). Search "logo maker" and create a simple logo for your business or service — even an imaginary one. Choose 2 brand colours that reflect your service's personality. Write your one-sentence brand statement: "I help [specific person] to [specific outcome] using [your method]." Update your WhatsApp profile photo and status with these. That is your minimum viable brand live today.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIZ 10 FREE -->
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Biz 10</span><span class="tc-tag">Growth</span><span class="tc-new">New</span></div>
+              <div class="tc-title">Word of Mouth — The Oldest and Most Powerful Marketing Tool in Nigeria</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🌊</span>
+                <div>
+                  <strong>The Stone in Water Analogy</strong>
+                  <p>Drop a stone into still water. The stone makes one splash where it lands. Then rings spread outward from that point — each ring wider than the last, reaching places the stone itself never touched. Your first customer is the stone. Their recommendation to a friend is the first ring. That friend tells two more people — second ring. Word of mouth marketing works exactly this way. One excellent experience, told to others, multiplies your reach without any advertising spend. In Nigeria, where personal trust is the primary factor in purchasing decisions, word of mouth is not just effective — it is essential.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Word of mouth (WOM) happens naturally when customers are genuinely delighted — but it can also be deliberately encouraged. Here is how to make it systematic:</p>
+                <p><strong>1. Deliver beyond expectations.</strong> Under-promise and over-deliver on every project. If you said delivery in 14 days, deliver in 10. If the brief asked for 5 pages, include a bonus page at no charge. Small excesses create large impressions.</p>
+                <p><strong>2. Ask directly — and immediately.</strong> Right after a client confirms they are happy with your work, say exactly this: "I am really glad you love it. Would you be comfortable telling one friend or colleague who might need this service?" Most satisfied clients say yes when asked clearly. Almost none volunteer it without being asked.</p>
+                <p><strong>3. Make it easy to refer.</strong> Have a simple message clients can forward: "My graphics designer just finished something amazing for my business. If you need quality work at reasonable prices, message them directly: [your WhatsApp link]." Write this for them. People are more likely to refer when the work of recommending requires zero effort.</p>
+                <p><strong>4. Create a referral incentive.</strong> "For every client you send me who completes a paid project, I give you one free design." This turns satisfied clients into active salespeople for your business — at zero cost to you until a sale is made.</p>
+                <p><strong>5. Stay in people's minds.</strong> Every 4–6 weeks, send a brief message to past clients: share a tip, a new piece of your work, or a relevant update. Not selling — just staying visible. People cannot refer you if they have forgotten you exist.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Make a list of every person who has ever paid you for anything — or complimented your work genuinely. For each person, write one specific thing you could do this week to exceed their expectations or reconnect. Then pick the top 3 on your list and send each of them a genuine message today — not asking for anything, just sharing something useful or checking in. Plant seeds. Word of mouth starts with people remembering you positively.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIZ 11 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-biz11">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Biz 11</span><span class="tc-tag">Freelancing</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">How to Build a Portfolio That Gets You Hired — Even if You Have No Paid Experience Yet</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Biz 11.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('biz11')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🪴</span>
+                <div>
+                  <strong>The Farmer's First Harvest Analogy</strong>
+                  <p>A new farmer cannot show customers this season's harvest before the season ends — because it does not exist yet. So he shows last season's harvest from a neighbouring farm where he helped, shows the health of his current soil, and offers a small sample of what he is growing right now. Clients who hire new freelancers face the same situation — they want proof you can do the work before paying for it. Your portfolio is your sample harvest. It does not have to come from paid clients. It just has to be real, finished work that demonstrates genuine skill.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>The most common excuse new freelancers give for not getting clients is "I do not have a portfolio yet." The truth is more uncomfortable: a portfolio is not something clients give you — it is something you build yourself, with or without clients, before clients arrive.</p>
+                <p>Five legitimate ways to build portfolio work without paid clients:</p>
+                <p><strong>1. Redesign existing things.</strong> Pick a local business with a poor or nonexistent website — a school, a church, a market trader, a restaurant. Build them a better version as a concept project. You do not need their permission to redesign something as a personal exercise. Put it in your portfolio as "concept redesign for XYZ."</p>
+                <p><strong>2. Do one project free or heavily discounted for a real business.</strong> Reach out to a small business you genuinely want to help and offer your first project at cost or free in exchange for a testimonial and permission to show the work publicly. One excellent real project beats ten concept projects.</p>
+                <p><strong>3. Enter competitions.</strong> Design competitions, hackathons, Upwork contests. You may not win. But the entries become portfolio pieces. The brief was real. The deadline was real. The thinking was real.</p>
+                <p><strong>4. Build tools for yourself.</strong> Your personal website, a tracker app you built for your own use, a template pack you made for your own projects. If it solves a real problem, it is portfolio-worthy — even if you were the only user.</p>
+                <p><strong>5. Document your process.</strong> For every project — paid or unpaid — take screenshots at every stage. Write a short paragraph explaining the problem you were solving, what you designed or built, and why you made the specific choices you made. This transforms a simple project into a compelling case study that shows how you think.</p>
+                <p>Your portfolio does not need to be a website (though one is ideal). It can be a PDF sent via WhatsApp, a Canva document shared as a link, or a Google Drive folder with organised screenshots and explanations. Clients want to see your thinking and your output — not necessarily a fancy platform.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Choose one local business near you with no online presence — a church, a tailor, a pharmacy, a school. Spend 2 hours today creating a single-page website or a 3-post social media design set for them as a concept project. Document your process with screenshots as you go. Save the finished files. You now have your first portfolio piece. Post it in the Builder community with a brief explanation of what you built and why.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1318,6 +1505,123 @@ img{max-width:100%;display:block}
         </div>
 
 
+
+        <!-- MON 07 FREE -->
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Money 07</span><span class="tc-tag">Basics</span><span class="tc-new">New</span></div>
+              <div class="tc-title">What Is Inflation? — Why Your Money Is Worth Less Every Year and What to Do About It</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🍞</span>
+                <div>
+                  <strong>The Bread Price Analogy</strong>
+                  <p>In 2010, a loaf of sliced bread in Nigeria cost roughly ₦150. In 2020 it was ₦350. In 2024 it passed ₦1,500. The bread did not change. The ingredients did not become harder to find. What changed is that the naira lost purchasing power — each naira could buy less than before. That loss of purchasing power is called inflation. If your money is sitting in a regular savings account earning 4% interest per year while inflation runs at 33% per year (Nigeria's 2024 inflation rate), your money is losing 29% of its real value every year. You have more naira. But those naira buy much less than they did before.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p><strong>Inflation</strong> is the rate at which prices across an economy rise over time — or equivalently, the rate at which the purchasing power of a currency falls. If inflation is 30% this year, something that cost ₦10,000 last year now costs ₦13,000.</p>
+                <p>In Nigeria, inflation is measured by the National Bureau of Statistics (NBS) using a "basket" of common goods and services. In early 2025, Nigeria's inflation rate peaked above 30% — one of the highest in Africa — driven primarily by fuel price increases, naira devaluation, and food supply issues.</p>
+                <p>Why this matters directly to you:</p>
+                <p><strong>Your savings are losing value:</strong> A regular savings account pays 3–5% per year. With 30% inflation, you are effectively losing 25% of your real purchasing power per year by keeping money in a savings account. After 3 years, the same cash buys roughly 40% less than today.</p>
+                <p><strong>Your prices must keep up:</strong> If you charge ₦15,000 for a website today and do not raise your prices, in 2 years that same ₦15,000 will buy you far less than it does now. Price increases are not greed — they are survival. Review your prices every 6 months.</p>
+                <p><strong>What beats inflation:</strong> Investments that grow faster than inflation. Dollar-denominated assets (since the dollar generally holds value better than the naira). Real estate in growing areas. Equity in profitable businesses. Your own skills — because skilled people can raise their prices faster than goods inflate.</p>
+                <p>The fastest personal hedge against Nigerian inflation: earn in dollars (even partially), through freelance work for international clients, digital products priced in USD, or affiliate programmes with global companies.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Think of one item you buy regularly — airtime, data, transport, food. Try to remember what it cost 2 years ago. Calculate the percentage increase. That is your personal inflation rate for that item. Then calculate: if your income or prices have not risen by at least that percentage, you have become poorer in real terms. Write down one specific action you will take to increase your earning rate faster than your personal inflation rate.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MON 08 FREE -->
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Money 08</span><span class="tc-tag">Earning</span><span class="tc-new">New</span></div>
+              <div class="tc-title">How to Earn in Dollars as a Nigerian Teenager — Without Leaving Abuja</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🌍</span>
+                <div>
+                  <strong>The Export Business Analogy</strong>
+                  <p>Aliko Dangote sells cement in Nigeria and gets paid in naira. But Nigeria also exports crude oil and gets paid in US dollars. The oil exporter benefits every time the naira weakens — because the same barrel of oil that was worth $60 last year still gives $60 this year, but that $60 converts to far more naira than before. Digital service providers work the same way. A Nigerian who charges a UK client $200 for a design project received the equivalent of ₦150,000 at a 2023 exchange rate and ₦320,000+ at 2025 rates — for the exact same work. Dollar-earners automatically benefit from naira devaluation instead of suffering from it.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>The internet makes geographical borders irrelevant for service businesses. A skilled Nigerian teenager can sell services to clients in the UK, USA, Canada, or Australia without a visa, without travelling, and without a physical office. All you need is a skill, a stable internet connection, a way to receive payment, and the confidence to reach out.</p>
+                <p><strong>The most in-demand dollar-paying skills for Nigerian teens in 2026:</strong></p>
+                <p><strong>Graphic Design:</strong> Logo design, social media graphics, brand identity. Platforms: Fiverr (fiverr.com), Upwork, 99designs. Average: $50–$300 per project.</p>
+                <p><strong>Web Development:</strong> Building websites and web apps. Platforms: Upwork, Toptal, direct client outreach via LinkedIn. Average: $200–$2,000 per project.</p>
+                <p><strong>Content Writing:</strong> Blog posts, website copy, product descriptions. Platforms: Fiverr, ProBlogger, direct pitching to blogs. Average: $20–$100 per article.</p>
+                <p><strong>Video Editing:</strong> Editing YouTube videos, short-form content, reels. Platforms: Fiverr, direct YouTube creators. Average: $30–$150 per video.</p>
+                <p><strong>Virtual Assistance:</strong> Email management, scheduling, research, social media management. Platforms: Fiverr, Remote.co. Average: $5–$20 per hour.</p>
+                <p><strong>How to receive dollar payments in Nigeria:</strong> Payoneer (free account, debit card), Wise (formerly TransferWise), Grey Finance, or Geegpay — all allow Nigerians to receive international payments and convert to naira or hold in dollar wallets.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Create a free account on <strong>fiverr.com</strong> today. Choose ONE service you can honestly offer. Write your gig title, description, and set a starting price (even $5 to get your first review). Do not overthink it — you can edit everything later. The account costs nothing. Getting your profile live is the only goal today. Your first dollar is closer than you think.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MON 09 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-mon09">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Money 09</span><span class="tc-tag">Budgeting</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">How to Build a Personal Budget That You Will Actually Stick To</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Money 09.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('mon09')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🏗️</span>
+                <div>
+                  <strong>The Building Plan Analogy</strong>
+                  <p>A contractor who starts building a house without a plan will run out of cement before the walls are finished, buy the wrong quantity of roofing sheets, and overspend on labour because nothing was estimated in advance. A contractor with a detailed bill of quantities knows exactly how much of everything to buy, what it costs, and what the finished building will look like before a single block is laid. A budget is a financial building plan. Without it, your money disappears on unplanned purchases before the important things get covered. With it, every naira goes where you decided in advance — when you were thinking clearly, not when something tempting appeared.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Most people fail at budgeting because they try to restrict spending on things they enjoy, which creates a feeling of deprivation and leads to abandonment within weeks. A budget that works does not restrict everything — it <strong>gives every naira a job before it arrives</strong>, including money for things you enjoy.</p>
+                <p>The zero-based budgeting method that works for irregular income (freelancers and entrepreneurs):</p>
+                <p><strong>Step 1 — Calculate last month's total income.</strong> Every single naira that came in. If income varies, use the average of your last 3 months.</p>
+                <p><strong>Step 2 — List every expense category.</strong> Needs (transport, food, airtime, school): roughly 50%. Savings (money you will not touch): 20–30%. Investments (money put to work): 10–20%. Fun (things you genuinely enjoy): 5–10%. Giving (family support, charity, tithe): amount you decide.</p>
+                <p><strong>Step 3 — Assign a naira amount to every category</strong> until every naira of your income is assigned. Income minus all category allocations should equal zero. This is why it is called zero-based — every naira has a destination.</p>
+                <p><strong>Step 4 — Spend only from allocated categories.</strong> When the transport allocation runs out, it is out. You do not borrow from savings — you adjust next month's allocation based on what you learned.</p>
+                <p><strong>Step 5 — Review every month.</strong> A budget is a plan, not a prison. Review it monthly, learn from what you overspent on, and adjust allocations for next month accordingly.</p>
+                <p>The most important category most Nigerian teenagers completely skip: <strong>emergency fund</strong>. Set aside 10% of every naira you earn into a separate account that you do not touch unless something genuinely unexpected happens. Phone repair, medical expense, family emergency. Having 3 months of expenses as an emergency fund eliminates the financial panic that forces bad decisions.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Write your budget for this month right now. Use this structure: write your total expected income at the top. Below it, list every category and assign a naira amount to each. Keep subtracting from the total until you reach zero. If you go negative, cut from the Fun category first, not from Savings. This takes 15 minutes. It will save you thousands of naira this month alone by making your spending intentional rather than accidental.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1516,6 +1820,90 @@ img{max-width:100%;display:block}
         </div>
 
 
+        <!-- MIND 06 FREE -->
+        <div class="tcard reveal">
+          <div class="tcard-hd" onclick="toggleTut(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Mind 06</span><span class="tc-tag">Habits</span><span class="tc-new">New</span></div>
+              <div class="tc-title">The Morning Routine That Sets Successful Nigerian Builders Apart — Before 7am</div>
+            </div>
+            <span class="tc-toggle">+</span>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🌅</span>
+                <div>
+                  <strong>The Farmer's Early Start Analogy</strong>
+                  <p>Every experienced farmer knows that the coolest, clearest part of the day is early morning — before the sun becomes oppressive, before the noise of the market begins, before other people's demands arrive. Farmers who start at 5am consistently produce more than those who start at 9am — not because they work longer, but because those early hours are the highest-quality work hours available. Your brain works exactly the same way. The morning hours, before the world's noise arrives, are your highest-quality thinking and creating hours. Use them for your most important building work — not for social media.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>A morning routine is not about waking up at 4am like a motivational speaker told you. It is about intentionally designing the first 60–90 minutes of your day so that you enter the rest of it with clarity, focus, and progress already made.</p>
+                <p>The Builder Morning Routine (adaptable to your life):</p>
+                <p><strong>First 5 minutes — No phone.</strong> The moment you pick up your phone, other people's agendas invade your mind. WhatsApp, Instagram, news — all of it pulls your attention outward before you have had a chance to think about your own priorities. Keep your phone face down for the first 5 minutes minimum.</p>
+                <p><strong>5–15 minutes — Review your goals.</strong> Read your 90-day SMART goal (from Mind 04). Read today's one priority. This takes 2 minutes and aligns your subconscious mind with your actual objectives for the day before anything else competes for attention.</p>
+                <p><strong>15–30 minutes — Physical movement.</strong> Walk, stretch, exercise, or simply stand outside and breathe. Physical movement increases blood flow to the brain and activates the prefrontal cortex — the part responsible for planning, decision-making, and focus. This is not optional. It is physiological preparation for work.</p>
+                <p><strong>30–90 minutes — Deep work.</strong> Before breakfast if possible. Before WhatsApp responses. Before anything else. Spend 30–60 minutes working on your single most important task for the day. This is the core. Everything else is flexible.</p>
+                <p>You do not need to do all of this perfectly every day. But anchoring even 30 minutes of phone-free, focused morning work will compound into extraordinary output over 90 days.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Set your alarm for 30 minutes earlier than usual tomorrow. When it goes off, do not open your phone. Spend those 30 minutes doing one of the following: read your goals, work on a tutorial action item from this page, write or plan something related to your builder journey. Do this for 7 consecutive days. After 7 days, assess: did those 7 mornings produce more useful output than your previous 7 mornings? If yes — you have your answer about whether to make it permanent.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MIND 07 PREMIUM -->
+        <div class="tcard premium-card reveal" id="pcard-mind07">
+          <div class="tcard-hd" onclick="togglePremium(this)">
+            <div class="tc-left">
+              <div class="tc-meta"><span class="tc-num">Mind 07</span><span class="tc-tag">Focus</span><span class="tc-premium">🔒 Premium</span></div>
+              <div class="tc-title">How to Say No — The Skill That Protects Your Time, Energy, and Goals</div>
+            </div>
+            <span class="tc-toggle tc-lock-icon">🔒</span>
+          </div>
+          <div class="lock-overlay">
+            <div class="lock-icon-big">🔒</div>
+            <div class="lock-title">Premium Tutorial</div>
+            <p class="lock-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Mind 07.</p>
+            <div class="lock-row">
+              <input type="password" class="lock-input" placeholder="Enter password…" autocomplete="off"/>
+              <button class="lock-btn" onclick="tryUnlock('mind07')">Unlock</button>
+            </div>
+            <div class="lock-err"></div>
+          </div>
+          <div class="tcard-bd">
+            <div class="tbd-inner">
+              <div class="tbd-analogy">
+                <span class="tbd-analogy-icon">🚪</span>
+                <div>
+                  <strong>The Security Gate Analogy</strong>
+                  <p>An estate with no security gate lets everyone in — neighbours, friends, strangers, trouble. The resident has no control over who occupies their compound and their time. An estate with a functioning security gate lets residents decide deliberately who enters and when. Your time and attention are your most valuable compound. "No" is your security gate. Without it, everyone's requests, opinions, emergencies, and demands fill your day and leave nothing for your actual priorities. The most productive people in the world are not those who do the most things — they are those who say no to the most things.</p>
+                </div>
+              </div>
+              <div class="tbd-body">
+                <p>Saying no is uncomfortable in Nigerian culture, where community, family obligations, and social harmony are deeply valued. This makes protecting your time particularly challenging — because saying no can feel like disrespect or selfishness. It is neither. It is the responsible management of a finite resource that nobody can give you more of.</p>
+                <p>The four categories of things to say no to:</p>
+                <p><strong>1. Requests that conflict with your goals.</strong> If someone asks you to spend your Saturday at an event that does not build your skills, your network, or your business — that is a no. Not rudely. Just honestly: "I have committed that time to something important."</p>
+                <p><strong>2. Underpriced work.</strong> When a client asks you to do work for less than your established price, the answer is no — unless you have a specific strategic reason (building a portfolio, entering a new market). Discounting trains clients to undervalue your work permanently.</p>
+                <p><strong>3. Advice from people without relevant results.</strong> People without successful businesses will give you detailed business advice. People who have never invested will tell you investing is risky. The no here is internal — you simply do not apply their advice. You can listen politely while filtering based on credibility.</p>
+                <p><strong>4. The temptation to do everything at once.</strong> Every new shiny idea that pulls your attention away from the one thing you decided to focus on for 90 days. "No, not now. I am focused on this first."</p>
+                <p>How to say no without damaging relationships:</p>
+                <p>"I appreciate you thinking of me, but I have fully committed that time to another project."<br>
+                "That is not something I can take on right now — my focus is elsewhere this quarter."<br>
+                "I am not the right person for that — let me recommend someone who might be able to help."<br>
+                A no with a reason and an alternative is received far better than a vague avoidance or a yes that you resent delivering.</p>
+              </div>
+              <div class="tbd-action">
+                <div class="tbd-action-lbl">✅ Today's Action</div>
+                <p>Write down every commitment, request, and obligation currently on your plate — from anyone. Then go through the list and honestly mark each one: Does this directly serve my 90-day goal? If no — can I decline, delay, or delegate it? Choose one item from the list that you will say no to or step back from this week. Write the exact words you will use to communicate that no. Then say them. This will feel uncomfortable. That discomfort is the feeling of protecting your most valuable resource.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -1632,13 +2020,18 @@ const LOCKS={
   'tech06':'U2lsYWJzI0hUTUwyMDI2',
   'tech07':'VmliZSRDb2RlOWph',
   'tech08':'R2l0UHVzaCROYWlqYQ==',
+  'tech11':'RGF0YWJhc2UkU1FMMjAyNg==',
+  'tech12':'QVBJJFdhaXRlcjlqYQ==',
   'biz06' :'Q29udHJhY3QmV2luMjAyNg==',
   'biz07' :'U29jaWFsU2VsbCNOR1I=',
   'biz08' :'Q0FDJFJlZ2lzdGVyMjY=',
+  'biz11' :'UG9ydGZvbGlvJFdpbjI2',
   'mon05' :'TkdYJEludmVzdDIwMjY=',
   'mon06' :'VGF4U21hcnQjOWph',
+  'mon09' :'QnVkZ2V0JFplcm8yNg==',
   'mind04':'R29hbFNldCRCdWlsZGVy',
-  'mind05':'VGltZUlzTmFpcmEjMjY='
+  'mind05':'VGltZUlzTmFpcmEjMjY=',
+  'mind07':'U2F5Tm8kQnVpbGRlcg=='
 };
 
 function tryUnlock(id){
