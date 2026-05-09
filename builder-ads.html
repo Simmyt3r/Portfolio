@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>The Builder — Ad Pack · Simeon Tertese</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#0a0e1a;font-family:'Manrope',sans-serif}
+body{padding:48px 24px;display:flex;flex-direction:column;align-items:center;gap:72px}
+
+/* page title */
+.page-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;
+  color:rgba(255,255,255,.25);letter-spacing:.12em;text-transform:uppercase;text-align:center}
+
+/* wrapper for each ad */
+.ad-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%}
+.ad-label{font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:rgba(255,255,255,.3);letter-spacing:.1em;text-transform:uppercase;text-align:center}
+.ad-scale{transform-origin:top center;display:block}
+
+/* download button */
+.dl{padding:11px 28px;background:#a8e63d;color:#0f2744;
+  font-family:'Manrope',sans-serif;font-size:13px;font-weight:800;
+  border-radius:3px;border:none;cursor:pointer;letter-spacing:.02em;
+  transition:background .15s}
+.dl:hover{background:#b8f04d}
+
+/* export hint */
+.hint{font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:rgba(255,255,255,.18);letter-spacing:.06em;text-align:center;line-height:1.9;
+  max-width:560px;padding-bottom:48px}
+
+/* =========================================
+   SHARED DESIGN SYSTEM
+========================================= */
+.navy{background:#0f2744}
+.lime-text{color:#a8e63d}
+.white{color:#fff}
+.muted{color:rgba(255,255,255,.55)}
+
+/* grid bg */
+.grid-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(168,230,61,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(168,230,61,.035) 1px,transparent 1px);
+}
+
+/* glow blobs */
+.glow{position:absolute;border-radius:50%;pointer-events:none}
+
+/* =========================================
+   AD 1 — SQUARE 1080 × 1080
+========================================= */
+#sq{
+  width:1080px;height:1080px;
+  background:#0f2744;
+  position:relative;overflow:hidden;flex-shrink:0;
+}
+#sq .grid-bg{background-size:90px 90px}
+#sq .g1{width:720px;height:720px;top:-280px;right:-220px;
+  background:radial-gradient(circle,rgba(168,230,61,.13) 0%,transparent 65%)}
+#sq .g2{width:480px;height:480px;bottom:-160px;left:-120px;
+  background:radial-gradient(circle,rgba(26,86,219,.22) 0%,transparent 65%)}
+#sq .g3{width:300px;height:300px;bottom:160px;right:80px;
+  background:radial-gradient(circle,rgba(168,230,61,.07) 0%,transparent 65%)}
+
+#sq .inner{
+  position:relative;z-index:2;
+  padding:76px 80px;height:100%;
+  display:flex;flex-direction:column;
+}
+
+/* top row */
+#sq .toprow{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:64px;
+}
+#sq .brand{
+  font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff;
+  display:flex;align-items:center;gap:10px;
+}
+#sq .brand .dot{width:9px;height:9px;border-radius:50%;background:#a8e63d}
+#sq .tagline{
+  font-family:'JetBrains Mono',monospace;font-size:14px;
+  color:rgba(255,255,255,.35);letter-spacing:.09em;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;
+}
+#sq .tagline::before{content:'';display:block;width:28px;height:1px;background:#a8e63d}
+
+/* headline block */
+#sq .hl{flex:1;display:flex;flex-direction:column;justify-content:center}
+#sq .eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:16px;
+  color:#a8e63d;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:24px;
+}
+#sq .h1{
+  font-family:'Syne',sans-serif;
+  font-size:104px;font-weight:800;
+  color:#fff;line-height:.96;letter-spacing:-3px;
+  margin-bottom:36px;
+}
+#sq .h1 .lime{color:#a8e63d}
+#sq .tracks{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+  margin-bottom:36px;
+}
+#sq .track{
+  padding:18px 16px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(168,230,61,.12);
+  border-radius:4px;
+}
+#sq .track .ti{font-size:24px;margin-bottom:8px}
+#sq .track .tn{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:#fff}
+#sq .track .tc{font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:rgba(255,255,255,.35);letter-spacing:.06em;margin-top:2px}
+#sq .sub{font-size:20px;color:rgba(255,255,255,.55);line-height:1.75;max-width:680px}
+#sq .sub strong{color:#fff}
+
+/* bottom row */
+#sq .botrow{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-top:40px;
+}
+#sq .stats{display:flex;gap:40px}
+#sq .stat .n{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;
+  color:#a8e63d;line-height:1}
+#sq .stat .l{font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:rgba(255,255,255,.35);letter-spacing:.07em;text-transform:uppercase;margin-top:3px}
+#sq .cta{
+  padding:22px 52px;background:#a8e63d;color:#0f2744;
+  font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;
+  border-radius:4px;letter-spacing:.01em;
+}
+
+/* =========================================
+   AD 2 — STORY 1080 × 1920
+========================================= */
+#story{
+  width:1080px;height:1920px;
+  background:#0f2744;
+  position:relative;overflow:hidden;flex-shrink:0;
+}
+#story .grid-bg{background-size:90px 90px}
+#story .g1{width:900px;height:900px;top:-300px;right:-280px;
+  background:radial-gradient(circle,rgba(168,230,61,.11) 0%,transparent 65%)}
+#story .g2{width:700px;height:700px;bottom:-200px;left:-180px;
+  background:radial-gradient(circle,rgba(26,86,219,.2) 0%,transparent 65%)}
+#story .g3{width:400px;height:400px;top:800px;right:-100px;
+  background:radial-gradient(circle,rgba(168,230,61,.06) 0%,transparent 65%)}
+
+#story .inner{
+  position:relative;z-index:2;
+  padding:96px 90px;height:100%;
+  display:flex;flex-direction:column;
+}
+#story .toprow{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:80px;
+}
+#story .brand{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:#fff;
+  display:flex;align-items:center;gap:10px}
+#story .brand .dot{width:10px;height:10px;border-radius:50%;background:#a8e63d}
+#story .freetag{
+  font-family:'JetBrains Mono',monospace;font-size:14px;color:#a8e63d;
+  letter-spacing:.09em;text-transform:uppercase;
+  background:rgba(168,230,61,.1);border:1px solid rgba(168,230,61,.2);
+  padding:8px 18px;border-radius:3px;
+}
+
+/* big headline */
+#story .heroblock{margin-bottom:72px}
+#story .eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:17px;color:#a8e63d;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:28px;
+  display:flex;align-items:center;gap:12px;
+}
+#story .eyebrow::before{content:'';display:block;width:32px;height:1px;background:#a8e63d}
+#story .h1{
+  font-family:'Syne',sans-serif;font-size:116px;font-weight:800;
+  color:#fff;line-height:.95;letter-spacing:-4px;margin-bottom:40px;
+}
+#story .h1 .lime{color:#a8e63d}
+#story .sub{font-size:24px;color:rgba(255,255,255,.55);line-height:1.75;max-width:820px}
+#story .sub strong{color:#fff}
+
+/* sample tutorial cards */
+#story .cards{display:flex;flex-direction:column;gap:16px;margin-bottom:56px}
+#story .card{
+  padding:28px 32px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);
+  border-left:4px solid #a8e63d;
+  border-radius:4px;
+  display:flex;align-items:center;gap:24px;
+}
+#story .card.prem{border-left-color:#f59e0b}
+#story .card .icon{font-size:32px;flex-shrink:0}
+#story .card .ct{font-family:'Manrope',sans-serif;font-size:23px;font-weight:700;color:#fff;margin-bottom:4px}
+#story .card .cs{font-family:'JetBrains Mono',monospace;font-size:13px;
+  color:rgba(255,255,255,.35);letter-spacing:.05em}
+#story .card .badge{
+  margin-left:auto;flex-shrink:0;
+  background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);
+  padding:5px 12px;border-radius:2px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:#f59e0b;letter-spacing:.05em;
+}
+
+/* pricing strip */
+#story .pricing{
+  background:rgba(168,230,61,.05);border:1px solid rgba(168,230,61,.12);
+  border-radius:4px;padding:36px 40px;margin-bottom:56px;
+  display:grid;grid-template-columns:repeat(3,1fr);
+}
+#story .tier{text-align:center;padding:0 20px}
+#story .tier+.tier{border-left:1px solid rgba(255,255,255,.07)}
+#story .tier .tp{font-family:'JetBrains Mono',monospace;font-size:13px;
+  color:rgba(255,255,255,.35);letter-spacing:.07em;text-transform:uppercase;margin-bottom:10px}
+#story .tier .tpr{font-family:'Syne',sans-serif;font-size:40px;font-weight:800;
+  color:#a8e63d;line-height:1;margin-bottom:4px}
+#story .tier .tper{font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:rgba(255,255,255,.3)}
+#story .tier.best .tpr{color:#fff}
+#story .tier.best .tp{color:#a8e63d}
+
+/* bottom cta */
+#story .cta-big{
+  width:100%;padding:38px;background:#a8e63d;
+  font-family:'Syne',sans-serif;font-size:30px;font-weight:800;
+  color:#0f2744;border-radius:4px;text-align:center;margin-bottom:20px;
+}
+#story .wa{
+  display:flex;align-items:center;justify-content:center;gap:20px;
+  padding:26px 32px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  border-radius:4px;
+}
+#story .wa .wt{font-family:'Manrope',sans-serif;font-size:22px;font-weight:600;color:rgba(255,255,255,.6)}
+#story .wa .wn{font-family:'JetBrains Mono',monospace;font-size:22px;color:#a8e63d;font-weight:500}
+
+/* =========================================
+   AD 3 — BANNER 1200 × 628
+========================================= */
+#banner{
+  width:1200px;height:628px;
+  background:#0f2744;
+  position:relative;overflow:hidden;flex-shrink:0;
+}
+#banner .grid-bg{background-size:60px 60px}
+/* right accent panel */
+#banner .rpanel{
+  position:absolute;top:0;right:0;bottom:0;width:360px;
+  background:rgba(168,230,61,.03);
+  border-left:1px solid rgba(168,230,61,.08);
+}
+#banner .g1{width:520px;height:520px;top:-200px;right:-80px;
+  background:radial-gradient(circle,rgba(168,230,61,.12) 0%,transparent 65%)}
+#banner .g2{width:380px;height:380px;bottom:-120px;left:-80px;
+  background:radial-gradient(circle,rgba(26,86,219,.2) 0%,transparent 65%)}
+#banner .inner{
+  position:relative;z-index:2;padding:56px 64px;height:100%;
+  display:grid;grid-template-columns:1fr 316px;gap:56px;align-items:center;
+}
+#banner .left{}
+#banner .eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:13px;color:#a8e63d;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;
+  display:flex;align-items:center;gap:10px;
+}
+#banner .eyebrow::before{content:'';display:block;width:22px;height:1px;background:#a8e63d}
+#banner .h1{
+  font-family:'Syne',sans-serif;font-size:76px;font-weight:800;
+  color:#fff;line-height:.96;letter-spacing:-2.5px;margin-bottom:22px;
+}
+#banner .h1 .lime{color:#a8e63d}
+#banner .sub{font-size:18px;color:rgba(255,255,255,.5);line-height:1.7;max-width:520px}
+#banner .sub strong{color:#fff}
+/* right panel cards */
+#banner .right{display:flex;flex-direction:column;gap:10px}
+#banner .bc{
+  padding:15px 20px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  border-radius:3px;
+}
+#banner .bc.hl{border-color:rgba(168,230,61,.2);background:rgba(168,230,61,.04)}
+#banner .bc .bl{font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:rgba(255,255,255,.3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px}
+#banner .bc .bv{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#a8e63d}
+#banner .bc.wt .bv{color:#fff}
+#banner .ctabox{
+  padding:16px 20px;background:#a8e63d;border-radius:3px;margin-top:2px;
+}
+#banner .ctabox .bl{font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:rgba(15,39,68,.55);letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
+#banner .ctabox .bv{font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;color:#0f2744}
+/* bottom brand watermark */
+#banner .watermark{
+  position:absolute;bottom:32px;left:64px;z-index:3;
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:rgba(255,255,255,.18);letter-spacing:.07em;
+  display:flex;align-items:center;gap:8px;
+}
+#banner .watermark .dot{width:5px;height:5px;border-radius:50%;background:#a8e63d}
+
+/* =========================================
+   AD 4 — FLYER 800 × 1000 (WhatsApp / Print)
+========================================= */
+#flyer{
+  width:800px;height:1000px;
+  background:#0f2744;
+  position:relative;overflow:hidden;flex-shrink:0;
+}
+#flyer .grid-bg{background-size:70px 70px}
+#flyer .g1{width:600px;height:600px;top:-200px;right:-180px;
+  background:radial-gradient(circle,rgba(168,230,61,.13) 0%,transparent 65%)}
+#flyer .g2{width:450px;height:450px;bottom:-150px;left:-120px;
+  background:radial-gradient(circle,rgba(26,86,219,.22) 0%,transparent 65%)}
+#flyer .inner{
+  position:relative;z-index:2;padding:60px;height:100%;
+  display:flex;flex-direction:column;
+}
+/* accent top strip */
+#flyer .topstrip{
+  height:6px;background:linear-gradient(90deg,#a8e63d,rgba(168,230,61,.2));
+  border-radius:3px;margin-bottom:48px;
+}
+#flyer .brand{
+  font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff;
+  display:flex;align-items:center;gap:10px;margin-bottom:40px;
+}
+#flyer .brand .dot{width:8px;height:8px;border-radius:50%;background:#a8e63d}
+#flyer .h1{
+  font-family:'Syne',sans-serif;font-size:80px;font-weight:800;
+  color:#fff;line-height:.95;letter-spacing:-2.5px;margin-bottom:24px;
+}
+#flyer .h1 .lime{color:#a8e63d}
+#flyer .sub{font-size:18px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:40px}
+#flyer .sub strong{color:#fff}
+/* divider */
+#flyer .div{height:1px;background:rgba(168,230,61,.15);margin-bottom:36px}
+/* what you get list */
+#flyer .list{display:flex;flex-direction:column;gap:16px;flex:1;margin-bottom:36px}
+#flyer .li{display:flex;align-items:flex-start;gap:16px}
+#flyer .li .icon{font-size:20px;flex-shrink:0;margin-top:2px}
+#flyer .li .text strong{font-size:17px;color:#fff;display:block;margin-bottom:2px}
+#flyer .li .text span{font-size:14px;color:rgba(255,255,255,.45)}
+/* bottom cta */
+#flyer .bottom{
+  background:rgba(168,230,61,.08);border:1px solid rgba(168,230,61,.15);
+  border-radius:4px;padding:28px 32px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+#flyer .bottom .left .free{
+  font-family:'Syne',sans-serif;font-size:40px;font-weight:800;color:#a8e63d;line-height:1}
+#flyer .bottom .left .since{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:rgba(255,255,255,.3);letter-spacing:.07em;text-transform:uppercase;margin-top:4px}
+#flyer .bottom .ctabtn{
+  padding:18px 36px;background:#a8e63d;color:#0f2744;
+  font-family:'Manrope',sans-serif;font-size:18px;font-weight:800;
+  border-radius:4px;text-align:center;
+}
+#flyer .bottom .ctabtn .small{font-size:13px;font-weight:500;
+  color:rgba(15,39,68,.6);display:block;margin-top:2px}
+</style>
+</head>
+<body>
+
+<div class="page-title">The Builder — Ad Pack · Simeon Tertese · Silabs &amp; Co Technologies</div>
+
+<!-- ══ AD 1: SQUARE ══ -->
+<div class="ad-wrap">
+  <div class="ad-label">Ad 01 — Square 1080 × 1080 · Instagram / Facebook Post</div>
+  <div class="ad-scale" style="transform:scale(.52)">
+    <div id="sq">
+      <div class="grid-bg"></div>
+      <div class="glow g1"></div>
+      <div class="glow g2"></div>
+      <div class="glow g3"></div>
+      <div class="inner">
+        <div class="toprow">
+          <div class="tagline">Free daily tutorials for Nigerian teenagers</div>
+          <div class="brand"><span class="dot"></span>The Builder</div>
+        </div>
+        <div class="hl">
+          <div class="eyebrow">// By Simeon Tertese · Silabs</div>
+          <div class="h1">Learn.<br><span class="lime">Build.</span><br>Earn.</div>
+          <div class="tracks">
+            <div class="track"><div class="ti">💻</div><div class="tn">Tech Skills</div><div class="tc">12 lessons</div></div>
+            <div class="track"><div class="ti">💼</div><div class="tn">Business</div><div class="tc">11 lessons</div></div>
+            <div class="track"><div class="ti">💰</div><div class="tn">Money</div><div class="tc">9 lessons</div></div>
+            <div class="track"><div class="ti">🧠</div><div class="tn">Mindset</div><div class="tc">8 lessons</div></div>
+          </div>
+          <div class="sub">40+ tutorials explained so simply that <strong>even someone who knows nothing</strong> can start building today. New lessons every single day.</div>
+        </div>
+        <div class="botrow">
+          <div class="stats">
+            <div class="stat"><div class="n">40+</div><div class="l">Tutorials</div></div>
+            <div class="stat"><div class="n">Free</div><div class="l">To Start</div></div>
+            <div class="stat"><div class="n">Daily</div><div class="l">New Content</div></div>
+          </div>
+          <div class="cta">Start Learning Free →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ad-label" style="margin-top:-520px">Actual size: 1080 × 1080 px &nbsp;·&nbsp; Right-click → Save image / Screenshot element in DevTools</div>
+  <button class="dl" onclick="dlAd('sq','builder-square-1080x1080')">⬇ Download Square (HTML at full res)</button>
+</div>
+
+<!-- ══ AD 2: STORY ══ -->
+<div class="ad-wrap">
+  <div class="ad-label">Ad 02 — Story 1080 × 1920 · WhatsApp Status / Instagram Story</div>
+  <div class="ad-scale" style="transform:scale(.38)">
+    <div id="story">
+      <div class="grid-bg"></div>
+      <div class="glow g1"></div>
+      <div class="glow g2"></div>
+      <div class="glow g3"></div>
+      <div class="inner">
+        <div class="toprow">
+          <div class="brand"><span class="dot"></span>The Builder</div>
+          <div class="freetag">Free · Daily</div>
+        </div>
+        <div class="heroblock">
+          <div class="eyebrow">Tutorials for Nigerian teenagers</div>
+          <div class="h1">Learn.<br><span class="lime">Build.</span><br>Earn.</div>
+          <div class="sub">40+ tutorials across Tech, Business, Money &amp; Mindset. Explained like <strong>you know absolutely nothing</strong>. New lessons added every day.</div>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="icon">💻</div>
+            <div><div class="ct">What Is the Internet?</div><div class="cs">Tech 01 · Free · Beginner</div></div>
+          </div>
+          <div class="card">
+            <div class="icon">💼</div>
+            <div><div class="ct">How to Find a Business Idea</div><div class="cs">Biz 01 · Free · Beginner</div></div>
+          </div>
+          <div class="card">
+            <div class="icon">💰</div>
+            <div><div class="ct">How to Earn in Dollars From Abuja</div><div class="cs">Money 08 · Free · Any level</div></div>
+          </div>
+          <div class="card prem">
+            <div class="icon">🔒</div>
+            <div><div class="ct">Build Full App Using AI (Vibe Coding)</div><div class="cs">Tech 07 · Premium</div></div>
+            <div class="badge">PREMIUM</div>
+          </div>
+        </div>
+        <div class="pricing">
+          <div class="tier"><div class="tp">Free forever</div><div class="tpr">₦0</div><div class="tper">25 lessons</div></div>
+          <div class="tier best"><div class="tp">Community</div><div class="tpr">₦2,000</div><div class="tper">/month · All access</div></div>
+          <div class="tier"><div class="tp">12-Wk Cohort</div><div class="tpr">₦25k</div><div class="tper">Full coaching</div></div>
+        </div>
+        <div class="cta-big">Start Learning Free →</div>
+        <div class="wa">
+          <div class="wt">WhatsApp Simeon to join:</div>
+          <div class="wn">+234 905 623 2366</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ad-label" style="margin-top:-1162px">Actual size: 1080 × 1920 px</div>
+  <button class="dl" onclick="dlAd('story','builder-story-1080x1920')">⬇ Download Story (HTML at full res)</button>
+</div>
+
+<!-- ══ AD 3: BANNER ══ -->
+<div class="ad-wrap">
+  <div class="ad-label">Ad 03 — Banner 1200 × 628 · Facebook / LinkedIn / Twitter Cover</div>
+  <div class="ad-scale" style="transform:scale(.62)">
+    <div id="banner">
+      <div class="grid-bg"></div>
+      <div class="rpanel"></div>
+      <div class="glow g1"></div>
+      <div class="glow g2"></div>
+      <div class="inner">
+        <div class="left">
+          <div class="eyebrow">// Free for Nigerian teenagers</div>
+          <div class="h1">Learn.<br><span class="lime">Build.</span><br>Earn.</div>
+          <div class="sub">40+ tutorials across Tech, Business, Money &amp; Mindset. <strong>New lessons every day.</strong> Start completely free — no excuses.</div>
+        </div>
+        <div class="right">
+          <div class="bc hl"><div class="bl">Total Tutorials</div><div class="bv">40+</div></div>
+          <div class="bc"><div class="bl">Tracks Available</div><div class="bv" style="color:#fff">4 Tracks</div></div>
+          <div class="bc"><div class="bl">Community Plan</div><div class="bv">₦2,000/mo</div></div>
+          <div class="bc wt"><div class="bl">12-Week Cohort</div><div class="bv">₦25,000</div></div>
+          <div class="ctabox"><div class="bl">WhatsApp to join</div><div class="bv">+234 905 623 2366</div></div>
+        </div>
+      </div>
+      <div class="watermark"><span class="dot"></span>The Builder · By Simeon Tertese · Silabs &amp; Co Technologies</div>
+    </div>
+  </div>
+  <div class="ad-label" style="margin-top:-218px">Actual size: 1200 × 628 px</div>
+  <button class="dl" onclick="dlAd('banner','builder-banner-1200x628')">⬇ Download Banner (HTML at full res)</button>
+</div>
+
+<!-- ══ AD 4: FLYER ══ -->
+<div class="ad-wrap">
+  <div class="ad-label">Ad 04 — Flyer 800 × 1000 · WhatsApp Image / Print Flyer</div>
+  <div class="ad-scale" style="transform:scale(.6)">
+    <div id="flyer">
+      <div class="grid-bg"></div>
+      <div class="glow g1"></div>
+      <div class="glow g2"></div>
+      <div class="inner">
+        <div class="topstrip"></div>
+        <div class="brand"><span class="dot"></span>The Builder · By Simeon Tertese</div>
+        <div class="h1">Stop Scrolling.<br><span class="lime">Start Building.</span></div>
+        <div class="sub">Free daily tutorials for Nigerian teenagers on Tech, Business, Money &amp; Mindset. <strong>Explained like you know absolutely nothing.</strong></div>
+        <div class="div"></div>
+        <div class="list">
+          <div class="li"><div class="icon">💻</div><div class="text"><strong>Tech Skills — 12 Lessons</strong><span>HTML, CSS, JavaScript, AI tools, Git, APIs, databases</span></div></div>
+          <div class="li"><div class="icon">💼</div><div class="text"><strong>Business — 11 Lessons</strong><span>Finding ideas, pricing, contracts, branding, getting clients</span></div></div>
+          <div class="li"><div class="icon">💰</div><div class="text"><strong>Money — 9 Lessons</strong><span>Saving vs investing, earning in dollars, budgeting, stocks</span></div></div>
+          <div class="li"><div class="icon">🧠</div><div class="text"><strong>Mindset — 8 Lessons</strong><span>Consistency, handling failure, time management, goal setting</span></div></div>
+          <div class="li"><div class="icon">🔒</div><div class="text"><strong>15 Premium Lessons</strong><span>Deeper content — ask Simeon for access via WhatsApp</span></div></div>
+        </div>
+        <div class="bottom">
+          <div class="left">
+            <div class="free">Free to Start</div>
+            <div class="since">New tutorial every day</div>
+          </div>
+          <div class="ctabtn">
+            Join Now
+            <span class="small">+234 905 623 2366</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ad-label" style="margin-top:-388px">Actual size: 800 × 1000 px</div>
+  <button class="dl" onclick="dlAd('flyer','builder-flyer-800x1000')">⬇ Download Flyer (HTML at full res)</button>
+</div>
+
+<div class="hint">
+  HOW TO GET PIXEL-PERFECT IMAGES FROM THESE ADS<br>
+  1. Right-click any ad → Inspect Element → find the id (sq / story / banner / flyer) div<br>
+  2. In DevTools, temporarily set <code>transform:scale(1)</code> on the .ad-scale parent<br>
+  3. Right-click the ad div → Capture node screenshot (Chrome) or use a browser extension<br>
+  4. Or: open the downloaded HTML file at 100% zoom and screenshot the exact ad dimensions<br>
+  Tools: GoFullPage, Screely, Screenshot Guru, or Canva (import the HTML)
+</div>
+
+<script>
+function dlAd(id, fname) {
+  const el = document.getElementById(id);
+  const w = el.style.width || el.offsetWidth + 'px';
+  const h = el.style.height || el.offsetHeight + 'px';
+  const styles = Array.from(document.styleSheets)
+    .map(s => { try { return Array.from(s.cssRules).map(r=>r.cssText).join('\n'); } catch(e){ return ''; } })
+    .join('\n');
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}body{width:${w};height:${h};overflow:hidden;background:#0f2744}${styles}</style>
+</head><body>${el.outerHTML}</body></html>`;
+  const b = new Blob([html], {type:'text/html'});
+  const a = Object.assign(document.createElement('a'), {href:URL.createObjectURL(b), download:fname+'.html'});
+  a.click();
+}
+</script>
+</body>
+</html>
