@@ -197,6 +197,59 @@ img{max-width:100%;display:block}
 .bf-link{font-family:var(--mono);font-size:.65rem;color:rgba(255,255,255,.4);transition:color .2s}
 .bf-link:hover{color:#fff}
 
+
+/* ── AUDIENCE STRIP ── */
+.audience-strip{display:flex;align-items:stretch;gap:0;margin-bottom:36px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
+.aud-pill{display:flex;align-items:center;gap:14px;padding:18px 24px;flex:1}
+.ap-icon{font-size:1.6rem;flex-shrink:0}
+.aud-pill strong{display:block;color:#fff;font-size:.88rem;font-weight:700;margin-bottom:2px}
+.aud-pill span{font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.5}
+.aud-div{width:1px;background:rgba(255,255,255,.08);flex-shrink:0}
+@media(max-width:600px){.audience-strip{flex-direction:column}.aud-div{width:100%;height:1px}}
+
+/* ── PARENT SECTION ── */
+.parent-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px}
+.parent-fear,.parent-outcome{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:24px}
+.pf-label{font-family:var(--mono);font-size:.63rem;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.pf-label.lime{color:var(--accent)}
+.pf-list{display:flex;flex-direction:column;gap:8px}
+.pf-item{font-size:.82rem;line-height:1.6;padding:9px 12px;border-radius:3px}
+.pf-item.bad{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+.pf-item.good{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;font-weight:500}
+.parent-compare{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:24px}
+.pc-title{font-family:var(--mono);font-size:.63rem;color:var(--muted);letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:14px}
+.pc-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pc-item{padding:14px 12px;background:var(--off);border:1px solid var(--rule);border-radius:3px;text-align:center}
+.pc-item.hi{background:var(--navy);border-color:var(--navy)}
+.pc-item.hi .pc-label{color:rgba(255,255,255,.5)}
+.pc-item.hi .pc-price{color:var(--lime)}
+.pc-label{font-family:var(--mono);font-size:.6rem;color:var(--muted);letter-spacing:.05em;margin-bottom:6px;line-height:1.5}
+.pc-price{font-family:var(--display);font-size:1.05rem;font-weight:700;color:var(--navy)}
+@media(max-width:700px){.parent-grid{grid-template-columns:1fr}.pc-row{grid-template-columns:repeat(2,1fr)}}
+
+/* ── OBJECTIONS ── */
+.objections{margin-top:36px;padding:28px;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.07);border-radius:4px}
+.obj-title{font-family:var(--mono);font-size:.63rem;color:rgba(255,255,255,.35);
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.obj-item{padding:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:3px}
+.obj-q{font-family:var(--display);font-size:.87rem;font-weight:700;color:#fff;margin-bottom:7px;font-style:italic}
+.obj-a{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.75}
+@media(max-width:580px){.obj-grid{grid-template-columns:1fr}}
+
+/* ── URGENCY BOX ── */
+.urgency-box{margin-top:20px;padding:22px 24px;
+  background:rgba(168,230,61,.07);border:1px solid rgba(168,230,61,.18);
+  border-radius:4px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.urg-icon{font-size:1.7rem;flex-shrink:0}
+.urg-title{font-family:var(--display);font-size:.97rem;font-weight:700;color:#fff;margin-bottom:4px}
+.urg-sub{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.7}
+@media(max-width:600px){.urgency-box{flex-direction:column;text-align:center}}
+
 /* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
@@ -243,7 +296,7 @@ img{max-width:100%;display:block}
       ← Back to Portfolio
     </a>
     <div class="nav-brand">The <span class="lime">Builder</span></div>
-    <a href="https://wa.me/2349056232366?text=I%20want%20to%20join%20The%20Builder%20community" target="_blank" class="nav-cta-sm">Join Free →</a>
+    <a href="https://wa.me/2349056232366?text=I%20want%20to%20join%20The%20Builder%20community" target="_blank" class="nav-cta-sm">Enrol Now →</a>
   </div>
 </nav>
 
@@ -1910,55 +1963,151 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
+<!-- PARENT PROOF SECTION -->
+<section style="padding:72px 0;background:var(--off);border-top:1px solid var(--rule)">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:40px">
+      <div style="font-family:var(--mono);font-size:.67rem;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px">For Parents</div>
+      <h2 style="font-family:var(--display);font-size:clamp(1.8rem,4vw,2.4rem);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:14px">Don't let your child<br>become obsolete.</h2>
+      <p style="font-size:.95rem;color:var(--muted);max-width:580px;line-height:1.85">The world your teenager is entering rewards builders, not just graduates. While school prepares them for exams, The Builder prepares them for income, initiative, and independence.</p>
+    </div>
+    <div class="parent-grid reveal">
+      <div class="parent-fear">
+        <div class="pf-label">What parents fear</div>
+        <div class="pf-list">
+          <div class="pf-item bad">📱 My child scrolls for 6 hours a day and has nothing to show for it</div>
+          <div class="pf-item bad">😬 School is teaching exams. Nobody is teaching initiative or independence.</div>
+          <div class="pf-item bad">⚠️ Every other child seems more focused, more driven, more ahead</div>
+          <div class="pf-item bad">💸 I am spending on tutors and extracurriculars with no visible outcome</div>
+          <div class="pf-item bad">🤔 University is 2–5 years away. What happens to this child before then?</div>
+        </div>
+      </div>
+      <div class="parent-outcome">
+        <div class="pf-label lime">What The Builder delivers</div>
+        <div class="pf-list">
+          <div class="pf-item good">✓ Screen time that builds real, marketable skills</div>
+          <div class="pf-item good">✓ Teen starts a real project or income stream within 30 days</div>
+          <div class="pf-item good">✓ Weekly accountability — growth is visible and measurable</div>
+          <div class="pf-item good">✓ Business, tech, money and mindset in one affordable programme</div>
+          <div class="pf-item good">✓ Your child is ahead of their peers before university</div>
+        </div>
+      </div>
+    </div>
+    <div class="parent-compare reveal">
+      <div class="pc-title">Compare the monthly cost</div>
+      <div class="pc-row">
+        <div class="pc-item"><div class="pc-label">Private lesson (1 session)</div><div class="pc-price">₦10,000+</div></div>
+        <div class="pc-item"><div class="pc-label">Monthly gaming spend</div><div class="pc-price">₦8,000+</div></div>
+        <div class="pc-item"><div class="pc-label">Monthly data bundles</div><div class="pc-price">₦6,000+</div></div>
+        <div class="pc-item hi"><div class="pc-label">Builder Starter (full month)</div><div class="pc-price">₦5,000</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- MEMBERSHIP -->
 <section class="membership-section" id="join">
   <div class="container">
     <div class="ms-label reveal">Membership Plans</div>
-    <h2 class="ms-h2 reveal">Go Further With Support</h2>
-    <p class="ms-sub reveal">Free tutorials get you started. Membership gets you there faster — with live coaching, accountability, and direct feedback on your work every single week.</p>
+    <h2 class="ms-h2 reveal">Pick Your Tier. Start This Week.</h2>
+    <p class="ms-sub reveal">No app to download. No complicated setup. WhatsApp + Google Meet + structured curriculum. Enrol and your child starts building this week.</p>
     <div class="ms-grid">
+
       <div class="ms-card reveal">
-        <div class="ms-tier">Free Forever</div>
+        <div class="ms-tier">Free Access</div>
         <div class="ms-price">₦0 <span>/always</span></div>
-        <p class="ms-pdesc">Access all written tutorials. New lessons added daily. No payment required, ever.</p>
+        <p class="ms-pdesc">All free tutorials. New lessons added daily. No payment required, ever.</p>
         <ul class="ms-list">
-          <li>All 4 tutorial tracks</li>
-          <li>New tutorials added daily</li>
-          <li>Weekly news digest (Fridays)</li>
-          <li>Action items &amp; assignments</li>
+          <li>40+ written tutorials</li>
+          <li>4 tracks: Tech, Business, Money, Mindset</li>
+          <li>New content every day</li>
+          <li>Weekly Friday news digest</li>
+          <li>Action item per lesson</li>
         </ul>
         <button class="ms-btn ms-btn-outline">You're already in</button>
       </div>
-      <div class="ms-card best reveal">
-        <div class="ms-tier">Most Popular</div>
-        <div class="ms-price">₦2,000 <span>/month</span></div>
-        <p class="ms-pdesc">Join the private Builder community. Weekly live sessions, assignment reviews, and a group that holds you accountable.</p>
+
+      <div class="ms-card reveal">
+        <div class="ms-tier">Builder Starter</div>
+        <div class="ms-price">₦5,000 <span>/month</span></div>
+        <p class="ms-pdesc">Mass-market entry. Weekly lessons, community access, challenges, and worksheets. Best for beginners building a foundation.</p>
         <ul class="ms-list">
           <li>Everything in Free</li>
           <li>Private WhatsApp community</li>
-          <li>Weekly 60-min live session</li>
-          <li>Your assignments reviewed</li>
-          <li>Accountability partner</li>
-          <li>Priority Q&amp;A access</li>
+          <li>Weekly structured lesson</li>
+          <li>Monthly challenge</li>
+          <li>Downloadable worksheets</li>
+          <li>All 15 premium tutorial passwords</li>
         </ul>
-        <a href="https://wa.me/2349056232366?text=I%20want%20to%20join%20Builder%20Community%20(₦2,000/month)" target="_blank" class="ms-btn ms-btn-navy">Join Community →</a>
+        <a href="https://wa.me/2349056232366?text=I%20want%20to%20join%20Builder%20Starter%20%E2%82%A65%2C000%2Fmonth" target="_blank" class="ms-btn ms-btn-navy">Join Starter →</a>
       </div>
-      <div class="ms-card reveal">
-        <div class="ms-tier">12-Week Cohort</div>
-        <div class="ms-price">₦25,000 <span>one-time</span></div>
-        <p class="ms-pdesc">Full 12-week guided programme with Simeon. Live coaching, weekly assignments, peer group, and a verified completion certificate.</p>
+
+      <div class="ms-card best reveal">
+        <div class="ms-tier">★ Builder Pro — Core Offer</div>
+        <div class="ms-price">₦15,000 <span>/month</span></div>
+        <p class="ms-pdesc">The flagship programme. Weekly live mentorship, accountability check-ins, business-building projects, and AI tool tutorials. This is where real transformation happens.</p>
         <ul class="ms-list">
-          <li>Everything in Community</li>
-          <li>Direct coaching by Simeon</li>
-          <li>Structured 12-week curriculum</li>
-          <li>Project reviews &amp; feedback</li>
-          <li>Verified Builder Certificate</li>
-          <li>Alumni network access</li>
-          <li>Job &amp; client referrals</li>
+          <li>Everything in Starter</li>
+          <li>Weekly 60-min live session (Google Meet)</li>
+          <li>Accountability check-ins</li>
+          <li>Business-building projects</li>
+          <li>AI tools curriculum</li>
+          <li>Assignment reviews by Simeon</li>
+          <li>Monthly parent progress update</li>
         </ul>
-        <a href="https://wa.me/2349056232366?text=I%20want%20to%20enrol%20in%20the%2012-Week%20Builder%20Cohort" target="_blank" class="ms-btn ms-btn-lime">Apply for Cohort →</a>
+        <a href="https://wa.me/2349056232366?text=I%20want%20to%20join%20Builder%20Pro%20%E2%82%A615%2C000%2Fmonth" target="_blank" class="ms-btn ms-btn-navy">Join Builder Pro →</a>
+      </div>
+
+      <div class="ms-card reveal">
+        <div class="ms-tier">Builder Elite</div>
+        <div class="ms-price">₦25,000–40,000 <span>/month</span></div>
+        <p class="ms-pdesc">Direct 1-on-1 mentorship. Max 5 students by application. Parent reports, portfolio reviews, career and business guidance.</p>
+        <ul class="ms-list">
+          <li>Everything in Pro</li>
+          <li>1-on-1 sessions with Simeon</li>
+          <li>Max 5 students (application only)</li>
+          <li>Detailed parent progress reports</li>
+          <li>Portfolio and project review</li>
+          <li>Career and business roadmap</li>
+          <li>Builder Certificate on completion</li>
+          <li>Alumni network + client referrals</li>
+        </ul>
+        <a href="https://wa.me/2349056232366?text=I%20want%20to%20apply%20for%20Builder%20Elite" target="_blank" class="ms-btn ms-btn-lime">Apply for Elite →</a>
+      </div>
+
+    </div>
+
+    <div class="objections reveal">
+      <div class="obj-title">Common questions from parents</div>
+      <div class="obj-grid">
+        <div class="obj-item">
+          <div class="obj-q">"My child is too busy."</div>
+          <div class="obj-a">This replaces unproductive screen time with structured growth. 2 hours per week of Builder beats 14 hours of scrolling with nothing to show for it.</div>
+        </div>
+        <div class="obj-item">
+          <div class="obj-q">"My child isn't business-minded."</div>
+          <div class="obj-a">This builds confidence, communication, problem-solving, and initiative — not just entrepreneurship. Every employer in 2030 will want exactly these skills.</div>
+        </div>
+        <div class="obj-item">
+          <div class="obj-q">"How do I know it works?"</div>
+          <div class="obj-a">Students produce a real project within 30 days. You will see the output. WhatsApp Simeon directly — he handles every enrolment personally.</div>
+        </div>
+        <div class="obj-item">
+          <div class="obj-q">"Is ₦15,000/month worth it?"</div>
+          <div class="obj-a">Compare to tutoring, gaming, data, and classes with no visible outcome. Builder Pro is the only programme that produces a project, a skill, and a record of measurable growth.</div>
+        </div>
       </div>
     </div>
+
+    <div class="urgency-box reveal">
+      <div class="urg-icon">⏰</div>
+      <div>
+        <div class="urg-title">First cohort is capped at 30 students.</div>
+        <div class="urg-sub">Once those 30 spots are filled, enrolment closes until the next cohort. WhatsApp Simeon now to secure your child's place before it fills.</div>
+      </div>
+      <a href="https://wa.me/2349056232366?text=I%20want%20to%20secure%20a%20place%20in%20The%20Builder" target="_blank" class="ms-btn ms-btn-lime" style="white-space:nowrap;flex-shrink:0">Secure a Place →</a>
+    </div>
+
   </div>
 </section>
 
@@ -1967,12 +2116,12 @@ img{max-width:100%;display:block}
   <div class="container">
     <div class="cta-inner">
       <div class="cta-text">
-        <h2>Start today. Not when you feel ready.</h2>
-        <p>Pick a tutorial from any track above. Read it. Do the action. That is all. One step today beats a perfect plan you never act on.</p>
+        <h2>Your child is one decision away from being ahead.</h2>
+        <p>The future belongs to teenagers who can build, sell, and think. WhatsApp Simeon now and enrol your child this week.</p>
       </div>
-      <a href="#tutorials" class="btn-navy">
+      <a href="https://wa.me/2349056232366?text=I%20want%20to%20join%20The%20Builder" target="_blank" class="btn-navy">
         <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Go to Tutorials
+        WhatsApp Simeon Now
       </a>
     </div>
   </div>
