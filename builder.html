@@ -881,6 +881,72 @@ img{max-width:100%;display:block}
             </div>
           </div>
         </div>
+
+        <!-- Tech 13 FREE -->
+        <div class="lesson-card reveal">
+          <div class="lc-header" onclick="toggleLc(this)">
+            <div class="lc-num-col"><div class="lc-num">Tech<br>13</div></div>
+            <div class="lc-body">
+              <div class="lc-tags"><span class="lc-track-tag">Responsive</span><span class="lc-badge badge-free">Free</span><span class="lc-badge badge-new">New</span></div>
+              <div class="lc-title">How to Make Websites Look Good on Every Phone Screen</div>
+            </div>
+            <div class="lc-toggle-col"><span class="lc-toggle">+</span></div>
+          </div>
+          <div class="lc-bd">
+            <div class="lc-content">
+              <div class="lesson-analogy"><div class="la-icon-col">&#128241;</div><div class="la-content"><div class="la-label">// Analogy</div><div class="la-title">The Water Analogy</div><p class="la-text">Water takes the shape of whatever container it is poured into. A responsive website does the same. It pours itself into a phone, a tablet, a laptop, or a TV and always looks correct. A non-responsive website is like trying to pour water into a bottle while insisting it stay the shape of a bucket.</p></div></div>
+              <div class="lesson-body"><p>Most Nigerians access the internet on a smartphone. If your site looks great on a laptop but broken on a phone, you have lost the majority of your visitors before they read a single word.</p><p><strong>The three core responsive techniques:</strong></p><p><strong>1. Fluid widths:</strong> Use percentages instead of fixed pixels. <code>width: 100%</code> fills the container. <code>width: 300px</code> may overflow a small screen.</p><p><strong>2. Flexible images:</strong> Add <code>img { max-width: 100%; height: auto; }</code> to your CSS. This single rule prevents images from overflowing on any screen.</p><p><strong>3. Media queries:</strong> <code>@media (max-width: 600px) { .header { font-size: 24px; } }</code> applies styles only when the screen is 600px or less. 600px is the most important breakpoint for Nigerian budget Android phones.</p></div>
+              <div class="lesson-action"><div class="la-action-label">Today&#39;s Action</div><p class="la-action-text">Open your HTML page on your phone. If text is tiny and you need to zoom to read it, add this to your CSS: <strong><code>* { box-sizing: border-box; } body { margin: 0; } img { max-width: 100%; }</code></strong> and add <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> to your HTML head. Refresh on your phone and see the difference immediately.</p></div>
+            </div>
+          </div>
+        </div>
+        <!-- Tech 14 FREE -->
+        <div class="lesson-card reveal">
+          <div class="lc-header" onclick="toggleLc(this)">
+            <div class="lc-num-col"><div class="lc-num">Tech<br>14</div></div>
+            <div class="lc-body">
+              <div class="lc-tags"><span class="lc-track-tag">Freelancing</span><span class="lc-badge badge-free">Free</span><span class="lc-badge badge-new">New</span></div>
+              <div class="lc-title">How to Build and Deploy a Website for a Client, End to End</div>
+            </div>
+            <div class="lc-toggle-col"><span class="lc-toggle">+</span></div>
+          </div>
+          <div class="lc-bd">
+            <div class="lc-content">
+              <div class="lesson-analogy"><div class="la-icon-col">&#128640;</div><div class="la-content"><div class="la-label">// Analogy</div><div class="la-title">The Delivery Driver Analogy</div><p class="la-text">A delivery driver does not just have the package. They know the route, have the vehicle, know where to park, and hand it over properly. Building a website for a client is the complete delivery: understand what they need, build it, put it online, and hand it over in a way they can actually use. Most beginners know how to write code. Very few know the full delivery process.</p></div></div>
+              <div class="lesson-body"><p>When a client pays you, they are paying for a live working website they can share with the world. Here is the complete process:</p><p><strong>Step 1 - Discovery:</strong> Ask: What is this website for? Who will visit it? What must appear on it? Get this in writing before you start.</p><p><strong>Step 2 - Build locally:</strong> Write your HTML and CSS on your computer. Test in your browser until it looks correct on both desktop and mobile.</p><p><strong>Step 3 - Choose hosting:</strong> Hostinger (from N1,500/month), QServers, or WhoGoHost for Nigerian clients. GitHub Pages for free during development.</p><p><strong>Step 4 - Upload files:</strong> Most Nigerian hosts use cPanel. Find File Manager, navigate to public_html, upload your files. Your index.html becomes the homepage automatically.</p><p><strong>Step 5 - Connect domain:</strong> Update the DNS A record to point to the hosting IP address. Takes 15 minutes to a few hours to propagate.</p><p><strong>Step 6 - Install SSL:</strong> In cPanel, find SSL/TLS, install a free Let's Encrypt certificate. Site is now HTTPS.</p><p><strong>Step 7 - Handover:</strong> Give the client login credentials, a simple update guide, and a 30-day support promise. Professional handover is what generates referrals.</p></div>
+              <div class="lesson-steps"><div class="ls-label">Step by step</div><div class="ls-list"><div class="ls-row"><span class="ls-n">1</span><p>Write all 3 pages on your computer.</p></div><div class="ls-row"><span class="ls-n">2</span><p>Push to a GitHub repository (from Tech 08).</p></div><div class="ls-row"><span class="ls-n">3</span><p>Go to repository Settings, then Pages, select main branch, Save.</p></div><div class="ls-row"><span class="ls-n">4</span><p>GitHub gives you a URL like username.github.io/sitename. That is your live site.</p></div></div></div>
+              <div class="lesson-action"><div class="la-action-label">Today&#39;s Action</div><p class="la-action-text">Pick any small business near you with no website. Build them a 3-page site (Home, About, Contact) using what you have learned so far. Deploy it free on <strong>GitHub Pages</strong>. Share the live link in the Builder community. You just completed a full client delivery workflow with a real output to show.</p></div>
+            </div>
+          </div>
+        </div>
+        <!-- Tech 15 PREMIUM -->
+        <div class="lesson-card premium-card reveal" id="pcard-tech15">
+          <div class="lc-header" onclick="togglePremium(this)">
+            <div class="lc-num-col"><div class="lc-num">Tech<br>15</div></div>
+            <div class="lc-body">
+              <div class="lc-tags"><span class="lc-track-tag">PHP Basics</span><span class="lc-badge badge-premium">&#128274; Premium</span></div>
+              <div class="lc-title">PHP From Zero: Build Your First Dynamic Website That Talks to a Database</div>
+            </div>
+            <div class="lc-toggle-col"><span class="lc-toggle">&#128274;</span></div>
+          </div>
+          <div class="lock-overlay">
+            <div class="lo-icon-col">&#128274;</div>
+            <div class="lo-content">
+              <div class="lo-title">Premium Tutorial</div>
+              <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 15.</p>
+              <div class="lo-row"><input type="password" class="lo-input" placeholder="Enter password..." autocomplete="off"/><button class="lo-btn" onclick="tryUnlock('tech15')">Unlock</button></div>
+              <div class="lo-err"></div>
+            </div>
+          </div>
+          <div class="lc-bd">
+            <div class="lc-content">
+              <div class="lesson-analogy"><div class="la-icon-col">&#128260;</div><div class="la-content"><div class="la-label">// Analogy</div><div class="la-title">The Waiter With a Menu Analogy</div><p class="la-text">A static HTML page is like a printed menu. It always shows the same items no matter who reads it. A PHP-powered page is like a waiter who goes to the kitchen and fetches what is on the menu today, which might be different from yesterday. PHP connects your web pages to a database and makes them dynamic. Every Nigerian university portal, government website, and business platform you have ever used is powered by this kind of server-side logic.</p></div></div>
+              <div class="lesson-body"><p><strong>PHP</strong> runs on the web server, not in the browser. When someone visits a PHP page, the server runs the PHP code, produces HTML from it, and sends that HTML to the browser. The user never sees the PHP code, only the result.</p><p>A simple PHP example: <code>&lt;?php echo 'Hello, ' . date('l') . '!'; ?&gt;</code> outputs 'Hello, Thursday!' using the current day. The date() function runs live every time the page loads.</p><p><strong>The four things PHP does that HTML cannot:</strong></p><p><strong>1. Connect to databases.</strong> PHP queries MySQL to retrieve, insert, update, or delete records. This is how your login system knows your password and how an ecommerce site shows your order history.</p><p><strong>2. Handle form submissions.</strong> When you submit a contact form, PHP receives the data via $_POST, validates it, and does something with it like save it or send an email.</p><p><strong>3. Manage sessions.</strong> $_SESSION['user_id'] remembers your login across multiple pages without re-entering your password on every click.</p><p><strong>4. Generate dynamic content.</strong> PHP loops through database results and generates a unique HTML page for each user, product, or article from a single template file. UniXpress, AlumBridge, and ArtisanConnect built by Silabs are all PHP/MySQL applications.</p></div>
+              <div class="lesson-steps"><div class="ls-label">Step by step</div><div class="ls-list"><div class="ls-row"><span class="ls-n">1</span><p>Download and install XAMPP from apachefriends.org.</p></div><div class="ls-row"><span class="ls-n">2</span><p>Start Apache and MySQL from the XAMPP control panel.</p></div><div class="ls-row"><span class="ls-n">3</span><p>Navigate to C:\xampp\htdocs and create test.php.</p></div><div class="ls-row"><span class="ls-n">4</span><p>Write your PHP file and open localhost/test.php in your browser.</p></div></div></div>
+              <div class="lesson-action"><div class="la-action-label">Today&#39;s Action</div><p class="la-action-text">Install <strong>XAMPP</strong> (free at apachefriends.org) on your Windows computer. Start Apache and MySQL. Create a file called test.php in the htdocs folder. Write: <code>&lt;?php for($i=1; $i&lt;=10; $i++){ echo "&lt;p&gt;Number: $i&lt;/p&gt;"; } ?&gt;</code> Open http://localhost/test.php in your browser. You will see 10 numbered paragraphs generated by PHP. You just wrote your first server-side loop.</p></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1305,6 +1371,71 @@ img{max-width:100%;display:block}
             </div>
           </div>
         </div>
+
+        <!-- Biz 12 FREE -->
+        <div class="lesson-card reveal">
+          <div class="lc-header" onclick="toggleLc(this)">
+            <div class="lc-num-col"><div class="lc-num">Biz<br>12</div></div>
+            <div class="lc-body">
+              <div class="lc-tags"><span class="lc-track-tag">Client Service</span><span class="lc-badge badge-free">Free</span><span class="lc-badge badge-new">New</span></div>
+              <div class="lc-title">How to Keep Clients Happy So They Come Back and Bring Others</div>
+            </div>
+            <div class="lc-toggle-col"><span class="lc-toggle">+</span></div>
+          </div>
+          <div class="lc-bd">
+            <div class="lc-content">
+              <div class="lesson-analogy"><div class="la-icon-col">&#129309;</div><div class="la-content"><div class="la-label">// Analogy</div><div class="la-title">The Suya Seller Analogy</div><p class="la-text">The best suya seller in your area is not necessarily the one with the best suya. It is the one who remembers that Mr. Emeka always wants extra pepper, greets you by name, and gives you a small taste of the fresh batch. The suya is average. The service is exceptional. People come back for the service and tell others. Your skill is the suya. Your service is what keeps clients loyal.</p></div></div>
+              <div class="lesson-body"><p>Getting a client is hard. Keeping one is much easier. But most freelancers focus entirely on finding new clients and neglect the ones they already have. It costs five times more to acquire a new customer than to keep an existing one.</p><p><strong>The five habits that build client loyalty:</strong></p><p><strong>1. Communicate before they ask.</strong> If a project takes longer than expected, tell the client before the deadline, not after. Proactive communication signals respect. Silence signals incompetence.</p><p><strong>2. Deliver more than you promised.</strong> Under-promise and over-deliver. If you said 10 days, deliver in 8. If they asked for 5 pages, add a bonus contact page at no extra charge. The surprise of receiving more than expected creates a stronger positive impression than receiving exactly what was agreed.</p><p><strong>3. Follow up after delivery.</strong> Three days after completing a project, send a message: 'How is everything working? Do you have any questions?' Most freelancers disappear after payment. Following up makes you the one a client remembers when the next project comes.</p><p><strong>4. Remember the personal details.</strong> When a client mentions a big event next month, write it down and reference it in your next message. People buy from people who make them feel seen.</p><p><strong>5. Ask for the next project before it becomes necessary.</strong> When a client is satisfied, ask: 'Is there anything else in your business I can help improve?' This is not pushy. It is helpful. And it is much easier than finding a brand new client.</p></div>
+              <div class="lesson-action"><div class="la-action-label">Today&#39;s Action</div><p class="la-action-text">List every client or person you have ever done work for. For each one, write one specific thing you could do this week to add value or reconnect. Then send a genuine message to the top 3. Not selling, just serving. The clients who keep coming back are the ones you serve between projects, not only during them.</p></div>
+            </div>
+          </div>
+        </div>
+        <!-- Biz 13 FREE -->
+        <div class="lesson-card reveal">
+          <div class="lc-header" onclick="toggleLc(this)">
+            <div class="lc-num-col"><div class="lc-num">Biz<br>13</div></div>
+            <div class="lc-body">
+              <div class="lc-tags"><span class="lc-track-tag">Tools</span><span class="lc-badge badge-free">Free</span><span class="lc-badge badge-new">New</span></div>
+              <div class="lc-title">The Free Nigerian Entrepreneur Toolkit: Every Tool You Need to Start</div>
+            </div>
+            <div class="lc-toggle-col"><span class="lc-toggle">+</span></div>
+          </div>
+          <div class="lc-bd">
+            <div class="lc-content">
+              <div class="lesson-analogy"><div class="la-icon-col">&#129520;</div><div class="la-content"><div class="la-label">// Analogy</div><div class="la-title">The Carpenter's Toolbox Analogy</div><p class="la-text">A carpenter who shows up without tools does not get paid regardless of how skilled they are. But a carpenter who arrives with a full professional toolbox, even for a simple job, signals immediately that they are serious. The right free tools do not make you skilled. But they remove every excuse for not starting, not looking professional, and not delivering high-quality work.</p></div></div>
+              <div class="lesson-body"><p>You do not need to spend any money to look and operate professionally. Here is the complete free toolkit:</p><p><strong>Design:</strong> Canva (canva.com) for logos, graphics, flyers, pitch decks. Free plan is more than enough to start.</p><p><strong>Documents:</strong> Google Workspace (drive.google.com) for proposals, contracts, budgets, presentations. 15GB free storage.</p><p><strong>Communication:</strong> WhatsApp Business (free) with a business profile, logo, description, website link, and quick reply templates.</p><p><strong>Payments:</strong> Paystack payment links that accept cards, bank transfers, and USSD. Share via WhatsApp. No POS needed.</p><p><strong>Website:</strong> Carrd (carrd.co) for a free one-page professional site. Or GitHub Pages for a multi-page site at zero cost.</p><p><strong>Email:</strong> Gmail with a professional name is acceptable to start. When you get a domain, set up yourname@yourbusiness.com through cPanel for free.</p><p><strong>Scheduling:</strong> Calendly (calendly.com) free booking link. Share it with clients so they can book calls without back-and-forth messages.</p><p><strong>Invoicing:</strong> Wave (waveapps.com) free professional invoice generator. Creates invoices that look better than what most established businesses send.</p></div>
+              <div class="lesson-action"><div class="la-action-label">Today&#39;s Action</div><p class="la-action-text">Set up <strong>WhatsApp Business</strong> today. Add your business name, a professional profile photo, your one-sentence service description, and your website link. Create at least 3 quick replies for your most common questions. This takes 20 minutes and immediately makes you look more professional than 80% of Nigerian freelancers who use a personal WhatsApp with a casual photo.</p></div>
+            </div>
+          </div>
+        </div>
+        <!-- Biz 14 PREMIUM -->
+        <div class="lesson-card premium-card reveal" id="pcard-biz14">
+          <div class="lc-header" onclick="togglePremium(this)">
+            <div class="lc-num-col"><div class="lc-num">Biz<br>14</div></div>
+            <div class="lc-body">
+              <div class="lc-tags"><span class="lc-track-tag">Negotiation</span><span class="lc-badge badge-premium">&#128274; Premium</span></div>
+              <div class="lc-title">How to Negotiate Your Price Without Losing the Client or Your Dignity</div>
+            </div>
+            <div class="lc-toggle-col"><span class="lc-toggle">&#128274;</span></div>
+          </div>
+          <div class="lock-overlay">
+            <div class="lo-icon-col">&#128274;</div>
+            <div class="lo-content">
+              <div class="lo-title">Premium Tutorial</div>
+              <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Biz 14.</p>
+              <div class="lo-row"><input type="password" class="lo-input" placeholder="Enter password..." autocomplete="off"/><button class="lo-btn" onclick="tryUnlock('biz14')">Unlock</button></div>
+              <div class="lo-err"></div>
+            </div>
+          </div>
+          <div class="lc-bd">
+            <div class="lc-content">
+              <div class="lesson-analogy"><div class="la-icon-col">&#9878;</div><div class="la-content"><div class="la-label">// Analogy</div><div class="la-title">The Market Trader Analogy</div><p class="la-text">In a Nigerian market, nobody expects to pay the first price. The seller names a price, the buyer counters, and they negotiate. Both parties expect this process. What separates a skilled trader from a nervous one is not how low they go, but how they hold their ground, justify their price, and find a middle path both sides walk away from feeling respected. Negotiating your service price works exactly the same way. But most young entrepreneurs fold at the first counter-offer because nobody taught them the process.</p></div></div>
+              <div class="lesson-body"><p><strong>Scenario 1 - The client says your price is too high.</strong> Wrong response: immediately reduce the price. Right response: ask 'What budget did you have in mind?' This forces them to name a number which gives you information. If their budget is N20,000 and you quoted N35,000, say: 'At N20,000 I can deliver the homepage only, without the additional pages. Would that work as a starting point?' You have not reduced your rate. You have reduced the scope.</p><p><strong>Scenario 2 - The client wants more for the same price.</strong> 'Can you also add Instagram graphics to the website package?' Right response: 'I can absolutely include that. That adds N5,000 to the project. Should I update the proposal?' Always attach a price to scope additions. This trains clients to respect your pricing structure from the start.</p><p><strong>Scenario 3 - Raising prices with an existing client.</strong> 'My rates are increasing to NX from next month for new clients. Because we have worked together, I want to give you advance notice and offer your next project at the current rate if you book before then.' This is professional, not apologetic. It rewards loyalty and creates urgency.</p><p><strong>The anchor principle:</strong> Always name your price first, and name it higher than your minimum acceptable amount. The first number stated in any negotiation strongly influences the final outcome. Whoever anchors first, wins more.</p></div>
+              <div class="lesson-steps"><div class="ls-label">Step by step</div><div class="ls-list"><div class="ls-row"><span class="ls-n">1</span><p>Identify your main service and current price.</p></div><div class="ls-row"><span class="ls-n">2</span><p>Research what 3 competitors charge on Fiverr or by asking in the Builder community.</p></div><div class="ls-row"><span class="ls-n">3</span><p>Set your anchor price 20 to 30 percent above your target.</p></div><div class="ls-row"><span class="ls-n">4</span><p>Write a script for responding to 'that is too expensive' and practise it.</p></div></div></div>
+              <div class="lesson-action"><div class="la-action-label">Today&#39;s Action</div><p class="la-action-text">Write your current price for your main service. Then write your actual minimum: the lowest you would accept and still feel respected. The gap is your negotiation range. In your next client conversation, name a price 20 to 30 percent above your actual target. Practise saying it out loud 10 times before the conversation so your voice sounds confident, not apologetic.</p></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1649,6 +1780,71 @@ img{max-width:100%;display:block}
             </div>
           </div>
         </div>
+
+        <!-- Money 10 FREE -->
+        <div class="lesson-card reveal">
+          <div class="lc-header" onclick="toggleLc(this)">
+            <div class="lc-num-col"><div class="lc-num">Money<br>10</div></div>
+            <div class="lc-body">
+              <div class="lc-tags"><span class="lc-track-tag">Side Hustles</span><span class="lc-badge badge-free">Free</span><span class="lc-badge badge-new">New</span></div>
+              <div class="lc-title">Side Hustles That Actually Work for Nigerian Teenagers in 2026</div>
+            </div>
+            <div class="lc-toggle-col"><span class="lc-toggle">+</span></div>
+          </div>
+          <div class="lc-bd">
+            <div class="lc-content">
+              <div class="lesson-analogy"><div class="la-icon-col">&#128184;</div><div class="la-content"><div class="la-label">// Analogy</div><div class="la-title">The Petrol Generator Analogy</div><p class="la-text">When NEPA takes light, the houses that keep running have generators. But a generator needs petrol, a consistent input of fuel to keep producing power. A side hustle is your personal generator. Your school schedule is the grid, unreliable. Your side hustle keeps income flowing when the main source is unavailable. The best generators produce the most power for the least petrol. The best side hustles produce the most income for the least time.</p></div></div>
+              <div class="lesson-body"><p><strong>Side hustles that actually work for Nigerian teenagers right now:</strong></p><p><strong>Graphic design (N3,000 to N15,000 per job):</strong> Church flyers, event posters, social media graphics. Start with Canva. Takes 1 to 2 hours per job. Clients are everywhere: churches, schools, businesses, event organisers.</p><p><strong>Typing and data entry (N2,000 to N8,000 per job):</strong> Many small businesses need documents typed, formatted, or entered into spreadsheets. If you type 40+ words per minute, this is immediate income.</p><p><strong>Social media management (N10,000 to N25,000 per month per client):</strong> Small businesses need consistent posting but do not have time. You create 3 to 4 posts per week and respond to comments. One client is N10,000 per month recurring. Three clients is N30,000 per month.</p><p><strong>Tutoring (N2,000 to N5,000 per session):</strong> If you are strong in any subject, other students will pay for help. You do not need to be perfect. You need to be better than your student and able to explain clearly.</p><p><strong>Content writing (N1,500 to N5,000 per article):</strong> Blogs, websites, and businesses need regular written content. If you write clearly in English, this is accessible income. Start on Fiverr or pitch to Nigerian business blogs directly.</p><p><strong>Phone and laptop troubleshooting (N2,000 to N10,000 per job):</strong> Most people cannot fix their own devices. If you can install software, remove viruses, recover files, or fix network issues, this is immediate neighbourhood income with almost no competition from your peers.</p></div>
+              <div class="lesson-action"><div class="la-action-label">Today&#39;s Action</div><p class="la-action-text">Look at this list and pick the ONE side hustle that matches your strongest current skill. Not the most interesting one. The one you could start this week. Write down who your first 3 potential clients are and how you will reach them this week. Set a target: first N5,000 earned in the next 14 days. The only thing between you and your first side hustle income is the first client conversation.</p></div>
+            </div>
+          </div>
+        </div>
+        <!-- Money 11 FREE -->
+        <div class="lesson-card reveal">
+          <div class="lc-header" onclick="toggleLc(this)">
+            <div class="lc-num-col"><div class="lc-num">Money<br>11</div></div>
+            <div class="lc-body">
+              <div class="lc-tags"><span class="lc-track-tag">Banking</span><span class="lc-badge badge-free">Free</span><span class="lc-badge badge-new">New</span></div>
+              <div class="lc-title">Understanding Bank Charges: How Nigerian Banks Quietly Take Your Money</div>
+            </div>
+            <div class="lc-toggle-col"><span class="lc-toggle">+</span></div>
+          </div>
+          <div class="lc-bd">
+            <div class="lc-content">
+              <div class="lesson-analogy"><div class="la-icon-col">&#127974;</div><div class="la-content"><div class="la-label">// Analogy</div><div class="la-title">The Leaking Bucket Analogy</div><p class="la-text">Imagine filling a bucket of water every morning, your earnings. But the bucket has small holes drilled into the bottom, each one small enough to seem unimportant. By evening the bucket is significantly emptier than you expected even though you did not use much water. Bank charges are the holes in your financial bucket. Each one seems small. Combined over a month, they are significant.</p></div></div>
+              <div class="lesson-body"><p><strong>Account Maintenance Fee:</strong> Most banks charge N50 to N200 per month simply for having an account. Current accounts typically attract higher fees than savings accounts.</p><p><strong>SMS Alert Fee:</strong> N4 to N10 per transaction alert. With 30 transactions per month, that is up to N300 gone silently. You can often switch to free email alerts through your bank's app.</p><p><strong>ATM Charges:</strong> Using a different bank's ATM costs N35 per withdrawal after the first 3 free at your own bank. Using a POS terminal costs 0.5 to 1 percent of the transaction. On a N10,000 withdrawal that is N35 to N100.</p><p><strong>Transfer Charges:</strong> Instant bank transfers above N5,000 attract N10 to N50 depending on amount. Below N5,000 is now free following CBN regulations. Keep amounts under N5,000 where possible for frequent small transfers.</p><p><strong>VAT on charges:</strong> A 7.5 percent VAT is added to most bank charges. Every N100 in charges actually costs you N107.50.</p><p><strong>How to minimise:</strong> Use your own bank's ATM whenever possible. Enable email alerts instead of SMS. Use OPay or Palmpay for small daily transfers since they charge less or nothing for transfers.</p></div>
+              <div class="lesson-action"><div class="la-action-label">Today&#39;s Action</div><p class="la-action-text">Open your bank app right now and find your transaction history for last month. Add up every charge: maintenance fees, SMS alerts, ATM fees, transfer charges. Write the total. Multiply by 12. That is what your bank charges you per year to hold your own money. Now search your bank app for how to switch SMS alerts to email alerts. That one change saves you hundreds of naira per month starting today.</p></div>
+            </div>
+          </div>
+        </div>
+        <!-- Money 12 PREMIUM -->
+        <div class="lesson-card premium-card reveal" id="pcard-mon12">
+          <div class="lc-header" onclick="togglePremium(this)">
+            <div class="lc-num-col"><div class="lc-num">Money<br>12</div></div>
+            <div class="lc-body">
+              <div class="lc-tags"><span class="lc-track-tag">Freelance Pricing</span><span class="lc-badge badge-premium">&#128274; Premium</span></div>
+              <div class="lc-title">How to Set a Freelance Rate That Grows With You: The Full Pricing System</div>
+            </div>
+            <div class="lc-toggle-col"><span class="lc-toggle">&#128274;</span></div>
+          </div>
+          <div class="lock-overlay">
+            <div class="lo-icon-col">&#128274;</div>
+            <div class="lo-content">
+              <div class="lo-title">Premium Tutorial</div>
+              <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Money 12.</p>
+              <div class="lo-row"><input type="password" class="lo-input" placeholder="Enter password..." autocomplete="off"/><button class="lo-btn" onclick="tryUnlock('mon12')">Unlock</button></div>
+              <div class="lo-err"></div>
+            </div>
+          </div>
+          <div class="lc-bd">
+            <div class="lc-content">
+              <div class="lesson-analogy"><div class="la-icon-col">&#128201;</div><div class="la-content"><div class="la-label">// Analogy</div><div class="la-title">The Electricity Tariff Analogy</div><p class="la-text">Nigeria's electricity tariff is not one fixed price for everyone. Band A customers with better supply pay more per unit than Band D customers. This is value-based pricing in a national utility. Your freelance rate should work the same way. As your skills improve, your output quality improves, and your rate increases to match the value you now deliver. Keeping the same price as you improve is like NEPA improving supply to Band A but still charging Band D rates.</p></div></div>
+              <div class="lesson-body"><p><strong>Level 1: Beginner (0 to 3 months experience).</strong> Price to build your portfolio. Your goal is proof, not profit. Charge enough to be taken seriously but low enough to attract first clients without a track record. Example: N10,000 to N15,000 for a simple website.</p><p><strong>Level 2: Intermediate (3 to 12 months).</strong> You now have 3+ completed projects and at least one testimonial. Raise prices by 50 to 100 percent. Your credibility increased significantly. Example: N25,000 to N40,000 for a website.</p><p><strong>Level 3: Established (12+ months).</strong> You have repeat clients, referrals, and a clear niche. Price based on value delivered, not market average. A website that generates N200,000 per month for a business is worth N80,000+ to build. Example: N60,000 to N120,000 per project.</p><p><strong>The retainer model:</strong> Instead of one-off projects, offer monthly maintenance packages. A client pays N15,000 per month and you spend 4 hours updating their website and posting to their social media. Five clients equals N75,000 per month recurring. Retainers are the closest thing to a salary that freelancers can access.</p><p><strong>Pricing your time:</strong> Decide your target monthly income. Divide by the number of hours you can work per month. That is your minimum hourly rate. If you want N100,000 per month and can work 40 productive hours: N100,000 divided by 40 equals N2,500 per hour minimum. A project that takes 10 hours should cost at minimum N25,000. Most beginners charge N5,000 for the same project and wonder why they are exhausted and broke.</p></div>
+              <div class="lesson-steps"><div class="ls-label">Step by step</div><div class="ls-list"><div class="ls-row"><span class="ls-n">1</span><p>Write down your last 3 paid projects with amount earned and hours spent.</p></div><div class="ls-row"><span class="ls-n">2</span><p>Calculate the hourly rate for each.</p></div><div class="ls-row"><span class="ls-n">3</span><p>Identify your current Level using the criteria above.</p></div><div class="ls-row"><span class="ls-n">4</span><p>Write your new price for your next project at the correct level rate.</p></div></div></div>
+              <div class="lesson-action"><div class="la-action-label">Today&#39;s Action</div><p class="la-action-text">Calculate your current hourly rate: take the last payment you received, divide by the honest number of hours spent including revisions, communication, and admin. Write the number. If it is below N1,500 per hour, your pricing needs immediate adjustment. Identify your current Level using the criteria above and write your new price for your next project at the correct level rate.</p></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1923,6 +2119,71 @@ img{max-width:100%;display:block}
                 <div class="la-action-label">✅ Today's Action</div>
                 <p>Write down every commitment, request, and obligation currently on your plate — from anyone. Then go through the list and honestly mark each one: Does this directly serve my 90-day goal? If no — can I decline, delay, or delegate it? Choose one item from the list that you will say no to or step back from this week. Write the exact words you will use to communicate that no. Then say them. This will feel uncomfortable. That discomfort is the feeling of protecting your most valuable resource.</p>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mind 08 FREE -->
+        <div class="lesson-card reveal">
+          <div class="lc-header" onclick="toggleLc(this)">
+            <div class="lc-num-col"><div class="lc-num">Mind<br>08</div></div>
+            <div class="lc-body">
+              <div class="lc-tags"><span class="lc-track-tag">Self-awareness</span><span class="lc-badge badge-free">Free</span><span class="lc-badge badge-new">New</span></div>
+              <div class="lc-title">How to Know Your Strengths and Build a Business Around Them</div>
+            </div>
+            <div class="lc-toggle-col"><span class="lc-toggle">+</span></div>
+          </div>
+          <div class="lc-bd">
+            <div class="lc-content">
+              <div class="lesson-analogy"><div class="la-icon-col">&#128269;</div><div class="la-content"><div class="la-label">// Analogy</div><div class="la-title">The Tool Shed Analogy</div><p class="la-text">A well-equipped tool shed has a hammer, a screwdriver, a saw, and a drill. If you need to drive a nail but pick up the screwdriver because it looks nicer, the nail does not go in. Your personal strengths are your tool shed. Most people spend their lives trying to force the screwdriver through a nail, improving their weaknesses, instead of reaching for the hammer they already have, building on their strengths.</p></div></div>
+              <div class="lesson-body"><p>Self-awareness is the ability to see yourself clearly: your strengths, your weaknesses, your patterns of behaviour, and how others experience you. It is arguably the most valuable non-technical skill in business because every other skill sits on top of it.</p><p><strong>Three reliable ways to identify your actual strengths:</strong></p><p><strong>1. The flow test.</strong> What activities make you lose track of time because you are so absorbed? Where do you produce output that surprises even you? Flow states almost always occur within your strongest domains.</p><p><strong>2. The feedback pattern.</strong> What do people consistently thank you for or ask you to help with? When your family needs something done, what do they call you for? The requests you receive from others are often clearer indicators of your strengths than your own opinion of yourself.</p><p><strong>3. The frustration signal.</strong> What do you find surprisingly easy that others seem to struggle with? The things that feel obvious to you but confusing to everyone else are often your most valuable strengths, precisely because they are rare.</p><p>Once you identify your top 2 to 3 strengths, the business question becomes: what specific problem can I solve for a specific person using exactly these strengths? That question answered honestly is the foundation of a business that does not drain you.</p></div>
+              <div class="lesson-action"><div class="la-action-label">Today&#39;s Action</div><p class="la-action-text">Write the answers to these three questions honestly: What activity makes me lose track of time? What do people most often thank me for or ask me to help with? What feels easy to me that others seem to find hard? The overlap between those three answers is where your strongest commercial opportunity lives. Write one specific service or product idea that uses all three of those strengths simultaneously.</p></div>
+            </div>
+          </div>
+        </div>
+        <!-- Mind 09 FREE -->
+        <div class="lesson-card reveal">
+          <div class="lc-header" onclick="toggleLc(this)">
+            <div class="lc-num-col"><div class="lc-num">Mind<br>09</div></div>
+            <div class="lc-body">
+              <div class="lc-tags"><span class="lc-track-tag">Mental Health</span><span class="lc-badge badge-free">Free</span><span class="lc-badge badge-new">New</span></div>
+              <div class="lc-title">How to Manage Stress and Anxiety as a Young Entrepreneur</div>
+            </div>
+            <div class="lc-toggle-col"><span class="lc-toggle">+</span></div>
+          </div>
+          <div class="lc-bd">
+            <div class="lc-content">
+              <div class="lesson-analogy"><div class="la-icon-col">&#127754;</div><div class="la-content"><div class="la-label">// Analogy</div><div class="la-title">The Ocean and the Boat Analogy</div><p class="la-text">A small boat on a calm ocean sails easily. The same boat on a stormy ocean is in serious danger. Not because the boat got worse, but because the environment changed. Stress is the storm. It will always come. Your mental health is the quality of your boat. A well-maintained boat handles storms better. A neglected boat capsizes in conditions it could have survived. Taking care of your mental health is not a distraction from building. It is maintenance on the boat you need to cross any ocean.</p></div></div>
+              <div class="lesson-body"><p>Building something as a young person with limited resources and uncertain outcomes is genuinely stressful. This is normal and should be acknowledged, not suppressed.</p><p><strong>Stress signals that require attention:</strong> persistent inability to sleep, loss of appetite, withdrawal from people you normally enjoy being around, inability to concentrate for more than 15 minutes, or a persistent feeling that nothing you do matters. If these last more than two weeks, speak to a trusted adult or professional.</p><p><strong>The five practices that build stress resilience:</strong></p><p><strong>1. Physical movement every day.</strong> 20 to 30 minutes of any physical activity is the most well-evidenced intervention for reducing anxiety. It is not optional for high-performance work. It is the foundation.</p><p><strong>2. Protect sleep above everything.</strong> Consistently sleeping less than 7 hours reduces decision-making quality, emotional regulation, and creative problem-solving by significant measured amounts. It is not a badge of hustle. It is sabotage of your own capacity.</p><p><strong>3. Separate your identity from your results.</strong> A failed project does not make you a failure. A rejected pitch does not mean you are without value. Tying your self-worth entirely to outcomes makes every setback existential, which is both exhausting and inaccurate.</p><p><strong>4. Have people who know what you are building.</strong> Having even one person who understands what you are working on and who you can share wins and struggles with honestly reduces the psychological weight of building alone significantly.</p><p><strong>5. Build in rest deliberately.</strong> One day per week where you do not check work messages. One hour per day where your phone is face-down. Scheduled rest is the recharge cycle that makes sustained high output possible.</p></div>
+              <div class="lesson-action"><div class="la-action-label">Today&#39;s Action</div><p class="la-action-text">Rate yourself honestly 1 to 10 on each of these right now: Quality of sleep. Daily physical movement. Social connection. Ability to separate identity from results. Scheduled rest. Any category below 5 is a priority to address this week. Write one specific small action you will take today for your lowest-scoring category.</p></div>
+            </div>
+          </div>
+        </div>
+        <!-- Mind 10 PREMIUM -->
+        <div class="lesson-card premium-card reveal" id="pcard-mind10">
+          <div class="lc-header" onclick="togglePremium(this)">
+            <div class="lc-num-col"><div class="lc-num">Mind<br>10</div></div>
+            <div class="lc-body">
+              <div class="lc-tags"><span class="lc-track-tag">Communication</span><span class="lc-badge badge-premium">&#128274; Premium</span></div>
+              <div class="lc-title">How to Speak With Confidence in Any Room: Pitches, Meetings, Conversations</div>
+            </div>
+            <div class="lc-toggle-col"><span class="lc-toggle">&#128274;</span></div>
+          </div>
+          <div class="lock-overlay">
+            <div class="lo-icon-col">&#128274;</div>
+            <div class="lo-content">
+              <div class="lo-title">Premium Tutorial</div>
+              <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Mind 10.</p>
+              <div class="lo-row"><input type="password" class="lo-input" placeholder="Enter password..." autocomplete="off"/><button class="lo-btn" onclick="tryUnlock('mind10')">Unlock</button></div>
+              <div class="lo-err"></div>
+            </div>
+          </div>
+          <div class="lc-bd">
+            <div class="lc-content">
+              <div class="lesson-analogy"><div class="la-icon-col">&#127908;</div><div class="la-content"><div class="la-label">// Analogy</div><div class="la-title">The Radio Presenter Analogy</div><p class="la-text">A radio presenter's voice fills an entire city. Yet most of them were not born with a special voice. They trained it: pace, clarity, pause, emphasis, and warmth. They practised until confident delivery became natural. Communication for an entrepreneur works the same way. Nobody is born a confident speaker. Confidence is a practised skill, not a character trait. The difference between a founder who closes clients and one who struggles is often not intelligence or product quality. It is the ability to communicate clearly, warmly, and without apologising for every sentence.</p></div></div>
+              <div class="lesson-body"><p><strong>The four elements of confident verbal communication:</strong></p><p><strong>1. Pace: slow down.</strong> Nervous speakers rush. The brain processes anxiety by speeding up speech, which signals lack of confidence to listeners. Deliberately slow your pace when speaking about important things. A two-second pause after an important point signals that you are someone worth listening to.</p><p><strong>2. Volume: be heard.</strong> Speaking too quietly forces people to concentrate and signals uncertainty. Project your voice, not shouting but filling the space you are in. Speak as though the person at the back of the room needs to hear you.</p><p><strong>3. Eye contact: hold it.</strong> Looking away when you state your price or handle an objection is one of the clearest signals of self-doubt. Practise holding eye contact for 3 to 5 seconds at a time, then moving naturally to another person in the room.</p><p><strong>4. Structure: three points, then stop.</strong> The best communicators give their most important point first, support it with two examples, then stop. Most poor communicators bury the key point under unnecessary context and over-explain nervously. Use this formula: Main point plus Example 1 plus Example 2 plus Conclusion. That is all any audience needs.</p><p><strong>Handling the pitch:</strong> Every pitch has one job: answer the question the listener actually has in their head. Why should I care about this and what do you want from me? Answer those two questions in under 90 seconds and you have given a good pitch.</p></div>
+              <div class="lesson-steps"><div class="ls-label">Step by step</div><div class="ls-list"><div class="ls-row"><span class="ls-n">1</span><p>Record 60 seconds on your phone about your service or idea.</p></div><div class="ls-row"><span class="ls-n">2</span><p>Watch with sound off and rate your body language 1 to 10.</p></div><div class="ls-row"><span class="ls-n">3</span><p>Watch with sound only and rate your pace and confidence 1 to 10.</p></div><div class="ls-row"><span class="ls-n">4</span><p>Identify your weakest element. Re-record focusing on improving only that one thing.</p></div></div></div>
+              <div class="lesson-action"><div class="la-action-label">Today&#39;s Action</div><p class="la-action-text">Record yourself on your phone speaking for 60 seconds about your business idea or main skill. Watch it back with the sound off and notice your body language and eye contact. Then watch with sound only and notice your pace and whether you sound confident or apologetic. Identify one specific thing to improve. Re-record focusing only on that one thing. The discomfort of watching yourself is exactly the friction that produces growth.</p></div>
             </div>
           </div>
         </div>
