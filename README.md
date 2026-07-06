@@ -157,11 +157,52 @@ Portfolio/
 ├── resume.html             # Interactive resume
 ├── builder.html            # The Builder - Tutorial platform ⭐
 ├── builder-ads.html        # Builder variant with ads
+├── certificates/           # Certificate PDF files
+│   └── thumbnails/         # Optional certificate preview images
 ├── casual.jpg              # Profile photo (casual)
 ├── formal.jpeg             # Profile photo (formal)
 ├── sitemap.xml             # SEO sitemap
 ├── robots.txt              # SEO configuration
 └── README.md               # This file
+```
+
+---
+
+
+## 🎓 Certificates
+
+Certificate PDFs are displayed on the main portfolio homepage from the dedicated `certificates/` folder.
+
+### Adding a certificate
+
+1. Save the PDF inside `certificates/`.
+2. Use lowercase, URL-safe filenames with this pattern:
+   `provider-certificate-topic-year.pdf`
+3. Open `index.html` and add a new object to the `CERTIFICATES` JavaScript array.
+
+Required fields:
+- `title` - certificate name shown on the card
+- `issuer` - issuing organization
+- `year` - year earned
+- `category` - filter group such as `Web Development`, `Programming`, `AI`, `Cloud`, `Business`, or `Cybersecurity`
+- `file` - PDF path, for example `certificates/freecodecamp-responsive-web-design-2025.pdf`
+
+Optional fields:
+- `appliedIn` - short note connecting the credential to shipped work
+- `thumbnail` - future thumbnail path, preferably under `certificates/thumbnails/`
+- `credentialUrl` - external verification link, if the issuer provides one
+
+Example:
+
+```js
+{
+  title: 'Responsive Web Design',
+  issuer: 'freeCodeCamp',
+  year: '2025',
+  category: 'Web Development',
+  file: 'certificates/freecodecamp-responsive-web-design-2025.pdf',
+  appliedIn: 'Portfolio, Builder platform, and client landing pages'
+}
 ```
 
 ---
