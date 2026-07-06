@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Simeon Tertese — Software Engineer & Techpreneur</title>
   <meta name="description" content="Software Engineer, Full-Stack Developer and Techpreneur building impactful systems across Nigeria and Africa."/>
+  <link rel="canonical" href="https://simmyt3r.github.io/Portfolio/">
+  <meta property="og:title" content="Simeon Tertese — Software Engineer & Techpreneur">
+  <meta property="og:description" content="Portfolio of Simeon Tertese: software engineering, projects, certificates, training, and technology ventures.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://simmyt3r.github.io/Portfolio/">
+  <meta property="og:image" content="https://simmyt3r.github.io/Portfolio/formal.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Simeon Tertese — Software Engineer & Techpreneur">
+  <meta name="twitter:description" content="Software engineering portfolio, projects, certificates, and technology education work.">
+  <meta name="twitter:image" content="https://simmyt3r.github.io/Portfolio/formal.jpeg">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width='100' height='100' fill='%230f2744'/><text y='.9em' font-size='60' x='10' fill='white'>ST</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -120,6 +130,29 @@
     .exp-role{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:8px}
     .exp-desc{font-size:.87rem;color:var(--muted);line-height:1.75}
 
+
+
+    /* ─── CERTIFICATES ─── */
+    #certificates{padding:90px 0;background:var(--off);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+    .cert-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px;flex-wrap:wrap}
+    .cert-note{font-family:var(--mono);font-size:.66rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+    .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+    .cert-card{background:var(--white);border:1px solid var(--rule);border-radius:3px;padding:24px;display:flex;flex-direction:column;gap:14px;min-height:230px;transition:box-shadow .2s,border-color .2s,transform .2s}
+    .cert-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);border-color:var(--accent);transform:translateY(-3px)}
+    .cert-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+    .cert-icon{width:42px;height:52px;border:1.5px solid var(--rule);border-radius:3px;background:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.66rem;font-weight:500;color:var(--accent);flex-shrink:0}
+    .cert-title{font-family:var(--serif);font-size:1.04rem;font-weight:600;color:var(--navy);line-height:1.35;margin-bottom:5px}
+    .cert-issuer{font-size:.82rem;color:var(--ink2);line-height:1.5}
+    .cert-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:auto}
+    .cert-badge,.cert-year{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;border-radius:12px;padding:3px 9px}
+    .cert-badge{background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8}
+    .cert-year{background:var(--off);border:1px solid var(--rule);color:var(--muted)}
+    .cert-skill{font-size:.78rem;color:var(--muted);line-height:1.65}
+    .cert-actions{display:flex;gap:10px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--rule)}
+    .cert-link{font-family:var(--mono);font-size:.67rem;font-weight:500;color:var(--accent);transition:color .15s}
+    .cert-link:hover{color:var(--navy)}
+    .cert-empty{grid-column:1/-1;background:var(--white);border:1px dashed var(--rule);border-radius:3px;padding:28px;color:var(--muted);font-size:.9rem;line-height:1.8}
+
     /* ─── PROJECTS / REPOS ─── */
     #projects{padding:90px 0;background:var(--paper);border-top:1px solid var(--rule)}
     .filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:32px}
@@ -194,7 +227,7 @@
     .cv-tags{display:flex;flex-wrap:wrap;gap:8px}
     .cv-tag{padding:4px 12px;background:var(--off);border:1px solid var(--rule);border-radius:2px;font-family:var(--mono);font-size:.7rem;color:var(--ink2)}
     .cv-print{text-align:center;margin-top:28px}
-    @media print{nav,footer,.cv-print,#hero,#about,#skills,#experience,#projects,#blog,#services,#contact,#builder{display:none!important}#resume{padding:0!important;background:#fff!important;border:none!important}#resume .sec-header{display:none!important}.cv-wrap{box-shadow:none!important;border:none!important;max-width:100%!important;border-radius:0!important}.reveal{opacity:1!important;transform:none!important}}
+    @media print{nav,footer,.cv-print,#hero,#about,#skills,#experience,#certificates,#projects,#blog,#services,#contact,#builder{display:none!important}#resume{padding:0!important;background:#fff!important;border:none!important}#resume .sec-header{display:none!important}.cv-wrap{box-shadow:none!important;border:none!important;max-width:100%!important;border-radius:0!important}.reveal{opacity:1!important;transform:none!important}}
 
     /* ─── CONTACT ─── */
     #contact{padding:90px 0;background:var(--paper);border-top:1px solid var(--rule)}
@@ -272,6 +305,38 @@
       .cv-head{padding:28px}
     }
   </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Simeon Tertese",
+  "alternateName": "Sarverun Simeon Tertese",
+  "url": "https://simmyt3r.github.io/Portfolio/",
+  "image": "https://simmyt3r.github.io/Portfolio/formal.jpeg",
+  "jobTitle": "Software Engineer and Techpreneur",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Simeon's Laboratories & Co Technologies Ltd"
+  },
+  "sameAs": [
+    "https://github.com/Simmyt3r",
+    "https://linkedin.com/in/simmyt3r"
+  ],
+  "knowsAbout": [
+    "Software Engineering",
+    "Python",
+    "PHP",
+    "JavaScript",
+    "SQL",
+    "React",
+    "Node.js",
+    "REST API Design",
+    "Technology Education",
+    "Entrepreneurship"
+  ]
+}
+</script>
+
 </head>
 <body>
 
@@ -282,6 +347,7 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#certificates">Certificates</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#blog">Blog</a></li>
       <li><a href="#services">Services</a></li>
@@ -297,6 +363,7 @@
 <div class="mob-nav" id="mobNav">
   <a href="#about" onclick="cm()">About</a>
   <a href="#experience" onclick="cm()">Experience</a>
+  <a href="#certificates" onclick="cm()">Certificates</a>
   <a href="#projects" onclick="cm()">Projects</a>
   <a href="#blog" onclick="cm()">Blog</a>
   <a href="#services" onclick="cm()">Services</a>
@@ -334,11 +401,11 @@
       </div>
       <div class="photo-col fa1">
         <div class="formal-wrap">
-          <img src="formal.jpeg" alt="Simeon Tertese" class="formal-img"
+          <img src="formal.jpeg" alt="Formal portrait of Simeon Tertese" class="formal-img"
             onerror="this.src='https://placehold.co/360x480/0f2744/ffffff?text=Simeon+Tertese'">
         </div>
         <div class="casual-chip">
-          <img src="casual.jpg" alt="Simeon Tertese casual" class="casual-avatar"
+          <img src="casual.jpg" alt="Casual portrait of Simeon Tertese" class="casual-avatar"
             onerror="this.src='https://placehold.co/38x38/0f2744/ffffff?text=ST'">
           <div class="chip-text">
             <strong>Simeon Tertese</strong>
@@ -462,6 +529,25 @@
         </tr>
       </tbody>
     </table>
+  </div>
+</section>
+
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-label">Credentials</div>
+      <h2 class="sec-title">Certificates &amp; Professional Learning</h2>
+      <p class="sec-desc">Certificates show structured learning; projects show practical execution. This section is ready to display each PDF credential beside the real work demonstrated in the Projects section.</p>
+    </div>
+    <div class="cert-toolbar reveal">
+      <div class="filters" id="certFilters" aria-label="Filter certificates by category">
+        <button class="fb active" data-cert-filter="all">All</button>
+      </div>
+      <div class="cert-note">PDFs live in /certificates</div>
+    </div>
+    <div class="cert-grid" id="certGrid" aria-live="polite"></div>
   </div>
 </section>
 
@@ -1339,7 +1425,7 @@
       <div class="foot-name">Simeon Tertese</div>
       <div class="foot-copy">© 2025 Simeon's Laboratories &amp; Co Technologies Ltd (Silabs)</div>
       <div class="foot-links">
-        <a href="#about">About</a><a href="#projects">Projects</a>
+        <a href="#about">About</a><a href="#certificates">Certificates</a><a href="#projects">Projects</a>
         <a href="#builder">Builder</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
       </div>
     </div>
@@ -1366,6 +1452,52 @@ window.addEventListener('scroll',()=>{
 /* reveal */
 const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');ro.unobserve(x.target)}}),{threshold:.07,rootMargin:'0px 0px -28px 0px'});
 document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*.08)+'s';ro.observe(el)});
+
+
+/* CERTIFICATES
+   Add each PDF to /certificates, then add an object here.
+   Required: title, issuer, year, category, file.
+*/
+const CERTIFICATES=[];
+function certificateCard(c){
+  const applied=c.appliedIn?`<div class="cert-skill"><strong>Applied in:</strong> ${c.appliedIn}</div>`:'';
+  return `<article class="cert-card">
+    <div class="cert-top">
+      <div><h3 class="cert-title">${c.title}</h3><div class="cert-issuer">${c.issuer}</div></div>
+      <div class="cert-icon" aria-hidden="true">PDF</div>
+    </div>
+    ${applied}
+    <div class="cert-meta"><span class="cert-badge">${c.category}</span><span class="cert-year">${c.year}</span></div>
+    <div class="cert-actions">
+      <a class="cert-link" href="${c.file}" target="_blank" rel="noopener" aria-label="View ${c.title} certificate PDF">View PDF →</a>
+      <a class="cert-link" href="${c.file}" download aria-label="Download ${c.title} certificate PDF">Download ↓</a>
+    </div>
+  </article>`;
+}
+function renderCertificates(filter='all'){
+  const grid=document.getElementById('certGrid');
+  if(!grid)return;
+  const items=filter==='all'?CERTIFICATES:CERTIFICATES.filter(c=>c.category===filter);
+  grid.innerHTML=items.length?items.map(certificateCard).join(''):`<div class="cert-empty"><strong>Certificate PDFs are ready to be connected.</strong><br>Add PDF files to the <code>certificates/</code> folder, then add their metadata to the <code>CERTIFICATES</code> array in <code>index.html</code>. Each certificate will render automatically with View and Download links.</div>`;
+}
+function initCertificateFilters(){
+  const wrap=document.getElementById('certFilters');
+  if(!wrap)return;
+  [...new Set(CERTIFICATES.map(c=>c.category))].sort().forEach(cat=>{
+    const b=document.createElement('button');
+    b.className='fb';b.dataset.certFilter=cat;b.textContent=cat;
+    wrap.appendChild(b);
+  });
+  wrap.addEventListener('click',e=>{
+    const b=e.target.closest('[data-cert-filter]');
+    if(!b)return;
+    wrap.querySelectorAll('.fb').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    renderCertificates(b.dataset.certFilter);
+  });
+}
+initCertificateFilters();
+renderCertificates();
 
 /* LANGUAGE COLOURS */
 const LC={Python:'#3572A5',PHP:'#4F5D95',JavaScript:'#f1e05a',HTML:'#e34c26',CSS:'#563d7c',TypeScript:'#2b7489',Java:'#b07219',C:'#555555','C++':'#f34b7d','C#':'#178600',Dart:'#00B4AB',Ruby:'#701516',Go:'#00ADD8',Rust:'#dea584',Swift:'#FA7343',Kotlin:'#A97BFF',Shell:'#89e051',Vue:'#41b883',Svelte:'#ff3e00'};
