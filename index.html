@@ -1458,7 +1458,16 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
    Add each PDF to /certificates, then add an object here.
    Required: title, issuer, year, category, file.
 */
-const CERTIFICATES=[];
+const CERTIFICATES=[
+  {
+  title: 'Web Design',
+  issuer: 'WootLab E-learning Platform, MTN, Microsoft',
+  year: '2023',
+  category: 'Web Development',
+  file: 'certificates/webdesign.pdf',
+  appliedIn: 'Portfolio, Builder platform, unixpress.com.ng and client landing pages'
+}
+];
 function certificateCard(c){
   const applied=c.appliedIn?`<div class="cert-skill"><strong>Applied in:</strong> ${c.appliedIn}</div>`:'';
   return `<article class="cert-card">
