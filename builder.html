@@ -869,6 +869,103 @@ body{
   .bldr-main-tabs{grid-template-columns:1fr!important}
 }
 
+
+/* ── PREMIUM LESSON UPGRADE ── */
+.lesson-card.premium-card{
+  position:relative;
+  background:linear-gradient(180deg,#fffdf8 0%,#fff 100%);
+  border-color:#f4d49a;
+}
+.lesson-card.premium-card::before{
+  content:'PREMIUM';
+  position:absolute;
+  top:0;
+  right:18px;
+  z-index:2;
+  padding:4px 9px;
+  border-radius:0 0 7px 7px;
+  background:#f59e0b;
+  color:#fff;
+  font-family:var(--body);
+  font-size:.58rem;
+  font-weight:800;
+  letter-spacing:.06em;
+}
+.lo-features{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:7px;
+  margin:2px 0 4px;
+}
+.lo-features span{
+  padding:5px 8px;
+  border:1px solid #f1d5a6;
+  border-radius:999px;
+  background:#fff;
+  color:#7a5520;
+  font-family:var(--body);
+  font-size:.68rem;
+  font-weight:700;
+}
+.premium-pack{
+  max-width:820px;
+  margin:24px auto 0;
+  padding:20px;
+  border:1px solid #e8d4ad;
+  border-radius:12px;
+  background:linear-gradient(135deg,#fffaf0,#fff);
+}
+.premium-pack-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+}
+.premium-pack-label{
+  font-family:var(--body);
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#a86100;
+}
+.premium-pack-title{
+  font-family:var(--display);
+  font-size:1rem;
+  font-weight:800;
+  color:var(--navy);
+}
+.premium-pack-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.premium-pack-item{
+  padding:13px 14px;
+  border:1px solid var(--rule);
+  border-radius:9px;
+  background:#fff;
+}
+.premium-pack-item strong{
+  display:block;
+  margin-bottom:5px;
+  color:var(--navy);
+  font-size:.82rem;
+}
+.premium-pack-item p{
+  margin:0;
+  color:var(--ink2);
+  font-size:.82rem;
+  line-height:1.65;
+}
+@media(max-width:620px){
+  .premium-pack-grid{grid-template-columns:1fr}
+  .premium-pack{padding:16px}
+  .lesson-card.premium-card::before{right:12px}
+}
+
 </style>
 </head>
 <body>
@@ -1159,11 +1256,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
-            <p class="lo-desc">This lesson is available to paid members. Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 06.</p>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
+            <p class="lo-desc">This premium lesson includes the full walkthrough plus a practical deliverable and mastery check. Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 06.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('tech06')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('tech06')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -1211,11 +1313,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 07.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('tech07')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('tech07')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -1255,11 +1362,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 08.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('tech08')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('tech08')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -1380,11 +1492,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 11.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('tech11')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('tech11')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -1437,11 +1554,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 12.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('tech12')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('tech12')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -1520,9 +1642,14 @@ body{
           <div class="lock-overlay">
             <div class="lo-icon-col">&#128274;</div>
             <div class="lo-content">
-              <div class="lo-title">Premium Tutorial</div>
+              <div class="lo-title">Premium Lesson</div>
               <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Tech 15.</p>
-              <div class="lo-row"><input type="password" class="lo-input" placeholder="Enter password..." autocomplete="off"/><button class="lo-btn" onclick="tryUnlock('tech15')">Unlock</button></div>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
+              <div class="lo-row"><input type="password" class="lo-input" placeholder="Enter password..." autocomplete="off"/><button class="lo-btn" onclick="tryUnlock('tech15')">Unlock lesson</button></div>
               <div class="lo-err"></div>
             </div>
           </div>
@@ -1714,11 +1841,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Biz 06.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('biz06')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('biz06')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -1760,11 +1892,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Biz 07.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('biz07')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('biz07')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -1805,11 +1942,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Biz 08.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('biz08')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('biz08')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -1926,11 +2068,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Biz 11.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('biz11')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('biz11')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -2009,9 +2156,14 @@ body{
           <div class="lock-overlay">
             <div class="lo-icon-col">&#128274;</div>
             <div class="lo-content">
-              <div class="lo-title">Premium Tutorial</div>
+              <div class="lo-title">Premium Lesson</div>
               <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Biz 14.</p>
-              <div class="lo-row"><input type="password" class="lo-input" placeholder="Enter password..." autocomplete="off"/><button class="lo-btn" onclick="tryUnlock('biz14')">Unlock</button></div>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
+              <div class="lo-row"><input type="password" class="lo-input" placeholder="Enter password..." autocomplete="off"/><button class="lo-btn" onclick="tryUnlock('biz14')">Unlock lesson</button></div>
               <div class="lo-err"></div>
             </div>
           </div>
@@ -2179,11 +2331,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Money 05.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('mon05')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('mon05')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -2221,11 +2378,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Money 06.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('mon06')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('mon06')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -2335,11 +2497,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Money 09.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('mon09')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('mon09')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -2418,9 +2585,14 @@ body{
           <div class="lock-overlay">
             <div class="lo-icon-col">&#128274;</div>
             <div class="lo-content">
-              <div class="lo-title">Premium Tutorial</div>
+              <div class="lo-title">Premium Lesson</div>
               <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Money 12.</p>
-              <div class="lo-row"><input type="password" class="lo-input" placeholder="Enter password..." autocomplete="off"/><button class="lo-btn" onclick="tryUnlock('mon12')">Unlock</button></div>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
+              <div class="lo-row"><input type="password" class="lo-input" placeholder="Enter password..." autocomplete="off"/><button class="lo-btn" onclick="tryUnlock('mon12')">Unlock lesson</button></div>
               <div class="lo-err"></div>
             </div>
           </div>
@@ -2549,11 +2721,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Mind 04.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('mind04')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('mind04')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -2594,11 +2771,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056Francis2366" target="_blank">WhatsApp</a> for the password to Mind 05.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('mind05')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('mind05')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -2674,11 +2856,16 @@ body{
           </div>
           <div class="lock-overlay">
             <div class="lo-icon-col">🔒</div>
-            <div class="lo-content"><div class="lo-title">Premium Tutorial</div>
+            <div class="lo-content"><div class="lo-title">Premium Lesson</div>
             <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> for the password to Mind 07.</p>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
             <div class="lo-row">
               <input type="password" class="lo-input" placeholder="Enter password…" autocomplete="off"/>
-              <button class="lo-btn" onclick="tryUnlock('mind07')">Unlock</button>
+              <button class="lo-btn" onclick="tryUnlock('mind07')">Unlock lesson</button>
             </div>
             <div class="lo-err"></div>
           </div>
@@ -2760,9 +2947,14 @@ body{
           <div class="lock-overlay">
             <div class="lo-icon-col">&#128274;</div>
             <div class="lo-content">
-              <div class="lo-title">Premium Tutorial</div>
+              <div class="lo-title">Premium Lesson</div>
               <p class="lo-desc">Contact Simeon on <a href="https://wa.me/2349056232366" target="_blank">WhatsApp</a> to get the password for Mind 10.</p>
-              <div class="lo-row"><input type="password" class="lo-input" placeholder="Enter password..." autocomplete="off"/><button class="lo-btn" onclick="tryUnlock('mind10')">Unlock</button></div>
+            <div class="lo-features">
+              <span>Guided walkthrough</span>
+              <span>Practical deliverable</span>
+              <span>Mastery check</span>
+            </div>
+              <div class="lo-row"><input type="password" class="lo-input" placeholder="Enter password..." autocomplete="off"/><button class="lo-btn" onclick="tryUnlock('mind10')">Unlock lesson</button></div>
               <div class="lo-err"></div>
             </div>
           </div>
@@ -3330,46 +3522,68 @@ function toggleTut(hd){
 /* passwords stored as base64 — lightweight soft paywall */
 /* each key maps tutorial id → btoa(password) */
 const LOCKS={
-  'tech06':'U2lsYWJzI0hUTUwyMDI2',
-  'tech07':'VmliZSRDb2RlOWph',
-  'tech08':'R2l0UHVzaCROYWlqYQ==',
-  'tech11':'RGF0YWJhc2UkU1FMMjAyNg==',
-  'tech12':'QVBJJFdhaXRlcjlqYQ==',
-  'biz06' :'Q29udHJhY3QmV2luMjAyNg==',
-  'biz07' :'U29jaWFsU2VsbCNOR1I=',
-  'biz08' :'Q0FDJFJlZ2lzdGVyMjY=',
-  'biz11' :'UG9ydGZvbGlvJFdpbjI2',
-  'mon05' :'TkdYJEludmVzdDIwMjY=',
-  'mon06' :'VGF4U21hcnQjOWph',
-  'mon09' :'QnVkZ2V0JFplcm8yNg==',
-  'mind04':'R29hbFNldCRCdWlsZGVy',
-  'mind05':'VGltZUlzTmFpcmEjMjY=',
-  'mind07':'U2F5Tm8kQnVpbGRlcg=='
+  "tech06":"8de40bc3f8a1c04d6f43eaa0a76119442184540787735fb602eed06194f88e21",
+  "tech07":"ef2b515ab8a2a8a2be55bb341b18cf3ccea01342ba9ad797ef368c3c3c46eaf1",
+  "tech08":"5b6a03e47d4a9e81edb1277d7a4eec93525705e7ac42d929a14009ca4c4267c6",
+  "tech11":"dd9978a81efed1483f8b232ba0a93254a86cb926007f5abb12af33a7ec99649b",
+  "tech12":"d2703f324ea61f801d6a5aa2b24d9d6889d89be8e87a0dffaeb1714291506e3e",
+  "tech15":"e6383f0c14d4effb32e85258c732d920215dae52d45fd0636130e5f62c7f832c",
+  "biz06":"aa2773529a8da58038640e4e40fecca92c743dcc366bd37c1f1a4a029dc4abe9",
+  "biz07":"1a91d463eb543d7db7e28f562cc9a97e346cfcdd92e87047ab76625b188f484d",
+  "biz08":"dcdf6498337d1182d148e3f29963147fecb615dffb307ef158439e4cd546561a",
+  "biz11":"d878980e28eec142d162ba69fea4db227520a0369a4fd70de0cc0674546082d9",
+  "biz14":"989281fa6415b569329702c6d5ba85e09896a74ebdfe2035d20fff469e7a86ba",
+  "mon05":"22deadae253c9bb09ab59378870ae7bb67e4f57c6d5b6a026ebcd9f66750b3c5",
+  "mon06":"c3d92565302462aa624e0becfc23d3d58eae3b41e8b9b016dd358937369c6c49",
+  "mon09":"2c732360627a4e8ccc3dc519c7175039f32a2a03ca7dfa3930eb175c0f9039e3",
+  "mon12":"c434c455ed04d31335c3be6ff4c8f078ae42c7cb39cf7a4bfb1c4379473d0a2a",
+  "mind04":"4b045b7c6961251eb575aca9f5c162642c4ac6ff0fa0f33cd20ade2dfa4fe9ef",
+  "mind05":"d72c1738040097de7b015b25c02681e603a5961feefb933285df52ec3e916b25",
+  "mind07":"79e8079db1034c9835ddc08eddd692be6d0af50df8bd966dfc2ceea7574df71a",
+  "mind10":"b25e3d5bde9b5f9e07bbbbeb8a6a19968d66b5c5250fca830a87469960bb7710"
 };
 
-function tryUnlock(id){
-  const card=document.getElementById('pcard-'+id);
-  const input=card.querySelector('.lock-input');
-  const err=card.querySelector('.lock-err');
-  const pw=input.value.trim();
-  if(!pw){input.focus();return;}
-  /* check btoa of entered password against stored hash */
-  if(btoa(pw)===LOCKS[id]){
-    /* unlock: hide overlay, reveal content */
-    card.querySelector('.lock-overlay').style.display='none';
-    const bd=card.querySelector('.lc-bd');
-    bd.classList.add('open');
-    bd.style.maxHeight=bd.scrollHeight+'px';
-    card.querySelector('.tcard-hd').classList.add('open');
-    card.querySelector('.tc-toggle').textContent='−';
-    /* mark unlocked so re-opens work */
-    card.dataset.unlocked='1';
-    input.value='';
-    err.textContent='';
-  } else {
-    err.textContent='Incorrect password. WhatsApp Simeon at +234 905 623 2366 to get access.';
-    input.value='';
-    input.focus();
+async function sha256(value){
+  const bytes=new TextEncoder().encode(value);
+  const digest=await crypto.subtle.digest("SHA-256",bytes);
+  return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+
+function openPremiumContent(card){
+  const overlay=card.querySelector(".lock-overlay");
+  if(overlay)overlay.style.display="none";
+  const bd=card.querySelector(".lc-bd");
+  if(bd){
+    bd.classList.add("open");
+    bd.style.maxHeight=bd.scrollHeight+"px";
+  }
+  const hd=card.querySelector(".tcard-hd");
+  if(hd)hd.classList.add("open");
+  const toggle=card.querySelector(".tc-toggle");
+  if(toggle)toggle.textContent="−";
+  card.dataset.unlocked="1";
+}
+
+async function tryUnlock(id){
+  const card=document.getElementById("pcard-"+id);
+  if(!card||!LOCKS[id])return;
+  const input=card.querySelector(".lock-input");
+  const err=card.querySelector(".lo-err");
+  const pw=(input?.value||"").trim();
+  if(!pw){input?.focus();return;}
+  if(!window.crypto?.subtle){
+    if(err)err.textContent="Secure password checking is not available in this browser.";
+    return;
+  }
+  const candidate=await sha256(pw);
+  if(candidate===LOCKS[id]){
+    openPremiumContent(card);
+    try{sessionStorage.setItem("builder-unlocked-"+id,"1")}catch(_){}
+    if(input)input.value="";
+    if(err)err.textContent="";
+  }else{
+    if(err)err.textContent="Incorrect password. Check the access password and try again.";
+    if(input){input.value="";input.focus();}
   }
 }
 
@@ -3407,7 +3621,7 @@ document.addEventListener('keydown',function(e){
     const active=document.querySelector('.lock-overlay[style*="flex"] .lock-input');
     if(active){
       const id=active.closest('.lesson-card').id.replace('pcard-','');
-      tryUnlock(id);
+      void tryUnlock(id);
     }
   }
 });
@@ -3464,6 +3678,57 @@ function toggleMod(hd){
   document.querySelectorAll('#guided-programs .mod-hd').forEach(h=>h.classList.remove('mopen'));
   if(!isOpen){bd.classList.add('open');bd.style.maxHeight=bd.scrollHeight+'px';hd.classList.add('mopen')}
 }
+
+
+/* ── premium practice packs ── */
+const PREMIUM_UPGRADES={
+  tech06:{deliverable:"Build a page with one button, one form field, and one result area controlled with JavaScript.",mastery:"You can explain events, variables, functions and DOM updates without copying the lesson."},
+  tech07:{deliverable:"Use an AI coding assistant to build a small working app, then document every prompt, edit and bug you fixed yourself.",mastery:"You can separate what the AI generated from what you personally verified, changed and understood."},
+  tech08:{deliverable:"Create a GitHub repository, make at least three meaningful commits, and push a README explaining the project.",mastery:"You can explain repository, commit, branch, push, pull and clone in your own words."},
+  tech11:{deliverable:"Design a small database for students, products or customers with at least three related fields and sample records.",mastery:"You can explain tables, rows, columns, primary keys and why structured storage matters."},
+  tech12:{deliverable:"Call one public API, display a useful result on a webpage, and handle a failed request gracefully.",mastery:"You can explain request, response, endpoint, JSON and status code using a real example."},
+  tech15:{deliverable:"Build a PHP form that saves records to a database and lists them back on a page.",mastery:"You can explain the request flow from browser to PHP to database and back."},
+  biz06:{deliverable:"Draft a one-page client agreement covering scope, payment, revisions, ownership and delivery date.",mastery:"You can point to the clause that protects you from scope creep, late payment and endless revisions."},
+  biz07:{deliverable:"Create a seven-day content plan for one Nigerian small business with a clear offer and call-to-action.",mastery:"You can explain who the audience is, what problem each post addresses and how a lead should respond."},
+  biz08:{deliverable:"Prepare a CAC registration checklist with proposed names, business activity, owner details and required documents.",mastery:"You understand the difference between preparing for registration and claiming registration is complete."},
+  biz11:{deliverable:"Create one portfolio case study showing the problem, your process, screenshots, result and what you learned.",mastery:"A stranger can understand what you built and your contribution in under two minutes."},
+  biz14:{deliverable:"Write three price-response scripts: budget too low, scope increased, and discount requested.",mastery:"You can defend value without insulting the client, apologising for your price or making promises you cannot keep."},
+  mon05:{deliverable:"Build a mock NGX watchlist and write why each company is on it before committing real money.",mastery:"You can distinguish investing research from hype and explain that potential return always comes with risk."},
+  mon06:{deliverable:"Create a simple tax-record folder structure for invoices, expenses, receipts and payment evidence.",mastery:"You know which parts require current FIRS or professional guidance rather than guessing from an old lesson."},
+  mon09:{deliverable:"Build a one-month zero-based budget using your real expected income and expenses.",mastery:"Every naira has a purpose, and the plan includes savings plus a buffer for irregular expenses."},
+  mon12:{deliverable:"Calculate a minimum freelance rate using time, costs, taxes/fees, revisions and desired profit.",mastery:"You can quote a project price and explain the assumptions behind it."},
+  mind04:{deliverable:"Turn one vague goal into a 12-week target with weekly milestones and a measurable definition of done.",mastery:"You can tell whether you are on track without relying on motivation or feelings."},
+  mind05:{deliverable:"Create a realistic weekly schedule with protected deep-work blocks, rest, study and admin time.",mastery:"Your schedule has priorities and recovery time instead of pretending every hour can be productive."},
+  mind07:{deliverable:"Write five respectful refusal scripts for requests that conflict with your priorities or boundaries.",mastery:"You can say no clearly without inventing excuses or attacking the other person."},
+  mind10:{deliverable:"Record a two-minute introduction or pitch, watch it once, and note three specific improvements.",mastery:"You can speak with a clear opening, steady pace, useful structure and direct closing request."}
+};
+
+function addPremiumPracticePacks(){
+  Object.entries(PREMIUM_UPGRADES).forEach(([id,data])=>{
+    const card=document.getElementById("pcard-"+id);
+    const content=card?.querySelector(".lc-content");
+    if(!content||content.querySelector(".premium-pack"))return;
+    const pack=document.createElement("section");
+    pack.className="premium-pack";
+    pack.innerHTML=
+      '<div class="premium-pack-head"><div><div class="premium-pack-label">Premium practice pack</div><div class="premium-pack-title">Turn the lesson into proof</div></div></div>'+
+      '<div class="premium-pack-grid">'+
+        '<div class="premium-pack-item"><strong>Build / deliver</strong><p>'+data.deliverable+'</p></div>'+
+        '<div class="premium-pack-item"><strong>Mastery check</strong><p>'+data.mastery+'</p></div>'+
+      '</div>';
+    content.appendChild(pack);
+  });
+}
+addPremiumPracticePacks();
+
+Object.keys(LOCKS).forEach(id=>{
+  try{
+    if(sessionStorage.getItem("builder-unlocked-"+id)==="1"){
+      const card=document.getElementById("pcard-"+id);
+      if(card)openPremiumContent(card);
+    }
+  }catch(_){}
+});
 
 /* ── scroll reveal ── */
 if('IntersectionObserver' in window){
