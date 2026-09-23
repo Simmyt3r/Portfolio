@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Simeon Tertese — Software Engineer & Techpreneur</title>
-  <meta name="description" content="Software Engineer, Full-Stack Developer and Techpreneur building impactful systems across Nigeria and Africa."/>
+  <title>Simeon Tertese — Software Engineer, Product Builder & Digital Skills Educator</title>
+  <meta name="description" content="Software Engineer, product builder and digital skills educator building practical technology across education, digital products and community services."/>
   <link rel="canonical" href="https://simmyt3r.github.io/Portfolio/">
-  <meta property="og:title" content="Simeon Tertese — Software Engineer & Techpreneur">
+  <meta property="og:title" content="Simeon Tertese — Software Engineer, Product Builder & Digital Skills Educator">
   <meta property="og:description" content="Portfolio of Simeon Tertese: software engineering, projects, certificates, training, and technology ventures.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://simmyt3r.github.io/Portfolio/">
   <meta property="og:image" content="https://simmyt3r.github.io/Portfolio/formal.jpeg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Simeon Tertese — Software Engineer & Techpreneur">
+  <meta name="twitter:title" content="Simeon Tertese — Software Engineer, Product Builder & Digital Skills Educator">
   <meta name="twitter:description" content="Software engineering portfolio, projects, certificates, and technology education work.">
   <meta name="twitter:image" content="https://simmyt3r.github.io/Portfolio/formal.jpeg">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width='100' height='100' fill='%230f2744'/><text y='.9em' font-size='60' x='10' fill='white'>ST</text></svg>">
@@ -338,7 +338,28 @@
       .cv-body{padding:24px}
       .cv-head{padding:28px}
     }
-  </style>
+  
+    /* ─── RECRUITER-FOCUSED POSITIONING ─── */
+    #resume{padding:90px 0;background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+    .cv-path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+    .cv-path{background:#fff;border:1px solid var(--rule);border-radius:8px;padding:25px;display:flex;flex-direction:column;min-height:280px;transition:transform .2s,border-color .2s,box-shadow .2s}
+    .cv-path:hover{transform:translateY(-4px);border-color:#b8c8ea;box-shadow:0 12px 34px rgba(15,39,68,.08)}
+    .cv-path-kicker{font-family:var(--mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+    .cv-path h3{font-family:var(--serif);font-size:1.25rem;color:var(--navy);margin-bottom:10px;line-height:1.25}
+    .cv-path p{font-size:.87rem;color:var(--muted);line-height:1.75;margin-bottom:16px}
+    .cv-path ul{list-style:none;margin-bottom:22px}
+    .cv-path li{font-size:.8rem;color:var(--ink2);padding:4px 0;display:flex;gap:8px}
+    .cv-path li::before{content:'•';color:var(--gold)}
+    .cv-path .btn-dark{margin-top:auto;justify-content:center}
+    .role-note{max-width:720px;margin:10px auto 0;text-align:center;font-size:.82rem;color:var(--muted);line-height:1.7}
+    .profile-pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--rule);background:#fff;border-radius:999px;padding:6px 10px;font-family:var(--mono);font-size:.63rem;color:var(--muted)}
+    .about-focus{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+    .about-focus-card{padding:16px;background:var(--off);border:1px solid var(--rule);border-radius:6px}
+    .about-focus-card strong{font-family:var(--serif);color:var(--navy);font-size:.95rem;display:block;margin-bottom:5px}
+    .about-focus-card span{font-size:.77rem;color:var(--muted);line-height:1.55}
+    @media(max-width:850px){.cv-path-grid,.about-focus{grid-template-columns:1fr}.cv-path{min-height:auto}}
+
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -347,7 +368,7 @@
   "alternateName": "Sarverun Simeon Tertese",
   "url": "https://simmyt3r.github.io/Portfolio/",
   "image": "https://simmyt3r.github.io/Portfolio/formal.jpeg",
-  "jobTitle": "Software Engineer and Techpreneur",
+  "jobTitle": "Software Engineer, Product Builder and Digital Skills Educator",
   "worksFor": {
     "@type": "Organization",
     "name": "Simeon's Laboratories & Co Technologies Ltd"
@@ -385,7 +406,7 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#blog">Blog</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#resume">CV</a></li>
+      <li><a href="#resume">CVs</a></li>
       <li><a href="builder.html" style="color:var(--accent);font-weight:600">Builder ↗</a></li>
       <li><a href="#contact" class="nav-hire">Hire Me</a></li>
     </ul>
@@ -401,7 +422,7 @@
   <a href="#projects" onclick="cm()">Projects</a>
   <a href="#blog" onclick="cm()">Blog</a>
   <a href="#services" onclick="cm()">Services</a>
-  <a href="#resume" onclick="cm()">CV</a>
+  <a href="#resume" onclick="cm()">CVs</a>
   <a href="builder.html" style="color:var(--accent);font-weight:600">Builder ↗ (Full Page)</a>
   <a href="#contact" onclick="cm()">Hire Me →</a>
 </div>
@@ -411,40 +432,29 @@
   <div class="container">
     <div class="hero-grid">
       <div>
-        <div class="hero-eyebrow fa0">Software Engineer &amp; Techpreneur · Abuja, Nigeria</div>
+        <div class="hero-eyebrow fa0">Software Engineer · Product Builder · Digital Skills Educator</div>
         <h1 class="hero-name fa1">Sarverun<br>Simeon<br>Tertese</h1>
-        <p class="hero-tag fa2">Managing Director, Silabs &amp; Co Technologies Ltd</p>
-        <p class="hero-bio fa2">I build software that solves real problems for real people — from academic platforms and forensic AI tools to VTU apps and alumni networks. Grounded in engineering, driven by impact.</p>
+        <p class="hero-tag fa2">B.Sc. Software Engineering · Building, teaching and improving practical technology</p>
+        <p class="hero-bio fa2">I build useful software, improve digital products, and help people learn technology. My work spans student platforms, marketplaces, web applications, ICT education, and technology-enabled operations.</p>
         <div class="hero-actions fa3">
-          <a href="#projects" class="btn-dark">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            View Projects
-          </a>
-          <a href="#contact" class="btn-ghost">Get in Touch</a>
-          <a href="#resume" class="btn-ghost">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Download CV
-          </a>
+          <a href="#projects" class="btn-dark">View My Work</a>
+          <a href="#resume" class="btn-ghost">Choose a CV</a>
+          <a href="#contact" class="btn-ghost">Contact Me</a>
         </div>
         <div class="hero-stats fa4">
           <div class="stat"><div class="num">4.46</div><div class="lbl">CGPA / 5.00</div></div>
-          <div class="stat"><div class="num">7+</div><div class="lbl">Years in Tech</div></div>
-          <div class="stat"><div class="num">10+</div><div class="lbl">Products Shipped</div></div>
+          <div class="stat"><div class="num">3</div><div class="lbl">Career Paths</div></div>
+          <div class="stat"><div class="num">6</div><div class="lbl">Featured Projects</div></div>
           <div class="stat"><div class="num">17</div><div class="lbl">Verified Credentials</div></div>
         </div>
       </div>
       <div class="photo-col fa1">
         <div class="formal-wrap">
-          <img src="formal.jpeg" alt="Formal portrait of Simeon Tertese" class="formal-img"
-            onerror="this.src='https://placehold.co/360x480/0f2744/ffffff?text=Simeon+Tertese'">
+          <img src="formal.jpeg" alt="Formal portrait of Simeon Tertese" class="formal-img" onerror="this.src='https://placehold.co/360x480/0f2744/ffffff?text=Simeon+Tertese'">
         </div>
         <div class="casual-chip">
-          <img src="casual.jpg" alt="Casual portrait of Simeon Tertese" class="casual-avatar"
-            onerror="this.src='https://placehold.co/38x38/0f2744/ffffff?text=ST'">
-          <div class="chip-text">
-            <strong>Simeon Tertese</strong>
-            Founder · Engineer · Mentor
-          </div>
+          <img src="casual.jpg" alt="Casual portrait of Simeon Tertese" class="casual-avatar" onerror="this.src='https://placehold.co/38x38/0f2744/ffffff?text=ST'">
+          <div class="chip-text"><strong>Simeon Tertese</strong>Engineer · Product Builder · Educator</div>
         </div>
       </div>
     </div>
@@ -456,27 +466,30 @@
   <div class="container">
     <div class="about-grid">
       <div class="reveal">
-        <img src="casual.jpg" alt="Simeon Tertese" class="about-photo"
-          onerror="this.src='https://placehold.co/300x400/0f2744/ffffff?text=Simeon'">
+        <img src="casual.jpg" alt="Simeon Tertese" class="about-photo" onerror="this.src='https://placehold.co/300x400/0f2744/ffffff?text=Simeon'">
         <ul class="clist">
           <li><span class="ck">Email</span><a href="mailto:simmyt3r@gmail.com">simmyt3r@gmail.com</a></li>
           <li><span class="ck">Phone</span>+234 905 623 2366</li>
-          <li><span class="ck">Location</span>Abuja, Nigeria</li>
+          <li><span class="ck">Location</span>Nigeria</li>
           <li><span class="ck">GitHub</span><a href="https://github.com/Simmyt3r" target="_blank">github.com/Simmyt3r</a></li>
           <li><span class="ck">LinkedIn</span><a href="https://linkedin.com/in/simmyt3r" target="_blank">linkedin.com/in/simmyt3r</a></li>
-          <li><span class="ck">Company</span><a href="https://unixpress.com.ng" target="_blank">Silabs &amp; Co Technologies</a></li>
         </ul>
       </div>
       <div class="about-body reveal">
         <div class="sec-label">About Me</div>
-        <h2 class="sec-title">Engineer, Founder<br>&amp; Community Builder</h2>
-        <h3>The person behind the work</h3>
-        <p>I'm a software engineer and entrepreneur based in Abuja, Nigeria. As Managing Director of <strong>Simeon's Laboratories &amp; Co Technologies Ltd (Silabs)</strong>, I lead a team building software solutions, training programs, and digital platforms that create real opportunities for Nigerians.</p>
-        <p>My journey started at De-East Computers in 2012 — four years of hands-on hardware and systems work before I ever wrote a line of professional code. That grounding shaped my philosophy: <em>technology only matters when it works for real people</em>.</p>
-        <p>I graduated from <strong>Nigerian Army University Biu</strong> with a B.Sc. in Software Engineering (CGPA: 4.46/5.00) while simultaneously running a registered company, freelancing, teaching, and serving as Ag. Director of Media &amp; PR at a rehabilitation NGO. I also built Techdialect — a STEM learning platform in Nigerian local languages — because the language barrier in African tech is a problem nobody talks about enough.</p>
+        <h2 class="sec-title">Engineering, product execution<br>&amp; practical technology education</h2>
+        <h3>I work where technology needs to become useful.</h3>
+        <p>I am a <strong>Software Engineering graduate, product builder, and digital-skills educator</strong>. I build and improve digital products for students, businesses, and community users, and I enjoy turning technical ideas into systems people can actually understand and use.</p>
+        <p>My experience includes leading technology initiatives through <strong>Simeon’s Laboratories &amp; Co Technologies Ltd</strong>, teaching ICT in a secondary-school environment, supporting ICT service operations at the Federal Ministry of Communications, Innovation &amp; Digital Economy, and serving during NYSC at AcreSAL in Makurdi.</p>
+        <p>I am comfortable contributing as an engineer, product-focused team member, technology instructor, or operations-minded digital professional. The role matters less than whether I can solve a real problem and deliver useful work.</p>
+        <div class="about-focus">
+          <div class="about-focus-card"><strong>Software & Product</strong><span>Web applications, product workflows, UI/UX structure and digital platforms.</span></div>
+          <div class="about-focus-card"><strong>Teaching & Digital Skills</strong><span>ICT teaching, beginner technology, digital literacy and learner support.</span></div>
+          <div class="about-focus-card"><strong>Operations & Innovation</strong><span>Project coordination, documentation, service delivery and technology-enabled programs.</span></div>
+        </div>
         <div class="facts">
           <div class="fact"><div class="fn">4.46</div><div class="fl">CGPA, NAUB</div></div>
-          <div class="fact"><div class="fn">9</div><div class="fl">Silabs Directors</div></div>
+          <div class="fact"><div class="fn">B.Sc.</div><div class="fl">Software Engineering</div></div>
           <div class="fact"><div class="fn">17</div><div class="fl">Verified Credentials</div></div>
         </div>
       </div>
@@ -487,43 +500,20 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <div class="ruled reveal">
-      <div class="sec-label">Technical Proficiency</div>
-      <h2 class="sec-title">Skills &amp; Stack</h2>
-    </div>
+    <div class="ruled reveal"><div class="sec-label">Capabilities</div><h2 class="sec-title">Skills &amp; Working Strengths</h2></div>
     <div class="skills-cols">
-      <div class="skill-col reveal">
-        <h3>Languages</h3>
-        <ul class="sklist">
-          <li class="core">Python</li><li class="core">PHP</li>
-          <li class="core">JavaScript</li><li>SQL</li>
-          <li>HTML5 / CSS3</li><li>Bash</li>
-        </ul>
-      </div>
-      <div class="skill-col reveal">
-        <h3>Frameworks</h3>
-        <ul class="sklist">
-          <li>React / React Native</li><li>Node.js</li>
-          <li>Flask / Streamlit</li><li>Bootstrap 5</li>
-          <li>Tailwind CSS</li><li>Expo</li>
-        </ul>
-      </div>
-      <div class="skill-col reveal">
-        <h3>Data &amp; DevOps</h3>
-        <ul class="sklist">
-          <li class="core">MySQL / MariaDB</li><li>PostgreSQL</li>
-          <li>SQLite</li><li>Firebase</li>
-          <li>GitHub</li><li>cPanel / Linux</li>
-        </ul>
-      </div>
-      <div class="skill-col reveal">
-        <h3>Specialisms</h3>
-        <ul class="sklist">
-          <li>System Design</li><li>Algorithm Design</li>
-          <li>Reverse Engineering</li><li>AI / ML Integration</li>
-          <li>REST API Design</li><li>PWA Architecture</li>
-        </ul>
-      </div>
+      <div class="skill-col reveal"><h3>Software Engineering</h3><ul class="sklist">
+        <li class="core">Python</li><li class="core">PHP</li><li class="core">JavaScript / TypeScript</li><li>HTML5 / CSS3</li><li>Flask</li><li>React</li>
+      </ul></div>
+      <div class="skill-col reveal"><h3>Data &amp; Delivery</h3><ul class="sklist">
+        <li class="core">PostgreSQL</li><li>MySQL / MariaDB</li><li>SQLite</li><li>Firebase</li><li>Git / GitHub</li><li>Vercel / cPanel</li>
+      </ul></div>
+      <div class="skill-col reveal"><h3>Product &amp; UX</h3><ul class="sklist">
+        <li>Workflow Design</li><li>User Journey Design</li><li>Requirements Definition</li><li>PWA Architecture</li><li>Technical Documentation</li><li>AI-assisted Prototyping</li>
+      </ul></div>
+      <div class="skill-col reveal"><h3>Teaching &amp; Operations</h3><ul class="sklist">
+        <li>ICT Instruction</li><li>Digital Literacy</li><li>Learner Support</li><li>Project Coordination</li><li>Stakeholder Communication</li><li>Digital Service Operations</li>
+      </ul></div>
     </div>
   </div>
 </section>
@@ -531,41 +521,17 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
-    <div class="sec-header reveal">
-      <div class="sec-label">Work History</div>
-      <h2 class="sec-title">Experience</h2>
-    </div>
-    <table class="exp-table reveal">
-      <tbody>
-        <tr>
-          <td class="exp-time"><div class="exp-period">2023 – Present</div><div class="exp-org">Silabs &amp; Co Technologies</div></td>
-          <td><div class="exp-role">Managing Director</div><div class="exp-desc">Founded and scaled a CAC-registered tech firm with 9 directors across 8 departments. Delivering software, hardware, IT training, and digital services to NGOs, SMEs, and institutions across Nigeria. Co-founded UniXpress; initiated AlumBridge, Techdialect, PayQuick.</div></td>
-        </tr>
-        <tr>
-          <td class="exp-time"><div class="exp-period">2025 – Present</div><div class="exp-org">Sanitatem Rehabilitation Intl. Initiative</div></td>
-          <td><div class="exp-role">Ag. Director, Media &amp; Public Relations</div><div class="exp-desc">Leading all media production and digital strategy for a registered Nigerian NGO under a 2026–2032 MOU. Built the complete media suite — monthly branded campaigns, PowerPoint decks, social media series, and the official website.</div></td>
-        </tr>
-        <tr>
-          <td class="exp-time"><div class="exp-period">2024 – 2025</div><div class="exp-org">Fed. Min. of Communications, Innovation &amp; Digital Economy</div></td>
-          <td><div class="exp-role">ICT Service Center Intern</div><div class="exp-desc">IT service operations, systems maintenance, and digital infrastructure support within one of Nigeria's core government ministries for the digital economy.</div></td>
-        </tr>
-        <tr>
-          <td class="exp-time"><div class="exp-period">2024 – 2025</div><div class="exp-org">Satellite Academy Ltd, Karshi</div></td>
-          <td><div class="exp-role">Class Teacher — ICT</div><div class="exp-desc">Delivered practical ICT curriculum to secondary students. Also conducted a pro bono site audit and improvement recommendations for the school.</div></td>
-        </tr>
-        <tr>
-          <td class="exp-time"><div class="exp-period">2020 – 2022</div><div class="exp-org">Self-Employed</div></td>
-          <td><div class="exp-role">Freelance Web Developer &amp; Consultant</div><div class="exp-desc">Web development and IT consulting for SMEs — websites, e-commerce, digital marketing, and business process automation.</div></td>
-        </tr>
-        <tr>
-          <td class="exp-time"><div class="exp-period">2016 – 2018</div><div class="exp-org">De-East Computers</div></td>
-          <td><div class="exp-role">General Manager</div><div class="exp-desc">Managed operations, inventory, customer service, and technical repairs for a computer hardware business. First leadership role in the tech space.</div></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="sec-header reveal"><div class="sec-label">Work History</div><h2 class="sec-title">Experience</h2><p class="sec-desc">A mix of product leadership, software work, ICT teaching, institutional technology support, and digital communication.</p></div>
+    <table class="exp-table reveal"><tbody>
+      <tr><td class="exp-time"><div class="exp-period">2023 – Present</div><div class="exp-org">Silabs &amp; Co Technologies</div></td><td><div class="exp-role">Managing Director / Product Lead</div><div class="exp-desc">Lead software, training and digital-service initiatives from problem definition through implementation. Coordinate product, technology, operations and communication work, including UniXpress and other digital products.</div></td></tr>
+      <tr><td class="exp-time"><div class="exp-period">2026 – Present</div><div class="exp-org">AcreSAL, Makurdi</div></td><td><div class="exp-role">NYSC Corps Member</div><div class="exp-desc">Support structured organisational responsibilities during national service while continuing professional software and product development.</div></td></tr>
+      <tr><td class="exp-time"><div class="exp-period">2025 – Present</div><div class="exp-org">Sanitatem Rehabilitation Intl. Initiative</div></td><td><div class="exp-role">Ag. Director, Media &amp; Public Relations</div><div class="exp-desc">Lead digital communication, media planning, branded content, presentations and web-related support.</div></td></tr>
+      <tr><td class="exp-time"><div class="exp-period">2024 – 2025</div><div class="exp-org">Fed. Ministry of Communications, Innovation &amp; Digital Economy</div></td><td><div class="exp-role">ICT Service Center Intern</div><div class="exp-desc">Supported ICT service operations, systems maintenance and digital infrastructure activities in a federal-government technology environment.</div></td></tr>
+      <tr><td class="exp-time"><div class="exp-period">2024 – 2025</div><div class="exp-org">Satellite Academy Ltd, Karshi</div></td><td><div class="exp-role">Class Teacher — ICT</div><div class="exp-desc">Delivered practical ICT lessons to secondary-school students and supported digital-skills learning.</div></td></tr>
+      <tr><td class="exp-time"><div class="exp-period">2020 – 2022</div><div class="exp-org">Self-Employed</div></td><td><div class="exp-role">Freelance Web Developer &amp; Consultant</div><div class="exp-desc">Provided websites, digital support and practical technology guidance to SMEs and individual clients.</div></td></tr>
+    </tbody></table>
   </div>
 </section>
-
 
 <!-- CERTIFICATES -->
 <section id="certificates">
@@ -1115,42 +1081,33 @@
 <section id="resume">
   <div class="container">
     <div class="sec-header reveal" style="text-align:center">
-      <div class="sec-label" style="justify-content:center;display:flex">Curriculum Vitae</div>
-      <h2 class="sec-title">Full Résumé</h2>
+      <div class="sec-label" style="justify-content:center;display:flex">For Recruiters</div>
+      <h2 class="sec-title">One person. Three relevant CVs.</h2>
+      <p class="role-note">A school should not receive the same CV as a product team. Choose the version that matches the role you are hiring for; each version uses the same verified background with different emphasis.</p>
     </div>
-    <div class="cv-wrap reveal">
-      <div class="cv-head">
-        <div><div class="cv-hname">Sarverun Simeon Tertese</div><div class="cv-htitle">Software Engineer · Full-Stack Developer · Entrepreneur · Intrapreneur</div></div>
-        <div class="cv-hc">
-          <span>📍 Fed. Low Cost Estate, Karshi, Abuja</span>
-          <a href="mailto:simmyt3r@gmail.com">✉ simmyt3r@gmail.com</a>
-          <a href="tel:+2349056232366">☎ +234 905 623 2366</a>
-          <a href="https://github.com/Simmyt3r" target="_blank">⌥ github.com/Simmyt3r</a>
-          <a href="https://linkedin.com/in/simmyt3r" target="_blank">🔗 linkedin.com/in/simmyt3r</a>
-        </div>
-      </div>
-      <div class="cv-body">
-        <div class="cv-s"><div class="cv-h">Career Objective</div><p class="cv-p">Entrepreneur and Software Engineer with strong foundations in algorithmic design, software construction, and full-stack web technologies. Seeking to apply rigorous academic training and practical problem-solving skills to deliver high-impact solutions — committed to building technology that empowers communities across Nigeria and Africa.</p></div>
-        <div class="cv-s">
-          <div class="cv-h">Work Experience</div>
-          <div class="cv-e"><div class="cv-et">Managing Director — Simeon's Laboratories &amp; Co Technologies Ltd (Silabs)</div><div class="cv-em">2023 – Present · Abuja, Nigeria</div><ul><li>Founded and scaled Silabs into a multi-service tech firm (CAC registered)</li><li>Lead a board of 9 directors across Technology, Operations, Finance, PR, Security, PM, Marketing, HR</li><li>Co-founded UniXpress; initiated AlumBridge, Techdialect, PayQuick</li></ul></div>
-          <div class="cv-e"><div class="cv-et">Ag. Director of Media &amp; PR — Sanitatem Rehabilitation International Initiative</div><div class="cv-em">2025 – Present · Nigeria (Remote)</div><ul><li>Lead all media production and digital content strategy</li><li>Built complete 2026 media suite: 5 monthly campaigns, branded website, 15-post social series</li></ul></div>
-          <div class="cv-e"><div class="cv-et">ICT Service Center Intern — Fed. Ministry of Communications, Innovation &amp; Digital Economy</div><div class="cv-em">2024 – 2025 · Abuja</div><ul><li>IT service operations, systems maintenance, and digital infrastructure support</li></ul></div>
-          <div class="cv-e"><div class="cv-et">Class Teacher (ICT) — Satellite Academy Ltd · General Manager — De-East Computers</div><div class="cv-em">2024–2025 / 2016–2018</div><ul><li>Delivered ICT curriculum to secondary students; managed hardware business operations</li></ul></div>
-        </div>
-        <div class="cv-s"><div class="cv-h">Education</div><div class="cv-e"><div class="cv-et">B.Sc. Software Engineering — Nigerian Army University Biu (NAUB)</div><div class="cv-em">2022 – 2025 · CGPA: 4.46 / 5.00</div></div></div>
-        <div class="cv-s"><div class="cv-h">Technical Skills</div><div class="cv-tags"><span class="cv-tag">Python</span><span class="cv-tag">PHP</span><span class="cv-tag">JavaScript</span><span class="cv-tag">SQL / MySQL</span><span class="cv-tag">HTML5 &amp; CSS3</span><span class="cv-tag">React / React Native</span><span class="cv-tag">Node.js</span><span class="cv-tag">Flask</span><span class="cv-tag">GitHub</span><span class="cv-tag">System Design</span><span class="cv-tag">Algorithm Design</span><span class="cv-tag">Reverse Engineering</span></div></div>
-        <div class="cv-s"><div class="cv-h">Credentials</div><div class="cv-tags">
-  <span class="cv-tag">Programming Foundations</span><span class="cv-tag">JavaScript Programming</span>
-  <span class="cv-tag">Frontend Web Development</span><span class="cv-tag">Web Designing</span><span class="cv-tag">Web Design</span><span class="cv-tag">Static Site Development</span>
-  <span class="cv-tag">Computer Fundamentals</span><span class="cv-tag">System Administration</span><span class="cv-tag">Introduction to IoT</span>
-  <span class="cv-tag">Data Analysis</span><span class="cv-tag">Business Analysis</span><span class="cv-tag">Project Management</span>
-  <span class="cv-tag">Entrepreneurial Skills</span><span class="cv-tag">Productivity &amp; Digital Literacy</span><span class="cv-tag">Soft Skills</span>
-  <span class="cv-tag">English for IT 1</span><span class="cv-tag">English for IT 2</span>
-</div></div>
-      </div>
+    <div class="cv-path-grid">
+      <article class="cv-path reveal">
+        <div class="cv-path-kicker">Teaching / Support</div>
+        <h3>ICT Teacher &amp; Digital Skills CV</h3>
+        <p>Best for schools, training centres, ICT support, computer-lab support and administrative technology roles.</p>
+        <ul><li>ICT classroom experience</li><li>Digital literacy &amp; learner support</li><li>Government ICT internship</li><li>Practical admin &amp; technology support</li></ul>
+        <a href="cv-teaching.html" class="btn-dark">View Teaching CV →</a>
+      </article>
+      <article class="cv-path reveal">
+        <div class="cv-path-kicker">Software / SME</div>
+        <h3>Software &amp; EdTech CV</h3>
+        <p>Best for SMEs, startups, junior-to-mid web/software roles, digital product support and education technology.</p>
+        <ul><li>Full-stack web development</li><li>Product workflows &amp; UI structure</li><li>Student-platform experience</li><li>Recent technical stack</li></ul>
+        <a href="cv-software.html" class="btn-dark">View Software CV →</a>
+      </article>
+      <article class="cv-path reveal">
+        <div class="cv-path-kicker">Product / Larger Organisation</div>
+        <h3>Product &amp; Innovation CV</h3>
+        <p>Best for product, innovation, digital transformation, technology programs and cross-functional operations roles.</p>
+        <ul><li>Product leadership</li><li>Requirements &amp; workflow design</li><li>Cross-functional coordination</li><li>Engineering + operations blend</li></ul>
+        <a href="cv-product.html" class="btn-dark">View Product CV →</a>
+      </article>
     </div>
-    <div class="cv-print reveal"><button class="btn-dark" onclick="window.print()" style="margin:0 auto"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Print / Save as PDF</button></div>
   </div>
 </section>
 
