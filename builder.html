@@ -227,7 +227,7 @@ h1,h2,h3,p{margin-top:0}
   .nav-btn{min-height:62px;border-radius:14px}
   .nav-btn.active{background:#eff4ff}
   .shell{max-width:900px;padding-left:28px;padding-right:28px}
-  .category-grid{grid-template-columns:repeat(5,1fr)}
+  .category-grid{grid-template-columns:repeat(3,1fr)}
   .profile-card{padding:26px}
   .profile-row{gap:20px}
   .profile-photo{width:110px;height:128px}
@@ -263,7 +263,7 @@ h1,h2,h3,p{margin-top:0}
           <div class="profile-copy">
             <div class="hello">The Builder by Simeon</div>
             <h1>Learn useful skills. Build something real.</h1>
-            <p>Short, practical lessons in tech, business, money, mindset and relationships.</p>
+            <p>Short lessons in tech, practical skills, business, money, mindset and relationships.</p>
           </div>
         </div>
         <div class="hero-actions">
@@ -427,12 +427,13 @@ const LOCKS={
 };
 const CATEGORY_META={
   tech:{name:'Tech Skills',icon:'💻',desc:'Web, programming, AI and digital tools.'},
+  practical:{name:'Practical Skills',icon:'🛠️',desc:'Hands-on projects that produce a real, shareable result.'},
   business:{name:'Business',icon:'💼',desc:'Customers, sales, operations and growth.'},
   money:{name:'Money',icon:'₦',desc:'Budgeting, earning, investing and financial habits.'},
   mindset:{name:'Mindset',icon:'🧠',desc:'Focus, execution, confidence and personal growth.'},
   relationship:{name:'Relationships',icon:'🤝',desc:'Communication, boundaries and shared direction.'}
 };
-const CATEGORY_ORDER=['tech','business','money','mindset','relationship'];
+const CATEGORY_ORDER=['tech','practical','business','money','mindset','relationship'];
 const STATE_KEY='builderLearningStateV2';
 let lessons=[],state=loadState(),activePage='home',activeCategory='all',activeFilter='all',currentLessonId=null,deferredInstall=null;
 
@@ -481,8 +482,8 @@ function extractBusinessMastery(doc){
 }
 function addHandsOnPracticeLessons(){
   lessons.push({
-    id:'business-hands-on-chatgpt-sites-small-business',
-    category:'business',
+    id:'practical-chatgpt-sites-small-business',
+    category:'practical',
     title:'Build a Small-Business Website with ChatGPT Sites',
     tag:'Hands-on Practice',
     num:'LAB 01',
