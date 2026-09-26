@@ -164,6 +164,10 @@ h1,h2,h3,p{margin-top:0}
 .reader-top .shell{height:62px;display:flex;align-items:center;justify-content:space-between;gap:10px}
 .reader-back{border:0;background:none;display:flex;align-items:center;gap:7px;color:var(--navy);font-size:.78rem;font-weight:600;padding:8px 0;cursor:pointer}
 .reader-bookmark.active svg{fill:var(--gold);stroke:var(--gold)}
+.reader-tools{display:flex;align-items:center;gap:7px}
+.reader-share{display:flex;align-items:center;gap:6px;width:auto;padding:0 10px;font-size:.7rem;font-weight:700;color:var(--navy)}
+.reader-share svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9}
+@media(max-width:430px){.reader-share span{display:none}.reader-share{width:42px;padding:0;justify-content:center}}
 .reader-main{padding:22px 0 42px}
 .reader-label{font-family:var(--mono);font-size:.64rem;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:7px}
 .reader-title{font-family:var(--serif);font-size:clamp(1.8rem,8vw,2.55rem);line-height:1.12;color:var(--navy);margin:0 0 12px}
@@ -370,9 +374,15 @@ h1,h2,h3,p{margin-top:0}
   <div class="reader-top">
     <div class="shell">
       <button class="reader-back" id="readerBack">← Back to lessons</button>
-      <button class="icon-btn reader-bookmark" id="bookmarkBtn" aria-label="Bookmark lesson">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
-      </button>
+      <div class="reader-tools">
+        <button class="icon-btn reader-share" id="shareLessonBtn" aria-label="Share lesson" title="Share lesson">
+          <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></svg>
+          <span>Share</span>
+        </button>
+        <button class="icon-btn reader-bookmark" id="bookmarkBtn" aria-label="Bookmark lesson" title="Bookmark lesson">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+        </button>
+      </div>
     </div>
   </div>
   <div class="shell reader-main">
@@ -532,15 +542,39 @@ function renderProgress(){
   const cats=document.getElementById('progressCategories');cats.innerHTML='';CATEGORY_ORDER.forEach(cat=>{const list=categoryLessons(cat),c=list.filter(x=>isDone(x.id)).length,pctCat=pct(c,list.length),el=document.createElement('article');el.className='card progress-cat';el.innerHTML='<div class="pc-top"><strong>'+CATEGORY_META[cat].icon+' '+CATEGORY_META[cat].name+'</strong><span>'+c+' / '+list.length+'</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+pctCat+'%"></div></div>';cats.appendChild(el)});
   const recent=document.getElementById('recentCompleted');recent.innerHTML='';const recentIds=[...state.history].reverse().filter((id,i,a)=>a.indexOf(id)===i).filter(id=>isDone(id)).slice(0,5);if(!recentIds.length){recent.innerHTML='<div class="card empty">Complete a lesson and it will appear here.</div>';return}recentIds.forEach((id,i)=>{const l=lessons.find(x=>x.id===id);if(l)recent.appendChild(makeLessonCard(l,i+1))});
 }
+function lessonShareUrl(id){
+  const url=new URL(location.href);
+  url.search='';
+  url.hash='';
+  url.searchParams.set('lesson',id);
+  return url.toString();
+}
+function syncLessonUrl(id){
+  const url=new URL(location.href);
+  if(id)url.searchParams.set('lesson',id);else url.searchParams.delete('lesson');
+  history.replaceState({lesson:id||null},'',url);
+}
+async function shareCurrentLesson(){
+  const l=lessons.find(x=>x.id===currentLessonId);if(!l)return;
+  const url=lessonShareUrl(l.id);
+  if(navigator.share){
+    try{
+      await navigator.share({title:l.title,text:'Learn this lesson on The Builder by Simeon',url});
+      return;
+    }catch(e){if(e&&e.name==='AbortError')return}
+  }
+  try{await navigator.clipboard.writeText(url);toast('Lesson link copied')}
+  catch(e){prompt('Copy this lesson link:',url)}
+}
 function openLesson(id){
-  const l=lessons.find(x=>x.id===id);if(!l)return;currentLessonId=id;state.currentId=id;state.history=state.history.filter(x=>x!==id);state.history.push(id);state.history=state.history.slice(-40);saveState();
+  const l=lessons.find(x=>x.id===id);if(!l)return;currentLessonId=id;syncLessonUrl(id);state.currentId=id;state.history=state.history.filter(x=>x!==id);state.history.push(id);state.history=state.history.slice(-40);saveState();
   const unlocked=!l.premium||sessionStorage.getItem('builder-unlocked-'+(l.premiumId||l.id))==='1';document.getElementById('readerUnlocked').hidden=!unlocked;document.getElementById('readerLocked').hidden=unlocked;
   document.getElementById('readerLabel').textContent=CATEGORY_META[l.category].name+' · '+l.tag;document.getElementById('readerTitle').textContent=l.title;document.getElementById('readerMeta').innerHTML='<span class="pill">'+l.minutes+' min read</span>'+(l.premium?'<span class="pill">Premium</span>':'<span class="pill">Free</span>')+(isDone(l.id)?'<span class="pill">✓ Completed</span>':'');document.getElementById('readerContent').innerHTML=l.html;
   const siblings=categoryLessons(l.category),idx=siblings.findIndex(x=>x.id===l.id);document.getElementById('readerProgressFill').style.width=Math.round((idx+1)/Math.max(1,siblings.length)*100)+'%';document.getElementById('prevLesson').disabled=idx<=0;document.getElementById('nextLesson').disabled=idx<0||idx>=siblings.length-1;document.getElementById('prevLesson').dataset.id=idx>0?siblings[idx-1].id:'';document.getElementById('nextLesson').dataset.id=idx<siblings.length-1?siblings[idx+1].id:'';
   const complete=document.getElementById('completeLesson');complete.textContent=isDone(l.id)?'✓ Completed':'Mark complete';complete.classList.toggle('done',isDone(l.id));document.getElementById('bookmarkBtn').classList.toggle('active',isBookmarked(l.id));document.getElementById('premiumPassword').value='';document.getElementById('lockError').textContent='';
   const reader=document.getElementById('reader');reader.classList.add('open');reader.setAttribute('aria-hidden','false');reader.scrollTop=0;document.body.style.overflow='hidden';
 }
-function closeReader(){const r=document.getElementById('reader');r.classList.remove('open');r.setAttribute('aria-hidden','true');document.body.style.overflow='';renderHome();if(activePage==='learn')renderLearn();if(activePage==='progress')renderProgress()}
+function closeReader(){const r=document.getElementById('reader');r.classList.remove('open');r.setAttribute('aria-hidden','true');document.body.style.overflow='';currentLessonId=null;syncLessonUrl(null);renderHome();if(activePage==='learn')renderLearn();if(activePage==='progress')renderProgress()}
 async function sha256(value){const bytes=new TextEncoder().encode(value),digest=await crypto.subtle.digest('SHA-256',bytes);return[...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,'0')).join('')}
 async function unlockCurrent(){const l=lessons.find(x=>x.id===currentLessonId);if(!l||!l.premium)return;const pw=document.getElementById('premiumPassword').value.trim();if(!pw){document.getElementById('premiumPassword').focus();return}const hash=LOCKS[l.premiumId];if(!hash){document.getElementById('lockError').textContent='Access is not configured for this lesson.';return}if(await sha256(pw)===hash){sessionStorage.setItem('builder-unlocked-'+l.premiumId,'1');document.getElementById('readerLocked').hidden=true;document.getElementById('readerUnlocked').hidden=false;document.getElementById('lockError').textContent='';toast('Lesson unlocked')}else{document.getElementById('lockError').textContent='Incorrect access code.';document.getElementById('premiumPassword').value='';document.getElementById('premiumPassword').focus()}}
 function toggleComplete(){const id=currentLessonId;if(!id)return;if(isDone(id)){state.completed=state.completed.filter(x=>x!==id);toast('Marked incomplete')}else{state.completed.push(id);toast('Lesson completed')}saveState();openLesson(id)}
@@ -549,13 +583,17 @@ function escapeHtml(v){return String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;',
 function updateOnline(){document.getElementById('offlineStatus').innerHTML=navigator.onLine?'<i class="status-dot"></i>Online':'<i class="status-dot" style="background:#b07d00"></i>Offline mode'}
 function init(){
   buildLessons();renderHome();
+  const sharedLessonId=new URLSearchParams(location.search).get('lesson');
   document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>go(b.dataset.page));document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
   document.getElementById('startLearning').onclick=()=>go('learn');document.getElementById('resumeHero').onclick=()=>{const l=currentLesson();if(l)openLesson(l.id);else go('learn')};
   document.getElementById('quickSearch').onclick=()=>{go('learn');setTimeout(()=>document.getElementById('lessonSearch').focus(),120)};document.getElementById('lessonSearch').addEventListener('input',renderLearn);
   document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{activeFilter=b.dataset.filter;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===b));renderLearn()});
-  document.getElementById('readerBack').onclick=closeReader;document.getElementById('bookmarkBtn').onclick=toggleBookmark;document.getElementById('completeLesson').onclick=toggleComplete;document.getElementById('prevLesson').onclick=e=>{if(e.currentTarget.dataset.id)openLesson(e.currentTarget.dataset.id)};document.getElementById('nextLesson').onclick=e=>{if(e.currentTarget.dataset.id)openLesson(e.currentTarget.dataset.id)};document.getElementById('unlockLesson').onclick=()=>void unlockCurrent();document.getElementById('premiumPassword').addEventListener('keydown',e=>{if(e.key==='Enter')void unlockCurrent()});
+  document.getElementById('readerBack').onclick=closeReader;document.getElementById('shareLessonBtn').onclick=()=>void shareCurrentLesson();document.getElementById('bookmarkBtn').onclick=toggleBookmark;document.getElementById('completeLesson').onclick=toggleComplete;document.getElementById('prevLesson').onclick=e=>{if(e.currentTarget.dataset.id)openLesson(e.currentTarget.dataset.id)};document.getElementById('nextLesson').onclick=e=>{if(e.currentTarget.dataset.id)openLesson(e.currentTarget.dataset.id)};document.getElementById('unlockLesson').onclick=()=>void unlockCurrent();document.getElementById('premiumPassword').addEventListener('keydown',e=>{if(e.key==='Enter')void unlockCurrent()});
   document.getElementById('resetProgress').onclick=()=>{if(confirm('Clear all learning progress on this device?')){localStorage.removeItem(STATE_KEY);state=loadState();toast('Progress reset');renderHome();renderProgress()}};
-  updateOnline();addEventListener('online',updateOnline);addEventListener('offline',updateOnline);if('serviceWorker' in navigator)navigator.serviceWorker.register('builder-sw.js').catch(()=>{});
+  updateOnline();addEventListener('online',updateOnline);addEventListener('offline',updateOnline);
+  if(sharedLessonId&&lessons.some(l=>l.id===sharedLessonId))openLesson(sharedLessonId);
+  else if(sharedLessonId){syncLessonUrl(null);toast('Lesson link is no longer available')}
+  if('serviceWorker' in navigator)navigator.serviceWorker.register('builder-sw.js').catch(()=>{});
 }
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;const b=document.getElementById('installBtn');b.hidden=false;b.onclick=async()=>{deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null;b.hidden=true}});
 document.addEventListener('DOMContentLoaded',init);
