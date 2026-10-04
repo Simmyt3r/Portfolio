@@ -912,16 +912,26 @@ function toast(msg){const el=document.getElementById('toast');el.textContent=msg
 function go(page){
   activePage=page;document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(page+'Page')?.classList.add('active');
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
-  if(page==='home')renderHome();if(page==='learn')renderLearn();if(page==='progress')renderProgress();window.scrollTo({top:0,behavior:'smooth'});
+  if(page==='home')renderHome();if(page==='learn')renderLearn();if(page==='pathway')renderPathway();if(page==='progress')renderProgress();window.scrollTo({top:0,behavior:'smooth'});
 }
 function openCategory(cat){activeCategory=cat;activeFilter='all';document.getElementById('lessonSearch').value='';document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b.dataset.filter==='all'));go('learn')}
 function renderHome(){
-  const total=lessons.length,done=state.completed.length,p=pct(done,total);
-  document.getElementById('homeProgressText').textContent=done+' of '+total+' lessons';document.getElementById('homeProgressFill').style.width=p+'%';
-  document.getElementById('homeProgressNote').textContent=p?('You are '+p+'% through the library. Progress is saved on this device.'):'Progress is saved on this device.';
-  const current=currentLesson(),box=document.getElementById('continueHome');
-  if(current){box.innerHTML='<article class="card continue-card"><div><div class="continue-tag">'+CATEGORY_META[current.category].name+' · '+current.minutes+' min</div><h3 class="continue-title">'+escapeHtml(current.title)+'</h3><div class="continue-meta">'+(isDone(current.id)?'Completed · Review anytime':'Continue where you left off')+'</div></div><button class="continue-go" aria-label="Open lesson">→</button></article>';box.querySelector('article').onclick=()=>openLesson(current.id)}
-  else box.innerHTML='<div class="card empty">Your lessons will appear here.</div>';
+  const ps=pathwayStats(),p=ps.percent;
+  document.getElementById('homeProgressText').textContent=ps.done+' of '+ps.total+' pathway labs';
+  document.getElementById('homeProgressFill').style.width=p+'%';
+  document.getElementById('homeProgressNote').textContent=p?('You are '+p+'% through the Practical Skills Pathway. Progress is saved on this device.'):'Start with Digital Foundations. Progress is saved on this device.';
+  const current=currentPathLesson(),box=document.getElementById('continueHome');
+  if(current){
+    box.innerHTML='<article class="card continue-card"><div><div class="continue-tag">Practical Skills · '+current.minutes+' min</div><h3 class="continue-title">'+escapeHtml(current.title)+'</h3><div class="continue-meta">'+(isDone(current.id)?'Completed · Review anytime':'Continue your pathway')+'</div></div><button class="continue-go" aria-label="Open lesson">→</button></article>';
+    box.querySelector('article').onclick=()=>openLesson(current.id);
+  }else box.innerHTML='<div class="card empty">Your pathway lessons will appear here.</div>';
+  const ph=document.getElementById('pathwayHome');
+  if(ph){
+    const capDone=CAPSTONE_TASKS.every(t=>state.capstoneChecks.includes(t.id));
+    const milestone=state.assessment.passed&&capDone?'Assessment passed · Certificate ready':capDone?'Capstone complete · Take assessment':ps.done===ps.total?'Labs complete · Start capstone':'Next: '+(current?current.title:'Pathway');
+    ph.innerHTML='<article class="card pathway-home"><div class="pathway-home-top"><div><h3>23 labs → Capstone → Assessment → Certificate</h3><p>Follow the guided route instead of choosing from dozens of lessons every time you open the app.</p></div><span class="pathway-home-badge">'+ps.done+'/'+ps.total+' complete</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+p+'%"></div></div><div class="pathway-home-actions"><span>'+escapeHtml(milestone)+'</span><button class="btn btn-primary" id="homePathwayBtn">'+(ps.done?'Continue pathway':'Start here')+'</button></div></article>';
+    document.getElementById('homePathwayBtn').onclick=()=>go('pathway');
+  }
   const grid=document.getElementById('homeCategories');grid.innerHTML='';
   CATEGORY_ORDER.forEach(cat=>{const list=categoryLessons(cat),cDone=list.filter(x=>isDone(x.id)).length,b=document.createElement('button');b.className='cat-card';b.innerHTML='<div class="cat-icon">'+CATEGORY_META[cat].icon+'</div><h3>'+CATEGORY_META[cat].name+'</h3><p>'+CATEGORY_META[cat].desc+'</p><div class="cat-progress">'+cDone+' / '+list.length+' complete</div>';b.onclick=()=>openCategory(cat);grid.appendChild(b)});
 }
@@ -934,6 +944,48 @@ function renderLearn(){
   const host=document.getElementById('lessonList');host.innerHTML='';if(!list.length){host.innerHTML='<div class="card empty">No lessons match this view.</div>';return}list.forEach((l,index)=>host.appendChild(makeLessonCard(l,index+1)));
 }
 function makeLessonCard(l,index){const b=document.createElement('button');b.className='lesson-card-new';const status=isDone(l.id)?'<span class="done-tag">✓ Done</span>':'',premium=l.premium?'<span class="premium-tag">🔒 Premium</span>':'';b.innerHTML='<div class="lesson-num">'+escapeHtml(l.num||String(index).padStart(2,'0'))+'</div><div class="lesson-copy"><div class="lesson-kicker"><span class="lesson-tag">'+escapeHtml(l.tag)+'</span>'+premium+status+'</div><h3 class="lesson-title">'+escapeHtml(l.title)+'</h3><div class="lesson-meta">'+CATEGORY_META[l.category].name+' · '+l.minutes+' min'+(l.source==='guided'?' · Guided lesson':l.source==='mastery'?' · Mastery':l.source==='practice'?' · Hands-on Practice':'')+'</div></div><div class="lesson-arrow">›</div>';b.onclick=()=>openLesson(l.id);return b}
+function renderPathway(){
+  const ps=pathwayStats(),capUnlocked=ps.total>0&&ps.done===ps.total,capDone=CAPSTONE_TASKS.every(t=>state.capstoneChecks.includes(t.id));
+  document.getElementById('pathwaySummaryTitle').textContent=ps.done+' of '+ps.total+' labs complete';
+  document.getElementById('pathwaySummaryPercent').textContent=ps.percent+'%';
+  document.getElementById('pathwaySummaryFill').style.width=ps.percent+'%';
+  const current=nextPathLesson();
+  document.getElementById('pathwaySummaryNote').textContent=ps.done===ps.total?'All pathway labs complete. Finish the capstone to unlock the assessment.':(current?'Next recommended: '+current.title:'Start with Digital Foundations.');
+  const host=document.getElementById('pathwayStages');host.innerHTML='';
+  PATHWAY_STAGES.forEach(stage=>{
+    const st=stageStats(stage),complete=st.total>0&&st.done===st.total,next=nextPathLesson(stage.id),article=document.createElement('article');
+    article.className='card pathway-stage'+(complete?' completed':'');
+    const dots=st.list.map(l=>'<span class="pathway-dot '+(isDone(l.id)?'done':(next&&l.id===next.id?'current':''))+'"></span>').join('');
+    article.innerHTML='<div class="pathway-stage-head"><div class="pathway-stage-num">'+(complete?'✓':stage.num)+'</div><div class="pathway-stage-copy"><h3>'+escapeHtml(stage.title)+'</h3><p>'+escapeHtml(stage.desc)+'</p></div></div><div class="pathway-stage-meta"><span class="pill">'+escapeHtml(stage.difficulty)+'</span><span class="pill">'+st.done+' / '+st.total+' complete</span><span class="pill">~'+st.minutes+' min reading</span></div><div class="pathway-stage-lesson-strip">'+dots+'</div><div class="pathway-stage-outcome">'+escapeHtml(stage.outcome)+'</div><div class="pathway-stage-foot"><small>'+escapeHtml(stage.prerequisite)+'</small><button class="btn '+(complete?'btn-secondary':'btn-primary')+'">'+(complete?'Review stage':st.done?'Continue stage':'Start stage')+'</button></div>';
+    article.querySelector('button').onclick=()=>{const l=next||st.list[0];if(l)openLesson(l.id)};
+    host.appendChild(article);
+  });
+  const capStatus=document.getElementById('capstoneStatus'),capList=document.getElementById('capstoneList'),capNote=document.getElementById('capstoneNote');
+  capStatus.textContent=capDone?'Complete':capUnlocked?'Ready':ps.done+'/'+ps.total+' labs';
+  capStatus.classList.toggle('ready',capUnlocked);
+  capList.innerHTML='';
+  CAPSTONE_TASKS.forEach(task=>{
+    const checked=state.capstoneChecks.includes(task.id),row=document.createElement('div');
+    row.className='capstone-item'+(capUnlocked?'':' locked');
+    row.innerHTML='<input type="checkbox" id="cap-'+task.id+'" '+(checked?'checked':'')+' '+(capUnlocked?'':'disabled')+'><label for="cap-'+task.id+'">'+escapeHtml(task.label)+'</label>';
+    const input=row.querySelector('input');
+    input.onchange=()=>{if(input.checked){if(!state.capstoneChecks.includes(task.id))state.capstoneChecks.push(task.id)}else state.capstoneChecks=state.capstoneChecks.filter(x=>x!==task.id);saveState();renderPathway();renderHome()};
+    capList.appendChild(row);
+  });
+  capNote.textContent=!capUnlocked?'Complete all '+ps.total+' pathway labs to unlock the capstone checklist.':capDone?'Capstone complete. Your final assessment is unlocked.':'Complete all eight real-world deliverables, then tick them off here.';
+  renderAssessmentPanel(capDone);
+  renderCertificatePanel(capDone);
+}
+function renderAssessmentPanel(capDone){
+  const h=document.getElementById('assessmentHost'),st=document.getElementById('assessmentStatus');
+  st.textContent=capDone?'Ready':'Locked';st.classList.toggle('ready',capDone);
+  h.innerHTML=capDone?'<p class="milestone-note">Assessment ready.</p>':'<p class="milestone-note">Finish the capstone first.</p>';
+}
+function renderCertificatePanel(capDone){
+  const h=document.getElementById('certificateHost'),st=document.getElementById('certificateStatus');
+  st.textContent='Locked';
+  h.innerHTML='<p class="milestone-note">'+(capDone?'Pass the final assessment to unlock your certificate.':'Complete the pathway and capstone first.')+'</p>';
+}
 function renderProgress(){
   const total=lessons.length,done=state.completed.length,p=pct(done,total);document.getElementById('progressPercent').textContent=p+'%';document.getElementById('progressRing').style.background='conic-gradient(var(--blue) '+p+'%,#e7e2da '+p+'%)';
   document.getElementById('progressHeadline').textContent=done?(done===total?'Library completed':'Keep building momentum'):'Start your first lesson';document.getElementById('progressDetail').textContent=done+' of '+total+' lessons completed.';
@@ -973,7 +1025,7 @@ function openLesson(id){
   const complete=document.getElementById('completeLesson');complete.textContent=isDone(l.id)?'✓ Completed':'Mark complete';complete.classList.toggle('done',isDone(l.id));document.getElementById('bookmarkBtn').classList.toggle('active',isBookmarked(l.id));document.getElementById('premiumPassword').value='';document.getElementById('lockError').textContent='';
   const reader=document.getElementById('reader');reader.classList.add('open');reader.setAttribute('aria-hidden','false');reader.scrollTop=0;document.body.style.overflow='hidden';
 }
-function closeReader(){const r=document.getElementById('reader');r.classList.remove('open');r.setAttribute('aria-hidden','true');document.body.style.overflow='';currentLessonId=null;syncLessonUrl(null);renderHome();if(activePage==='learn')renderLearn();if(activePage==='progress')renderProgress()}
+function closeReader(){const r=document.getElementById('reader');r.classList.remove('open');r.setAttribute('aria-hidden','true');document.body.style.overflow='';currentLessonId=null;syncLessonUrl(null);renderHome();if(activePage==='learn')renderLearn();if(activePage==='pathway')renderPathway();if(activePage==='progress')renderProgress()}
 async function sha256(value){const bytes=new TextEncoder().encode(value),digest=await crypto.subtle.digest('SHA-256',bytes);return[...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,'0')).join('')}
 async function unlockCurrent(){const l=lessons.find(x=>x.id===currentLessonId);if(!l||!l.premium)return;const pw=document.getElementById('premiumPassword').value.trim();if(!pw){document.getElementById('premiumPassword').focus();return}const hash=LOCKS[l.premiumId];if(!hash){document.getElementById('lockError').textContent='Access is not configured for this lesson.';return}if(await sha256(pw)===hash){sessionStorage.setItem('builder-unlocked-'+l.premiumId,'1');document.getElementById('readerLocked').hidden=true;document.getElementById('readerUnlocked').hidden=false;document.getElementById('lockError').textContent='';toast('Lesson unlocked')}else{document.getElementById('lockError').textContent='Incorrect access code.';document.getElementById('premiumPassword').value='';document.getElementById('premiumPassword').focus()}}
 function toggleComplete(){const id=currentLessonId;if(!id)return;if(isDone(id)){state.completed=state.completed.filter(x=>x!==id);toast('Marked incomplete')}else{state.completed.push(id);toast('Lesson completed')}saveState();openLesson(id)}
@@ -990,7 +1042,7 @@ function init(){
   buildLessons();renderHome();
   const sharedLessonId=new URLSearchParams(location.search).get('lesson');
   document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>go(b.dataset.page));document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
-  document.getElementById('startLearning').onclick=()=>go('learn');document.getElementById('resumeHero').onclick=()=>{const l=currentLesson();if(l)openLesson(l.id);else go('learn')};
+  document.getElementById('startLearning').onclick=()=>go('pathway');document.getElementById('resumeHero').onclick=()=>{const l=currentPathLesson();if(l)openLesson(l.id);else go('pathway')};
   document.getElementById('quickSearch').onclick=()=>{go('learn');setTimeout(()=>document.getElementById('lessonSearch').focus(),120)};document.getElementById('lessonSearch').addEventListener('input',renderLearn);
   document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{activeFilter=b.dataset.filter;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===b));renderLearn()});
   document.getElementById('readerBack').onclick=closeReader;document.getElementById('shareLessonBtn').onclick=()=>void shareCurrentLesson();document.getElementById('bookmarkBtn').onclick=toggleBookmark;document.getElementById('copySupportBtn').onclick=()=>void copySupportDetails();document.getElementById('completeLesson').onclick=toggleComplete;document.getElementById('prevLesson').onclick=e=>{if(e.currentTarget.dataset.id)openLesson(e.currentTarget.dataset.id)};document.getElementById('nextLesson').onclick=e=>{if(e.currentTarget.dataset.id)openLesson(e.currentTarget.dataset.id)};document.getElementById('unlockLesson').onclick=()=>void unlockCurrent();document.getElementById('premiumPassword').addEventListener('keydown',e=>{if(e.key==='Enter')void unlockCurrent()});
