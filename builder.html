@@ -978,8 +978,35 @@ function renderPathway(){
 }
 function renderAssessmentPanel(capDone){
   const h=document.getElementById('assessmentHost'),st=document.getElementById('assessmentStatus');
-  st.textContent=capDone?'Ready':'Locked';st.classList.toggle('ready',capDone);
-  h.innerHTML=capDone?'<p class="milestone-note">Assessment ready.</p>':'<p class="milestone-note">Finish the capstone first.</p>';
+  st.textContent=state.assessment.passed?'Passed '+state.assessment.score+'%':capDone?'Ready':'Locked';
+  st.classList.toggle('ready',capDone||state.assessment.passed);
+  if(!capDone&&!state.assessment.passed){
+    h.innerHTML='<p class="milestone-note">Finish the capstone first. The assessment will unlock automatically.</p>';
+  }else if(state.assessment.passed){
+    h.innerHTML='<div class="quiz-result pass"><strong>Assessment passed: '+state.assessment.score+'%</strong><br>You can retake it if you want to improve the score.</div><button class="btn btn-secondary" id="retakeAssessment" style="margin-top:10px">Retake assessment</button>';
+    document.getElementById('retakeAssessment').onclick=renderAssessmentForm;
+  }else{
+    h.innerHTML='<button class="btn btn-primary" id="startAssessment">Start 10-question assessment</button><p class="milestone-note">Pass mark: 80%. You can retake it.</p>';
+    document.getElementById('startAssessment').onclick=renderAssessmentForm;
+  }
+}
+function renderAssessmentForm(){
+  const host=document.getElementById('assessmentHost');host.innerHTML='';
+  ASSESSMENT_QUESTIONS.forEach((item,qi)=>{
+    const box=document.createElement('div');box.className='quiz-q';
+    box.innerHTML='<strong>'+(qi+1)+'. '+escapeHtml(item.q)+'</strong>'+item.options.map((opt,oi)=>'<label class="quiz-option"><input type="radio" name="quiz-'+qi+'" value="'+oi+'"><span>'+escapeHtml(opt)+'</span></label>').join('');
+    host.appendChild(box);
+  });
+  const submit=document.createElement('button');submit.className='btn btn-primary';submit.textContent='Submit assessment';submit.style.marginTop='12px';submit.onclick=submitAssessment;host.appendChild(submit);
+}
+function submitAssessment(){
+  let answered=0,correct=0;
+  ASSESSMENT_QUESTIONS.forEach((item,qi)=>{const selected=document.querySelector('input[name="quiz-'+qi+'"]:checked');if(selected){answered++;if(Number(selected.value)===item.answer)correct++}});
+  if(answered<ASSESSMENT_QUESTIONS.length){toast('Answer all 10 questions first');return}
+  const score=Math.round(correct/ASSESSMENT_QUESTIONS.length*100),passed=score>=80;
+  state.assessment={score,passed,attempts:(state.assessment.attempts||0)+1,completedAt:new Date().toISOString()};
+  if(!passed)state.certificate=null;
+  saveState();renderPathway();renderHome();toast(passed?'Assessment passed':'Score: '+score+'% · Try again');
 }
 function renderCertificatePanel(capDone){
   const h=document.getElementById('certificateHost'),st=document.getElementById('certificateStatus');
