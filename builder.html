@@ -564,10 +564,41 @@ const CATEGORY_META={
   relationship:{name:'Relationships',icon:'🤝',desc:'Communication, boundaries and shared direction.'}
 };
 const CATEGORY_ORDER=['tech','practical','business','money','mindset','relationship'];
+
+const PATHWAY_STAGES=[
+{id:'foundations',num:'01',title:'Digital Foundations',difficulty:'Beginner',desc:'Get comfortable with files, security, devices and finding trustworthy information.',outcome:'Outcome: organise files, protect accounts, scan documents, troubleshoot common problems and research more safely.',prerequisite:'Start here',lessons:['practical-google-drive-cloud-files','practical-basic-cybersecurity-everyday','practical-phone-document-scanner','practical-device-troubleshooting','practical-internet-research-fact-checking']},
+{id:'productivity',num:'02',title:'AI & Productivity',difficulty:'Beginner',desc:'Use everyday digital tools to work faster and keep information organised.',outcome:'Outcome: use AI, forms, spreadsheets, email and business documents for real work.',prerequisite:'Recommended: Digital Foundations',lessons:['practical-chatgpt-work-assistant','practical-google-forms-small-business','practical-google-sheets-business-records','practical-professional-business-email','practical-quotations-invoices-receipts']},
+{id:'online-business',num:'03',title:'Online Business Skills',difficulty:'Beginner',desc:'Build a practical online presence and communicate with customers.',outcome:'Outcome: a small business can be found, contacted, presented and promoted more professionally online.',prerequisite:'Recommended: AI & Productivity',lessons:['practical-google-business-profile-creation','practical-whatsapp-business-catalogue-management','practical-facebook-instagram-business-setup','practical-qr-codes-for-business','practical-business-flyer-campaign','practical-whatsapp-customer-service-selling','practical-phone-product-photography','practical-graphic-design-canva-chatgpt-images']},
+{id:'web-builder',num:'04',title:'Build for the Web',difficulty:'Beginner to Builder',desc:'Move from using digital tools to building and publishing something of your own.',outcome:'Outcome: understand websites well enough to build, publish and present a simple portfolio or business page.',prerequisite:'Recommended: Digital Foundations',lessons:['practical-chatgpt-sites-small-business','practical-first-html-css-page','practical-publish-first-website','practical-simple-online-portfolio','practical-domains-hosting-websites']}
+];
+const PATHWAY_IDS=PATHWAY_STAGES.flatMap(x=>x.lessons);
+const CAPSTONE_TASKS=[
+{id:'website',label:'Publish one simple website for the business or personal brand.'},
+{id:'whatsapp',label:'Set up or improve the WhatsApp Business profile and catalogue.'},
+{id:'google',label:'Create or improve the Google Business Profile where the business is eligible.'},
+{id:'form',label:'Create one useful Google Form for enquiries, orders or registration.'},
+{id:'qr',label:'Create and test one QR code that leads to a useful customer action.'},
+{id:'flyer',label:'Create one clear business flyer or social campaign graphic.'},
+{id:'drive',label:'Organise the project files inside a clean Google Drive folder.'},
+{id:'portfolio',label:'Publish a portfolio or project page showing what was built.'}
+];
+const ASSESSMENT_QUESTIONS=[
+{q:'You want someone to read a Drive file but not change it. Which access is best?',options:['Editor','Viewer','Owner','Public editor'],answer:1},
+{q:'A message says your account will close soon unless you log in through its link. What is the safer first action?',options:['Open the link quickly','Share a verification code','Open the real app or official site yourself','Forward it to everyone'],answer:2},
+{q:'Before printing a QR code for customers, what should you do?',options:['Make it tiny','Test the destination and scan it on more than one device','Hide what it opens','Stretch it to fit'],answer:1},
+{q:'Which language mainly gives a web page its structure?',options:['HTML','CSS','JPEG','DNS'],answer:0},
+{q:'After changing a local HTML file, what do you normally do to see the update?',options:['Buy a domain','Save the file and refresh the browser','Delete the browser','Restart the router'],answer:1},
+{q:'Where can Google Forms responses be organised automatically for record keeping?',options:['Google Sheets','Google Photos','YouTube','Calculator'],answer:0},
+{q:'When should a business receipt normally be issued?',options:['Before payment','After payment is received','Before a quotation','When a customer asks for discount'],answer:1},
+{q:'A customer sends a complaint. What should you do first?',options:['Argue','Read or listen to the full complaint','Block them','Send a discount immediately'],answer:1},
+{q:'In simple website terms, what is a domain?',options:['The website address','The physical laptop','The logo','The customer database'],answer:0},
+{q:'ChatGPT gives an important current claim about money, law, health or security. What should you do?',options:['Assume it is correct','Verify it with reliable current sources','Post it immediately','Remove all dates'],answer:1}
+];
+
 const STATE_KEY='builderLearningStateV2';
 let lessons=[],state=loadState(),activePage='home',activeCategory='all',activeFilter='all',currentLessonId=null,deferredInstall=null;
 
-function loadState(){try{const raw=JSON.parse(localStorage.getItem(STATE_KEY)||'{}');return{completed:Array.isArray(raw.completed)?raw.completed:[],bookmarks:Array.isArray(raw.bookmarks)?raw.bookmarks:[],history:Array.isArray(raw.history)?raw.history:[],currentId:raw.currentId||null}}catch(e){return{completed:[],bookmarks:[],history:[],currentId:null}}}
+function loadState(){try{const raw=JSON.parse(localStorage.getItem(STATE_KEY)||'{}');return{completed:Array.isArray(raw.completed)?raw.completed:[],bookmarks:Array.isArray(raw.bookmarks)?raw.bookmarks:[],history:Array.isArray(raw.history)?raw.history:[],currentId:raw.currentId||null,capstoneChecks:Array.isArray(raw.capstoneChecks)?raw.capstoneChecks:[],assessment:raw.assessment&&typeof raw.assessment==='object'?raw.assessment:{score:0,passed:false,attempts:0,completedAt:null},certificate:raw.certificate&&typeof raw.certificate==='object'?raw.certificate:null}}catch(e){return{completed:[],bookmarks:[],history:[],currentId:null,capstoneChecks:[],assessment:{score:0,passed:false,attempts:0,completedAt:null},certificate:null}}}
 function saveState(){localStorage.setItem(STATE_KEY,JSON.stringify(state))}
 function slug(v){return String(v||'lesson').toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60)}
 function cleanText(el){return el?el.textContent.replace(/\s+/g,' ').trim():''}
@@ -871,7 +902,12 @@ function isBookmarked(id){return state.bookmarks.includes(id)}
 function pct(done,total){return total?Math.round(done/total*100):0}
 function categoryLessons(cat){return lessons.filter(l=>l.category===cat)}
 function nextIncomplete(){return lessons.find(l=>!isDone(l.id))||lessons[0]||null}
+function practicalPathLessons(){return PATHWAY_IDS.map(id=>lessons.find(l=>l.id===id)).filter(Boolean)}
+function pathwayStats(){const list=practicalPathLessons(),done=list.filter(l=>isDone(l.id)).length;return{list,done,total:list.length,percent:pct(done,list.length)}}
+function stageStats(stage){const list=stage.lessons.map(id=>lessons.find(l=>l.id===id)).filter(Boolean),done=list.filter(l=>isDone(l.id)).length;return{list,done,total:list.length,percent:pct(done,list.length),minutes:list.reduce((a,l)=>a+(l.minutes||0),0)}}
+function nextPathLesson(stageId){const stage=stageId?PATHWAY_STAGES.find(x=>x.id===stageId):null,list=stage?stage.lessons.map(id=>lessons.find(l=>l.id===id)).filter(Boolean):practicalPathLessons();return list.find(l=>!isDone(l.id))||list[0]||null}
 function currentLesson(){return lessons.find(l=>l.id===state.currentId)||nextIncomplete()}
+function currentPathLesson(){const current=lessons.find(l=>l.id===state.currentId&&PATHWAY_IDS.includes(l.id));return current||nextPathLesson()}
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),1800)}
 function go(page){
   activePage=page;document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(page+'Page')?.classList.add('active');
