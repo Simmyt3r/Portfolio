@@ -142,6 +142,75 @@ h1,h2,h3,p{margin-top:0}
 .pc-top strong{font-size:.8rem;color:var(--navy)}
 .pc-top span{font-size:.67rem;color:var(--muted)}
 
+
+/* Practical Skills Pathway */
+.pathway-home{padding:17px;overflow:hidden;position:relative}
+.pathway-home-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.pathway-home h3{font-family:var(--serif);font-size:1.12rem;color:var(--navy);margin:0 0 5px}
+.pathway-home p{font-size:.73rem;line-height:1.55;color:var(--muted);margin:0}
+.pathway-home-badge{font-family:var(--mono);font-size:.61rem;color:var(--blue);white-space:nowrap;background:#eef3ff;border:1px solid #dce6ff;border-radius:999px;padding:5px 8px}
+.pathway-home .progress-bar{margin:14px 0 9px}
+.pathway-home-actions{display:flex;gap:8px;align-items:center;justify-content:space-between}
+.pathway-home-actions span{font-size:.68rem;color:var(--muted)}
+.pathway-home-actions button{min-height:38px;padding:8px 12px;font-size:.72rem}
+.pathway-head{padding:24px 0 8px}
+.pathway-summary{margin-top:18px;padding:16px}
+.pathway-summary-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:9px}
+.pathway-summary-top strong{font-size:.84rem;color:var(--navy)}
+.pathway-summary-top span{font-size:.68rem;color:var(--blue);font-weight:700}
+.pathway-stage-list{display:flex;flex-direction:column;gap:11px}
+.pathway-stage{padding:16px}
+.pathway-stage-head{display:flex;gap:12px;align-items:flex-start}
+.pathway-stage-num{width:42px;height:42px;border-radius:13px;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:var(--mono);font-size:.67rem;flex:0 0 auto}
+.pathway-stage-copy{min-width:0;flex:1}
+.pathway-stage-copy h3{font-size:.95rem;line-height:1.3;color:var(--navy);margin:0 0 4px}
+.pathway-stage-copy p{font-size:.7rem;line-height:1.5;color:var(--muted);margin:0}
+.pathway-stage-meta{display:flex;flex-wrap:wrap;gap:6px;margin:11px 0}
+.pathway-stage-outcome{font-size:.72rem;line-height:1.55;color:var(--ink2);padding:10px 11px;background:var(--off);border-radius:10px;margin:10px 0}
+.pathway-stage-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:11px}
+.pathway-stage-foot small{font-size:.64rem;line-height:1.4;color:var(--muted)}
+.pathway-stage-foot .btn{min-height:39px;padding:8px 12px;font-size:.7rem}
+.pathway-stage.completed .pathway-stage-num{background:var(--green)}
+.pathway-stage.completed{border-color:#cfe9dc}
+.pathway-stage-lesson-strip{display:flex;gap:5px;margin-top:10px}
+.pathway-dot{height:5px;flex:1;border-radius:999px;background:#e8e4dc}
+.pathway-dot.done{background:var(--green)}
+.pathway-dot.current{background:var(--blue)}
+.milestone-card{padding:18px}
+.milestone-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.milestone-icon{width:42px;height:42px;border-radius:13px;background:#fbf5e9;color:var(--gold);display:grid;place-items:center;font-size:1.1rem}
+.milestone-card h3{font-family:var(--serif);font-size:1.15rem;color:var(--navy);margin:0 0 5px}
+.milestone-card p{font-size:.73rem;line-height:1.6;color:var(--muted);margin:0}
+.milestone-status{font-size:.62rem;font-weight:700;border-radius:999px;padding:5px 8px;background:var(--off);color:var(--muted);white-space:nowrap}
+.milestone-status.ready{background:#edf8f3;color:var(--green)}
+.capstone-list{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.capstone-item{display:flex;align-items:flex-start;gap:9px;padding:10px;border:1px solid var(--rule);border-radius:10px;background:#fff}
+.capstone-item input{margin-top:2px;accent-color:var(--green)}
+.capstone-item label{font-size:.72rem;line-height:1.45;color:var(--ink2);cursor:pointer}
+.capstone-item.locked{opacity:.55}
+.milestone-note{margin-top:11px!important;font-size:.67rem!important}
+.assessment-host{margin-top:13px}
+.quiz-q{padding:13px 0;border-top:1px solid var(--rule)}
+.quiz-q:first-child{border-top:0}
+.quiz-q strong{display:block;font-size:.78rem;line-height:1.45;color:var(--navy);margin-bottom:8px}
+.quiz-option{display:flex;gap:8px;align-items:flex-start;padding:7px 8px;border-radius:8px;cursor:pointer}
+.quiz-option input{margin-top:2px;accent-color:var(--blue)}
+.quiz-option span{font-size:.7rem;line-height:1.45;color:var(--ink2)}
+.quiz-result{padding:11px;border-radius:10px;background:var(--off);font-size:.72rem;line-height:1.5;margin-top:10px}
+.quiz-result.pass{background:#edf8f3;color:#176c4b}
+.quiz-result.fail{background:#fff3f1;color:#a44337}
+.certificate-form{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:13px}
+.certificate-form input{min-width:0;height:43px;border:1px solid var(--rule);border-radius:10px;padding:0 11px;background:#fff;color:var(--ink)}
+.certificate-form .btn{min-height:43px;padding:8px 13px}
+.certificate-issued{margin-top:12px;padding:12px;border:1px solid #cfe9dc;background:#f2faf6;border-radius:11px}
+.certificate-issued strong{display:block;color:var(--green);font-size:.79rem;margin-bottom:3px}
+.certificate-issued span{display:block;font-size:.67rem;line-height:1.45;color:var(--muted);margin-bottom:9px}
+.progress-path-card{padding:14px}
+.progress-path-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.progress-path-top strong{font-size:.8rem;color:var(--navy)}
+.progress-path-top span{font-size:.67rem;color:var(--blue);font-weight:700}
+@media(max-width:430px){.certificate-form{grid-template-columns:1fr}.pathway-stage-foot{align-items:flex-end}}
+
 /* More */
 .more-profile{display:flex;gap:14px;align-items:center;padding:16px}
 .more-profile img{width:66px;height:66px;object-fit:cover;object-position:top;border-radius:16px}
@@ -216,7 +285,7 @@ h1,h2,h3,p{margin-top:0}
 
 /* Bottom navigation */
 .bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-top:1px solid var(--rule);padding-bottom:env(safe-area-inset-bottom)}
-.bottom-inner{height:var(--bottom-h);width:min(100%,760px);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);padding:0 8px}
+.bottom-inner{height:var(--bottom-h);width:min(100%,760px);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);padding:0 8px}
 .nav-btn{border:0;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--muted);font-size:.61rem;font-weight:600;cursor:pointer}
 .nav-btn svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.9;fill:none}
 .nav-btn.active{color:var(--blue)}
@@ -296,6 +365,10 @@ h1,h2,h3,p{margin-top:0}
       <div id="continueHome"></div>
     </div>
     <div class="section" style="padding-top:4px">
+      <div class="section-head"><h2 class="section-title">Practical Skills Pathway</h2><button class="section-link" data-go="pathway">View pathway</button></div>
+      <div id="pathwayHome"></div>
+    </div>
+    <div class="section" style="padding-top:4px">
       <div class="section-head"><h2 class="section-title">Explore topics</h2><button class="section-link" data-go="learn">See lessons</button></div>
       <div class="category-grid" id="homeCategories"></div>
     </div>
@@ -325,6 +398,26 @@ h1,h2,h3,p{margin-top:0}
   </div>
 </section>
 
+
+<section class="page" id="pathwayPage">
+  <div class="shell">
+    <div class="pathway-head">
+      <div class="eyebrow">Guided learning route</div>
+      <h1 class="page-title">Practical Skills Pathway</h1>
+      <p class="page-lede">A clear route through 23 practical labs. Complete the four stages, build the capstone, pass the assessment, then generate your completion certificate.</p>
+      <article class="card pathway-summary">
+        <div class="pathway-summary-top"><strong id="pathwaySummaryTitle">0 of 23 labs complete</strong><span id="pathwaySummaryPercent">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="pathwaySummaryFill"></div></div>
+        <p class="progress-note" id="pathwaySummaryNote">Start with Digital Foundations.</p>
+      </article>
+    </div>
+    <div class="section" style="padding-top:14px"><div class="section-head"><h2 class="section-title">Your four stages</h2></div><div class="pathway-stage-list" id="pathwayStages"></div></div>
+    <div class="section" style="padding-top:4px"><article class="card milestone-card"><div class="milestone-top"><div style="display:flex;gap:11px;align-items:flex-start"><div class="milestone-icon">🏁</div><div><h3>Capstone: Build a Real Digital Presence</h3><p>Bring the skills together around one real small business or personal brand.</p></div></div><span class="milestone-status" id="capstoneStatus">Locked</span></div><div class="capstone-list" id="capstoneList"></div><p class="milestone-note" id="capstoneNote">Complete all 23 pathway labs to unlock the capstone checklist.</p></article></div>
+    <div class="section" style="padding-top:4px"><article class="card milestone-card"><div class="milestone-top"><div style="display:flex;gap:11px;align-items:flex-start"><div class="milestone-icon">✓</div><div><h3>Final Assessment</h3><p>10 simple questions covering the skills you practised. Pass mark: 80%.</p></div></div><span class="milestone-status" id="assessmentStatus">Locked</span></div><div class="assessment-host" id="assessmentHost"></div></article></div>
+    <div class="section" style="padding-top:4px;padding-bottom:34px"><article class="card milestone-card"><div class="milestone-top"><div style="display:flex;gap:11px;align-items:flex-start"><div class="milestone-icon">🎓</div><div><h3>Completion Certificate</h3><p>Available after the capstone and a passing assessment score.</p></div></div><span class="milestone-status" id="certificateStatus">Locked</span></div><div id="certificateHost"></div></article></div>
+  </div>
+</section>
+
 <section class="page" id="progressPage">
   <div class="shell">
     <div class="section">
@@ -335,6 +428,10 @@ h1,h2,h3,p{margin-top:0}
         <div class="progress-ring" id="progressRing"><span id="progressPercent">0%</span></div>
         <div><h2 id="progressHeadline">Start your first lesson</h2><p id="progressDetail">Every completed lesson will appear here.</p></div>
       </article>
+    </div>
+    <div class="section" style="padding-top:4px">
+      <div class="section-head"><h2 class="section-title">Practical Skills Pathway</h2><button class="section-link" data-go="pathway">Open pathway</button></div>
+      <div id="progressPathway"></div>
     </div>
     <div class="section" style="padding-top:4px">
       <div class="section-head"><h2 class="section-title">By topic</h2></div>
@@ -374,6 +471,7 @@ h1,h2,h3,p{margin-top:0}
   <div class="bottom-inner">
     <button class="nav-btn active" data-page="home"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></svg><span>Home</span></button>
     <button class="nav-btn" data-page="learn"><svg viewBox="0 0 24 24"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H20v17H7.5A3.5 3.5 0 0 0 4 22z"/><path d="M4 5.5V22"/></svg><span>Learn</span></button>
+    <button class="nav-btn" data-page="pathway"><svg viewBox="0 0 24 24"><path d="M5 19c4-7 5-12 14-14"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M9 14h5v-5"/></svg><span>Pathway</span></button>
     <button class="nav-btn" data-page="progress"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20V7"/></svg><span>Progress</span></button>
     <button class="nav-btn" data-page="more"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg><span>More</span></button>
   </div>
