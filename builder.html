@@ -211,6 +211,27 @@ h1,h2,h3,p{margin-top:0}
 .progress-path-top span{font-size:.67rem;color:var(--blue);font-weight:700}
 @media(max-width:430px){.certificate-form{grid-template-columns:1fr}.pathway-stage-foot{align-items:flex-end}}
 
+
+.certificate-overlay{position:fixed;inset:0;z-index:180;background:rgba(10,24,42,.72);display:grid;place-items:center;padding:18px;overflow:auto}
+.certificate-sheet{width:min(100%,960px);aspect-ratio:1.414/1;background:#fffdf8;border:2px solid var(--navy);box-shadow:0 24px 70px rgba(0,0,0,.28);padding:28px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--navy)}
+.certificate-sheet::before{content:'';position:absolute;inset:10px;border:1px solid var(--gold);pointer-events:none}
+.cert-ey{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.cert-brand{font-family:var(--serif);font-size:1.8rem;margin:8px 0 22px}
+.cert-small{font-size:.75rem;color:var(--muted)}
+.cert-name{font-family:var(--serif);font-size:clamp(1.8rem,6vw,3.3rem);padding:8px 20px 6px;border-bottom:1px solid var(--gold);margin:7px 0 10px}
+.cert-title{font-size:1.05rem;font-weight:700;margin:8px 0}
+.cert-desc{max-width:670px;font-size:.75rem;line-height:1.6;color:var(--ink2)}
+.cert-meta{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-top:20px;font-size:.65rem;color:var(--muted)}
+.cert-signature{font-family:var(--serif);font-size:1rem;margin-top:22px}
+.certificate-actions{display:flex;gap:8px;position:absolute;right:18px;top:18px;z-index:2}
+.certificate-actions .btn{min-height:38px;padding:8px 11px;font-size:.68rem}
+@media print{
+  body.cert-print .app,body.cert-print .reader,body.cert-print .toast{display:none!important}
+  body.cert-print #certificateOverlay{position:static!important;display:block!important;background:#fff!important;padding:0!important}
+  body.cert-print #certificateOverlay .certificate-sheet{width:100vw;height:70.7vw;max-height:100vh;aspect-ratio:auto;box-shadow:none;border:2px solid #0f2744}
+  body.cert-print #certificateOverlay .certificate-actions{display:none!important}
+}
+
 /* More */
 .more-profile{display:flex;gap:14px;align-items:center;padding:16px}
 .more-profile img{width:66px;height:66px;object-fit:cover;object-position:top;border-radius:16px}
@@ -1009,10 +1030,38 @@ function submitAssessment(){
   saveState();renderPathway();renderHome();toast(passed?'Assessment passed':'Score: '+score+'% · Try again');
 }
 function renderCertificatePanel(capDone){
-  const h=document.getElementById('certificateHost'),st=document.getElementById('certificateStatus');
-  st.textContent='Locked';
-  h.innerHTML='<p class="milestone-note">'+(capDone?'Pass the final assessment to unlock your certificate.':'Complete the pathway and capstone first.')+'</p>';
+  const h=document.getElementById('certificateHost'),st=document.getElementById('certificateStatus'),eligible=capDone&&state.assessment.passed;
+  st.textContent=state.certificate?'Issued':eligible?'Ready':'Locked';
+  st.classList.toggle('ready',eligible||!!state.certificate);
+  if(state.certificate){
+    const date=new Date(state.certificate.issuedAt).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+    h.innerHTML='<div class="certificate-issued"><strong>Certificate issued to '+escapeHtml(state.certificate.name)+'</strong><span>'+date+' · ID '+escapeHtml(state.certificate.id)+'</span><button class="btn btn-primary" id="viewCertificate">View / Print certificate</button></div>';
+    document.getElementById('viewCertificate').onclick=showCertificate;
+  }else if(eligible){
+    h.innerHTML='<div class="certificate-form"><input id="certificateName" type="text" maxlength="80" placeholder="Name to appear on certificate"><button class="btn btn-primary" id="issueCertificate">Generate certificate</button></div><p class="milestone-note">Use your real name. This completion certificate is generated from progress saved on this device.</p>';
+    document.getElementById('issueCertificate').onclick=issueCertificate;
+  }else{
+    h.innerHTML='<p class="milestone-note">Complete all pathway labs, finish the capstone, and score at least 80% in the assessment.</p>';
+  }
 }
+function issueCertificate(){
+  const input=document.getElementById('certificateName'),name=(input?input.value:'').trim();
+  if(name.length<3){toast('Enter the name for the certificate');if(input)input.focus();return}
+  const now=new Date(),stamp=now.getFullYear()+String(now.getMonth()+1).padStart(2,'0')+String(now.getDate()).padStart(2,'0');
+  state.certificate={name,issuedAt:now.toISOString(),id:'BLD-'+stamp+'-'+Date.now().toString(36).slice(-6).toUpperCase(),score:state.assessment.score};
+  saveState();renderPathway();renderHome();showCertificate();
+}
+function showCertificate(){
+  if(!state.certificate)return;
+  document.getElementById('certificateOverlay')?.remove();
+  const c=state.certificate,date=new Date(c.issuedAt).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'}),overlay=document.createElement('div');
+  overlay.className='certificate-overlay';overlay.id='certificateOverlay';
+  overlay.innerHTML='<div class="certificate-sheet"><div class="certificate-actions"><button class="btn btn-secondary" id="closeCertificate">Close</button><button class="btn btn-primary" id="printCertificate">Print / Save PDF</button></div><div class="cert-ey">Certificate of Completion</div><div class="cert-brand">The Builder by Simeon</div><div class="cert-small">This certifies that</div><div class="cert-name">'+escapeHtml(c.name)+'</div><div class="cert-small">has completed the</div><div class="cert-title">Practical Digital Skills Pathway</div><div class="cert-desc">23 hands-on practical labs, a real-world digital presence capstone, and the final assessment with a score of '+Number(c.score||state.assessment.score)+'%.</div><div class="cert-meta"><span>Issued: '+escapeHtml(date)+'</span><span>Certificate ID: '+escapeHtml(c.id)+'</span></div><div class="cert-signature">Simeon Tertese</div><div class="cert-small">Instructor · The Builder</div></div>';
+  document.body.appendChild(overlay);
+  document.getElementById('closeCertificate').onclick=()=>overlay.remove();
+  document.getElementById('printCertificate').onclick=()=>{document.body.classList.add('cert-print');window.print();setTimeout(()=>document.body.classList.remove('cert-print'),500)};
+}
+
 function renderProgress(){
   const total=lessons.length,done=state.completed.length,p=pct(done,total);document.getElementById('progressPercent').textContent=p+'%';document.getElementById('progressRing').style.background='conic-gradient(var(--blue) '+p+'%,#e7e2da '+p+'%)';
   document.getElementById('progressHeadline').textContent=done?(done===total?'Library completed':'Keep building momentum'):'Start your first lesson';document.getElementById('progressDetail').textContent=done+' of '+total+' lessons completed.';
