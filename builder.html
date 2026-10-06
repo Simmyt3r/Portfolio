@@ -124,6 +124,7 @@ h1,h2,h3,p{margin-top:0}
 .lesson-tag{font-size:.62rem;font-weight:600;color:var(--blue)}
 .premium-tag{font-size:.59rem;color:#8b6200;background:#fbf5e9;border:1px solid #ead9b8;border-radius:999px;padding:2px 6px;font-weight:700}
 .done-tag{font-size:.59rem;color:var(--green);background:#edf8f3;border:1px solid #ccebdd;border-radius:999px;padding:2px 6px;font-weight:700}
+.saved-tag{font-size:.59rem;color:#775300;background:#fff8df;border:1px solid #ead9a6;border-radius:999px;padding:2px 6px;font-weight:700}
 .lesson-title{font-size:.86rem;line-height:1.38;color:var(--navy);font-weight:600;margin:0 0 4px}
 .lesson-meta{font-size:.65rem;color:var(--muted)}
 .lesson-arrow{width:31px;height:31px;border-radius:10px;background:var(--off);display:grid;place-items:center;color:var(--navy)}
@@ -412,6 +413,7 @@ h1,h2,h3,p{margin-top:0}
         <button class="filter" data-filter="free">Free</button>
         <button class="filter" data-filter="premium">Premium</button>
         <button class="filter" data-filter="completed">Completed</button>
+        <button class="filter" data-filter="bookmarked">Bookmarked</button>
         <button class="filter" data-filter="new">Not started</button>
       </div>
     </div>
@@ -457,6 +459,10 @@ h1,h2,h3,p{margin-top:0}
     <div class="section" style="padding-top:4px">
       <div class="section-head"><h2 class="section-title">By topic</h2></div>
       <div class="progress-cats" id="progressCategories"></div>
+    </div>
+    <div class="section" style="padding-top:4px">
+      <div class="section-head"><h2 class="section-title">Saved lessons</h2><button class="section-link" id="browseSaved">Browse saved</button></div>
+      <div class="lesson-list" id="savedLessons"></div>
     </div>
     <div class="section" style="padding-top:4px">
       <div class="section-head"><h2 class="section-title">Recently completed</h2></div>
@@ -1006,10 +1012,10 @@ function lessonMatches(l,q){if(!q)return true;const box=document.createElement('
 function renderLearn(){
   renderCategoryChips();const q=document.getElementById('lessonSearch').value.trim().toLowerCase();
   let list=lessons.filter(l=>(activeCategory==='all'||l.category===activeCategory)&&lessonMatches(l,q));
-  if(activeFilter==='free')list=list.filter(l=>!l.premium);if(activeFilter==='premium')list=list.filter(l=>l.premium);if(activeFilter==='completed')list=list.filter(l=>isDone(l.id));if(activeFilter==='new')list=list.filter(l=>!isDone(l.id));
+  if(activeFilter==='free')list=list.filter(l=>!l.premium);if(activeFilter==='premium')list=list.filter(l=>l.premium);if(activeFilter==='completed')list=list.filter(l=>isDone(l.id));if(activeFilter==='bookmarked')list=list.filter(l=>isBookmarked(l.id));if(activeFilter==='new')list=list.filter(l=>!isDone(l.id));
   const host=document.getElementById('lessonList');host.innerHTML='';if(!list.length){host.innerHTML='<div class="card empty">No lessons match this view.</div>';return}list.forEach((l,index)=>host.appendChild(makeLessonCard(l,index+1)));
 }
-function makeLessonCard(l,index){const b=document.createElement('button');b.className='lesson-card-new';const status=isDone(l.id)?'<span class="done-tag">✓ Done</span>':'',premium=l.premium?'<span class="premium-tag">🔒 Premium</span>':'';b.innerHTML='<div class="lesson-num">'+escapeHtml(l.num||String(index).padStart(2,'0'))+'</div><div class="lesson-copy"><div class="lesson-kicker"><span class="lesson-tag">'+escapeHtml(l.tag)+'</span>'+premium+status+'</div><h3 class="lesson-title">'+escapeHtml(l.title)+'</h3><div class="lesson-meta">'+CATEGORY_META[l.category].name+' · '+l.minutes+' min'+(l.source==='guided'?' · Guided lesson':l.source==='mastery'?' · Mastery':l.source==='practice'?' · Hands-on Practice':'')+'</div></div><div class="lesson-arrow">›</div>';b.onclick=()=>openLesson(l.id);return b}
+function makeLessonCard(l,index){const b=document.createElement('button');b.className='lesson-card-new';const status=isDone(l.id)?'<span class="done-tag">✓ Done</span>':'',saved=isBookmarked(l.id)?'<span class="saved-tag">Saved</span>':'',premium=l.premium?'<span class="premium-tag">🔒 Premium</span>':'';b.innerHTML='<div class="lesson-num">'+escapeHtml(l.num||String(index).padStart(2,'0'))+'</div><div class="lesson-copy"><div class="lesson-kicker"><span class="lesson-tag">'+escapeHtml(l.tag)+'</span>'+premium+saved+status+'</div><h3 class="lesson-title">'+escapeHtml(l.title)+'</h3><div class="lesson-meta">'+CATEGORY_META[l.category].name+' · '+l.minutes+' min'+(l.source==='guided'?' · Guided lesson':l.source==='mastery'?' · Mastery':l.source==='practice'?' · Hands-on Practice':'')+'</div></div><div class="lesson-arrow">›</div>';b.onclick=()=>openLesson(l.id);return b}
 function renderPathway(){
   const ps=pathwayStats(),capUnlocked=ps.total>0&&ps.done===ps.total,capDone=CAPSTONE_TASKS.every(t=>state.capstoneChecks.includes(t.id));
   document.getElementById('pathwaySummaryTitle').textContent=ps.done+' of '+ps.total+' labs complete';
@@ -1109,11 +1115,13 @@ function showCertificate(){
 
 function renderProgress(){
   const total=lessons.length,done=state.completed.length,p=pct(done,total);document.getElementById('progressPercent').textContent=p+'%';document.getElementById('progressRing').style.background='conic-gradient(var(--blue) '+p+'%,#e7e2da '+p+'%)';
-  document.getElementById('progressHeadline').textContent=done?(done===total?'Library completed':'Keep building momentum'):'Start your first lesson';document.getElementById('progressDetail').textContent=done+' of '+total+' lessons completed.';
+  document.getElementById('progressHeadline').textContent=done?(done===total?'Library completed':'Keep building momentum'):'Start your first lesson';document.getElementById('progressDetail').textContent=done+' of '+total+' lessons completed · '+state.bookmarks.length+' saved.';
   const path=pathwayStats(),pp=document.getElementById('progressPathway');
   if(pp){pp.innerHTML='<article class="card progress-path-card"><div class="progress-path-top"><strong>Practical Skills Pathway</strong><span>'+path.done+' / '+path.total+'</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+path.percent+'%"></div></div><p class="progress-note">'+(state.assessment.passed?'Assessment passed · Certificate '+(state.certificate?'issued':'ready'):path.done===path.total?'Labs complete · Finish the capstone':'Follow the guided pathway for the recommended order.')+'</p></article>';}
   const cats=document.getElementById('progressCategories');cats.innerHTML='';CATEGORY_ORDER.forEach(cat=>{const list=categoryLessons(cat),c=list.filter(x=>isDone(x.id)).length,pctCat=pct(c,list.length),el=document.createElement('article');el.className='card progress-cat';el.innerHTML='<div class="pc-top"><strong>'+CATEGORY_META[cat].icon+' '+CATEGORY_META[cat].name+'</strong><span>'+c+' / '+list.length+'</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+pctCat+'%"></div></div>';cats.appendChild(el)});
-  const recent=document.getElementById('recentCompleted');recent.innerHTML='';const recentIds=[...state.history].reverse().filter((id,i,a)=>a.indexOf(id)===i).filter(id=>isDone(id)).slice(0,5);if(!recentIds.length){recent.innerHTML='<div class="card empty">Complete a lesson and it will appear here.</div>';return}recentIds.forEach((id,i)=>{const l=lessons.find(x=>x.id===id);if(l)recent.appendChild(makeLessonCard(l,i+1))});
+  const saved=document.getElementById('savedLessons');saved.innerHTML='';const savedIds=[...state.bookmarks].reverse().filter(id=>lessons.some(l=>l.id===id)).slice(0,5);if(!savedIds.length)saved.innerHTML='<div class="card empty">Bookmark a lesson and it will appear here for quick access.</div>';else savedIds.forEach((id,i)=>{const l=lessons.find(x=>x.id===id);if(l)saved.appendChild(makeLessonCard(l,i+1))});
+  const browseSaved=document.getElementById('browseSaved');if(browseSaved)browseSaved.onclick=()=>{activeCategory='all';activeFilter='bookmarked';document.getElementById('lessonSearch').value='';document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x.dataset.filter==='bookmarked'));go('learn')};
+  const recent=document.getElementById('recentCompleted');recent.innerHTML='';const recentIds=[...state.history].reverse().filter((id,i,a)=>a.indexOf(id)===i).filter(id=>isDone(id)).slice(0,5);if(!recentIds.length)recent.innerHTML='<div class="card empty">Complete a lesson and it will appear here.</div>';else recentIds.forEach((id,i)=>{const l=lessons.find(x=>x.id===id);if(l)recent.appendChild(makeLessonCard(l,i+1))});
 }
 function lessonShareUrl(id){
   const url=new URL(location.href);
@@ -1158,7 +1166,7 @@ async function copySupportDetails(){
   try{await navigator.clipboard.writeText(details);toast('Support details copied')}
   catch(e){prompt('Copy support details:',details)}
 }
-function toggleBookmark(){const id=currentLessonId;if(!id)return;if(isBookmarked(id))state.bookmarks=state.bookmarks.filter(x=>x!==id);else state.bookmarks.push(id);saveState();document.getElementById('bookmarkBtn').classList.toggle('active',isBookmarked(id));toast(isBookmarked(id)?'Bookmarked':'Bookmark removed')}
+function toggleBookmark(){const id=currentLessonId;if(!id)return;if(isBookmarked(id))state.bookmarks=state.bookmarks.filter(x=>x!==id);else state.bookmarks.push(id);saveState();document.getElementById('bookmarkBtn').classList.toggle('active',isBookmarked(id));if(activePage==='progress')renderProgress();toast(isBookmarked(id)?'Saved for later':'Removed from saved lessons')}
 function escapeHtml(v){return String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function updateOnline(){document.getElementById('offlineStatus').innerHTML=navigator.onLine?'<i class="status-dot"></i>Online':'<i class="status-dot" style="background:#b07d00"></i>Offline mode'}
 function init(){
