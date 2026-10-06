@@ -444,7 +444,7 @@ h1,h2,h3,p{margin-top:0}
     <div class="section">
       <div class="eyebrow">Your learning</div>
       <h1 class="page-title">Progress</h1>
-      <p class="page-lede">Your progress stays on this browser and device. No account required.</p>
+      <p class="page-lede">Your progress is stored on this device. Back it up anytime and restore it on another browser without creating an account.</p>
       <article class="card progress-hero">
         <div class="progress-ring" id="progressRing"><span id="progressPercent">0%</span></div>
         <div><h2 id="progressHeadline">Start your first lesson</h2><p id="progressDetail">Every completed lesson will appear here.</p></div>
@@ -481,6 +481,9 @@ h1,h2,h3,p{margin-top:0}
         <a class="menu-item" href="https://wa.me/2349056232366?text=I%20want%20to%20join%20The%20Builder%20community" target="_blank" rel="noopener"><div><strong>Join the Builder community</strong><span>Questions, support and premium access</span></div><b class="menu-chevron">›</b></a>
         <button class="menu-item" id="installBtn" hidden><div><strong>Install The Builder</strong><span>Add the learning app to your home screen</span></div><b class="menu-chevron">›</b></button>
         <div class="menu-item"><div><strong>Offline status</strong><span id="offlineStatus"><i class="status-dot"></i>Online</span></div></div>
+        <button class="menu-item" id="exportProgress"><div><strong>Back up learning progress</strong><span>Download a private JSON copy of your completions, bookmarks, pathway and certificate state</span></div><b class="menu-chevron">↓</b></button>
+        <button class="menu-item" id="importProgress"><div><strong>Restore learning progress</strong><span>Import a Builder backup from this or another device</span></div><b class="menu-chevron">↑</b></button>
+        <input id="importProgressFile" type="file" accept=".json,application/json" hidden>
         <button class="menu-item" id="resetProgress"><div><strong class="danger">Reset learning progress</strong><span>Clear completed lessons and bookmarks on this device</span></div><b class="menu-chevron">›</b></button>
       </div>
     </div>
@@ -621,6 +624,48 @@ let lessons=[],state=loadState(),activePage='home',activeCategory='all',activeFi
 
 function loadState(){try{const raw=JSON.parse(localStorage.getItem(STATE_KEY)||'{}');return{completed:Array.isArray(raw.completed)?raw.completed:[],bookmarks:Array.isArray(raw.bookmarks)?raw.bookmarks:[],history:Array.isArray(raw.history)?raw.history:[],currentId:raw.currentId||null,capstoneChecks:Array.isArray(raw.capstoneChecks)?raw.capstoneChecks:[],assessment:raw.assessment&&typeof raw.assessment==='object'?raw.assessment:{score:0,passed:false,attempts:0,completedAt:null},certificate:raw.certificate&&typeof raw.certificate==='object'?raw.certificate:null}}catch(e){return{completed:[],bookmarks:[],history:[],currentId:null,capstoneChecks:[],assessment:{score:0,passed:false,attempts:0,completedAt:null},certificate:null}}}
 function saveState(){localStorage.setItem(STATE_KEY,JSON.stringify(state))}
+function normaliseImportedState(raw){
+  const source=raw&&raw.state&&typeof raw.state==='object'&&!Array.isArray(raw.state)?raw.state:raw;
+  if(!source||typeof source!=='object'||Array.isArray(source))throw new Error('Invalid Builder backup');
+  const validLessons=new Set(lessons.map(l=>l.id)),validCapstone=new Set(CAPSTONE_TASKS.map(t=>t.id));
+  const cleanLessonIds=value=>Array.isArray(value)?[...new Set(value.filter(id=>typeof id==='string'&&validLessons.has(id)))]:[];
+  const cleanCapstone=value=>Array.isArray(value)?[...new Set(value.filter(id=>typeof id==='string'&&validCapstone.has(id)))]:[];
+  const a=source.assessment&&typeof source.assessment==='object'&&!Array.isArray(source.assessment)?source.assessment:{};
+  const score=Math.max(0,Math.min(100,Number.isFinite(Number(a.score))?Math.round(Number(a.score)):0));
+  const attempts=Math.max(0,Number.isFinite(Number(a.attempts))?Math.floor(Number(a.attempts)):0);
+  let certificate=null;
+  if(source.certificate&&typeof source.certificate==='object'&&!Array.isArray(source.certificate)){
+    certificate={
+      name:typeof source.certificate.name==='string'?source.certificate.name.slice(0,120):'',
+      issuedAt:typeof source.certificate.issuedAt==='string'?source.certificate.issuedAt:null,
+      id:typeof source.certificate.id==='string'?source.certificate.id.slice(0,80):'',
+      score:Math.max(0,Math.min(100,Number.isFinite(Number(source.certificate.score))?Math.round(Number(source.certificate.score)):score))
+    };
+    if(!certificate.name||!certificate.id)certificate=null;
+  }
+  return{
+    completed:cleanLessonIds(source.completed),
+    bookmarks:cleanLessonIds(source.bookmarks),
+    history:cleanLessonIds(source.history).slice(-40),
+    currentId:typeof source.currentId==='string'&&validLessons.has(source.currentId)?source.currentId:null,
+    capstoneChecks:cleanCapstone(source.capstoneChecks),
+    assessment:{score,passed:Boolean(a.passed)&&score>=80,attempts,completedAt:typeof a.completedAt==='string'?a.completedAt:null},
+    certificate
+  };
+}
+function exportProgress(){
+  const payload={app:'The Builder',format:'builder-progress',version:2,exportedAt:new Date().toISOString(),state};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download='builder-progress-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);toast('Progress backup downloaded');
+}
+async function importProgressFile(file){
+  try{
+    const payload=JSON.parse(await file.text()),next=normaliseImportedState(payload);
+    if(!confirm('Restore this Builder backup? Your current progress on this device will be replaced.'))return;
+    state=next;saveState();renderHome();renderProgress();if(activePage==='learn')renderLearn();if(activePage==='pathway')renderPathway();toast('Progress restored');
+  }catch(e){toast('Could not restore this backup')}
+  finally{const input=document.getElementById('importProgressFile');if(input)input.value=''}
+}
 function slug(v){return String(v||'lesson').toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,60)}
 function cleanText(el){return el?el.textContent.replace(/\s+/g,' ').trim():''}
 function readMinutes(html){const box=document.createElement('div');box.innerHTML=html;const words=(box.textContent||'').trim().split(/\s+/).filter(Boolean).length;return Math.max(3,Math.ceil(words/190))}
@@ -1124,6 +1169,10 @@ function init(){
   document.getElementById('quickSearch').onclick=()=>{go('learn');setTimeout(()=>document.getElementById('lessonSearch').focus(),120)};document.getElementById('lessonSearch').addEventListener('input',renderLearn);
   document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{activeFilter=b.dataset.filter;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===b));renderLearn()});
   document.getElementById('readerBack').onclick=closeReader;document.getElementById('shareLessonBtn').onclick=()=>void shareCurrentLesson();document.getElementById('bookmarkBtn').onclick=toggleBookmark;document.getElementById('copySupportBtn').onclick=()=>void copySupportDetails();document.getElementById('completeLesson').onclick=toggleComplete;document.getElementById('prevLesson').onclick=e=>{if(e.currentTarget.dataset.id)openLesson(e.currentTarget.dataset.id)};document.getElementById('nextLesson').onclick=e=>{if(e.currentTarget.dataset.id)openLesson(e.currentTarget.dataset.id)};document.getElementById('unlockLesson').onclick=()=>void unlockCurrent();document.getElementById('premiumPassword').addEventListener('keydown',e=>{if(e.key==='Enter')void unlockCurrent()});
+  document.getElementById('exportProgress').onclick=exportProgress;
+  const importProgressInput=document.getElementById('importProgressFile');
+  document.getElementById('importProgress').onclick=()=>importProgressInput.click();
+  importProgressInput.addEventListener('change',e=>{const file=e.target.files?.[0];if(file)void importProgressFile(file)});
   document.getElementById('resetProgress').onclick=()=>{if(confirm('Clear all learning progress on this device?')){localStorage.removeItem(STATE_KEY);state=loadState();toast('Progress reset');renderHome();renderProgress();if(activePage==='pathway')renderPathway()}};
   updateOnline();addEventListener('online',updateOnline);addEventListener('offline',updateOnline);
   if(sharedLessonId&&lessons.some(l=>l.id===sharedLessonId))openLesson(sharedLessonId);
