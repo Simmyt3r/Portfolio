@@ -163,6 +163,22 @@
     .cert-empty{grid-column:1/-1;background:var(--white);border:1px dashed var(--rule);border-radius:3px;padding:28px;color:var(--muted);font-size:.9rem;line-height:1.8}
     @keyframes certIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
+
+    /* ─── DEPLOYED PRODUCTS ─── */
+    #deployed{padding:90px 0;background:var(--white);border-top:1px solid var(--rule)}
+    .deploy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+    .deploy-card{background:var(--paper);border:1px solid var(--rule);border-radius:4px;padding:26px;display:flex;flex-direction:column;min-height:260px;transition:transform .2s,box-shadow .2s,border-color .2s}
+    .deploy-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(15,39,68,.08);border-color:var(--accent)}
+    .deploy-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+    .deploy-status{font-family:var(--mono);font-size:.61rem;letter-spacing:.08em;text-transform:uppercase;color:#15803d;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:20px;padding:4px 9px}
+    .deploy-type{font-family:var(--mono);font-size:.61rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+    .deploy-card h3{font-family:var(--serif);font-size:1.2rem;color:var(--navy);margin-bottom:10px}
+    .deploy-card p{font-size:.85rem;color:var(--muted);line-height:1.75;flex:1;margin-bottom:18px}
+    .deploy-stack{font-family:var(--mono);font-size:.62rem;color:var(--ink2);padding-top:12px;border-top:1px solid var(--rule);margin-bottom:16px}
+    .deploy-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .deploy-link{font-family:var(--mono);font-size:.68rem;font-weight:500;color:var(--accent);border:1px solid #bfdbfe;background:#eff6ff;padding:7px 10px;border-radius:2px}
+    .deploy-link:hover{color:var(--navy);border-color:var(--navy)}
+
     /* ─── PROJECTS / REPOS ─── */
     #projects{padding:90px 0;background:var(--paper);border-top:1px solid var(--rule)}
     .filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:32px}
@@ -565,6 +581,62 @@
       </div>
     </div>
     <div class="cert-grid" id="certGrid" aria-live="polite"></div>
+  </div>
+</section>
+
+
+<!-- DEPLOYED PRODUCTS -->
+<section id="deployed">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-label">Live Work</div>
+      <h2 class="sec-title">Deployed Products</h2>
+      <p class="sec-desc">Selected products and systems I have taken beyond source code into working deployments. Open the live product to see the implementation in practice.</p>
+    </div>
+    <div class="deploy-grid">
+      <article class="deploy-card reveal">
+        <div class="deploy-top"><span class="deploy-status">Live</span><span class="deploy-type">EdTech</span></div>
+        <h3>UniXpress</h3>
+        <p>A Nigerian student platform for academic resources, project and SIWES support, campus services, contributors and learning workflows.</p>
+        <div class="deploy-stack">PHP · JavaScript · MySQL · Web Platform</div>
+        <div class="deploy-actions"><a class="deploy-link" href="https://unixpress.com.ng" target="_blank" rel="noopener">Open live product ↗</a></div>
+      </article>
+      <article class="deploy-card reveal">
+        <div class="deploy-top"><span class="deploy-status">Live</span><span class="deploy-type">Creator Economy</span></div>
+        <h3>ChombuTar</h3>
+        <p>A talent and client marketplace with discovery, social feeds, deals, negotiation workflows and trust-focused transaction features.</p>
+        <div class="deploy-stack">React · TypeScript/JavaScript · PostgreSQL · PWA</div>
+        <div class="deploy-actions"><a class="deploy-link" href="https://tallentt.vercel.app" target="_blank" rel="noopener">Open live product ↗</a><a class="deploy-link" href="https://github.com/Simmyt3r/tallentt" target="_blank" rel="noopener">Source ↗</a></div>
+      </article>
+      <article class="deploy-card reveal">
+        <div class="deploy-top"><span class="deploy-status">Live</span><span class="deploy-type">GIS / Climate</span></div>
+        <h3>CARE-Map</h3>
+        <p>A GIS-oriented field and remote-sensing system supporting community intervention records, mapping and Sentinel-based vegetation analysis.</p>
+        <div class="deploy-stack">GIS · Sentinel-2 · NDVI · Web Mapping</div>
+        <div class="deploy-actions"><a class="deploy-link" href="https://care-map-alpha.vercel.app" target="_blank" rel="noopener">Open live product ↗</a><a class="deploy-link" href="https://github.com/Simmyt3r/CARE-Map" target="_blank" rel="noopener">Source ↗</a></div>
+      </article>
+      <article class="deploy-card reveal">
+        <div class="deploy-top"><span class="deploy-status">Live</span><span class="deploy-type">Hospitality</span></div>
+        <h3>Roya</h3>
+        <p>A hospitality operations platform being developed around practical hotel workflows, property operations and simple day-to-day usability.</p>
+        <div class="deploy-stack">Flask · PostgreSQL · Supabase · Vercel</div>
+        <div class="deploy-actions"><a class="deploy-link" href="https://iroya.vercel.app" target="_blank" rel="noopener">Open live product ↗</a><a class="deploy-link" href="https://github.com/Simmyt3r/roya" target="_blank" rel="noopener">Source ↗</a></div>
+      </article>
+      <article class="deploy-card reveal">
+        <div class="deploy-top"><span class="deploy-status">Live</span><span class="deploy-type">Remote Sensing</span></div>
+        <h3>RSCDS</h3>
+        <p>A satellite change-detection system for identifying newly established temporary settlements in remote areas and reviewing visual evidence.</p>
+        <div class="deploy-stack">Satellite Imagery · Change Detection · GIS · Vercel</div>
+        <div class="deploy-actions"><a class="deploy-link" href="https://rscds.vercel.app" target="_blank" rel="noopener">Open live product ↗</a><a class="deploy-link" href="https://github.com/Simmyt3r/RSCDS-Project" target="_blank" rel="noopener">Source ↗</a></div>
+      </article>
+      <article class="deploy-card reveal">
+        <div class="deploy-top"><span class="deploy-status">Live</span><span class="deploy-type">Career Technology</span></div>
+        <h3>CareerMirror</h3>
+        <p>A career-focused web product for presenting and reviewing professional profiles and CV-related information through a cleaner digital experience.</p>
+        <div class="deploy-stack">HTML · CSS · JavaScript · Vercel</div>
+        <div class="deploy-actions"><a class="deploy-link" href="https://careermirror-tau.vercel.app" target="_blank" rel="noopener">Open live product ↗</a></div>
+      </article>
+    </div>
   </div>
 </section>
 
