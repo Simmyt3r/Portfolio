@@ -566,7 +566,7 @@
     <div class="sec-header reveal">
       <div class="sec-label">Credentials</div>
       <h2 class="sec-title">Certificates &amp; Professional Learning</h2>
-      <p class="sec-desc">A consolidated credential archive covering software engineering, digital skills, business, communication, and professional development. Every listed PDF opens directly from this portfolio.</p>
+      <p class="sec-desc">A consolidated credential archive covering software engineering, digital skills, business, communication, and professional development. Archived certificates open as PDFs, while issuer-hosted credentials offer direct verification links.</p>
     </div>
     <div class="cert-toolbar reveal">
       <div class="cert-toolbar-left">
@@ -577,7 +577,7 @@
       </div>
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
         <span class="cert-count" id="certCount">0 credentials</span>
-        <span class="cert-note">PDF archive · /certificates</span>
+        <span class="cert-note">PDF archive &amp; verified credentials</span>
       </div>
     </div>
     <div class="cert-grid" id="certGrid" aria-live="polite"></div>
@@ -1294,6 +1294,7 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(
 
 /* CERTIFICATES — consolidated credential archive */
 const CERTIFICATES=[
+  {title:"Software Development (3MTT)",issuer:"Federal Government of Nigeria · 3MTT / NITDA",year:"2026",date:"Jun 5, 2026",category:"Software Development",credentialId:"FE/23/53789382",credentialUrl:"https://app.3mtt.training/verify?id=FE/23/53789382",verificationOnly:true,appliedIn:"Software engineering, application development and practical technology projects"},
   {title:"Programming Foundations: Fundamentals",issuer:"LinkedIn Learning",year:"2024",date:"Aug 19, 2024",category:"Programming",file:"certificates/programming-foundations-linkedin-2024.pdf",credentialId:"751caf8d047cff59fdf713e5507951179a5e37e29f7096c7d38e27c3a69f3490",appliedIn:"Software architecture, product development, mentoring and engineering projects"},
   {title:"Introduction to Internet of Things",issuer:"Cisco Networking Academy",year:"2024",date:"Aug 14, 2024",category:"IoT & Networking",file:"certificates/introduction-to-iot-cisco-2024.pdf",appliedIn:"Connected-device concepts, digital transformation and secure systems thinking"},
   {title:"English for IT 2",issuer:"Cisco Networking Academy · OpenEDG",year:"2024",date:"Aug 21, 2024",category:"Professional Skills",file:"certificates/english-for-it-2-cisco-2024.pdf",appliedIn:"Technical communication, product documentation and professional collaboration"},
@@ -1321,15 +1322,18 @@ function certificateCard(c,i){
   const score=c.score?'<span class="cert-score">Score '+c.score+'</span>':"";
   const year=c.year?'<span class="cert-year">'+c.year+'</span>':"";
   const details=[c.date,c.credentialId?("ID "+c.credentialId):""].filter(Boolean).join(" · ");
+  const links=c.file
+    ? '<a class="cert-link" href="'+c.file+'" target="_blank" rel="noopener" aria-label="View '+c.title+' certificate PDF">View PDF →</a>'+
+      '<a class="cert-link" href="'+c.file+'" download aria-label="Download '+c.title+' certificate PDF">Download ↓</a>'
+    : c.credentialUrl
+      ? '<a class="cert-link" href="'+c.credentialUrl+'" target="_blank" rel="noopener noreferrer" aria-label="Verify '+c.title+' with issuer">Verify certificate ↗</a>'
+      : '';
   return '<article class="cert-card" style="--i:'+i+'">'+
-    '<div class="cert-top"><div><h3 class="cert-title">'+c.title+'</h3>'+issuer+'</div><div class="cert-icon" aria-hidden="true">PDF</div></div>'+
+    '<div class="cert-top"><div><h3 class="cert-title">'+c.title+'</h3>'+issuer+'</div><div class="cert-icon" aria-hidden="true">'+(c.file?'PDF':'3MTT')+'</div></div>'+
     applied+
     (details?'<div class="cert-detail">'+details+'</div>':"")+
     '<div class="cert-meta"><span class="cert-badge">'+c.category+'</span>'+year+score+'</div>'+
-    '<div class="cert-actions">'+
-      '<a class="cert-link" href="'+c.file+'" target="_blank" rel="noopener" aria-label="View '+c.title+' certificate PDF">View PDF →</a>'+
-      '<a class="cert-link" href="'+c.file+'" download aria-label="Download '+c.title+' certificate PDF">Download ↓</a>'+
-    '</div></article>';
+    '<div class="cert-actions">'+links+'</div></article>';
 }
 
 function renderCertificates(){
