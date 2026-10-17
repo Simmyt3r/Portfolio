@@ -74,6 +74,8 @@ Certificate PDFs are displayed on the main portfolio homepage from the dedicated
    `provider-certificate-topic-year.pdf`
 3. Open `index.html` and add a new object to the `CERTIFICATES` JavaScript array.
 
+**Issuer-verification-only entries:** If the PDF is not yet hosted in the repository, omit `file` and set `credentialUrl` to the issuer's official verification page. The card will show **Verify certificate** rather than a broken PDF or download button. When the PDF is uploaded, populate `file` with its repository path to enable both PDF actions.
+
 Required fields:
 - `title` - certificate name shown on the card
 - `issuer` - issuing organization
